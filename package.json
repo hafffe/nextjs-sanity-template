@@ -9,9 +9,10 @@
 		"deploy:graphql": "lerna run graphql-deploy:production",
 		"deploy:graphql-stage": "lerna run graphql-deploy:staging",
 		"dev": "lerna run dev --parallel",
-		"bootstrap": "lerna bootstrap",
+		"postinstall": "lerna bootstrap",
 		"test": "lerna run test --parallel",
-		"lint": "lerna run lint"
+		"lint": "lerna run lint",
+		"version": "lerna version"
 	},
 	"keywords": [
 		"JAMstack",
