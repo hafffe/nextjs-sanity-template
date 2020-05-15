@@ -1,0 +1,27 @@
+{
+	"name": "sanity-studio",
+	"version": "0.0.0",
+	"description": "Next.js & Sanity template",
+	"scripts": {
+		"build": "lerna run build --parallel",
+		"build:web": "lerna bootstrap && (cd web && npm run build)",
+		"build:studio": "lerna bootstrap && (cd studio && npm run build)",
+		"deploy:graphql": "lerna run graphql-deploy:production",
+		"deploy:graphql-stage": "lerna run graphql-deploy:staging",
+		"dev": "lerna run dev --parallel",
+		"bootstrap": "lerna bootstrap",
+		"test": "lerna run test --parallel",
+		"lint": "lerna run lint"
+	},
+	"keywords": [
+		"JAMstack",
+		"Sanity",
+		"Next.js"
+	],
+	"author": "Aron Hafner",
+	"license": "MIT",
+	"devDependencies": {
+		"@sanity/cli": "^1.149.13",
+		"lerna": "^3.21.0"
+	}
+}

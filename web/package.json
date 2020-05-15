@@ -1,0 +1,154 @@
+{
+	"name": "sanity-web",
+	"engines": {
+		"node": ">=10"
+	},
+	"scripts": {
+		"build": "next build",
+		"start": "next start",
+		"dev": "next",
+		"test": "npm run jest && npm run lint",
+		"lint": "xo && stylelint 'components/**/*.ts' 'components/**/*.tsx' 'pages/**/*.ts' 'pages/**/*.tsx'",
+		"jest": "jest",
+		"test:watch": "jest --watch",
+		"generate": "gql-gen --config codegen.yml"
+	},
+	"dependencies": {
+		"@chakra-ui/core": "^0.7.0",
+		"@emotion/core": "^10.0.28",
+		"@emotion/styled": "^10.0.27",
+		"@sanity/block-content-to-react": "^2.0.7",
+		"@sanity/image-url": "^0.140.17",
+		"axios": "^0.19.2",
+		"date-fns": "^2.12.0",
+		"emotion-theming": "^10.0.27",
+		"graphql": "^15.0.0",
+		"graphql-tag": "^2.10.3",
+		"next": "^9.3.0",
+		"react": "^16.9.0",
+		"react-dom": "^16.9.0",
+		"react-icons": "^3.10.0",
+		"uuid": "^7.0.3"
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "^1.13.3",
+		"@graphql-codegen/schema-ast": "^1.13.3",
+		"@graphql-codegen/typescript": "^1.13.3",
+		"@graphql-codegen/typescript-operations": "^1.13.3",
+		"@testing-library/jest-dom": "^5.3.0",
+		"@testing-library/react": "^10.0.2",
+		"@types/jest": "^25.2.1",
+		"@types/node": "^13.5.1",
+		"@types/react": "^16.9.2",
+		"@types/react-dom": "^16.9.1",
+		"@types/uuid": "^7.0.2",
+		"@typescript-eslint/eslint-plugin": "^2.26.0",
+		"@typescript-eslint/parser": "^2.26.0",
+		"babel-jest": "^25.3.0",
+		"eslint-config-xo-react": "^0.23.0",
+		"eslint-config-xo-typescript": "^0.27.0",
+		"eslint-plugin-react": "^7.14.3",
+		"eslint-plugin-react-hooks": "^3.0.0",
+		"jest": "^25.2.7",
+		"now": "^18.0.0",
+		"stylelint": "^13.0.0",
+		"stylelint-config-prettier": "^8.0.1",
+		"stylelint-config-styled-components": "^0.1.1",
+		"stylelint-config-xo": "^0.16.1",
+		"stylelint-prettier": "^1.1.1",
+		"stylelint-processor-styled-components": "^1.8.0",
+		"typescript": "^3.6.3",
+		"xo": "*"
+	},
+	"babel": {
+		"plugins": [],
+		"presets": [
+			"next/babel"
+		]
+	},
+	"prettier": {
+		"printWidth": 120,
+		"singleQuote": true,
+		"jsxSingleQuote": true
+	},
+	"stylelint": {
+		"extends": [
+			"stylelint-config-xo",
+			"stylelint-config-prettier",
+			"stylelint-config-styled-components"
+		],
+		"plugins": [
+			"stylelint-prettier"
+		],
+		"processors": [
+			"stylelint-processor-styled-components"
+		]
+	},
+	"jest": {
+		"collectCoverageFrom": [
+			"**/*.{js,jsx,ts,tsx}",
+			"!**/*.d.ts",
+			"!**/node_modules/**"
+		],
+		"setupFilesAfterEnv": [
+			"@testing-library/jest-dom/extend-expect"
+		],
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			"/.next/"
+		],
+		"transform": {
+			"^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
+		},
+		"transformIgnorePatterns": [
+			"/node_modules/"
+		]
+	},
+	"xo": {
+		"envs": [
+			"browser",
+			"node",
+			"jest"
+		],
+		"extends": [
+			"xo-react",
+			"xo-typescript"
+		],
+		"extensions": [
+			"ts",
+			"tsx",
+			"js"
+		],
+		"ignore": [
+			"next.config.js",
+			"next-env.d.ts",
+			"types/types.tsx"
+		],
+		"parserOptions": {
+			"project": "tsconfig.json"
+		},
+		"prettier": true,
+		"rules": {
+			"arrow-body-style": [
+				"error",
+				"as-needed"
+			],
+			"@typescript-eslint/no-unsafe-member-access": "warn",
+			"@typescript-eslint/no-base-to-string": "warn",
+			"@typescript-eslint/no-unsafe-call": "warn",
+			"@typescript-eslint/prefer-readonly-parameter-types": "off",
+			"@typescript-eslint/restrict-template-expressions": "warn",
+			"react/prop-types": "off",
+			"react/no-danger": "warn",
+			"react/jsx-tag-spacing": [
+				"error",
+				{
+					"closingSlash": "never",
+					"beforeSelfClosing": "always",
+					"afterOpening": "never",
+					"beforeClosing": "never"
+				}
+			]
+		}
+	}
+}

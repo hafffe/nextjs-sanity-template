@@ -1,0 +1,16 @@
+schema: https://mzxfialk.api.sanity.io/v1/graphql/staging/default
+documents: "./lib/queries.ts"
+overwrite: true
+generates:
+  ./types/types.tsx:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      avoidOptionals: true
+      flattenGeneratedTypes: true
+      nonOptionalTypename: true
+      declarationKind: 'interface'
+  ./schema.graphql:
+    plugins:
+      - schema-ast
