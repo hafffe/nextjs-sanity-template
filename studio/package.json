@@ -12,7 +12,7 @@
 		"build": "sanity build",
 		"graphql-deploy:production": "sanity graphql deploy --playground",
 		"graphql-deploy:staging": "sanity graphql deploy --playground --dataset staging",
-		"test": "sanity check"
+		"test": "xo && sanity check"
 	},
 	"keywords": [
 		"sanity"
