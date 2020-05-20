@@ -44,7 +44,6 @@ const Layout: React.FunctionComponent<Props> = ({siteSettings, preview, children
 			</Flex>
 		</>
 	);
-
 };
 
 export default Layout;

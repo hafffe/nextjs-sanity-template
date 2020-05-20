@@ -24,7 +24,11 @@ const serializers = (colorMode: any) => ({
 	},
 	marks: {
 		link: (props: any) => (
-			<Link isExternal href={props.mark.href} color={colorMode === 'dark' ? 'modes.dark.primary' : 'modes.light.primary'}>
+			<Link
+				isExternal
+				href={props.mark.href}
+				color={colorMode === 'dark' ? 'modes.dark.primary' : 'modes.light.primary'}
+			>
 				{props.children}
 			</Link>
 		)
@@ -34,9 +38,7 @@ const serializers = (colorMode: any) => ({
 const TextBlock: React.FunctionComponent<Props> = ({data}) => {
 	const {colorMode} = useColorMode();
 
-	return (
-		<BlockContent blocks={data.textRaw} serializers={serializers(colorMode)} />
-	);
+	return <BlockContent blocks={data.textRaw} serializers={serializers(colorMode)} />;
 };
 
 export default TextBlock;
