@@ -7,9 +7,20 @@ const theme = {
 	colors: {
 		...chakraTheme.colors,
 		black: '#16161D',
-		text: '#F6F7F8',
-		background: '#222831',
-		secondary: '#E66B67'
+		modes: {
+			dark: {
+				text: '#F6F7F8',
+				background: '#222831',
+				primary: '#E66B67',
+				secondary: '#f0e'
+			},
+			light: {
+				text: '#222831',
+				background: '#F6F7F8',
+				primary: '#00B5D8',
+				secondary: '#E66B67'
+			}
+		}
 	},
 	fonts: {
 		...chakraTheme.fonts,
