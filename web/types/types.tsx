@@ -1190,6 +1190,50 @@ export type PageQuery = (
   )> }
 );
 
+export type GetPagePreviewQueryVariables = {
+  id: Scalars['String'];
+};
+
+
+export type GetPagePreviewQuery = (
+  { __typename: 'RootQuery' }
+  & { allPage: Array<(
+    { __typename: 'Page' }
+    & Pick<Page, '_key' | '_type' | '_id' | 'title'>
+    & { slug: Maybe<(
+      { __typename: 'Slug' }
+      & Pick<Slug, 'current'>
+    )>, content: Maybe<Array<Maybe<(
+      { __typename: 'GridBlock' }
+      & Pick<GridBlock, '_key' | '_type'>
+      & { columns: Maybe<(
+        { __typename: 'Columns' }
+        & Pick<Columns, 'small' | 'medium' | 'large'>
+      )>, items: Maybe<Array<Maybe<(
+        { __typename: 'Cell' }
+        & { image: Maybe<(
+          { __typename: 'Image' }
+          & Pick<Image, '_key' | '_type'>
+          & { asset: Maybe<(
+            { __typename: 'SanityImageAsset' }
+            & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+          )> }
+        )> }
+      )>>> }
+    ) | (
+      { __typename: 'ImageBlock' }
+      & Pick<ImageBlock, '_key' | '_type'>
+      & { asset: Maybe<(
+        { __typename: 'SanityImageAsset' }
+        & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+      )> }
+    ) | (
+      { __typename: 'TextBlock' }
+      & Pick<TextBlock, '_key' | '_type' | 'textRaw'>
+    )>>> }
+  )> }
+);
+
 export type PostListQueryVariables = {
   limit: Scalars['Int'];
 };
@@ -1351,6 +1395,20 @@ export type GetAllPostsWithSlugQuery = (
   { __typename: 'RootQuery' }
   & { allPost: Array<(
     { __typename: 'Post' }
+    & { slug: Maybe<(
+      { __typename: 'Slug' }
+      & Pick<Slug, 'current'>
+    )> }
+  )> }
+);
+
+export type GetAllPagesWithSlugQueryVariables = {};
+
+
+export type GetAllPagesWithSlugQuery = (
+  { __typename: 'RootQuery' }
+  & { allPage: Array<(
+    { __typename: 'Page' }
     & { slug: Maybe<(
       { __typename: 'Slug' }
       & Pick<Slug, 'current'>

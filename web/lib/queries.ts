@@ -99,6 +99,29 @@ export const GET_PAGE = gql`
 	${textBlockFragment}
 `;
 
+export const GET_PAGE_PREVIEW = gql`
+	query GetPagePreview($id: String!) {
+		allPage(where: {_: {is_draft: true}, slug: {current: {eq: $id}}}) {
+			_key
+			_type
+			_id
+			title
+			slug {
+				current
+			}
+			content {
+				__typename
+				...GridBlock
+				...ImageBlock
+				...TextBlock
+			}
+		}
+	}
+	${gridBlockFragment}
+	${imageBlockFragment}
+	${textBlockFragment}
+`;
+
 export const GET_POSTS = gql`
 	query PostList($limit: Int!) {
 		allPost(limit: $limit, sort: {_createdAt: DESC}, where: {_: {is_draft: false}}) {
@@ -187,6 +210,7 @@ export const GET_POST_PREVIEW = gql`
 				name
 			}
 			content {
+				__typename
 				...GridBlock
 				...ImageBlock
 				...TextBlock
@@ -201,6 +225,16 @@ export const GET_POST_PREVIEW = gql`
 export const GET_POSTS_WITH_SLUG = gql`
 	query getAllPostsWithSlug {
 		allPost(where: {_: {is_draft: false}}) {
+			slug {
+				current
+			}
+		}
+	}
+`;
+
+export const GET_PAGES_WITH_SLUG = gql`
+	query getAllPagesWithSlug {
+		allPage(where: {_: {is_draft: false}}) {
 			slug {
 				current
 			}
