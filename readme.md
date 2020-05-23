@@ -15,8 +15,9 @@ Static site template built with [Next.js](https://github.com/zeit/next.js) and [
 6. Login on `sanity` with your terminal
 
 ### Initial Setup Next JS
-1. Rename .env.example to .env and change to your tokens / keys
+1. Rename env.example to .env and change to your tokens / keys
 2. Add these environment variables to now with `now secrets add <variable-in-lowercase>`
+3. Create two new files named `.env.development.local` & `.env.production.local`, add the variables from env.example and edit each file for staging and production datasets. read how next.js environment variables work [here](https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables)
 
 ### Initial Setup Sanity
 1. Rename `.env.production.example` & `.env.development.example` to `.env.production` & `.env.development`
