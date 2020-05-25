@@ -21,7 +21,7 @@ export default function resolveProductionUrl(document) {
 			url = `/${slug}`;
 			break;
 		case 'post':
-			url = `/post/${slug}`;
+			url = `/posts/${slug}`;
 			break;
 		default:
 			return url;

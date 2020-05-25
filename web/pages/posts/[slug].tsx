@@ -73,7 +73,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	const data = await apiClient<GetAllPostsWithSlugQuery>(GET_POSTS_WITH_SLUG);
 
 	return {
-		paths: data?.allPost?.map((post) => `/post/${post?.slug?.current}`) || null,
+		paths: data?.allPost?.map((post) => `/posts/${post?.slug?.current}`) || null,
 		fallback: false
 	};
 };

@@ -26,7 +26,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
 				return response.status(401).json({message: 'Invalid slug'});
 			}
 
-			location = `/post/${post.slug.current}`;
+			location = `/posts/${post.slug.current}`;
 			break;
 		}
 

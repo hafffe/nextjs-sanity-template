@@ -1,9 +1,9 @@
 import React from 'react';
 import {GetStaticProps} from 'next';
-import {apiClient} from '../lib/api';
-import {SITE_SETTINGS, GET_POSTS} from '../lib/queries';
-import {PostListQuery, Post as PostType, SiteSettings, SiteSettingsQuery} from '../types/types';
-import {Layout, PostList} from '../components';
+import {apiClient} from '../../lib/api';
+import {SITE_SETTINGS, GET_POSTS} from '../../lib/queries';
+import {PostListQuery, Post as PostType, SiteSettings, SiteSettingsQuery} from '../../types/types';
+import {Layout, PostList} from '../../components';
 
 type Props = {
 	preview: boolean;
