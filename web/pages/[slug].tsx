@@ -48,7 +48,12 @@ export const getStaticProps: GetStaticProps = async ({params, preview = false}) 
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const data = await apiClient<GetAllPagesWithSlugQuery>(GET_PAGES_WITH_SLUG);
-	const paths = data.allPage.map((page) => ({
+	const pages = data.allPage
+		.filter((page) => page?.slug?.current)
+		.filter((page) => page?.slug?.current !== '/')
+		.filter((page) => page?.slug?.current !== 'posts');
+
+	const paths = pages.map((page) => ({
 		params: {slug: page?.slug?.current?.toString()}
 	}));
 
