@@ -40,7 +40,7 @@ const Layout: React.FunctionComponent<Props> = ({siteSettings, preview, children
 				>
 					{children}
 				</Flex>
-				<Footer colorMode={colorMode} />
+				<Footer colorMode={colorMode} siteSettings={siteSettings} />
 			</Flex>
 		</>
 	);
