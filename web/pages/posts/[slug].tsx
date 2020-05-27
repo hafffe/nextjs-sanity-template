@@ -34,7 +34,7 @@ const Post = ({post, siteSettings, preview}: Props) => {
 
 	return (
 		<Layout preview={preview} siteSettings={siteSettings}>
-			<Flex direction='column'>
+			<Flex direction='column' width='100%'>
 				<Heading>{post?.title}</Heading>
 				<Stack isInline align='center' spacing={4} paddingY={2}>
 					{post.author?.image?.asset && <Image avatar source={post.author.image.asset} />}
