@@ -28,7 +28,7 @@
 		"react": "^16.9.0",
 		"react-dom": "^16.9.0",
 		"react-icons": "^3.10.0",
-		"uuid": "^7.0.3"
+		"uuid": "^8.1.0"
 	},
 	"devDependencies": {
 		"@graphql-codegen/cli": "^1.13.3",
