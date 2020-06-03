@@ -79,7 +79,8 @@ export default {
 			of: [{type: 'string'}],
 			options: {
 				layout: 'tags'
-			}
+			},
+			validation: (Rule) => Rule.required()
 		},
 		{
 			name: 'excerpt',
