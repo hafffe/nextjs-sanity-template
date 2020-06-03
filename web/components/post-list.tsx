@@ -40,7 +40,7 @@ const PostList: React.FunctionComponent<Props> = ({allPost, layout}) => (
 			}
 
 			return (
-				<Flex key={post._id ?? key} direction='column' paddingY={4} width='100%'>
+				<Flex key={post._id ?? key} direction='column' paddingBottom={2} width='100%'>
 					<Link passHref href='/posts/[slug]' as={`/posts/${post.slug.current}`}>
 						<Li href={`/posts/${post.slug?.current}`}>
 							<Heading as='h2' size='lg'>
