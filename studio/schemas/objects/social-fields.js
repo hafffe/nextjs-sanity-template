@@ -1,7 +1,10 @@
+import {RiShareLine} from 'react-icons/ri';
+
 export default {
 	title: 'Social',
 	name: 'socialFields',
 	type: 'object',
+	icon: RiShareLine,
 	fields: [
 		{
 			name: 'twitter',

@@ -1,9 +1,9 @@
 import S from '@sanity/desk-tool/structure-builder';
-import {MdSettings} from 'react-icons/md';
+import {RiSettings5Line} from 'react-icons/ri';
 
 const SiteSettings = S.listItem()
 	.title('Global Settings')
-	.icon(MdSettings)
+	.icon(RiSettings5Line)
 	.child(S.editor().schemaType('siteSettings').documentId('siteSettings'));
 
 export default () =>

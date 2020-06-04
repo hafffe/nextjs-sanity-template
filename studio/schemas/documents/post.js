@@ -1,12 +1,12 @@
-import {MdLibraryBooks} from 'react-icons/md';
 import slug from 'slugify';
 import {format} from 'date-fns';
+import {RiArticleLine} from 'react-icons/ri';
 
 export default {
 	name: 'post',
 	type: 'document',
 	title: 'Posts',
-	icon: MdLibraryBooks,
+	icon: RiArticleLine,
 	fieldsets: [
 		{
 			name: 'meta',

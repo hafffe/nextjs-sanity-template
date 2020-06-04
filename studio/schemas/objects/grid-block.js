@@ -1,4 +1,4 @@
-import {MdGridOn} from 'react-icons/md';
+import {RiLayoutGridLine} from 'react-icons/ri';
 
 export default {
 	name: 'gridBlock',
@@ -6,7 +6,7 @@ export default {
 	title: 'Grid',
 	hidden: true,
 	description: 'This is a simple grid component, all items are going to be equally wide',
-	icon: MdGridOn,
+	icon: RiLayoutGridLine,
 	fieldsets: [
 		{
 			name: 'columns',

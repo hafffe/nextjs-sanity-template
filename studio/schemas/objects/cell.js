@@ -1,4 +1,4 @@
-import {MdGridOn} from 'react-icons/md';
+import {RiGridLine} from 'react-icons/ri';
 
 export default {
 	name: 'cell',
@@ -6,7 +6,7 @@ export default {
 	title: 'Cell',
 	hidden: true,
 	description: 'Cell',
-	icon: MdGridOn,
+	icon: RiGridLine,
 	fields: [
 		{
 			name: 'title',

@@ -1,10 +1,10 @@
-import {MdSettings} from 'react-icons/md';
+import {RiSettings5Line} from 'react-icons/ri';
 
 export default {
 	name: 'siteSettings',
 	type: 'document',
 	title: 'Site Settings',
-	icon: MdSettings,
+	icon: RiSettings5Line,
 	fieldsets: [
 		{
 			name: 'meta',

@@ -1,8 +1,11 @@
+import {RiLinksLine} from 'react-icons/ri';
+
 export default {
 	title: 'Internal Link',
 	name: 'internalLink',
 	type: 'object',
 	hidden: true,
+	icon: RiLinksLine,
 	fields: [
 		{
 			name: 'title',
@@ -20,5 +23,8 @@ export default {
 				}
 			]
 		}
-	]
+	],
+	blockEditor: {
+		icon: RiLinksLine
+	}
 };

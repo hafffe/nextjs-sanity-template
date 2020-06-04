@@ -1,8 +1,11 @@
+import {RiExternalLinkLine} from 'react-icons/ri';
+
 export default {
 	title: 'External Link',
 	name: 'externalLink',
 	type: 'object',
 	hidden: true,
+	icon: RiExternalLinkLine,
 	fields: [
 		{
 			name: 'title',
@@ -18,5 +21,8 @@ export default {
 				'There is no `link` validation on this so please type accurate urls with https://, mailto:, tel: etc.',
 			validation: (Rule) => Rule.required()
 		}
-	]
+	],
+	blockEditor: {
+		icon: RiExternalLinkLine
+	}
 };

@@ -1,10 +1,10 @@
-import {MdPerson} from 'react-icons/md';
+import {RiUserSmileLine} from 'react-icons/ri';
 
 export default {
 	name: 'person',
 	type: 'document',
 	title: 'Persons',
-	icon: MdPerson,
+	icon: RiUserSmileLine,
 	fields: [
 		{
 			name: 'name',

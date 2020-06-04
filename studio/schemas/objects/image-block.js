@@ -1,8 +1,11 @@
+import {RiImageLine} from 'react-icons/ri';
+
 export default {
 	name: 'imageBlock',
 	title: 'Image',
 	description: 'Image Block',
 	type: 'image',
+	icon: RiImageLine,
 	options: {
 		hotspot: true
 	},

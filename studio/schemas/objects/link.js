@@ -1,4 +1,4 @@
-import {MdLink} from 'react-icons/md';
+import {RiLinksLine} from 'react-icons/ri';
 
 export default {
 	title: 'URL',
@@ -18,6 +18,6 @@ export default {
 		}
 	],
 	blockEditor: {
-		icon: MdLink
+		icon: RiLinksLine
 	}
 };

@@ -1,11 +1,11 @@
 import slug from 'slugify';
-import {MdDescription} from 'react-icons/md';
+import {RiPagesLine} from 'react-icons/ri';
 
 export default {
 	name: 'page',
 	type: 'document',
 	title: 'Pages',
-	icon: MdDescription,
+	icon: RiPagesLine,
 	fieldsets: [
 		{
 			name: 'meta',

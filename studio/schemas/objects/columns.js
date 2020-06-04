@@ -1,9 +1,12 @@
+import {RiLayoutColumnLine} from 'react-icons/ri';
+
 export default {
 	name: 'columns',
 	title: 'Columns',
 	type: 'object',
 	description: 'Items per row',
 	validation: (Rule) => Rule.required(),
+	icon: RiLayoutColumnLine,
 	fields: [
 		{
 			title: 'Small screens',
