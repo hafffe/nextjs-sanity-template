@@ -1,7 +1,8 @@
 import React from 'react';
-import {Flex, Link, Text, useColorMode} from '@chakra-ui/core';
+import {Box, Flex, Heading, Link, Text, useColorMode} from '@chakra-ui/core';
 // @ts-ignore
 import BlockContent from '@sanity/block-content-to-react';
+import {IoIosQuote} from 'react-icons/io';
 import {TextBlock as TextBlockProps, SimpleTextBlock} from '../types/types';
 
 type Props = {
@@ -11,10 +12,53 @@ type Props = {
 const serializers = (colorMode: any) => ({
 	types: {
 		block: (props: any) => {
-			if (props.node.style === 'big') {
+			const {style = 'normal'} = props.node;
+
+			if (style === 'big') {
 				return (
 					<Flex paddingY={3} justify='center'>
 						<Text fontSize='3xl'>{props.children}</Text>
+					</Flex>
+				);
+			}
+
+			if (/^h\d/.test(style)) {
+				const resolveSize = (style: string) => {
+					if (style === 'h1') {
+						return '2xl';
+					}
+
+					if (style === 'h2') {
+						return 'xl';
+					}
+
+					if (style === 'h3') {
+						return 'lg';
+					}
+
+					if (style === 'h4') {
+						return 'md';
+					}
+
+					return 'sm';
+				};
+
+				return (
+					<Heading as={style} size={resolveSize(style)}>
+						{props.children}
+					</Heading>
+				);
+			}
+
+			if (style === 'blockquote') {
+				return (
+					<Flex paddingY={1}>
+						<Box as='blockquote' display='flex'>
+							<Box as={IoIosQuote} />
+							<Text paddingLeft={2} fontSize='lg' fontWeight='semibold'>
+								{props.children}
+							</Text>
+						</Box>
 					</Flex>
 				);
 			}
@@ -31,7 +75,8 @@ const serializers = (colorMode: any) => ({
 			>
 				{props.children}
 			</Link>
-		)
+		),
+		italic: (props: any) => <Text as='i'>{props.children}</Text>
 	}
 });
 
