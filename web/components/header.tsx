@@ -11,7 +11,7 @@ import {
 	IconButton,
 	useDisclosure
 } from '@chakra-ui/core';
-import {FiMenu} from 'react-icons/fi';
+import {RiMenuLine} from 'react-icons/ri';
 import MainMenu from './main-menu';
 import useViewport from './utils/viewport';
 import {ExternalLinkOrInternalLink, Maybe} from '../types/types';
@@ -64,7 +64,7 @@ const Header: React.FunctionComponent<Props> = ({navigation, colorMode}) => {
 					marginLeft='auto'
 					size='lg'
 					aria-label='Open Menu'
-					icon={FiMenu}
+					icon={RiMenuLine}
 					onClick={onOpen}
 				/>
 			)}

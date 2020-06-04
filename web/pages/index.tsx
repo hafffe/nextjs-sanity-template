@@ -1,7 +1,7 @@
 import React from 'react';
 import {GetStaticProps} from 'next';
 import {Box, Flex, Heading, Divider, Link, Stack} from '@chakra-ui/core';
-import {FiChevronsRight} from 'react-icons/fi';
+import {RiArrowRightLine} from 'react-icons/ri';
 import {apiClient} from '../lib/api';
 import {SITE_SETTINGS, GET_PAGE, GET_POSTS} from '../lib/queries';
 import {Page as PageType, PageQuery, PostListQuery, Post as PostType, SiteSettings} from '../types/types';
@@ -30,7 +30,7 @@ const Index = ({page, allPost, pageSettings, preview}: Props) => {
 						Recent articles
 					</Heading>
 					<Link href='/posts' marginLeft='auto' whiteSpace='nowrap'>
-						All Articles <Box as={FiChevronsRight} display='inline-block' />
+						All Articles <Box as={RiArrowRightLine} display='inline-block' />
 					</Link>
 				</Stack>
 				<PostList allPost={allPost} layout='minimal' />

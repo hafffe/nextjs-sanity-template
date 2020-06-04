@@ -1,5 +1,6 @@
 import React from 'react';
 import {useColorMode, IconButton} from '@chakra-ui/core';
+import {RiSunLine, RiMoonLine} from 'react-icons/ri';
 
 export const DarkModeSwitch = () => {
 	const {colorMode, toggleColorMode} = useColorMode();
@@ -10,7 +11,7 @@ export const DarkModeSwitch = () => {
 			aria-label='Switch colors'
 			size='sm'
 			variant='ghost'
-			icon={isDark ? 'sun' : 'moon'}
+			icon={isDark ? RiSunLine : RiMoonLine}
 			onClick={toggleColorMode}
 		/>
 	);

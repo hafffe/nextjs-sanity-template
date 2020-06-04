@@ -1,5 +1,5 @@
 import React from 'react';
-import {FiFacebook, FiInstagram, FiTwitter} from 'react-icons/fi';
+import {RiFacebookBoxLine, RiInstagramLine, RiTwitterLine} from 'react-icons/ri';
 import {Flex, Link, Stack, Text} from '@chakra-ui/core';
 import {Maybe, SocialFields} from '../types/types';
 
@@ -21,19 +21,19 @@ const Footer: React.FunctionComponent<Props> = ({colorMode, socialFields}) => (
 		<Stack direction='row' paddingBottom={2} paddingLeft={2}>
 			{socialFields?.facebook && (
 				<Link isExternal href={socialFields?.facebook} color={`modes.${colorMode}.primary`}>
-					<FiFacebook />
+					<RiFacebookBoxLine />
 				</Link>
 			)}
 
 			{socialFields?.instagram && (
 				<Link isExternal href={socialFields?.instagram} color={`modes.${colorMode}.primary`}>
-					<FiInstagram />
+					<RiInstagramLine />
 				</Link>
 			)}
 
 			{socialFields?.twitter && (
 				<Link isExternal href={socialFields?.twitter} color={`modes.${colorMode}.primary`}>
-					<FiTwitter />
+					<RiTwitterLine />
 				</Link>
 			)}
 		</Stack>
