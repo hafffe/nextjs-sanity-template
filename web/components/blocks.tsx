@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid, ImageBlock, TextBlock} from '.';
 import {GridBlockOrImageBlockOrTextBlock} from '../types/types';
 
-export default ({block}: {block: GridBlockOrImageBlockOrTextBlock}) => {
+const blocks = ({block}: {block: GridBlockOrImageBlockOrTextBlock}) => {
 	switch (block.__typename) {
 		case 'TextBlock':
 			return <TextBlock data={block} />;
@@ -15,3 +15,5 @@ export default ({block}: {block: GridBlockOrImageBlockOrTextBlock}) => {
 			return null;
 	}
 };
+
+export default blocks;
