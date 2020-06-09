@@ -58,7 +58,7 @@
 		"stylelint-prettier": "^1.1.1",
 		"stylelint-processor-styled-components": "^1.8.0",
 		"typescript": "^3.6.3",
-		"xo": "*"
+		"xo": "^0.32.0"
 	},
 	"babel": {
 		"plugins": [],

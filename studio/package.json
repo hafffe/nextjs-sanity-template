@@ -65,6 +65,11 @@
 		],
 		"prettier": true,
 		"rules": {
+			"import/no-anonymous-default-export": [
+				"error", {
+					"allowObject": true
+				}
+			],
 			"react/jsx-tag-spacing": [
 				"error",
 				{
