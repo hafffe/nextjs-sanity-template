@@ -41,7 +41,7 @@
 		"eslint-config-xo-react": "^0.23.0",
 		"eslint-plugin-react": "^7.19.0",
 		"eslint-plugin-react-hooks": "^4.0.0",
-		"xo": "^0.30.0"
+		"xo": "^0.32.0"
 	},
 	"prettier": {
 		"printWidth": 120,
