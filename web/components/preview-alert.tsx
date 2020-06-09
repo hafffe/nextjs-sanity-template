@@ -11,7 +11,7 @@ const PreviewAlert: React.FunctionComponent<Props> = ({preview}) => {
 	}
 
 	return (
-		<Alert status='info' variant='top-accent' color='black' position='fixed' bottom='5' alignSelf='center' width='40%'>
+		<Alert status='info' variant='top-accent' position='fixed' bottom='5' alignSelf='center' width='40%'>
 			<AlertIcon />
 			<AlertTitle margin={2}>Preview</AlertTitle>
 			<AlertDescription margin={3} padding={3}>

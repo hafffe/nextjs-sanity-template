@@ -13,7 +13,7 @@ const ImageBlock: React.FunctionComponent<Props> = ({data}) => {
 	}
 
 	return (
-		<Box>
+		<Box marginY={2}>
 			<Image source={data.asset} />
 		</Box>
 	);
