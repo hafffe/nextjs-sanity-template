@@ -6,10 +6,12 @@ const SiteSettings = S.listItem()
 	.icon(RiSettings5Line)
 	.child(S.editor().schemaType('siteSettings').documentId('siteSettings'));
 
-export default () =>
+const structure = () =>
 	S.list()
 		.title('Content')
 		.items([
 			SiteSettings,
 			...S.documentTypeListItems().filter((listItem) => !['siteSettings'].includes(listItem.getId()))
 		]);
+
+export default structure;

@@ -3,7 +3,7 @@ import {apiClient} from '../../lib/api';
 import {GET_POST_PREVIEW, GET_PAGE_PREVIEW} from '../../lib/queries';
 import {GetPostPreviewQuery, GetPagePreviewQuery} from '../../types/types';
 
-export default async (request: NextApiRequest, response: NextApiResponse) => {
+const api = async (request: NextApiRequest, response: NextApiResponse) => {
 	if (request.query.secret !== process.env.PREVIEW_SECRET || !request.query.slug || !request.query.type) {
 		return response.status(401).json({message: 'Invalid token'});
 	}
@@ -36,11 +36,12 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
 			});
 
 			const page = allPage[0];
+
 			if (!page?.slug?.current) {
 				return response.status(401).json({message: 'Invalid slug'});
 			}
 
-			location = `/${page.slug.current}`;
+			location = page.slug.current === '/' ? '/' : `/${page.slug.current}`;
 			break;
 		}
 
@@ -53,3 +54,5 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
 	response.writeHead(307, {Location: location});
 	response.end();
 };
+
+export default api;
