@@ -32,7 +32,7 @@ const Header: React.FunctionComponent<Props> = ({navigation, colorMode}) => {
 		<Flex as='header' padding={6} maxWidth='1200px' width='100%' alignSelf='center'>
 			<Flex align='center'>
 				<Heading as='h2' fontSize='4xl' color={`modes.${colorMode}.primary`}>
-					Logo
+					☕️
 				</Heading>
 			</Flex>
 			{isWide ? (
