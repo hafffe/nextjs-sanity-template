@@ -2,21 +2,20 @@
 
 Static site template built with [Next.js](https://github.com/zeit/next.js) and [Sanity](https://sanity.io)
 
-
 <details>
 <summary>Setup</summary>
 
 ### Preparations
 1. Create an account at [Vercel](https://vercel.com/docs)
-2. Install `now` globally with `npm install -g now`
-3. login on `now` with your terminal
+2. Install `vercel` globally with `npm install -g vercel`
+3. login on `vercel` with your terminal
 4. Create an account at [Sanity](https://sanity.io)
 5. Install `sanity` globally with `npm install -g sanity`
 6. Login on `sanity` with your terminal
 
 ### Initial Setup Next JS
 1. Rename env.example to .env and change to your tokens / keys
-2. Add these environment variables to now with `now secrets add <variable-in-lowercase>`
+2. Add these environment variables to now with `vercel secrets add <variable-in-lowercase>`
 3. Create two new files named `.env.development.local` & `.env.production.local`, add the variables from env.example and edit each file for staging and production datasets. read how next.js environment variables work [here](https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables)
 
 ### Initial Setup Sanity
@@ -30,7 +29,6 @@ Static site template built with [Next.js](https://github.com/zeit/next.js) and [
 
 
 #### Features
-- Preview blog posts
-- GraphQL
+- Preview
 - Written in typescript & types generated with codegen
-
+- Usage of webp when supported
