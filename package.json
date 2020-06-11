@@ -1,7 +1,8 @@
 {
-	"name": "sanity-studio",
+	"name": "nextjs-sanity",
 	"version": "0.0.0",
 	"description": "Next.js & Sanity template",
+	"private": true,
 	"scripts": {
 		"build": "lerna run build --parallel",
 		"build:web": "lerna bootstrap && (cd web && npm run build)",

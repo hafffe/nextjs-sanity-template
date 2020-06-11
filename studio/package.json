@@ -1,11 +1,10 @@
 {
-  "name": "sanity-studio",
+  "name": "studio",
   "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "package.json",
   "author": "Aron Hafner <aronhafner@gmail.com>",
-  "license": "UNLICENSED",
   "scripts": {
     "start": "sanity start",
     "dev": "sanity start",

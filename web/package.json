@@ -1,5 +1,5 @@
 {
-	"name": "sanity-web",
+	"name": "web",
 	"engines": {
 		"node": ">=10"
 	},
