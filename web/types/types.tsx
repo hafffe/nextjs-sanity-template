@@ -1,4 +1,5 @@
 export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export interface Scalars {
   ID: string;
@@ -1118,7 +1119,7 @@ export interface ImageBlockSorting {
   crop: Maybe<SanityImageCropSorting>;
 }
 
-export type SiteSettingsQueryVariables = {};
+export type SiteSettingsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SiteSettingsQuery = (
@@ -1150,9 +1151,9 @@ export type SiteSettingsQuery = (
   )> }
 );
 
-export type PageQueryVariables = {
+export type PageQueryVariables = Exact<{
   id: Scalars['String'];
-};
+}>;
 
 
 export type PageQuery = (
@@ -1195,9 +1196,9 @@ export type PageQuery = (
   )> }
 );
 
-export type GetPagePreviewQueryVariables = {
+export type GetPagePreviewQueryVariables = Exact<{
   id: Scalars['String'];
-};
+}>;
 
 
 export type GetPagePreviewQuery = (
@@ -1240,9 +1241,9 @@ export type GetPagePreviewQuery = (
   )> }
 );
 
-export type PostListQueryVariables = {
+export type PostListQueryVariables = Exact<{
   limit: Scalars['Int'];
-};
+}>;
 
 
 export type PostListQuery = (
@@ -1291,9 +1292,9 @@ export type PostListQuery = (
   )> }
 );
 
-export type GetPostQueryVariables = {
+export type GetPostQueryVariables = Exact<{
   id: Scalars['String'];
-};
+}>;
 
 
 export type GetPostQuery = (
@@ -1346,9 +1347,9 @@ export type GetPostQuery = (
   )> }
 );
 
-export type GetPostPreviewQueryVariables = {
+export type GetPostPreviewQueryVariables = Exact<{
   id: Scalars['String'];
-};
+}>;
 
 
 export type GetPostPreviewQuery = (
@@ -1397,7 +1398,7 @@ export type GetPostPreviewQuery = (
   )> }
 );
 
-export type GetAllPostsWithSlugQueryVariables = {};
+export type GetAllPostsWithSlugQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetAllPostsWithSlugQuery = (
@@ -1411,7 +1412,7 @@ export type GetAllPostsWithSlugQuery = (
   )> }
 );
 
-export type GetAllPagesWithSlugQueryVariables = {};
+export type GetAllPagesWithSlugQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetAllPagesWithSlugQuery = (
