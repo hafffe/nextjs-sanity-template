@@ -316,6 +316,9 @@ type Cell {
   _type: String
   title: String
   image: Image
+
+  """Important for SEO and accessiblity."""
+  alt: String
   text: TextBlock
 }
 
@@ -1062,6 +1065,7 @@ input CellFilter {
   _type: StringFilter
   title: StringFilter
   image: ImageFilter
+  alt: StringFilter
   text: TextBlockFilter
 }
 
@@ -1125,6 +1129,7 @@ input CellSorting {
   _type: SortOrder
   title: SortOrder
   image: ImageSorting
+  alt: SortOrder
   text: TextBlockSorting
 }
 
