@@ -43,6 +43,7 @@ const gridBlockFragment = gql`
 		}
 		items {
 			__typename
+			alt
 			image {
 				_key
 				_type
@@ -60,6 +61,7 @@ const imageBlockFragment = gql`
 	fragment ImageBlock on ImageBlock {
 		_key
 		_type
+		alt
 		asset {
 			_id
 			_type

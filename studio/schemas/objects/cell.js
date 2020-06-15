@@ -17,6 +17,16 @@ export default {
 			type: 'image'
 		},
 		{
+			name: 'alt',
+			title: 'Alternative text',
+			type: 'string',
+			description: 'Important for SEO and accessiblity.',
+			validation: (Rule) => Rule.error('You have to fill out the alternative text.').required(),
+			options: {
+				isHighlighted: true
+			}
+		},
+		{
 			name: 'text',
 			type: 'textBlock'
 		}

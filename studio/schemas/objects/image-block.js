@@ -11,15 +11,6 @@ export default {
 	},
 	fields: [
 		{
-			name: 'caption',
-			title: 'Caption',
-			type: 'string',
-			options: {
-				isHighlighted: true
-			},
-			validation: (Rule) => Rule.required()
-		},
-		{
 			name: 'alt',
 			title: 'Alternative text',
 			type: 'string',
@@ -45,7 +36,7 @@ export default {
 	],
 	preview: {
 		select: {
-			title: 'caption',
+			title: 'alt',
 			media: 'asset'
 		},
 		prepare({media, title}) {

@@ -1,4 +1,5 @@
 export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export interface Scalars {
   ID: string;
@@ -320,6 +321,8 @@ export interface Cell {
   _type: Maybe<Scalars['String']>;
   title: Maybe<Scalars['String']>;
   image: Maybe<Image>;
+  /** Important for SEO and accessiblity. */
+  alt: Maybe<Scalars['String']>;
   text: Maybe<TextBlock>;
 }
 
@@ -1026,6 +1029,7 @@ export interface CellFilter {
   _type: Maybe<StringFilter>;
   title: Maybe<StringFilter>;
   image: Maybe<ImageFilter>;
+  alt: Maybe<StringFilter>;
   text: Maybe<TextBlockFilter>;
 }
 
@@ -1089,6 +1093,7 @@ export interface CellSorting {
   _type: Maybe<SortOrder>;
   title: Maybe<SortOrder>;
   image: Maybe<ImageSorting>;
+  alt: Maybe<SortOrder>;
   text: Maybe<TextBlockSorting>;
 }
 
@@ -1114,7 +1119,7 @@ export interface ImageBlockSorting {
   crop: Maybe<SanityImageCropSorting>;
 }
 
-export type SiteSettingsQueryVariables = {};
+export type SiteSettingsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type SiteSettingsQuery = (
@@ -1146,9 +1151,9 @@ export type SiteSettingsQuery = (
   )> }
 );
 
-export type PageQueryVariables = {
+export type PageQueryVariables = Exact<{
   id: Scalars['String'];
-};
+}>;
 
 
 export type PageQuery = (
@@ -1167,6 +1172,7 @@ export type PageQuery = (
         & Pick<Columns, 'small' | 'medium' | 'large'>
       )>, items: Maybe<Array<Maybe<(
         { __typename: 'Cell' }
+        & Pick<Cell, 'alt'>
         & { image: Maybe<(
           { __typename: 'Image' }
           & Pick<Image, '_key' | '_type'>
@@ -1178,7 +1184,7 @@ export type PageQuery = (
       )>>> }
     ) | (
       { __typename: 'ImageBlock' }
-      & Pick<ImageBlock, '_key' | '_type'>
+      & Pick<ImageBlock, '_key' | '_type' | 'alt'>
       & { asset: Maybe<(
         { __typename: 'SanityImageAsset' }
         & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
@@ -1190,9 +1196,9 @@ export type PageQuery = (
   )> }
 );
 
-export type GetPagePreviewQueryVariables = {
+export type GetPagePreviewQueryVariables = Exact<{
   id: Scalars['String'];
-};
+}>;
 
 
 export type GetPagePreviewQuery = (
@@ -1211,6 +1217,7 @@ export type GetPagePreviewQuery = (
         & Pick<Columns, 'small' | 'medium' | 'large'>
       )>, items: Maybe<Array<Maybe<(
         { __typename: 'Cell' }
+        & Pick<Cell, 'alt'>
         & { image: Maybe<(
           { __typename: 'Image' }
           & Pick<Image, '_key' | '_type'>
@@ -1222,7 +1229,7 @@ export type GetPagePreviewQuery = (
       )>>> }
     ) | (
       { __typename: 'ImageBlock' }
-      & Pick<ImageBlock, '_key' | '_type'>
+      & Pick<ImageBlock, '_key' | '_type' | 'alt'>
       & { asset: Maybe<(
         { __typename: 'SanityImageAsset' }
         & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
@@ -1234,9 +1241,9 @@ export type GetPagePreviewQuery = (
   )> }
 );
 
-export type PostListQueryVariables = {
+export type PostListQueryVariables = Exact<{
   limit: Scalars['Int'];
-};
+}>;
 
 
 export type PostListQuery = (
@@ -1261,6 +1268,7 @@ export type PostListQuery = (
         & Pick<Columns, 'small' | 'medium' | 'large'>
       )>, items: Maybe<Array<Maybe<(
         { __typename: 'Cell' }
+        & Pick<Cell, 'alt'>
         & { image: Maybe<(
           { __typename: 'Image' }
           & Pick<Image, '_key' | '_type'>
@@ -1272,7 +1280,7 @@ export type PostListQuery = (
       )>>> }
     ) | (
       { __typename: 'ImageBlock' }
-      & Pick<ImageBlock, '_key' | '_type'>
+      & Pick<ImageBlock, '_key' | '_type' | 'alt'>
       & { asset: Maybe<(
         { __typename: 'SanityImageAsset' }
         & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
@@ -1284,9 +1292,9 @@ export type PostListQuery = (
   )> }
 );
 
-export type GetPostQueryVariables = {
+export type GetPostQueryVariables = Exact<{
   id: Scalars['String'];
-};
+}>;
 
 
 export type GetPostQuery = (
@@ -1315,6 +1323,7 @@ export type GetPostQuery = (
         & Pick<Columns, 'small' | 'medium' | 'large'>
       )>, items: Maybe<Array<Maybe<(
         { __typename: 'Cell' }
+        & Pick<Cell, 'alt'>
         & { image: Maybe<(
           { __typename: 'Image' }
           & Pick<Image, '_key' | '_type'>
@@ -1326,7 +1335,7 @@ export type GetPostQuery = (
       )>>> }
     ) | (
       { __typename: 'ImageBlock' }
-      & Pick<ImageBlock, '_key' | '_type'>
+      & Pick<ImageBlock, '_key' | '_type' | 'alt'>
       & { asset: Maybe<(
         { __typename: 'SanityImageAsset' }
         & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
@@ -1338,9 +1347,9 @@ export type GetPostQuery = (
   )> }
 );
 
-export type GetPostPreviewQueryVariables = {
+export type GetPostPreviewQueryVariables = Exact<{
   id: Scalars['String'];
-};
+}>;
 
 
 export type GetPostPreviewQuery = (
@@ -1365,6 +1374,7 @@ export type GetPostPreviewQuery = (
         & Pick<Columns, 'small' | 'medium' | 'large'>
       )>, items: Maybe<Array<Maybe<(
         { __typename: 'Cell' }
+        & Pick<Cell, 'alt'>
         & { image: Maybe<(
           { __typename: 'Image' }
           & Pick<Image, '_key' | '_type'>
@@ -1376,7 +1386,7 @@ export type GetPostPreviewQuery = (
       )>>> }
     ) | (
       { __typename: 'ImageBlock' }
-      & Pick<ImageBlock, '_key' | '_type'>
+      & Pick<ImageBlock, '_key' | '_type' | 'alt'>
       & { asset: Maybe<(
         { __typename: 'SanityImageAsset' }
         & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
@@ -1388,7 +1398,7 @@ export type GetPostPreviewQuery = (
   )> }
 );
 
-export type GetAllPostsWithSlugQueryVariables = {};
+export type GetAllPostsWithSlugQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetAllPostsWithSlugQuery = (
@@ -1402,7 +1412,7 @@ export type GetAllPostsWithSlugQuery = (
   )> }
 );
 
-export type GetAllPagesWithSlugQueryVariables = {};
+export type GetAllPagesWithSlugQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetAllPagesWithSlugQuery = (

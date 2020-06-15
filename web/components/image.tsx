@@ -6,6 +6,7 @@ import {SanityImageAsset} from '../types/types';
 type Props = {
 	source: SanityImageAsset;
 	avatar?: boolean;
+	alt?: string;
 };
 
 const config = {
@@ -18,8 +19,8 @@ const builder = imageUrlBuilder(config);
 
 const urlFor = (source: string) => builder.image(source);
 
-const Image: React.FunctionComponent<Props> = ({source, avatar}) => {
-	const url = source?._id && urlFor(source._id).auto('format').url();
+const Image: React.FunctionComponent<Props> = ({source, alt, avatar}) => {
+	const url = source?._id && urlFor(source._id).width(1152).auto('format').url();
 
 	if (url === null) {
 		return null;
@@ -29,7 +30,7 @@ const Image: React.FunctionComponent<Props> = ({source, avatar}) => {
 		return <Avatar src={url} size='sm' />;
 	}
 
-	return <Img src={url} />;
+	return <Img src={url} alt={alt} />;
 };
 
 export default Image;
