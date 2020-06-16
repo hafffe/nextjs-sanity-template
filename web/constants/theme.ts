@@ -11,14 +11,14 @@ const theme = {
 			dark: {
 				text: '#F6F7F8',
 				background: '#222831',
-				primary: '#E66B67',
-				secondary: '#f0e'
+				primary: '#74A4BC',
+				secondary: '#00B5D8'
 			},
 			light: {
 				text: '#222831',
 				background: '#F6F7F8',
 				primary: '#00B5D8',
-				secondary: '#E66B67'
+				secondary: '#74A4BC'
 			}
 		}
 	},
