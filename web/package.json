@@ -124,9 +124,6 @@
 			"next-env.d.ts",
 			"types/types.tsx"
 		],
-		"parserOptions": {
-			"project": "tsconfig.json"
-		},
 		"prettier": true,
 		"rules": {
 			"arrow-body-style": [
