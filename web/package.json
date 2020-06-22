@@ -14,7 +14,7 @@
 		"generate": "gql-gen --config codegen.yml"
 	},
 	"dependencies": {
-		"@chakra-ui/core": "^0.7.0",
+		"@chakra-ui/core": "^0.8.0",
 		"@emotion/core": "^10.0.28",
 		"@emotion/styled": "^10.0.27",
 		"@sanity/block-content-to-react": "^2.0.7",
