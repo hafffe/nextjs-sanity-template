@@ -28,15 +28,15 @@
 		},
 		{
 			"name": "part:@sanity/desk-tool/structure",
-			"path": "./structure/index.js"
+			"path": "./src/structure/index.js"
 		},
 		{
 			"implements": "part:@sanity/form-builder/input/image/asset-sources",
-			"path": "./parts/asset-sources.js"
+			"path": "./src/asset-sources.js"
 		},
 		{
 			"implements": "part:@sanity/production-preview/resolve-production-url",
-			"path": "./parts/resolve-preview-url.js"
+			"path": "./src/resolve-preview-url.js"
 		}
 	]
 }
