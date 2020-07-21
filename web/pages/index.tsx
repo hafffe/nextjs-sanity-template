@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps = async ({preview = false}) => {
 		limit: 5
 	});
 
-	return {props: {page, allPost, pageSettings, preview}};
+	return {props: {page, allPost, pageSettings, preview}, unstable_revalidate: 1};
 };
 
 export default Index;

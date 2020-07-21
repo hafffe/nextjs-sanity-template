@@ -65,7 +65,8 @@ export const getStaticProps: GetStaticProps = async ({params, preview = false}) 
 			preview,
 			post,
 			siteSettings: SiteSettings
-		}
+		},
+		unstable_revalidate: 1
 	};
 };
 
