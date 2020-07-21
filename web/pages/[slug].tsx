@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps = async ({params, preview = false}) 
 
 	const page = preview ? allPage.find((page) => page._id && page._id.includes('draft')) ?? allPage[0] : allPage[0];
 
-	return {props: {page, pageSettings, preview}};
+	return {props: {page, pageSettings, preview}, unstable_revalidate: 1};
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
