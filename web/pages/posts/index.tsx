@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async ({preview = false}) => {
 		limit: 20
 	});
 
-	return {props: {allPost, siteSettings: SiteSettings, preview}, unstable_revalidate: 1};
+	return {props: {allPost, siteSettings: SiteSettings, preview}, revalidate: 1};
 };
 
 export default Posts;

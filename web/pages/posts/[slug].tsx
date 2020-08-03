@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async ({params, preview = false}) 
 		id: params?.slug?.toString()
 	});
 
-	const post = preview ? allPost.find((post) => post._id && post._id.includes('draft')) ?? allPost[0] : allPost[0];
+	const post = preview ? allPost.find((post) => post?._id?.includes('draft')) ?? allPost[0] : allPost[0];
 
 	return {
 		props: {
@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps = async ({params, preview = false}) 
 			post,
 			siteSettings: SiteSettings
 		},
-		unstable_revalidate: 1
+		revalidate: 1
 	};
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, Flex, Heading, Link, Text, useColorMode} from '@chakra-ui/core';
-// @ts-ignore
+// @ts-expect-error
 import BlockContent from '@sanity/block-content-to-react';
 import {IoIosQuote} from 'react-icons/io';
 import {TextBlock as TextBlockProps, SimpleTextBlock} from '../types/types';

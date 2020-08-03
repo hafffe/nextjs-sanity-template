@@ -1,7 +1,7 @@
 import axios, {AxiosRequestConfig} from 'axios';
 import {print, DocumentNode} from 'graphql';
 
-export const apiClient = async <T>(query: DocumentNode, variables: object = {}): Promise<T> => {
+export const apiClient = async <T>(query: DocumentNode, variables: Record<string, unknown> = {}): Promise<T> => {
 	const options: AxiosRequestConfig = {
 		method: 'post',
 		url: `${process.env.GRAPHQL_URL}`,
