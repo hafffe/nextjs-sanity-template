@@ -45,13 +45,13 @@ export const getStaticProps: GetStaticProps = async ({preview = false}) => {
 		id: '/'
 	});
 
-	const page = preview ? allPage.find((page) => page._id && page._id.includes('draft')) ?? allPage[0] : allPage[0];
+	const page = preview ? allPage.find((page) => page?._id?.includes('draft')) ?? allPage[0] : allPage[0];
 
 	const {allPost} = await apiClient<PostListQuery>(GET_POSTS, {
 		limit: 5
 	});
 
-	return {props: {page, allPost, pageSettings, preview}, unstable_revalidate: 1};
+	return {props: {page, allPost, pageSettings, preview}, revalidate: 1};
 };
 
 export default Index;
