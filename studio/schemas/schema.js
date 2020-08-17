@@ -16,6 +16,7 @@ import imageBlock from './objects/image-block';
 import simpleTextBlock from './objects/simple-text-block';
 import socialFields from './objects/social-fields';
 import textBlock from './objects/text-block';
+import youtubeBlock from './objects/youtube-block';
 
 export default createSchema({
 	name: 'default',
@@ -33,6 +34,7 @@ export default createSchema({
 		imageBlock,
 		simpleTextBlock,
 		socialFields,
-		textBlock
+		textBlock,
+		youtubeBlock
 	])
 });

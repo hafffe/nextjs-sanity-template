@@ -1,9 +1,9 @@
 import React from 'react';
 import {v4 as uuidv4} from 'uuid';
-import {GridBlockOrImageBlockOrTextBlock, Maybe} from '../../types/types';
+import {GridBlockOrImageBlockOrTextBlockOrYoutubeBlock, Maybe} from '../../types/types';
 import {Blocks} from '..';
 
-type Props = Array<Maybe<GridBlockOrImageBlockOrTextBlock>> | null;
+type Props = Array<Maybe<GridBlockOrImageBlockOrTextBlockOrYoutubeBlock>> | null;
 
 export const renderBlocks = (content: Props) => {
 	if (!content) {

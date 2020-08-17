@@ -78,6 +78,16 @@ const textBlockFragment = gql`
 	}
 `;
 
+const youtubeBlockFragment = gql`
+	fragment YoutubeBlock on YoutubeBlock {
+		_key
+		_type
+		url
+		autoPlay
+		muted
+	}
+`;
+
 export const GET_PAGE = gql`
 	query Page($id: String!) {
 		allPage(where: {slug: {current: {eq: $id}}}) {
@@ -93,12 +103,14 @@ export const GET_PAGE = gql`
 				...GridBlock
 				...ImageBlock
 				...TextBlock
+				...YoutubeBlock
 			}
 		}
 	}
 	${gridBlockFragment}
 	${imageBlockFragment}
 	${textBlockFragment}
+	${youtubeBlockFragment}
 `;
 
 export const GET_PAGE_PREVIEW = gql`
@@ -116,12 +128,14 @@ export const GET_PAGE_PREVIEW = gql`
 				...GridBlock
 				...ImageBlock
 				...TextBlock
+				...YoutubeBlock
 			}
 		}
 	}
 	${gridBlockFragment}
 	${imageBlockFragment}
 	${textBlockFragment}
+	${youtubeBlockFragment}
 `;
 
 export const GET_POSTS = gql`
@@ -148,12 +162,14 @@ export const GET_POSTS = gql`
 				...GridBlock
 				...ImageBlock
 				...TextBlock
+				...YoutubeBlock
 			}
 		}
 	}
 	${gridBlockFragment}
 	${imageBlockFragment}
 	${textBlockFragment}
+	${youtubeBlockFragment}
 `;
 
 export const GET_POST = gql`
@@ -183,12 +199,14 @@ export const GET_POST = gql`
 				...GridBlock
 				...ImageBlock
 				...TextBlock
+				...YoutubeBlock
 			}
 		}
 	}
 	${gridBlockFragment}
 	${imageBlockFragment}
 	${textBlockFragment}
+	${youtubeBlockFragment}
 `;
 
 export const GET_POST_PREVIEW = gql`

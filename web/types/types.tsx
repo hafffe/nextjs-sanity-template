@@ -1,5 +1,5 @@
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export interface Scalars {
   ID: string;
@@ -16,7 +16,7 @@ export interface Scalars {
 }
 
 export interface RootQuery {
-   __typename: 'RootQuery';
+  __typename: 'RootQuery';
   Person: Maybe<Person>;
   Page: Maybe<Page>;
   Post: Maybe<Post>;
@@ -109,8 +109,8 @@ export interface RootQueryAllSanityFileAssetArgs {
   offset: Maybe<Scalars['Int']>;
 }
 
-export interface Person  extends Document {
-   __typename: 'Person';
+export interface Person extends Document {
+  __typename: 'Person';
   /** Document ID */
   _id: Maybe<Scalars['ID']>;
   /** Document type */
@@ -145,7 +145,7 @@ export interface Document {
 
 
 export interface Image {
-   __typename: 'Image';
+  __typename: 'Image';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   asset: Maybe<SanityImageAsset>;
@@ -153,8 +153,8 @@ export interface Image {
   crop: Maybe<SanityImageCrop>;
 }
 
-export interface SanityImageAsset  extends Document {
-   __typename: 'SanityImageAsset';
+export interface SanityImageAsset extends Document {
+  __typename: 'SanityImageAsset';
   /** Document ID */
   _id: Maybe<Scalars['ID']>;
   /** Document type */
@@ -182,7 +182,7 @@ export interface SanityImageAsset  extends Document {
 }
 
 export interface SanityImageMetadata {
-   __typename: 'SanityImageMetadata';
+  __typename: 'SanityImageMetadata';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   location: Maybe<Geopoint>;
@@ -194,7 +194,7 @@ export interface SanityImageMetadata {
 }
 
 export interface Geopoint {
-   __typename: 'Geopoint';
+  __typename: 'Geopoint';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   lat: Maybe<Scalars['Float']>;
@@ -203,7 +203,7 @@ export interface Geopoint {
 }
 
 export interface SanityImageDimensions {
-   __typename: 'SanityImageDimensions';
+  __typename: 'SanityImageDimensions';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   height: Maybe<Scalars['Float']>;
@@ -212,7 +212,7 @@ export interface SanityImageDimensions {
 }
 
 export interface SanityImagePalette {
-   __typename: 'SanityImagePalette';
+  __typename: 'SanityImagePalette';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   darkMuted: Maybe<SanityImagePaletteSwatch>;
@@ -225,7 +225,7 @@ export interface SanityImagePalette {
 }
 
 export interface SanityImagePaletteSwatch {
-   __typename: 'SanityImagePaletteSwatch';
+  __typename: 'SanityImagePaletteSwatch';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   background: Maybe<Scalars['String']>;
@@ -235,7 +235,7 @@ export interface SanityImagePaletteSwatch {
 }
 
 export interface SanityAssetSourceData {
-   __typename: 'SanityAssetSourceData';
+  __typename: 'SanityAssetSourceData';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   /** A canonical name for the source this asset is originating from */
@@ -247,7 +247,7 @@ export interface SanityAssetSourceData {
 }
 
 export interface SanityImageHotspot {
-   __typename: 'SanityImageHotspot';
+  __typename: 'SanityImageHotspot';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   x: Maybe<Scalars['Float']>;
@@ -257,7 +257,7 @@ export interface SanityImageHotspot {
 }
 
 export interface SanityImageCrop {
-   __typename: 'SanityImageCrop';
+  __typename: 'SanityImageCrop';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   top: Maybe<Scalars['Float']>;
@@ -266,8 +266,8 @@ export interface SanityImageCrop {
   right: Maybe<Scalars['Float']>;
 }
 
-export interface Page  extends Document {
-   __typename: 'Page';
+export interface Page extends Document {
+  __typename: 'Page';
   /** Document ID */
   _id: Maybe<Scalars['ID']>;
   /** Document type */
@@ -282,20 +282,20 @@ export interface Page  extends Document {
   /** Title of the page */
   title: Maybe<Scalars['String']>;
   slug: Maybe<Slug>;
-  content: Maybe<Array<Maybe<GridBlockOrImageBlockOrTextBlock>>>;
+  content: Maybe<Array<Maybe<GridBlockOrImageBlockOrTextBlockOrYoutubeBlock>>>;
 }
 
 export interface Slug {
-   __typename: 'Slug';
+  __typename: 'Slug';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   current: Maybe<Scalars['String']>;
 }
 
-export type GridBlockOrImageBlockOrTextBlock = GridBlock | ImageBlock | TextBlock;
+export type GridBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | ImageBlock | TextBlock | YoutubeBlock;
 
 export interface GridBlock {
-   __typename: 'GridBlock';
+  __typename: 'GridBlock';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   title: Maybe<Scalars['String']>;
@@ -304,7 +304,7 @@ export interface GridBlock {
 }
 
 export interface Columns {
-   __typename: 'Columns';
+  __typename: 'Columns';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   /** Items per row for phone */
@@ -316,7 +316,7 @@ export interface Columns {
 }
 
 export interface Cell {
-   __typename: 'Cell';
+  __typename: 'Cell';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   title: Maybe<Scalars['String']>;
@@ -327,7 +327,7 @@ export interface Cell {
 }
 
 export interface TextBlock {
-   __typename: 'TextBlock';
+  __typename: 'TextBlock';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   textRaw: Maybe<Scalars['JSON']>;
@@ -335,10 +335,9 @@ export interface TextBlock {
 
 
 export interface ImageBlock {
-   __typename: 'ImageBlock';
+  __typename: 'ImageBlock';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
-  caption: Maybe<Scalars['String']>;
   /** Important for SEO and accessiblity. */
   alt: Maybe<Scalars['String']>;
   layout: Maybe<Scalars['String']>;
@@ -347,8 +346,17 @@ export interface ImageBlock {
   crop: Maybe<SanityImageCrop>;
 }
 
-export interface Post  extends Document {
-   __typename: 'Post';
+export interface YoutubeBlock {
+  __typename: 'YoutubeBlock';
+  _key: Maybe<Scalars['String']>;
+  _type: Maybe<Scalars['String']>;
+  url: Maybe<Scalars['String']>;
+  autoPlay: Maybe<Scalars['Boolean']>;
+  muted: Maybe<Scalars['Boolean']>;
+}
+
+export interface Post extends Document {
+  __typename: 'Post';
   /** Document ID */
   _id: Maybe<Scalars['ID']>;
   /** Document type */
@@ -369,18 +377,18 @@ export interface Post  extends Document {
   publishedAt: Maybe<Scalars['DateTime']>;
   keywords: Maybe<Array<Maybe<Scalars['String']>>>;
   excerpt: Maybe<SimpleTextBlock>;
-  content: Maybe<Array<Maybe<GridBlockOrImageBlockOrTextBlock>>>;
+  content: Maybe<Array<Maybe<GridBlockOrImageBlockOrTextBlockOrYoutubeBlock>>>;
 }
 
 export interface SimpleTextBlock {
-   __typename: 'SimpleTextBlock';
+  __typename: 'SimpleTextBlock';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   textRaw: Maybe<Scalars['JSON']>;
 }
 
-export interface SiteSettings  extends Document {
-   __typename: 'SiteSettings';
+export interface SiteSettings extends Document {
+  __typename: 'SiteSettings';
   /** Document ID */
   _id: Maybe<Scalars['ID']>;
   /** Document type */
@@ -404,7 +412,7 @@ export interface SiteSettings  extends Document {
 export type ExternalLinkOrInternalLink = ExternalLink | InternalLink;
 
 export interface ExternalLink {
-   __typename: 'ExternalLink';
+  __typename: 'ExternalLink';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   title: Maybe<Scalars['String']>;
@@ -412,7 +420,7 @@ export interface ExternalLink {
 }
 
 export interface InternalLink {
-   __typename: 'InternalLink';
+  __typename: 'InternalLink';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   title: Maybe<Scalars['String']>;
@@ -420,7 +428,7 @@ export interface InternalLink {
 }
 
 export interface SocialFields {
-   __typename: 'SocialFields';
+  __typename: 'SocialFields';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   twitter: Maybe<Scalars['String']>;
@@ -428,8 +436,8 @@ export interface SocialFields {
   facebook: Maybe<Scalars['String']>;
 }
 
-export interface SanityFileAsset  extends Document {
-   __typename: 'SanityFileAsset';
+export interface SanityFileAsset extends Document {
+  __typename: 'SanityFileAsset';
   /** Document ID */
   _id: Maybe<Scalars['ID']>;
   /** Document type */
@@ -929,14 +937,14 @@ export interface SanityFileAssetSorting {
 }
 
 export interface File {
-   __typename: 'File';
+  __typename: 'File';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   asset: Maybe<SanityFileAsset>;
 }
 
 export interface Block {
-   __typename: 'Block';
+  __typename: 'Block';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   children: Maybe<Array<Maybe<Span>>>;
@@ -945,7 +953,7 @@ export interface Block {
 }
 
 export interface Span {
-   __typename: 'Span';
+  __typename: 'Span';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   marks: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -953,7 +961,7 @@ export interface Span {
 }
 
 export interface Link {
-   __typename: 'Link';
+  __typename: 'Link';
   _key: Maybe<Scalars['String']>;
   _type: Maybe<Scalars['String']>;
   href: Maybe<Scalars['String']>;
@@ -1048,12 +1056,19 @@ export interface GridBlockFilter {
 export interface ImageBlockFilter {
   _key: Maybe<StringFilter>;
   _type: Maybe<StringFilter>;
-  caption: Maybe<StringFilter>;
   alt: Maybe<StringFilter>;
   layout: Maybe<StringFilter>;
   asset: Maybe<SanityImageAssetFilter>;
   hotspot: Maybe<SanityImageHotspotFilter>;
   crop: Maybe<SanityImageCropFilter>;
+}
+
+export interface YoutubeBlockFilter {
+  _key: Maybe<StringFilter>;
+  _type: Maybe<StringFilter>;
+  url: Maybe<StringFilter>;
+  autoPlay: Maybe<BooleanFilter>;
+  muted: Maybe<BooleanFilter>;
 }
 
 export interface FileSorting {
@@ -1112,11 +1127,18 @@ export interface GridBlockSorting {
 export interface ImageBlockSorting {
   _key: Maybe<SortOrder>;
   _type: Maybe<SortOrder>;
-  caption: Maybe<SortOrder>;
   alt: Maybe<SortOrder>;
   layout: Maybe<SortOrder>;
   hotspot: Maybe<SanityImageHotspotSorting>;
   crop: Maybe<SanityImageCropSorting>;
+}
+
+export interface YoutubeBlockSorting {
+  _key: Maybe<SortOrder>;
+  _type: Maybe<SortOrder>;
+  url: Maybe<SortOrder>;
+  autoPlay: Maybe<SortOrder>;
+  muted: Maybe<SortOrder>;
 }
 
 export type SiteSettingsQueryVariables = Exact<{ [key: string]: never; }>;
@@ -1192,6 +1214,9 @@ export type PageQuery = (
     ) | (
       { __typename: 'TextBlock' }
       & Pick<TextBlock, '_key' | '_type' | 'textRaw'>
+    ) | (
+      { __typename: 'YoutubeBlock' }
+      & Pick<YoutubeBlock, '_key' | '_type' | 'url' | 'autoPlay' | 'muted'>
     )>>> }
   )> }
 );
@@ -1237,6 +1262,9 @@ export type GetPagePreviewQuery = (
     ) | (
       { __typename: 'TextBlock' }
       & Pick<TextBlock, '_key' | '_type' | 'textRaw'>
+    ) | (
+      { __typename: 'YoutubeBlock' }
+      & Pick<YoutubeBlock, '_key' | '_type' | 'url' | 'autoPlay' | 'muted'>
     )>>> }
   )> }
 );
@@ -1288,6 +1316,9 @@ export type PostListQuery = (
     ) | (
       { __typename: 'TextBlock' }
       & Pick<TextBlock, '_key' | '_type' | 'textRaw'>
+    ) | (
+      { __typename: 'YoutubeBlock' }
+      & Pick<YoutubeBlock, '_key' | '_type' | 'url' | 'autoPlay' | 'muted'>
     )>>> }
   )> }
 );
@@ -1343,6 +1374,9 @@ export type GetPostQuery = (
     ) | (
       { __typename: 'TextBlock' }
       & Pick<TextBlock, '_key' | '_type' | 'textRaw'>
+    ) | (
+      { __typename: 'YoutubeBlock' }
+      & Pick<YoutubeBlock, '_key' | '_type' | 'url' | 'autoPlay' | 'muted'>
     )>>> }
   )> }
 );
@@ -1394,7 +1428,7 @@ export type GetPostPreviewQuery = (
     ) | (
       { __typename: 'TextBlock' }
       & Pick<TextBlock, '_key' | '_type' | 'textRaw'>
-    )>>> }
+    ) | { __typename: 'YoutubeBlock' }>>> }
   )> }
 );
 

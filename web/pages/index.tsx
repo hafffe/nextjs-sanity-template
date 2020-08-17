@@ -42,7 +42,7 @@ const Index = ({page, allPost, pageSettings, preview}: Props) => {
 export const getStaticProps: GetStaticProps = async ({preview = false}) => {
 	const pageSettings = await apiClient<SiteSettings>(SITE_SETTINGS);
 	const {allPage} = await apiClient<PageQuery>(GET_PAGE, {
-		id: '/'
+		id: 'frontpage'
 	});
 
 	const page = preview ? allPage.find((page) => page?._id?.includes('draft')) ?? allPage[0] : allPage[0];
