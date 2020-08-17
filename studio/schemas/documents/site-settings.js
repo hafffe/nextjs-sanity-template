@@ -5,6 +5,8 @@ export default {
 	type: 'document',
 	title: 'Site Settings',
 	icon: RiSettings5Line,
+	// eslint-disable-next-line camelcase, spaced-comment
+	__experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
 	fieldsets: [
 		{
 			name: 'meta',
