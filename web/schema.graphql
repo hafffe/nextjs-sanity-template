@@ -278,7 +278,7 @@ type Page implements Document {
   """Title of the page"""
   title: String
   slug: Slug
-  content: [GridBlockOrImageBlockOrTextBlock]
+  content: [GridBlockOrImageBlockOrTextBlockOrYoutubeBlock]
 }
 
 type Slug {
@@ -287,7 +287,7 @@ type Slug {
   current: String
 }
 
-union GridBlockOrImageBlockOrTextBlock = GridBlock | ImageBlock | TextBlock
+union GridBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | ImageBlock | TextBlock | YoutubeBlock
 
 type GridBlock {
   _key: String
@@ -336,7 +336,6 @@ scalar JSON
 type ImageBlock {
   _key: String
   _type: String
-  caption: String
 
   """Important for SEO and accessiblity."""
   alt: String
@@ -344,6 +343,14 @@ type ImageBlock {
   asset: SanityImageAsset
   hotspot: SanityImageHotspot
   crop: SanityImageCrop
+}
+
+type YoutubeBlock {
+  _key: String
+  _type: String
+  url: String
+  autoPlay: Boolean
+  muted: Boolean
 }
 
 type Post implements Document {
@@ -374,7 +381,7 @@ type Post implements Document {
   publishedAt: DateTime
   keywords: [String]
   excerpt: SimpleTextBlock
-  content: [GridBlockOrImageBlockOrTextBlock]
+  content: [GridBlockOrImageBlockOrTextBlockOrYoutubeBlock]
 }
 
 type SimpleTextBlock {
@@ -1084,12 +1091,19 @@ input GridBlockFilter {
 input ImageBlockFilter {
   _key: StringFilter
   _type: StringFilter
-  caption: StringFilter
   alt: StringFilter
   layout: StringFilter
   asset: SanityImageAssetFilter
   hotspot: SanityImageHotspotFilter
   crop: SanityImageCropFilter
+}
+
+input YoutubeBlockFilter {
+  _key: StringFilter
+  _type: StringFilter
+  url: StringFilter
+  autoPlay: BooleanFilter
+  muted: BooleanFilter
 }
 
 input FileSorting {
@@ -1148,9 +1162,16 @@ input GridBlockSorting {
 input ImageBlockSorting {
   _key: SortOrder
   _type: SortOrder
-  caption: SortOrder
   alt: SortOrder
   layout: SortOrder
   hotspot: SanityImageHotspotSorting
   crop: SanityImageCropSorting
+}
+
+input YoutubeBlockSorting {
+  _key: SortOrder
+  _type: SortOrder
+  url: SortOrder
+  autoPlay: SortOrder
+  muted: SortOrder
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import {Grid, ImageBlock, TextBlock} from '.';
-import {GridBlockOrImageBlockOrTextBlock} from '../types/types';
+import {Grid, ImageBlock, TextBlock, YouTubeBlock} from '.';
+import {GridBlockOrImageBlockOrTextBlockOrYoutubeBlock} from '../types/types';
 
-const blocks = ({block}: {block: GridBlockOrImageBlockOrTextBlock}) => {
+const blocks = ({block}: {block: GridBlockOrImageBlockOrTextBlockOrYoutubeBlock}) => {
 	switch (block.__typename) {
 		case 'TextBlock':
 			return <TextBlock data={block} />;
@@ -10,6 +10,8 @@ const blocks = ({block}: {block: GridBlockOrImageBlockOrTextBlock}) => {
 			return <Grid data={block} />;
 		case 'ImageBlock':
 			return <ImageBlock data={block} />;
+		case 'YoutubeBlock':
+			return <YouTubeBlock data={block} />;
 		default:
 			console.log('Block is undefined and not rendered');
 			return null;

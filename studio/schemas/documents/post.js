@@ -95,7 +95,7 @@ export default {
 			title: 'Content',
 			description: 'Add, edit, and reorder sections with content',
 			fieldset: 'content',
-			of: [{type: 'gridBlock'}, {type: 'imageBlock'}, {type: 'textBlock'}]
+			of: [{type: 'gridBlock'}, {type: 'imageBlock'}, {type: 'textBlock'}, {type: 'youtubeBlock'}]
 		}
 	],
 	initialValue: () => ({
