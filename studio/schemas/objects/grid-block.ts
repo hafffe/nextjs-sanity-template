@@ -52,7 +52,7 @@ export default {
 		select: {
 			title: 'title'
 		},
-		prepare({title}) {
+		prepare({title}: any) {
 			return {
 				title: `${title}`
 			};

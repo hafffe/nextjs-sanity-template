@@ -5,7 +5,7 @@ export default {
 	title: 'Columns',
 	type: 'object',
 	description: 'Items per row',
-	validation: (Rule) => Rule.required(),
+	validation: (Rule: any) => Rule.required(),
 	icon: RiLayoutColumnLine,
 	fields: [
 		{

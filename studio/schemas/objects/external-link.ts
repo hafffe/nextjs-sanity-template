@@ -11,7 +11,7 @@ export default {
 			name: 'title',
 			title: 'Title',
 			type: 'string',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'slug',
@@ -19,7 +19,7 @@ export default {
 			title: 'Slug',
 			description:
 				'There is no `link` validation on this so please type accurate urls with https://, mailto:, tel: etc.',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		}
 	],
 	blockEditor: {

@@ -5,7 +5,7 @@ export default {
 	type: 'document',
 	title: 'Site Settings',
 	icon: RiSettings5Line,
-	// eslint-disable-next-line camelcase, spaced-comment
+	// eslint-disable-next-line spaced-comment
 	__experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
 	fieldsets: [
 		{
@@ -40,7 +40,7 @@ export default {
 			type: 'string',
 			description: 'Title of the page',
 			fieldset: 'meta',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'description',
@@ -48,7 +48,7 @@ export default {
 			type: 'text',
 			description: 'Description for search engines and social media.',
 			fieldset: 'meta',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'keywords',
@@ -60,7 +60,7 @@ export default {
 			options: {
 				layout: 'tags'
 			},
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			title: 'Navigation',

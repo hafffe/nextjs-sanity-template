@@ -31,7 +31,7 @@ export default {
 			type: 'string',
 			description: 'Title of the page',
 			fieldset: 'meta',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'slug',
@@ -40,10 +40,10 @@ export default {
 			type: 'slug',
 			options: {
 				source: 'title',
-				slugify: (input) => slug(input, {lower: true})
+				slugify: (input: string) => slug(input, {lower: true})
 			},
 			fieldset: 'meta',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'content',
@@ -58,7 +58,7 @@ export default {
 		select: {
 			title: 'title'
 		},
-		prepare({title}) {
+		prepare({title}: any) {
 			return {
 				title: `${title}`
 			};
