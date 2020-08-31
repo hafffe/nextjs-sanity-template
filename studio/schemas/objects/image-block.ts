@@ -15,7 +15,7 @@ export default {
 			title: 'Alternative text',
 			type: 'string',
 			description: 'Important for SEO and accessiblity.',
-			validation: (Rule) => Rule.error('You have to fill out the alternative text.').required(),
+			validation: (Rule: any) => Rule.error('You have to fill out the alternative text.').required(),
 			options: {
 				isHighlighted: true
 			}
@@ -39,7 +39,7 @@ export default {
 			title: 'alt',
 			media: 'asset'
 		},
-		prepare({media, title}) {
+		prepare({media, title}: any) {
 			return {
 				media,
 				title

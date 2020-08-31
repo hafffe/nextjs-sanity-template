@@ -40,7 +40,7 @@ export default {
 			type: 'string',
 			description: 'Title of the page',
 			fieldset: 'meta',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'slug',
@@ -49,10 +49,10 @@ export default {
 			type: 'slug',
 			options: {
 				source: 'title',
-				slugify: (input) => slug(input, {lower: true})
+				slugify: (input: string) => slug(input, {lower: true})
 			},
 			fieldset: 'meta',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'author',
@@ -61,7 +61,7 @@ export default {
 			description: 'Select author for post',
 			to: [{type: 'person'}],
 			fieldset: 'meta',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'publishedAt',
@@ -80,7 +80,7 @@ export default {
 			options: {
 				layout: 'tags'
 			},
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'excerpt',
@@ -106,7 +106,7 @@ export default {
 			title: 'title',
 			publishedAt: 'publishedAt'
 		},
-		prepare({title, publishedAt}) {
+		prepare({title, publishedAt}: {title: string; publishedAt: string}) {
 			return {
 				title: `${title}`,
 				subtitle: format(new Date(publishedAt), 'MMM dd yyyy HH:mm')

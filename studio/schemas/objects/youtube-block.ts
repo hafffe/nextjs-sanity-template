@@ -10,19 +10,19 @@ export default {
 			name: 'url',
 			type: 'url',
 			title: 'YouTube video URL',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'autoPlay',
 			type: 'boolean',
 			title: 'Enable autoplay',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'muted',
 			type: 'boolean',
 			title: 'Muted',
-			validation: (Rule) => Rule.required()
+			validation: (Rule: any) => Rule.required()
 		}
 	]
 };

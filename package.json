@@ -27,5 +27,8 @@
 		"@sanity/cli": "^1.149.13",
 		"lerna": "^3.21.0",
 		"xo": "^0.32.0"
+	},
+	"dependencies": {
+		"@sanity/structure": "^1.150.1"
 	}
 }
