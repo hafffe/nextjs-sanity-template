@@ -1,4 +1,4 @@
-import S from '@sanity/desk-tool/structure-builder';
+import {StructureBuilder as S} from '@sanity/structure';
 import {RiSettings5Line} from 'react-icons/ri';
 
 export const SiteSettings = S.listItem()

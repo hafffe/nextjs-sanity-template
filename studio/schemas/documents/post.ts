@@ -106,7 +106,7 @@ export default {
 			title: 'title',
 			publishedAt: 'publishedAt'
 		},
-		prepare({title, publishedAt}: any) {
+		prepare({title, publishedAt}: {title: string; publishedAt: string}) {
 			return {
 				title: `${title}`,
 				subtitle: format(new Date(publishedAt), 'MMM dd yyyy HH:mm')

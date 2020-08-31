@@ -26,6 +26,7 @@
 		"@sanity/default-login": "^1.150.1",
 		"@sanity/desk-tool": "^1.150.4",
 		"@sanity/production-preview": "^1.150.1",
+		"@sanity/structure": "^1.150.1",
 		"@sanity/vision": "^1.150.1",
 		"date-fns": "^2.13.0",
 		"prop-types": "^15.6",
@@ -84,6 +85,8 @@
 			"@typescript-eslint/no-unsafe-call": "warn",
 			"@typescript-eslint/prefer-readonly-parameter-types": "off",
 			"@typescript-eslint/restrict-template-expressions": "warn",
+			"@typescript-eslint/no-unsafe-call": "off",
+			"@typescript-eslint/no-unsafe-member-access": "off",
 			"react/prop-types": "off",
 			"react/no-danger": "warn",
 			"react/jsx-tag-spacing": [

@@ -25,23 +25,23 @@
   "parts": [
     {
       "name": "part:@sanity/base/schema",
-      "path": "./schemas/schema"
+      "path": "./schemas/schema.ts"
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./src/structure/index.js"
+      "path": "./src/structure/index.ts"
     },
     {
       "implements": "part:@sanity/form-builder/input/image/asset-sources",
-      "path": "./src/asset-sources.js"
+      "path": "./src/asset-sources.ts"
     },
     {
       "implements": "part:@sanity/production-preview/resolve-production-url",
-      "path": "./src/resolve-preview-url.js"
+      "path": "./src/resolve-preview-url.ts"
     },
     {
       "implements": "part:@sanity/dashboard/config",
-      "path": "./src/dashboard-config.js"
+      "path": "./src/dashboard-config.ts"
     }
   ]
 }
