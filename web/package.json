@@ -52,7 +52,7 @@
 		"eslint-plugin-react": "^7.20.5",
 		"eslint-plugin-react-hooks": "^4.0.8",
 		"jest": "^26.2.2",
-		"now": "^19.2.0",
+		"now": "^20.1.0",
 		"stylelint": "^13.0.0",
 		"stylelint-config-prettier": "^8.0.1",
 		"stylelint-config-styled-components": "^0.1.1",
