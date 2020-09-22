@@ -42,60 +42,7 @@
 		"@types/node": "^14.0.27",
 		"@types/react": "^16.9.2",
 		"@types/react-dom": "^16.9.1",
-		"eslint-config-xo-react": "^0.23.0",
-		"eslint-plugin-react": "^7.19.0",
-		"eslint-plugin-react-hooks": "^4.0.0",
 		"typescript": "^3.9.7",
 		"xo": "^0.32.1"
-	},
-	"prettier": {
-		"printWidth": 120,
-		"singleQuote": true,
-		"jsxSingleQuote": true
-	},
-	"xo": {
-		"envs": [
-			"browser",
-			"node"
-		],
-		"extends": [
-			"xo-react"
-		],
-		"ignore": [
-			"plugins",
-			"config"
-		],
-		"extensions": [
-			"js"
-		],
-		"prettier": true,
-		"rules": {
-			"import/no-anonymous-default-export": [
-				"error",
-				{
-					"allowObject": true
-				}
-			],
-			"arrow-body-style": [
-				"error",
-				"as-needed"
-			],
-			"@typescript-eslint/no-base-to-string": "warn",
-			"@typescript-eslint/prefer-readonly-parameter-types": "off",
-			"@typescript-eslint/restrict-template-expressions": "warn",
-			"@typescript-eslint/no-unsafe-call": "off",
-			"@typescript-eslint/no-unsafe-member-access": "off",
-			"react/prop-types": "off",
-			"react/no-danger": "warn",
-			"react/jsx-tag-spacing": [
-				"error",
-				{
-					"closingSlash": "never",
-					"beforeSelfClosing": "always",
-					"afterOpening": "never",
-					"beforeClosing": "never"
-				}
-			]
-		}
 	}
 }

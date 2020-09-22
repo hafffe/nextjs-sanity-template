@@ -13,7 +13,7 @@
 		"dev": "lerna run dev --parallel",
 		"postinstall": "lerna bootstrap",
 		"test": "lerna run test --parallel",
-		"lint": "lerna run lint",
+		"lint": "xo",
 		"version": "lerna version"
 	},
 	"keywords": [
@@ -25,10 +25,83 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@sanity/cli": "^1.149.13",
+		"@typescript-eslint/eslint-plugin": "^3.8.0",
+		"@typescript-eslint/parser": "^3.8.0",
+		"eslint-config-xo-react": "^0.23.0",
+		"eslint-config-xo-typescript": "^0.31.0",
+		"eslint-plugin-react": "^7.20.5",
+		"eslint-plugin-react-hooks": "^4.0.8",
 		"lerna": "^3.21.0",
 		"xo": "^0.32.0"
 	},
-	"dependencies": {
-		"@sanity/structure": "^1.150.1"
+	"prettier": {
+		"printWidth": 120,
+		"singleQuote": true,
+		"jsxSingleQuote": true
+	},
+	"stylelint": {
+		"extends": [
+			"stylelint-config-xo",
+			"stylelint-config-prettier",
+			"stylelint-config-styled-components"
+		],
+		"plugins": [
+			"stylelint-prettier"
+		],
+		"processors": [
+			"stylelint-processor-styled-components"
+		]
+	},
+	"xo": {
+		"envs": [
+			"browser",
+			"node",
+			"jest"
+		],
+		"extends": [
+			"xo-react",
+			"xo-typescript"
+		],
+		"extensions": [
+			"ts",
+			"tsx",
+			"js"
+		],
+		"ignore": [
+			"*/**/next.config.js",
+			"*/**/next-env.d.ts",
+			"*/**/types.tsx",
+			"*/**/plugins",
+			"*/**/config"
+		],
+		"prettier": true,
+		"rules": {
+			"import/no-anonymous-default-export": [
+				"error",
+				{
+					"allowObject": true
+				}
+			],
+			"arrow-body-style": [
+				"error",
+				"as-needed"
+			],
+			"@typescript-eslint/no-unsafe-member-access": "warn",
+			"@typescript-eslint/no-base-to-string": "warn",
+			"@typescript-eslint/no-unsafe-call": "warn",
+			"@typescript-eslint/prefer-readonly-parameter-types": "off",
+			"@typescript-eslint/restrict-template-expressions": "warn",
+			"react/prop-types": "off",
+			"react/no-danger": "warn",
+			"react/jsx-tag-spacing": [
+				"error",
+				{
+					"closingSlash": "never",
+					"beforeSelfClosing": "always",
+					"afterOpening": "never",
+					"beforeClosing": "never"
+				}
+			]
+		}
 	}
 }

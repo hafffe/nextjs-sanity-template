@@ -8,7 +8,7 @@
 		"start": "next start",
 		"dev": "next",
 		"test": "npm run jest && npm run lint",
-		"lint": "xo && stylelint 'components/**/*.ts' 'components/**/*.tsx' 'pages/**/*.ts' 'pages/**/*.tsx'",
+		"lint": "xo",
 		"jest": "jest",
 		"test:watch": "jest --watch",
 		"generate": "gql-gen --config codegen.yml"
@@ -44,20 +44,8 @@
 		"@types/react": "^16.9.2",
 		"@types/react-dom": "^16.9.1",
 		"@types/uuid": "^8.0.0",
-		"@typescript-eslint/eslint-plugin": "^3.8.0",
-		"@typescript-eslint/parser": "^3.8.0",
 		"babel-jest": "^26.2.2",
-		"eslint-config-xo-react": "^0.23.0",
-		"eslint-config-xo-typescript": "^0.31.0",
-		"eslint-plugin-react": "^7.20.5",
-		"eslint-plugin-react-hooks": "^4.0.8",
 		"jest": "^26.2.2",
-		"stylelint": "^13.0.0",
-		"stylelint-config-prettier": "^8.0.1",
-		"stylelint-config-styled-components": "^0.1.1",
-		"stylelint-config-xo": "^0.19.0",
-		"stylelint-prettier": "^1.1.1",
-		"stylelint-processor-styled-components": "^1.8.0",
 		"typescript": "^3.9.7",
 		"vercel": "^20.1.1",
 		"xo": "^0.32.0"
@@ -66,24 +54,6 @@
 		"plugins": [],
 		"presets": [
 			"next/babel"
-		]
-	},
-	"prettier": {
-		"printWidth": 120,
-		"singleQuote": true,
-		"jsxSingleQuote": true
-	},
-	"stylelint": {
-		"extends": [
-			"stylelint-config-xo",
-			"stylelint-config-prettier",
-			"stylelint-config-styled-components"
-		],
-		"plugins": [
-			"stylelint-prettier"
-		],
-		"processors": [
-			"stylelint-processor-styled-components"
 		]
 	},
 	"jest": {
@@ -105,49 +75,5 @@
 		"transformIgnorePatterns": [
 			"/node_modules/"
 		]
-	},
-	"xo": {
-		"envs": [
-			"browser",
-			"node",
-			"jest"
-		],
-		"extends": [
-			"xo-react",
-			"xo-typescript"
-		],
-		"extensions": [
-			"ts",
-			"tsx",
-			"js"
-		],
-		"ignore": [
-			"next.config.js",
-			"next-env.d.ts",
-			"types/types.tsx"
-		],
-		"prettier": true,
-		"rules": {
-			"arrow-body-style": [
-				"error",
-				"as-needed"
-			],
-			"@typescript-eslint/no-unsafe-member-access": "warn",
-			"@typescript-eslint/no-base-to-string": "warn",
-			"@typescript-eslint/no-unsafe-call": "warn",
-			"@typescript-eslint/prefer-readonly-parameter-types": "off",
-			"@typescript-eslint/restrict-template-expressions": "warn",
-			"react/prop-types": "off",
-			"react/no-danger": "warn",
-			"react/jsx-tag-spacing": [
-				"error",
-				{
-					"closingSlash": "never",
-					"beforeSelfClosing": "always",
-					"afterOpening": "never",
-					"beforeClosing": "never"
-				}
-			]
-		}
 	}
 }
