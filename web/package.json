@@ -7,9 +7,8 @@
 		"build": "next build",
 		"start": "next start",
 		"dev": "next",
-		"test": "npm run jest && npm run lint",
+		"test": "jest",
 		"lint": "xo",
-		"jest": "jest",
 		"test:watch": "jest --watch",
 		"generate": "gql-gen --config codegen.yml"
 	},
@@ -46,9 +45,8 @@
 		"@types/uuid": "^8.0.0",
 		"babel-jest": "^26.2.2",
 		"jest": "^26.2.2",
-		"typescript": "^3.9.7",
-		"vercel": "^20.1.1",
-		"xo": "^0.32.0"
+		"typescript": "^4.0.3",
+		"vercel": "^20.1.1"
 	},
 	"babel": {
 		"plugins": [],
