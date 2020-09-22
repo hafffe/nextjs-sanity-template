@@ -39,19 +39,6 @@
 		"singleQuote": true,
 		"jsxSingleQuote": true
 	},
-	"stylelint": {
-		"extends": [
-			"stylelint-config-xo",
-			"stylelint-config-prettier",
-			"stylelint-config-styled-components"
-		],
-		"plugins": [
-			"stylelint-prettier"
-		],
-		"processors": [
-			"stylelint-processor-styled-components"
-		]
-	},
 	"xo": {
 		"envs": [
 			"browser",
