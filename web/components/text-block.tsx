@@ -68,11 +68,7 @@ const serializers = (colorMode: any) => ({
 	},
 	marks: {
 		link: (props: any) => (
-			<Link
-				isExternal
-				href={props.mark.href}
-				color={colorMode === 'dark' ? 'modes.dark.primary' : 'modes.light.primary'}
-			>
+			<Link isExternal href={props.mark.href} color={colorMode === 'dark' ? 'accent' : 'accent'}>
 				{props.children}
 			</Link>
 		),

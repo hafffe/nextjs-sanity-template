@@ -24,8 +24,8 @@ const Layout: React.FunctionComponent<Props> = ({siteSettings, preview, children
 			<Flex
 				flexDirection='column'
 				minHeight='100vh'
-				bg={colorMode === 'dark' ? 'modes.dark.background' : 'modes.light.background'}
-				color={colorMode === 'dark' ? 'modes.dark.text' : 'modes.light.text'}
+				bg={colorMode === 'dark' ? 'darkGrayBase' : 'lightGrayBase'}
+				color={colorMode === 'dark' ? 'lightGrayBase' : 'darkGrayBase'}
 			>
 				<PreviewAlert preview={preview} />
 				<Header navigation={siteSettings?.navigation} colorMode={colorMode} />
@@ -40,7 +40,7 @@ const Layout: React.FunctionComponent<Props> = ({siteSettings, preview, children
 				>
 					{children}
 				</Flex>
-				<Footer colorMode={colorMode} socialFields={siteSettings?.socialFields} />
+				<Footer socialFields={siteSettings?.socialFields} />
 			</Flex>
 		</>
 	);

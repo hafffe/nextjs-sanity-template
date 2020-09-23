@@ -31,7 +31,7 @@ const Header: React.FunctionComponent<Props> = ({navigation, colorMode}) => {
 	return (
 		<Flex as='header' padding={6} maxWidth='1200px' width='100%' alignSelf='center'>
 			<Flex align='center'>
-				<Heading as='h2' fontSize='4xl' color={`modes.${colorMode}.primary`}>
+				<Heading as='h2' fontSize='4xl'>
 					☕️
 				</Heading>
 			</Flex>
@@ -43,14 +43,16 @@ const Header: React.FunctionComponent<Props> = ({navigation, colorMode}) => {
 			) : (
 				<Drawer placement='right' isOpen={isOpen} onClose={onClose}>
 					<DrawerOverlay />
-					<DrawerContent background={`modes.${colorMode}.background`} color={`modes.${colorMode}.text`}>
+					<DrawerContent
+						bg={colorMode === 'dark' ? 'darkGrayBase' : 'lightGrayBase'}
+						color={colorMode === 'dark' ? 'lightGrayBase' : 'darkGrayBase'}
+					>
 						<DrawerHeader borderBottomWidth='1px'>
-							Menu
+							Menu <DarkModeSwitch />
 							<DrawerCloseButton />
 						</DrawerHeader>
-						<DrawerBody flexDirection='column' className='test'>
+						<DrawerBody flexDirection='column'>
 							<MainMenu navigation={navigation} direction='column' />
-							<DarkModeSwitch />
 						</DrawerBody>
 					</DrawerContent>
 				</Drawer>
@@ -58,9 +60,7 @@ const Header: React.FunctionComponent<Props> = ({navigation, colorMode}) => {
 
 			{isWide ? null : (
 				<IconButton
-					key='1123ass423'
-					color={`modes.${colorMode}.primary`}
-					background={`modes.${colorMode}.background`}
+					key='menuDrawer'
 					marginLeft='auto'
 					size='lg'
 					aria-label='Open Menu'
