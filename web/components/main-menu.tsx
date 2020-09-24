@@ -20,7 +20,7 @@ const resolveLink = (x: ExternalLinkOrInternalLink) => {
 	if (x.__typename === 'InternalLink' && x.link?.slug?.current) {
 		return {
 			isExternal: false,
-			url: x.link.slug.current === '/' ? x.link.slug.current : `/${x.link.slug.current}`
+			url: x.link.slug.current === 'frontpage' ? '/' : `/${x.link.slug.current}`
 		};
 	}
 
