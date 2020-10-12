@@ -21,7 +21,7 @@
 		"@sanity/base": "^1.150.7",
 		"@sanity/components": "^1.150.7",
 		"@sanity/core": "^1.150.3",
-		"@sanity/dashboard": "^1.150.7",
+		"@sanity/dashboard": "^2.0.1",
 		"@sanity/default-layout": "^1.150.7",
 		"@sanity/default-login": "^1.150.1",
 		"@sanity/desk-tool": "^1.150.4",
