@@ -7,7 +7,7 @@ type Props = {
 	data: CellProps;
 };
 
-const Cell: React.FunctionComponent<Props> = ({data}) => (
+const Cell = ({data}: Props) => (
 	<Box>
 		{data?.image?.asset && <Image source={data.image.asset} alt={data?.alt ? data.alt : ''} />}
 		{data?.text?.textRaw && <TextBlock data={data.text} />}

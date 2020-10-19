@@ -11,7 +11,7 @@ type Props = {
 	layout: 'minimal' | 'original';
 };
 
-const PostList: React.FunctionComponent<Props> = ({allPost, layout}) => (
+const PostList = ({allPost, layout}: Props) => (
 	<Flex direction='column' width='100%'>
 		{allPost.map((post) => {
 			if (!post.slug?.current) {

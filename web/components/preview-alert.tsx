@@ -5,7 +5,7 @@ type Props = {
 	preview: boolean;
 };
 
-const PreviewAlert: React.FunctionComponent<Props> = ({preview}) => {
+const PreviewAlert = ({preview}: Props) => {
 	if (!preview) {
 		return null;
 	}

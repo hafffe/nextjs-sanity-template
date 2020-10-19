@@ -7,7 +7,7 @@ type Props = {
 	data: ImageBlockProps;
 };
 
-const ImageBlock: React.FunctionComponent<Props> = ({data}) => {
+const ImageBlock = ({data}: Props) => {
 	if (!data.asset) {
 		return null;
 	}

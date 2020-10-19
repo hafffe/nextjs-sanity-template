@@ -27,7 +27,7 @@ const resolveLink = (x: ExternalLinkOrInternalLink) => {
 	return null;
 };
 
-const MainMenu: React.FunctionComponent<Props> = ({navigation, direction = 'row'}) => {
+const MainMenu = ({navigation, direction = 'row'}: Props) => {
 	if (!navigation) {
 		return null;
 	}

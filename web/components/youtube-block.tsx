@@ -7,7 +7,7 @@ type Props = {
 	data: YoutubeBlockProps;
 };
 
-const YoutubeBlock: React.FunctionComponent<Props> = ({data}) => {
+const YoutubeBlock = ({data}: Props) => {
 	if (!data.url) {
 		return null;
 	}
