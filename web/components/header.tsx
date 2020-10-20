@@ -22,7 +22,7 @@ type Props = {
 	colorMode: string;
 };
 
-const Header: React.FunctionComponent<Props> = ({navigation, colorMode}) => {
+const Header = ({navigation, colorMode}: Props) => {
 	const {width} = useViewport();
 	const {isOpen, onOpen, onClose} = useDisclosure();
 	const breakpoint = 620;

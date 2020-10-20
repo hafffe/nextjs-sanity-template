@@ -8,7 +8,7 @@ type Props = {
 	data: GridBlock;
 };
 
-const Grid: React.FunctionComponent<Props> = ({data}) => {
+const Grid = ({data}: Props) => {
 	const sm = data?.columns?.small ? Number.parseInt(data.columns.small, 10) : 1;
 	const md = data?.columns?.medium ? Number.parseInt(data.columns.medium, 10) : 1;
 	const lg = data?.columns?.large ? Number.parseInt(data.columns.large, 10) : 1;

@@ -76,7 +76,7 @@ const serializers = (colorMode: any) => ({
 	}
 });
 
-const TextBlock: React.FunctionComponent<Props> = ({data}) => {
+const TextBlock = ({data}: Props) => {
 	const {colorMode} = useColorMode();
 
 	return <BlockContent blocks={data.textRaw} serializers={serializers(colorMode)} />;

@@ -7,7 +7,7 @@ type Props = {
 	socialFields: Maybe<SocialFields>;
 };
 
-const Footer: React.FunctionComponent<Props> = ({socialFields}) => (
+const Footer = ({socialFields}: Props) => (
 	<Flex as='footer' height='100px' flexShrink={0} justifyContent='center' alignItems='flex-end' alignContent='center'>
 		<Text fontSize='xs' paddingBottom={2}>
 			Made by{' '}

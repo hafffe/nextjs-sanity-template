@@ -10,7 +10,7 @@ type Props = {
 	preview: boolean;
 };
 
-const Layout: React.FunctionComponent<Props> = ({siteSettings, preview, children}) => {
+const Layout = ({siteSettings, preview, children}: Props) => {
 	const {colorMode} = useColorMode();
 
 	return (

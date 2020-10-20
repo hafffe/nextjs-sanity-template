@@ -19,7 +19,7 @@ const builder = imageUrlBuilder(config);
 
 const urlFor = (source: string) => builder.image(source);
 
-const Image: React.FunctionComponent<Props> = ({source, alt, avatar}) => {
+const Image = ({source, alt, avatar}: Props) => {
 	const url = source?._id && urlFor(source._id).width(1152).auto('format').url();
 
 	if (url === null) {
