@@ -51,6 +51,14 @@ const gridBlockFragment = gql`
 					_id
 					_type
 					assetId
+					metadata {
+						lqip
+						dimensions {
+							aspectRatio
+							height
+							width
+						}
+					}
 				}
 			}
 		}
@@ -66,6 +74,14 @@ const imageBlockFragment = gql`
 			_id
 			_type
 			assetId
+			metadata {
+				lqip
+				dimensions {
+					aspectRatio
+					height
+					width
+				}
+			}
 		}
 	}
 `;

@@ -9,7 +9,7 @@ type Props = {
 
 const Cell = ({data}: Props) => (
 	<Box>
-		{data?.image?.asset && <Image source={data.image.asset} alt={data?.alt ? data.alt : ''} />}
+		{data?.image?.asset && <Image asset={data.image.asset} alt={data?.alt} />}
 		{data?.text?.textRaw && <TextBlock data={data.text} />}
 	</Box>
 );

@@ -1,12 +1,13 @@
 import React from 'react';
-import {Avatar, Image as Img} from '@chakra-ui/core';
+import {Avatar} from '@chakra-ui/core';
 import imageUrlBuilder from '@sanity/image-url';
 import {SanityImageAsset} from '../types/types';
+import Imageload from './utils/image-load';
 
 type Props = {
-	source: SanityImageAsset;
+	asset: SanityImageAsset;
 	avatar?: boolean;
-	alt?: string;
+	alt?: string | null;
 };
 
 const config = {
@@ -19,10 +20,11 @@ const builder = imageUrlBuilder(config);
 
 const urlFor = (source: string) => builder.image(source);
 
-const Image = ({source, alt, avatar}: Props) => {
-	const url = source?._id && urlFor(source._id).width(1152).auto('format').url();
+const Image = ({asset, avatar, alt = ''}: Props) => {
+	const url = asset?._id && urlFor(asset._id).width(1152).auto('format').url();
+	const lqip = asset?.metadata?.lqip ?? undefined;
 
-	if (url === null) {
+	if (!url || !lqip) {
 		return null;
 	}
 
@@ -30,7 +32,7 @@ const Image = ({source, alt, avatar}: Props) => {
 		return <Avatar src={url} size='sm' />;
 	}
 
-	return <Img src={url} alt={alt} />;
+	return <Imageload src={url} placeholder={lqip} alt={alt ?? ''} />;
 };
 
 export default Image;

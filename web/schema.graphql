@@ -278,7 +278,7 @@ type Page implements Document {
   """Title of the page"""
   title: String
   slug: Slug
-  content: [GridBlockOrImageBlockOrTextBlockOrYoutubeBlock]
+  content: [GridBlockOrHeroBlockOrImageBlockOrTextBlockOrYoutubeBlock]
 }
 
 type Slug {
@@ -287,7 +287,7 @@ type Slug {
   current: String
 }
 
-union GridBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | ImageBlock | TextBlock | YoutubeBlock
+union GridBlockOrHeroBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | HeroBlock | ImageBlock | TextBlock | YoutubeBlock
 
 type GridBlock {
   _key: String
@@ -332,6 +332,65 @@ type TextBlock {
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSON
+
+type HeroBlock {
+  _key: String
+  _type: String
+
+  """Layout of Hero Grid"""
+  layout: String
+  backgroundColor: Color
+  heading: String
+  tagline: TextBlock
+  image: Image
+  imageAlignment: String
+  callToAction: CallToAction
+}
+
+type Color {
+  _key: String
+  _type: String
+  hex: String
+  alpha: Float
+  hsl: HslaColor
+  hsv: HsvaColor
+  rgb: RgbaColor
+}
+
+type HslaColor {
+  _key: String
+  _type: String
+  h: Float
+  s: Float
+  l: Float
+  a: Float
+}
+
+type HsvaColor {
+  _key: String
+  _type: String
+  h: Float
+  s: Float
+  v: Float
+  a: Float
+}
+
+type RgbaColor {
+  _key: String
+  _type: String
+  r: Float
+  g: Float
+  b: Float
+  a: Float
+}
+
+type CallToAction {
+  _key: String
+  _type: String
+  title: String
+  landingPageRoute: Page
+  kind: String
+}
 
 type ImageBlock {
   _key: String
@@ -389,6 +448,8 @@ type SimpleTextBlock {
   _type: String
   textRaw: JSON
 }
+
+union GridBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | ImageBlock | TextBlock | YoutubeBlock
 
 type SiteSettings implements Document {
   """Document ID"""
@@ -1039,6 +1100,51 @@ input FileFilter {
   asset: SanityFileAssetFilter
 }
 
+input ColorFilter {
+  _key: StringFilter
+  _type: StringFilter
+  hex: StringFilter
+  alpha: FloatFilter
+  hsl: HslaColorFilter
+  hsv: HsvaColorFilter
+  rgb: RgbaColorFilter
+}
+
+input HslaColorFilter {
+  _key: StringFilter
+  _type: StringFilter
+  h: FloatFilter
+  s: FloatFilter
+  l: FloatFilter
+  a: FloatFilter
+}
+
+input HsvaColorFilter {
+  _key: StringFilter
+  _type: StringFilter
+  h: FloatFilter
+  s: FloatFilter
+  v: FloatFilter
+  a: FloatFilter
+}
+
+input RgbaColorFilter {
+  _key: StringFilter
+  _type: StringFilter
+  r: FloatFilter
+  g: FloatFilter
+  b: FloatFilter
+  a: FloatFilter
+}
+
+input CallToActionFilter {
+  _key: StringFilter
+  _type: StringFilter
+  title: StringFilter
+  landingPageRoute: PageFilter
+  kind: StringFilter
+}
+
 input ColumnsFilter {
   _key: StringFilter
   _type: StringFilter
@@ -1088,6 +1194,18 @@ input GridBlockFilter {
   columns: ColumnsFilter
 }
 
+input HeroBlockFilter {
+  _key: StringFilter
+  _type: StringFilter
+  layout: StringFilter
+  backgroundColor: ColorFilter
+  heading: StringFilter
+  tagline: TextBlockFilter
+  image: ImageFilter
+  imageAlignment: StringFilter
+  callToAction: CallToActionFilter
+}
+
 input ImageBlockFilter {
   _key: StringFilter
   _type: StringFilter
@@ -1109,6 +1227,50 @@ input YoutubeBlockFilter {
 input FileSorting {
   _key: SortOrder
   _type: SortOrder
+}
+
+input ColorSorting {
+  _key: SortOrder
+  _type: SortOrder
+  hex: SortOrder
+  alpha: SortOrder
+  hsl: HslaColorSorting
+  hsv: HsvaColorSorting
+  rgb: RgbaColorSorting
+}
+
+input HslaColorSorting {
+  _key: SortOrder
+  _type: SortOrder
+  h: SortOrder
+  s: SortOrder
+  l: SortOrder
+  a: SortOrder
+}
+
+input HsvaColorSorting {
+  _key: SortOrder
+  _type: SortOrder
+  h: SortOrder
+  s: SortOrder
+  v: SortOrder
+  a: SortOrder
+}
+
+input RgbaColorSorting {
+  _key: SortOrder
+  _type: SortOrder
+  r: SortOrder
+  g: SortOrder
+  b: SortOrder
+  a: SortOrder
+}
+
+input CallToActionSorting {
+  _key: SortOrder
+  _type: SortOrder
+  title: SortOrder
+  kind: SortOrder
 }
 
 input ColumnsSorting {
@@ -1157,6 +1319,18 @@ input GridBlockSorting {
   _type: SortOrder
   title: SortOrder
   columns: ColumnsSorting
+}
+
+input HeroBlockSorting {
+  _key: SortOrder
+  _type: SortOrder
+  layout: SortOrder
+  backgroundColor: ColorSorting
+  heading: SortOrder
+  tagline: TextBlockSorting
+  image: ImageSorting
+  imageAlignment: SortOrder
+  callToAction: CallToActionSorting
 }
 
 input ImageBlockSorting {

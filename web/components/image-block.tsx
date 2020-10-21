@@ -14,7 +14,7 @@ const ImageBlock = ({data}: Props) => {
 
 	return (
 		<Box marginY={2}>
-			<Image source={data.asset} alt={data?.alt ? data.alt : ''} />
+			<Image asset={data.asset} alt={data?.alt} />
 		</Box>
 	);
 };
