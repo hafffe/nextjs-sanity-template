@@ -17,6 +17,7 @@ export interface Scalars {
 
 export interface RootQuery {
   __typename: 'RootQuery';
+  Document: Maybe<Document>;
   Person: Maybe<Person>;
   Page: Maybe<Page>;
   Post: Maybe<Post>;
@@ -29,6 +30,11 @@ export interface RootQuery {
   allSiteSettings: Array<SiteSettings>;
   allSanityImageAsset: Array<SanityImageAsset>;
   allSanityFileAsset: Array<SanityFileAsset>;
+}
+
+
+export interface RootQueryDocumentArgs {
+  id: Scalars['ID'];
 }
 
 
@@ -109,6 +115,21 @@ export interface RootQueryAllSanityFileAssetArgs {
   offset: Maybe<Scalars['Int']>;
 }
 
+/** A Sanity document */
+export interface Document {
+  /** Document ID */
+  _id: Maybe<Scalars['ID']>;
+  /** Document type */
+  _type: Maybe<Scalars['String']>;
+  /** Date the document was created */
+  _createdAt: Maybe<Scalars['DateTime']>;
+  /** Date the document was last modified */
+  _updatedAt: Maybe<Scalars['DateTime']>;
+  /** Current document revision */
+  _rev: Maybe<Scalars['String']>;
+}
+
+
 export interface Person extends Document {
   __typename: 'Person';
   /** Document ID */
@@ -128,21 +149,6 @@ export interface Person extends Document {
   email: Maybe<Scalars['String']>;
   image: Maybe<Image>;
 }
-
-/** A Sanity document */
-export interface Document {
-  /** Document ID */
-  _id: Maybe<Scalars['ID']>;
-  /** Document type */
-  _type: Maybe<Scalars['String']>;
-  /** Date the document was created */
-  _createdAt: Maybe<Scalars['DateTime']>;
-  /** Date the document was last modified */
-  _updatedAt: Maybe<Scalars['DateTime']>;
-  /** Current document revision */
-  _rev: Maybe<Scalars['String']>;
-}
-
 
 export interface Image {
   __typename: 'Image';
@@ -282,7 +288,7 @@ export interface Page extends Document {
   /** Title of the page */
   title: Maybe<Scalars['String']>;
   slug: Maybe<Slug>;
-  content: Maybe<Array<Maybe<GridBlockOrHeroBlockOrImageBlockOrTextBlockOrYoutubeBlock>>>;
+  content: Maybe<Array<Maybe<GridBlockOrImageBlockOrTextBlockOrYoutubeBlock>>>;
 }
 
 export interface Slug {
@@ -292,7 +298,7 @@ export interface Slug {
   current: Maybe<Scalars['String']>;
 }
 
-export type GridBlockOrHeroBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | HeroBlock | ImageBlock | TextBlock | YoutubeBlock;
+export type GridBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | ImageBlock | TextBlock | YoutubeBlock;
 
 export interface GridBlock {
   __typename: 'GridBlock';
@@ -333,70 +339,6 @@ export interface TextBlock {
   textRaw: Maybe<Scalars['JSON']>;
 }
 
-
-export interface HeroBlock {
-  __typename: 'HeroBlock';
-  _key: Maybe<Scalars['String']>;
-  _type: Maybe<Scalars['String']>;
-  /** Layout of Hero Grid */
-  layout: Maybe<Scalars['String']>;
-  backgroundColor: Maybe<Color>;
-  heading: Maybe<Scalars['String']>;
-  tagline: Maybe<TextBlock>;
-  image: Maybe<Image>;
-  imageAlignment: Maybe<Scalars['String']>;
-  callToAction: Maybe<CallToAction>;
-}
-
-export interface Color {
-  __typename: 'Color';
-  _key: Maybe<Scalars['String']>;
-  _type: Maybe<Scalars['String']>;
-  hex: Maybe<Scalars['String']>;
-  alpha: Maybe<Scalars['Float']>;
-  hsl: Maybe<HslaColor>;
-  hsv: Maybe<HsvaColor>;
-  rgb: Maybe<RgbaColor>;
-}
-
-export interface HslaColor {
-  __typename: 'HslaColor';
-  _key: Maybe<Scalars['String']>;
-  _type: Maybe<Scalars['String']>;
-  h: Maybe<Scalars['Float']>;
-  s: Maybe<Scalars['Float']>;
-  l: Maybe<Scalars['Float']>;
-  a: Maybe<Scalars['Float']>;
-}
-
-export interface HsvaColor {
-  __typename: 'HsvaColor';
-  _key: Maybe<Scalars['String']>;
-  _type: Maybe<Scalars['String']>;
-  h: Maybe<Scalars['Float']>;
-  s: Maybe<Scalars['Float']>;
-  v: Maybe<Scalars['Float']>;
-  a: Maybe<Scalars['Float']>;
-}
-
-export interface RgbaColor {
-  __typename: 'RgbaColor';
-  _key: Maybe<Scalars['String']>;
-  _type: Maybe<Scalars['String']>;
-  r: Maybe<Scalars['Float']>;
-  g: Maybe<Scalars['Float']>;
-  b: Maybe<Scalars['Float']>;
-  a: Maybe<Scalars['Float']>;
-}
-
-export interface CallToAction {
-  __typename: 'CallToAction';
-  _key: Maybe<Scalars['String']>;
-  _type: Maybe<Scalars['String']>;
-  title: Maybe<Scalars['String']>;
-  landingPageRoute: Maybe<Page>;
-  kind: Maybe<Scalars['String']>;
-}
 
 export interface ImageBlock {
   __typename: 'ImageBlock';
@@ -450,8 +392,6 @@ export interface SimpleTextBlock {
   _type: Maybe<Scalars['String']>;
   textRaw: Maybe<Scalars['JSON']>;
 }
-
-export type GridBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | ImageBlock | TextBlock | YoutubeBlock;
 
 export interface SiteSettings extends Document {
   __typename: 'SiteSettings';
@@ -1070,51 +1010,6 @@ export interface FileFilter {
   asset: Maybe<SanityFileAssetFilter>;
 }
 
-export interface ColorFilter {
-  _key: Maybe<StringFilter>;
-  _type: Maybe<StringFilter>;
-  hex: Maybe<StringFilter>;
-  alpha: Maybe<FloatFilter>;
-  hsl: Maybe<HslaColorFilter>;
-  hsv: Maybe<HsvaColorFilter>;
-  rgb: Maybe<RgbaColorFilter>;
-}
-
-export interface HslaColorFilter {
-  _key: Maybe<StringFilter>;
-  _type: Maybe<StringFilter>;
-  h: Maybe<FloatFilter>;
-  s: Maybe<FloatFilter>;
-  l: Maybe<FloatFilter>;
-  a: Maybe<FloatFilter>;
-}
-
-export interface HsvaColorFilter {
-  _key: Maybe<StringFilter>;
-  _type: Maybe<StringFilter>;
-  h: Maybe<FloatFilter>;
-  s: Maybe<FloatFilter>;
-  v: Maybe<FloatFilter>;
-  a: Maybe<FloatFilter>;
-}
-
-export interface RgbaColorFilter {
-  _key: Maybe<StringFilter>;
-  _type: Maybe<StringFilter>;
-  r: Maybe<FloatFilter>;
-  g: Maybe<FloatFilter>;
-  b: Maybe<FloatFilter>;
-  a: Maybe<FloatFilter>;
-}
-
-export interface CallToActionFilter {
-  _key: Maybe<StringFilter>;
-  _type: Maybe<StringFilter>;
-  title: Maybe<StringFilter>;
-  landingPageRoute: Maybe<PageFilter>;
-  kind: Maybe<StringFilter>;
-}
-
 export interface ColumnsFilter {
   _key: Maybe<StringFilter>;
   _type: Maybe<StringFilter>;
@@ -1164,18 +1059,6 @@ export interface GridBlockFilter {
   columns: Maybe<ColumnsFilter>;
 }
 
-export interface HeroBlockFilter {
-  _key: Maybe<StringFilter>;
-  _type: Maybe<StringFilter>;
-  layout: Maybe<StringFilter>;
-  backgroundColor: Maybe<ColorFilter>;
-  heading: Maybe<StringFilter>;
-  tagline: Maybe<TextBlockFilter>;
-  image: Maybe<ImageFilter>;
-  imageAlignment: Maybe<StringFilter>;
-  callToAction: Maybe<CallToActionFilter>;
-}
-
 export interface ImageBlockFilter {
   _key: Maybe<StringFilter>;
   _type: Maybe<StringFilter>;
@@ -1197,50 +1080,6 @@ export interface YoutubeBlockFilter {
 export interface FileSorting {
   _key: Maybe<SortOrder>;
   _type: Maybe<SortOrder>;
-}
-
-export interface ColorSorting {
-  _key: Maybe<SortOrder>;
-  _type: Maybe<SortOrder>;
-  hex: Maybe<SortOrder>;
-  alpha: Maybe<SortOrder>;
-  hsl: Maybe<HslaColorSorting>;
-  hsv: Maybe<HsvaColorSorting>;
-  rgb: Maybe<RgbaColorSorting>;
-}
-
-export interface HslaColorSorting {
-  _key: Maybe<SortOrder>;
-  _type: Maybe<SortOrder>;
-  h: Maybe<SortOrder>;
-  s: Maybe<SortOrder>;
-  l: Maybe<SortOrder>;
-  a: Maybe<SortOrder>;
-}
-
-export interface HsvaColorSorting {
-  _key: Maybe<SortOrder>;
-  _type: Maybe<SortOrder>;
-  h: Maybe<SortOrder>;
-  s: Maybe<SortOrder>;
-  v: Maybe<SortOrder>;
-  a: Maybe<SortOrder>;
-}
-
-export interface RgbaColorSorting {
-  _key: Maybe<SortOrder>;
-  _type: Maybe<SortOrder>;
-  r: Maybe<SortOrder>;
-  g: Maybe<SortOrder>;
-  b: Maybe<SortOrder>;
-  a: Maybe<SortOrder>;
-}
-
-export interface CallToActionSorting {
-  _key: Maybe<SortOrder>;
-  _type: Maybe<SortOrder>;
-  title: Maybe<SortOrder>;
-  kind: Maybe<SortOrder>;
 }
 
 export interface ColumnsSorting {
@@ -1289,18 +1128,6 @@ export interface GridBlockSorting {
   _type: Maybe<SortOrder>;
   title: Maybe<SortOrder>;
   columns: Maybe<ColumnsSorting>;
-}
-
-export interface HeroBlockSorting {
-  _key: Maybe<SortOrder>;
-  _type: Maybe<SortOrder>;
-  layout: Maybe<SortOrder>;
-  backgroundColor: Maybe<ColorSorting>;
-  heading: Maybe<SortOrder>;
-  tagline: Maybe<TextBlockSorting>;
-  image: Maybe<ImageSorting>;
-  imageAlignment: Maybe<SortOrder>;
-  callToAction: Maybe<CallToActionSorting>;
 }
 
 export interface ImageBlockSorting {
@@ -1391,7 +1218,7 @@ export type PageQuery = (
           )> }
         )> }
       )>>> }
-    ) | { __typename: 'HeroBlock' } | (
+    ) | (
       { __typename: 'ImageBlock' }
       & Pick<ImageBlock, '_key' | '_type' | 'alt'>
       & { asset: Maybe<(
@@ -1455,7 +1282,7 @@ export type GetPagePreviewQuery = (
           )> }
         )> }
       )>>> }
-    ) | { __typename: 'HeroBlock' } | (
+    ) | (
       { __typename: 'ImageBlock' }
       & Pick<ImageBlock, '_key' | '_type' | 'alt'>
       & { asset: Maybe<(

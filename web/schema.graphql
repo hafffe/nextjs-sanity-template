@@ -3,6 +3,10 @@ schema {
 }
 
 type RootQuery {
+  Document(
+    """Document ID"""
+    id: ID!
+  ): Document
   Person(
     """Person document ID"""
     id: ID!
@@ -89,29 +93,6 @@ type RootQuery {
   ): [SanityFileAsset!]!
 }
 
-type Person implements Document {
-  """Document ID"""
-  _id: ID
-
-  """Document type"""
-  _type: String
-
-  """Date the document was created"""
-  _createdAt: DateTime
-
-  """Date the document was last modified"""
-  _updatedAt: DateTime
-
-  """Current document revision"""
-  _rev: String
-  _key: String
-  name: String
-  title: String
-  phone: String
-  email: String
-  image: Image
-}
-
 """A Sanity document"""
 interface Document {
   """Document ID"""
@@ -134,6 +115,29 @@ interface Document {
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
 scalar DateTime
+
+type Person implements Document {
+  """Document ID"""
+  _id: ID
+
+  """Document type"""
+  _type: String
+
+  """Date the document was created"""
+  _createdAt: DateTime
+
+  """Date the document was last modified"""
+  _updatedAt: DateTime
+
+  """Current document revision"""
+  _rev: String
+  _key: String
+  name: String
+  title: String
+  phone: String
+  email: String
+  image: Image
+}
 
 type Image {
   _key: String
@@ -278,7 +282,7 @@ type Page implements Document {
   """Title of the page"""
   title: String
   slug: Slug
-  content: [GridBlockOrHeroBlockOrImageBlockOrTextBlockOrYoutubeBlock]
+  content: [GridBlockOrImageBlockOrTextBlockOrYoutubeBlock]
 }
 
 type Slug {
@@ -287,7 +291,7 @@ type Slug {
   current: String
 }
 
-union GridBlockOrHeroBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | HeroBlock | ImageBlock | TextBlock | YoutubeBlock
+union GridBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | ImageBlock | TextBlock | YoutubeBlock
 
 type GridBlock {
   _key: String
@@ -332,65 +336,6 @@ type TextBlock {
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSON
-
-type HeroBlock {
-  _key: String
-  _type: String
-
-  """Layout of Hero Grid"""
-  layout: String
-  backgroundColor: Color
-  heading: String
-  tagline: TextBlock
-  image: Image
-  imageAlignment: String
-  callToAction: CallToAction
-}
-
-type Color {
-  _key: String
-  _type: String
-  hex: String
-  alpha: Float
-  hsl: HslaColor
-  hsv: HsvaColor
-  rgb: RgbaColor
-}
-
-type HslaColor {
-  _key: String
-  _type: String
-  h: Float
-  s: Float
-  l: Float
-  a: Float
-}
-
-type HsvaColor {
-  _key: String
-  _type: String
-  h: Float
-  s: Float
-  v: Float
-  a: Float
-}
-
-type RgbaColor {
-  _key: String
-  _type: String
-  r: Float
-  g: Float
-  b: Float
-  a: Float
-}
-
-type CallToAction {
-  _key: String
-  _type: String
-  title: String
-  landingPageRoute: Page
-  kind: String
-}
 
 type ImageBlock {
   _key: String
@@ -448,8 +393,6 @@ type SimpleTextBlock {
   _type: String
   textRaw: JSON
 }
-
-union GridBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | ImageBlock | TextBlock | YoutubeBlock
 
 type SiteSettings implements Document {
   """Document ID"""
@@ -1100,51 +1043,6 @@ input FileFilter {
   asset: SanityFileAssetFilter
 }
 
-input ColorFilter {
-  _key: StringFilter
-  _type: StringFilter
-  hex: StringFilter
-  alpha: FloatFilter
-  hsl: HslaColorFilter
-  hsv: HsvaColorFilter
-  rgb: RgbaColorFilter
-}
-
-input HslaColorFilter {
-  _key: StringFilter
-  _type: StringFilter
-  h: FloatFilter
-  s: FloatFilter
-  l: FloatFilter
-  a: FloatFilter
-}
-
-input HsvaColorFilter {
-  _key: StringFilter
-  _type: StringFilter
-  h: FloatFilter
-  s: FloatFilter
-  v: FloatFilter
-  a: FloatFilter
-}
-
-input RgbaColorFilter {
-  _key: StringFilter
-  _type: StringFilter
-  r: FloatFilter
-  g: FloatFilter
-  b: FloatFilter
-  a: FloatFilter
-}
-
-input CallToActionFilter {
-  _key: StringFilter
-  _type: StringFilter
-  title: StringFilter
-  landingPageRoute: PageFilter
-  kind: StringFilter
-}
-
 input ColumnsFilter {
   _key: StringFilter
   _type: StringFilter
@@ -1194,18 +1092,6 @@ input GridBlockFilter {
   columns: ColumnsFilter
 }
 
-input HeroBlockFilter {
-  _key: StringFilter
-  _type: StringFilter
-  layout: StringFilter
-  backgroundColor: ColorFilter
-  heading: StringFilter
-  tagline: TextBlockFilter
-  image: ImageFilter
-  imageAlignment: StringFilter
-  callToAction: CallToActionFilter
-}
-
 input ImageBlockFilter {
   _key: StringFilter
   _type: StringFilter
@@ -1227,50 +1113,6 @@ input YoutubeBlockFilter {
 input FileSorting {
   _key: SortOrder
   _type: SortOrder
-}
-
-input ColorSorting {
-  _key: SortOrder
-  _type: SortOrder
-  hex: SortOrder
-  alpha: SortOrder
-  hsl: HslaColorSorting
-  hsv: HsvaColorSorting
-  rgb: RgbaColorSorting
-}
-
-input HslaColorSorting {
-  _key: SortOrder
-  _type: SortOrder
-  h: SortOrder
-  s: SortOrder
-  l: SortOrder
-  a: SortOrder
-}
-
-input HsvaColorSorting {
-  _key: SortOrder
-  _type: SortOrder
-  h: SortOrder
-  s: SortOrder
-  v: SortOrder
-  a: SortOrder
-}
-
-input RgbaColorSorting {
-  _key: SortOrder
-  _type: SortOrder
-  r: SortOrder
-  g: SortOrder
-  b: SortOrder
-  a: SortOrder
-}
-
-input CallToActionSorting {
-  _key: SortOrder
-  _type: SortOrder
-  title: SortOrder
-  kind: SortOrder
 }
 
 input ColumnsSorting {
@@ -1319,18 +1161,6 @@ input GridBlockSorting {
   _type: SortOrder
   title: SortOrder
   columns: ColumnsSorting
-}
-
-input HeroBlockSorting {
-  _key: SortOrder
-  _type: SortOrder
-  layout: SortOrder
-  backgroundColor: ColorSorting
-  heading: SortOrder
-  tagline: TextBlockSorting
-  image: ImageSorting
-  imageAlignment: SortOrder
-  callToAction: CallToActionSorting
 }
 
 input ImageBlockSorting {

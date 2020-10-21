@@ -37,7 +37,7 @@ const Post = ({post, siteSettings, preview}: Props) => {
 			<Flex direction='column' width='100%'>
 				<Heading>{post?.title}</Heading>
 				<Stack isInline align='center' spacing={4} paddingY={2}>
-					{post.author?.image?.asset && <Image avatar source={post.author.image.asset} />}
+					{post.author?.image?.asset && <Image avatar asset={post.author.image.asset} />}
 					<Stack isInline direction='column' paddingLeft={3}>
 						{post.author?.name && <Text fontSize='sm'>Written by {post.author.name}</Text>}
 						<Text fontSize='sm'>{post.publishedAt && format(new Date(post.publishedAt), 'MMMM dd, yyyy')}</Text>
