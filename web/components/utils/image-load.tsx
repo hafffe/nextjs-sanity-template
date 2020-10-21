@@ -15,11 +15,8 @@ const ImageLoad = React.memo(({src, placeholder, alt}: Props) => {
 		const imageToLoad = new Image();
 		imageToLoad.src = src;
 		imageToLoad.addEventListener('load', () => {
-			// Timeout for debug
-			setTimeout(() => {
-				setLoading(false);
-				updateSrc(src);
-			}, 2000);
+			setLoading(false);
+			updateSrc(src);
 		});
 	}, [src]);
 
