@@ -17,6 +17,7 @@ export interface Scalars {
 
 export interface RootQuery {
   __typename: 'RootQuery';
+  Document: Maybe<Document>;
   Person: Maybe<Person>;
   Page: Maybe<Page>;
   Post: Maybe<Post>;
@@ -29,6 +30,11 @@ export interface RootQuery {
   allSiteSettings: Array<SiteSettings>;
   allSanityImageAsset: Array<SanityImageAsset>;
   allSanityFileAsset: Array<SanityFileAsset>;
+}
+
+
+export interface RootQueryDocumentArgs {
+  id: Scalars['ID'];
 }
 
 
@@ -109,6 +115,21 @@ export interface RootQueryAllSanityFileAssetArgs {
   offset: Maybe<Scalars['Int']>;
 }
 
+/** A Sanity document */
+export interface Document {
+  /** Document ID */
+  _id: Maybe<Scalars['ID']>;
+  /** Document type */
+  _type: Maybe<Scalars['String']>;
+  /** Date the document was created */
+  _createdAt: Maybe<Scalars['DateTime']>;
+  /** Date the document was last modified */
+  _updatedAt: Maybe<Scalars['DateTime']>;
+  /** Current document revision */
+  _rev: Maybe<Scalars['String']>;
+}
+
+
 export interface Person extends Document {
   __typename: 'Person';
   /** Document ID */
@@ -128,21 +149,6 @@ export interface Person extends Document {
   email: Maybe<Scalars['String']>;
   image: Maybe<Image>;
 }
-
-/** A Sanity document */
-export interface Document {
-  /** Document ID */
-  _id: Maybe<Scalars['ID']>;
-  /** Document type */
-  _type: Maybe<Scalars['String']>;
-  /** Date the document was created */
-  _createdAt: Maybe<Scalars['DateTime']>;
-  /** Date the document was last modified */
-  _updatedAt: Maybe<Scalars['DateTime']>;
-  /** Current document revision */
-  _rev: Maybe<Scalars['String']>;
-}
-
 
 export interface Image {
   __typename: 'Image';

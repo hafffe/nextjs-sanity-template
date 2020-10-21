@@ -3,6 +3,10 @@ schema {
 }
 
 type RootQuery {
+  Document(
+    """Document ID"""
+    id: ID!
+  ): Document
   Person(
     """Person document ID"""
     id: ID!
@@ -89,29 +93,6 @@ type RootQuery {
   ): [SanityFileAsset!]!
 }
 
-type Person implements Document {
-  """Document ID"""
-  _id: ID
-
-  """Document type"""
-  _type: String
-
-  """Date the document was created"""
-  _createdAt: DateTime
-
-  """Date the document was last modified"""
-  _updatedAt: DateTime
-
-  """Current document revision"""
-  _rev: String
-  _key: String
-  name: String
-  title: String
-  phone: String
-  email: String
-  image: Image
-}
-
 """A Sanity document"""
 interface Document {
   """Document ID"""
@@ -134,6 +115,29 @@ interface Document {
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
 scalar DateTime
+
+type Person implements Document {
+  """Document ID"""
+  _id: ID
+
+  """Document type"""
+  _type: String
+
+  """Date the document was created"""
+  _createdAt: DateTime
+
+  """Date the document was last modified"""
+  _updatedAt: DateTime
+
+  """Current document revision"""
+  _rev: String
+  _key: String
+  name: String
+  title: String
+  phone: String
+  email: String
+  image: Image
+}
 
 type Image {
   _key: String
