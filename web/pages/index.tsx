@@ -22,7 +22,7 @@ const Index = ({page, allPost, pageSettings, preview}: Props) => {
 
 	return (
 		<Layout siteSettings={SiteSettings} preview={preview}>
-			<Flex direction='column' justifyContent='center'>
+			<Flex direction='column' justifyContent='center' width='100%'>
 				{page?.content && renderBlocks(page.content)}
 				<Divider />
 				<Stack isInline direction='row' alignItems='center' paddingBottom={6}>

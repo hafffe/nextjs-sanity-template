@@ -298,7 +298,8 @@ type GridBlock {
   _type: String
   title: String
   columns: Columns
-  items: [Cell]
+  spacing: String
+  items: [ImageBlockOrTextBlockOrYoutubeBlock]
 }
 
 type Columns {
@@ -315,27 +316,7 @@ type Columns {
   large: String
 }
 
-type Cell {
-  _key: String
-  _type: String
-  title: String
-  image: Image
-
-  """Important for SEO and accessiblity."""
-  alt: String
-  text: TextBlock
-}
-
-type TextBlock {
-  _key: String
-  _type: String
-  textRaw: JSON
-}
-
-"""
-The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
-scalar JSON
+union ImageBlockOrTextBlockOrYoutubeBlock = ImageBlock | TextBlock | YoutubeBlock
 
 type ImageBlock {
   _key: String
@@ -348,6 +329,17 @@ type ImageBlock {
   hotspot: SanityImageHotspot
   crop: SanityImageCrop
 }
+
+type TextBlock {
+  _key: String
+  _type: String
+  textRaw: JSON
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
 
 type YoutubeBlock {
   _key: String
@@ -992,6 +984,17 @@ type Link {
   href: String
 }
 
+type Cell {
+  _key: String
+  _type: String
+  title: String
+  image: Image
+
+  """Important for SEO and accessiblity."""
+  alt: String
+  text: TextBlock
+}
+
 input IntFilter {
   """Checks if the value is equal to the given input."""
   eq: Int
@@ -1090,6 +1093,7 @@ input GridBlockFilter {
   _type: StringFilter
   title: StringFilter
   columns: ColumnsFilter
+  spacing: StringFilter
 }
 
 input ImageBlockFilter {
@@ -1161,6 +1165,7 @@ input GridBlockSorting {
   _type: SortOrder
   title: SortOrder
   columns: ColumnsSorting
+  spacing: SortOrder
 }
 
 input ImageBlockSorting {
