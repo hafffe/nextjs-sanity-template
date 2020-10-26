@@ -24,7 +24,7 @@
 	"author": "Aron Hafner",
 	"license": "MIT",
 	"devDependencies": {
-		"@sanity/cli": "^1.149.13",
+		"@sanity/cli": "^2.0.5",
 		"@typescript-eslint/eslint-plugin": "^3.8.0",
 		"@typescript-eslint/parser": "^3.8.0",
 		"eslint-config-xo-react": "^0.23.0",
