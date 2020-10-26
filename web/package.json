@@ -18,7 +18,7 @@
 		"@emotion/styled": "^10.0.27",
 		"@sanity/block-content-to-react": "^2.0.7",
 		"@sanity/image-url": "^0.140.17",
-		"axios": "^0.20.0",
+		"axios": "^0.21.0",
 		"date-fns": "^2.15.0",
 		"emotion-theming": "^10.0.27",
 		"get-youtube-id": "^1.0.1",
