@@ -1,17 +1,1 @@
-{
-	"env": {
-		"GRAPHQL_URL": "@sanity-graphql-url",
-		"GRAPHQL_TOKEN": "@sanity-graphql-token",
-		"PREVIEW_SECRET": "@sanity-preview-token",
-		"PROJECT_ID": "@sanity-project-id",
-		"PROJECT_DATASET": "@sanity-project-dataset"
-	},
-	"build": {
-		"env": {
-			"GRAPHQL_URL": "@sanity-graphql-url",
-			"GRAPHQL_TOKEN": "@sanity-graphql-token",
-			"PROJECT_ID": "@sanity-project-id",
-			"PROJECT_DATASET": "@sanity-project-dataset"
-		}
-	}
-}
+{}
