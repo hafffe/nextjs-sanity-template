@@ -1,17 +1,17 @@
 {
 	"env": {
-		"GRAPHQL_URL": "@sanity-graphql-url",
-		"GRAPHQL_TOKEN": "@sanity-graphql-token",
-		"PREVIEW_SECRET": "@sanity-preview-token",
-		"PROJECT_ID": "@sanity-project-id",
-		"PROJECT_DATASET": "@sanity-project-dataset"
+		"GRAPHQL_URL": "@GRAPHQL_URL",
+		"GRAPHQL_TOKEN": "@GRAPHQL_TOKEN",
+		"PREVIEW_SECRET": "@PREVIEW_SECRET",
+		"PROJECT_ID": "@PROJECT_ID",
+		"PROJECT_DATASET": "@PROJECT_DATASET"
 	},
 	"build": {
 		"env": {
-			"GRAPHQL_URL": "@sanity-graphql-url",
-			"GRAPHQL_TOKEN": "@sanity-graphql-token",
-			"PROJECT_ID": "@sanity-project-id",
-			"PROJECT_DATASET": "@sanity-project-dataset"
+			"GRAPHQL_URL": "@GRAPHQL_URL",
+			"GRAPHQL_TOKEN": "@GRAPHQL_TOKEN",
+			"PROJECT_ID": "@PROJECT_ID",
+			"PROJECT_DATASET": "@PROJECT_DATASET"
 		}
 	}
 }
