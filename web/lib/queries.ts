@@ -32,31 +32,6 @@ export const SITE_SETTINGS = gql`
 	}
 `;
 
-const gridBlockFragment = gql`
-	fragment GridBlock on GridBlock {
-		_key
-		_type
-		columns {
-			small
-			medium
-			large
-		}
-		items {
-			__typename
-			alt
-			image {
-				_key
-				_type
-				asset {
-					_id
-					_type
-					assetId
-				}
-			}
-		}
-	}
-`;
-
 const imageBlockFragment = gql`
 	fragment ImageBlock on ImageBlock {
 		_key
@@ -85,6 +60,24 @@ const youtubeBlockFragment = gql`
 		url
 		autoPlay
 		muted
+	}
+`;
+
+const gridBlockFragment = gql`
+	fragment GridBlock on GridBlock {
+		_key
+		_type
+		columns {
+			small
+			medium
+			large
+		}
+		items {
+			__typename
+			...ImageBlock
+			...TextBlock
+			...YoutubeBlock
+		}
 	}
 `;
 

@@ -32,7 +32,7 @@ const Header = ({navigation, colorMode}: Props) => {
 		<Flex as='header' padding={6} maxWidth='1200px' width='100%' alignSelf='center'>
 			<Flex align='center'>
 				<Heading as='h2' fontSize='4xl'>
-					☕️
+					🐶
 				</Heading>
 			</Flex>
 			{isWide ? (

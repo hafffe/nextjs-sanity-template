@@ -40,12 +40,12 @@ export default {
 		{
 			name: 'items',
 			title: 'Items',
-			type: 'array',
 			fieldset: 'items',
+			type: 'array',
 			options: {
 				layout: 'grid'
 			},
-			of: [{type: 'cell'}]
+			of: [{type: 'imageBlock'}, {type: 'textBlock'}, {type: 'youtubeBlock'}]
 		}
 	],
 	preview: {

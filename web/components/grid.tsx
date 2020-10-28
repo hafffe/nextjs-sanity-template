@@ -1,8 +1,7 @@
 import React from 'react';
-import {Box, SimpleGrid} from '@chakra-ui/core';
-import {v4 as uuidv4} from 'uuid';
-import Cell from './cell';
+import {SimpleGrid} from '@chakra-ui/core';
 import {GridBlock} from '../types/types';
+import {renderBlocks} from './utils/render-blocks';
 
 type Props = {
 	data: GridBlock;
@@ -13,20 +12,14 @@ const Grid = ({data}: Props) => {
 	const md = data?.columns?.medium ? Number.parseInt(data.columns.medium, 10) : 1;
 	const lg = data?.columns?.large ? Number.parseInt(data.columns.large, 10) : 1;
 
+	if (!data.items) {
+		return null;
+	}
+
 	return (
-		<Box marginX='auto' paddingY={4}>
-			<SimpleGrid className='Grid' columns={[sm, md, lg]} spacing={4}>
-				{data.items?.map((x) => {
-					if (x === null) {
-						return null;
-					}
-
-					const key = x?._key ?? uuidv4();
-
-					return <Cell key={key} data={x} />;
-				})}
-			</SimpleGrid>
-		</Box>
+		<SimpleGrid className='Grid' columns={[sm, md, lg]} spacing={4} alignItems='center'>
+			{renderBlocks(data.items)}
+		</SimpleGrid>
 	);
 };
 

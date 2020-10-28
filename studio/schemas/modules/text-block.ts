@@ -23,15 +23,15 @@ export default {
 						{title: 'H4', value: 'h4'},
 						{title: 'H5', value: 'h5'},
 						{title: 'H6', value: 'h6'},
-						{title: 'Quote', value: 'blockquote'},
-						{title: 'Big Text', value: 'big'}
+						{title: 'Quote', value: 'blockquote'}
 					],
 					marks: {
 						decorators: [
 							{value: 'strong', title: 'Strong'},
 							{value: 'italic', title: 'Italic'},
 							{value: 'underline', title: 'Underline'},
-							{value: 'code', title: 'Code'}
+							{value: 'code', title: 'Code'},
+							{value: 'center', title: 'Center'}
 						],
 						annotations: [{type: 'link'}]
 					}

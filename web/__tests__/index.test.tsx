@@ -16,7 +16,7 @@ describe('Render Logo', () => {
 			</ThemeProvider>
 		);
 
-		const testSentence = await findByText('☕️');
+		const testSentence = await findByText('🐶');
 		expect(testSentence).toBeInTheDocument();
 	});
 });

@@ -11,12 +11,13 @@ import externalLink from './objects/external-link';
 import internalLink from './objects/internal-link';
 import link from './objects/link';
 import cell from './objects/cell';
-import gridBlock from './objects/grid-block';
-import imageBlock from './objects/image-block';
+
+import gridBlock from './modules/grid-block';
+import imageBlock from './modules/image-block';
 import simpleTextBlock from './objects/simple-text-block';
 import socialFields from './objects/social-fields';
-import textBlock from './objects/text-block';
-import youtubeBlock from './objects/youtube-block';
+import textBlock from './modules/text-block';
+import youtubeBlock from './modules/youtube-block';
 
 export default createSchema({
 	name: 'default',

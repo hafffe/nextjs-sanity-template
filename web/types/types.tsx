@@ -306,7 +306,8 @@ export interface GridBlock {
   _type: Maybe<Scalars['String']>;
   title: Maybe<Scalars['String']>;
   columns: Maybe<Columns>;
-  items: Maybe<Array<Maybe<Cell>>>;
+  spacing: Maybe<Scalars['String']>;
+  items: Maybe<Array<Maybe<ImageBlockOrTextBlockOrYoutubeBlock>>>;
 }
 
 export interface Columns {
@@ -321,24 +322,7 @@ export interface Columns {
   large: Maybe<Scalars['String']>;
 }
 
-export interface Cell {
-  __typename: 'Cell';
-  _key: Maybe<Scalars['String']>;
-  _type: Maybe<Scalars['String']>;
-  title: Maybe<Scalars['String']>;
-  image: Maybe<Image>;
-  /** Important for SEO and accessiblity. */
-  alt: Maybe<Scalars['String']>;
-  text: Maybe<TextBlock>;
-}
-
-export interface TextBlock {
-  __typename: 'TextBlock';
-  _key: Maybe<Scalars['String']>;
-  _type: Maybe<Scalars['String']>;
-  textRaw: Maybe<Scalars['JSON']>;
-}
-
+export type ImageBlockOrTextBlockOrYoutubeBlock = ImageBlock | TextBlock | YoutubeBlock;
 
 export interface ImageBlock {
   __typename: 'ImageBlock';
@@ -351,6 +335,14 @@ export interface ImageBlock {
   hotspot: Maybe<SanityImageHotspot>;
   crop: Maybe<SanityImageCrop>;
 }
+
+export interface TextBlock {
+  __typename: 'TextBlock';
+  _key: Maybe<Scalars['String']>;
+  _type: Maybe<Scalars['String']>;
+  textRaw: Maybe<Scalars['JSON']>;
+}
+
 
 export interface YoutubeBlock {
   __typename: 'YoutubeBlock';
@@ -973,6 +965,17 @@ export interface Link {
   href: Maybe<Scalars['String']>;
 }
 
+export interface Cell {
+  __typename: 'Cell';
+  _key: Maybe<Scalars['String']>;
+  _type: Maybe<Scalars['String']>;
+  title: Maybe<Scalars['String']>;
+  image: Maybe<Image>;
+  /** Important for SEO and accessiblity. */
+  alt: Maybe<Scalars['String']>;
+  text: Maybe<TextBlock>;
+}
+
 export interface IntFilter {
   /** Checks if the value is equal to the given input. */
   eq: Maybe<Scalars['Int']>;
@@ -1057,6 +1060,7 @@ export interface GridBlockFilter {
   _type: Maybe<StringFilter>;
   title: Maybe<StringFilter>;
   columns: Maybe<ColumnsFilter>;
+  spacing: Maybe<StringFilter>;
 }
 
 export interface ImageBlockFilter {
@@ -1128,6 +1132,7 @@ export interface GridBlockSorting {
   _type: Maybe<SortOrder>;
   title: Maybe<SortOrder>;
   columns: Maybe<ColumnsSorting>;
+  spacing: Maybe<SortOrder>;
 }
 
 export interface ImageBlockSorting {
@@ -1199,16 +1204,18 @@ export type PageQuery = (
         { __typename: 'Columns' }
         & Pick<Columns, 'small' | 'medium' | 'large'>
       )>, items: Maybe<Array<Maybe<(
-        { __typename: 'Cell' }
-        & Pick<Cell, 'alt'>
-        & { image: Maybe<(
-          { __typename: 'Image' }
-          & Pick<Image, '_key' | '_type'>
-          & { asset: Maybe<(
-            { __typename: 'SanityImageAsset' }
-            & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
-          )> }
+        { __typename: 'ImageBlock' }
+        & Pick<ImageBlock, '_key' | '_type' | 'alt'>
+        & { asset: Maybe<(
+          { __typename: 'SanityImageAsset' }
+          & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
         )> }
+      ) | (
+        { __typename: 'TextBlock' }
+        & Pick<TextBlock, '_key' | '_type' | 'textRaw'>
+      ) | (
+        { __typename: 'YoutubeBlock' }
+        & Pick<YoutubeBlock, '_key' | '_type' | 'url' | 'autoPlay' | 'muted'>
       )>>> }
     ) | (
       { __typename: 'ImageBlock' }
@@ -1247,16 +1254,18 @@ export type GetPagePreviewQuery = (
         { __typename: 'Columns' }
         & Pick<Columns, 'small' | 'medium' | 'large'>
       )>, items: Maybe<Array<Maybe<(
-        { __typename: 'Cell' }
-        & Pick<Cell, 'alt'>
-        & { image: Maybe<(
-          { __typename: 'Image' }
-          & Pick<Image, '_key' | '_type'>
-          & { asset: Maybe<(
-            { __typename: 'SanityImageAsset' }
-            & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
-          )> }
+        { __typename: 'ImageBlock' }
+        & Pick<ImageBlock, '_key' | '_type' | 'alt'>
+        & { asset: Maybe<(
+          { __typename: 'SanityImageAsset' }
+          & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
         )> }
+      ) | (
+        { __typename: 'TextBlock' }
+        & Pick<TextBlock, '_key' | '_type' | 'textRaw'>
+      ) | (
+        { __typename: 'YoutubeBlock' }
+        & Pick<YoutubeBlock, '_key' | '_type' | 'url' | 'autoPlay' | 'muted'>
       )>>> }
     ) | (
       { __typename: 'ImageBlock' }
@@ -1301,16 +1310,18 @@ export type PostListQuery = (
         { __typename: 'Columns' }
         & Pick<Columns, 'small' | 'medium' | 'large'>
       )>, items: Maybe<Array<Maybe<(
-        { __typename: 'Cell' }
-        & Pick<Cell, 'alt'>
-        & { image: Maybe<(
-          { __typename: 'Image' }
-          & Pick<Image, '_key' | '_type'>
-          & { asset: Maybe<(
-            { __typename: 'SanityImageAsset' }
-            & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
-          )> }
+        { __typename: 'ImageBlock' }
+        & Pick<ImageBlock, '_key' | '_type' | 'alt'>
+        & { asset: Maybe<(
+          { __typename: 'SanityImageAsset' }
+          & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
         )> }
+      ) | (
+        { __typename: 'TextBlock' }
+        & Pick<TextBlock, '_key' | '_type' | 'textRaw'>
+      ) | (
+        { __typename: 'YoutubeBlock' }
+        & Pick<YoutubeBlock, '_key' | '_type' | 'url' | 'autoPlay' | 'muted'>
       )>>> }
     ) | (
       { __typename: 'ImageBlock' }
@@ -1359,16 +1370,18 @@ export type GetPostQuery = (
         { __typename: 'Columns' }
         & Pick<Columns, 'small' | 'medium' | 'large'>
       )>, items: Maybe<Array<Maybe<(
-        { __typename: 'Cell' }
-        & Pick<Cell, 'alt'>
-        & { image: Maybe<(
-          { __typename: 'Image' }
-          & Pick<Image, '_key' | '_type'>
-          & { asset: Maybe<(
-            { __typename: 'SanityImageAsset' }
-            & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
-          )> }
+        { __typename: 'ImageBlock' }
+        & Pick<ImageBlock, '_key' | '_type' | 'alt'>
+        & { asset: Maybe<(
+          { __typename: 'SanityImageAsset' }
+          & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
         )> }
+      ) | (
+        { __typename: 'TextBlock' }
+        & Pick<TextBlock, '_key' | '_type' | 'textRaw'>
+      ) | (
+        { __typename: 'YoutubeBlock' }
+        & Pick<YoutubeBlock, '_key' | '_type' | 'url' | 'autoPlay' | 'muted'>
       )>>> }
     ) | (
       { __typename: 'ImageBlock' }
@@ -1413,16 +1426,18 @@ export type GetPostPreviewQuery = (
         { __typename: 'Columns' }
         & Pick<Columns, 'small' | 'medium' | 'large'>
       )>, items: Maybe<Array<Maybe<(
-        { __typename: 'Cell' }
-        & Pick<Cell, 'alt'>
-        & { image: Maybe<(
-          { __typename: 'Image' }
-          & Pick<Image, '_key' | '_type'>
-          & { asset: Maybe<(
-            { __typename: 'SanityImageAsset' }
-            & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
-          )> }
+        { __typename: 'ImageBlock' }
+        & Pick<ImageBlock, '_key' | '_type' | 'alt'>
+        & { asset: Maybe<(
+          { __typename: 'SanityImageAsset' }
+          & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
         )> }
+      ) | (
+        { __typename: 'TextBlock' }
+        & Pick<TextBlock, '_key' | '_type' | 'textRaw'>
+      ) | (
+        { __typename: 'YoutubeBlock' }
+        & Pick<YoutubeBlock, '_key' | '_type' | 'url' | 'autoPlay' | 'muted'>
       )>>> }
     ) | (
       { __typename: 'ImageBlock' }

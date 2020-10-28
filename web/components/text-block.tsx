@@ -14,14 +14,6 @@ const serializers = (colorMode: any) => ({
 		block: (props: any) => {
 			const {style = 'normal'} = props.node;
 
-			if (style === 'big') {
-				return (
-					<Flex paddingY={3} justify='center'>
-						<Text fontSize='3xl'>{props.children}</Text>
-					</Flex>
-				);
-			}
-
 			if (/^h\d/.test(style)) {
 				const resolveSize = (style: string) => {
 					if (style === 'h1') {
@@ -72,7 +64,8 @@ const serializers = (colorMode: any) => ({
 				{props.children}
 			</Link>
 		),
-		italic: (props: any) => <Text as='i'>{props.children}</Text>
+		italic: (props: any) => <Text as='i'>{props.children}</Text>,
+		center: (props: any) => <Text textAlign='center'>{props.children}</Text>
 	}
 });
 
