@@ -41,6 +41,13 @@ const imageBlockFragment = gql`
 			_id
 			_type
 			assetId
+			metadata {
+				dimensions {
+					aspectRatio
+					height
+					width
+				}
+			}
 		}
 	}
 `;

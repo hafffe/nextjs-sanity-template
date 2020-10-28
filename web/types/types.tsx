@@ -1209,6 +1209,13 @@ export type PageQuery = (
         & { asset: Maybe<(
           { __typename: 'SanityImageAsset' }
           & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+          & { metadata: Maybe<(
+            { __typename: 'SanityImageMetadata' }
+            & { dimensions: Maybe<(
+              { __typename: 'SanityImageDimensions' }
+              & Pick<SanityImageDimensions, 'aspectRatio' | 'height' | 'width'>
+            )> }
+          )> }
         )> }
       ) | (
         { __typename: 'TextBlock' }
@@ -1223,6 +1230,13 @@ export type PageQuery = (
       & { asset: Maybe<(
         { __typename: 'SanityImageAsset' }
         & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+        & { metadata: Maybe<(
+          { __typename: 'SanityImageMetadata' }
+          & { dimensions: Maybe<(
+            { __typename: 'SanityImageDimensions' }
+            & Pick<SanityImageDimensions, 'aspectRatio' | 'height' | 'width'>
+          )> }
+        )> }
       )> }
     ) | (
       { __typename: 'TextBlock' }
@@ -1259,6 +1273,13 @@ export type GetPagePreviewQuery = (
         & { asset: Maybe<(
           { __typename: 'SanityImageAsset' }
           & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+          & { metadata: Maybe<(
+            { __typename: 'SanityImageMetadata' }
+            & { dimensions: Maybe<(
+              { __typename: 'SanityImageDimensions' }
+              & Pick<SanityImageDimensions, 'aspectRatio' | 'height' | 'width'>
+            )> }
+          )> }
         )> }
       ) | (
         { __typename: 'TextBlock' }
@@ -1273,6 +1294,13 @@ export type GetPagePreviewQuery = (
       & { asset: Maybe<(
         { __typename: 'SanityImageAsset' }
         & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+        & { metadata: Maybe<(
+          { __typename: 'SanityImageMetadata' }
+          & { dimensions: Maybe<(
+            { __typename: 'SanityImageDimensions' }
+            & Pick<SanityImageDimensions, 'aspectRatio' | 'height' | 'width'>
+          )> }
+        )> }
       )> }
     ) | (
       { __typename: 'TextBlock' }
@@ -1315,6 +1343,13 @@ export type PostListQuery = (
         & { asset: Maybe<(
           { __typename: 'SanityImageAsset' }
           & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+          & { metadata: Maybe<(
+            { __typename: 'SanityImageMetadata' }
+            & { dimensions: Maybe<(
+              { __typename: 'SanityImageDimensions' }
+              & Pick<SanityImageDimensions, 'aspectRatio' | 'height' | 'width'>
+            )> }
+          )> }
         )> }
       ) | (
         { __typename: 'TextBlock' }
@@ -1329,6 +1364,13 @@ export type PostListQuery = (
       & { asset: Maybe<(
         { __typename: 'SanityImageAsset' }
         & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+        & { metadata: Maybe<(
+          { __typename: 'SanityImageMetadata' }
+          & { dimensions: Maybe<(
+            { __typename: 'SanityImageDimensions' }
+            & Pick<SanityImageDimensions, 'aspectRatio' | 'height' | 'width'>
+          )> }
+        )> }
       )> }
     ) | (
       { __typename: 'TextBlock' }
@@ -1375,6 +1417,13 @@ export type GetPostQuery = (
         & { asset: Maybe<(
           { __typename: 'SanityImageAsset' }
           & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+          & { metadata: Maybe<(
+            { __typename: 'SanityImageMetadata' }
+            & { dimensions: Maybe<(
+              { __typename: 'SanityImageDimensions' }
+              & Pick<SanityImageDimensions, 'aspectRatio' | 'height' | 'width'>
+            )> }
+          )> }
         )> }
       ) | (
         { __typename: 'TextBlock' }
@@ -1389,6 +1438,13 @@ export type GetPostQuery = (
       & { asset: Maybe<(
         { __typename: 'SanityImageAsset' }
         & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+        & { metadata: Maybe<(
+          { __typename: 'SanityImageMetadata' }
+          & { dimensions: Maybe<(
+            { __typename: 'SanityImageDimensions' }
+            & Pick<SanityImageDimensions, 'aspectRatio' | 'height' | 'width'>
+          )> }
+        )> }
       )> }
     ) | (
       { __typename: 'TextBlock' }
@@ -1431,6 +1487,13 @@ export type GetPostPreviewQuery = (
         & { asset: Maybe<(
           { __typename: 'SanityImageAsset' }
           & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+          & { metadata: Maybe<(
+            { __typename: 'SanityImageMetadata' }
+            & { dimensions: Maybe<(
+              { __typename: 'SanityImageDimensions' }
+              & Pick<SanityImageDimensions, 'aspectRatio' | 'height' | 'width'>
+            )> }
+          )> }
         )> }
       ) | (
         { __typename: 'TextBlock' }
@@ -1445,6 +1508,13 @@ export type GetPostPreviewQuery = (
       & { asset: Maybe<(
         { __typename: 'SanityImageAsset' }
         & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+        & { metadata: Maybe<(
+          { __typename: 'SanityImageMetadata' }
+          & { dimensions: Maybe<(
+            { __typename: 'SanityImageDimensions' }
+            & Pick<SanityImageDimensions, 'aspectRatio' | 'height' | 'width'>
+          )> }
+        )> }
       )> }
     ) | (
       { __typename: 'TextBlock' }

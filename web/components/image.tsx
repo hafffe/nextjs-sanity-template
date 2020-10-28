@@ -20,7 +20,7 @@ const builder = imageUrlBuilder(config);
 const urlFor = (source: string) => builder.image(source);
 
 const Image = ({source, alt, avatar}: Props) => {
-	const url = source?._id && urlFor(source._id).auto('format').url();
+	const url = source?._id && urlFor(source._id).width(1200).auto('format').url();
 
 	if (url === null) {
 		return null;
