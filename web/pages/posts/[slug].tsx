@@ -2,12 +2,13 @@ import React from 'react';
 import {useRouter} from 'next/router';
 import ErrorPage from 'next/error';
 import {GetStaticProps, GetStaticPaths} from 'next';
-import {Badge, Flex, Heading, Stack, Text} from '@chakra-ui/core';
+import {Avatar, Badge, Flex, Heading, Stack, Text} from '@chakra-ui/core';
 import {format} from 'date-fns';
 import {v4 as uuidv4} from 'uuid';
 import {renderBlocks} from '../../components/utils/render-blocks';
-import {Layout, Image} from '../../components';
+import {Layout} from '../../components';
 import {apiClient} from '../../lib/api';
+import {urlFor} from '../../lib/utils';
 import {SITE_SETTINGS, GET_POST, GET_POSTS_WITH_SLUG} from '../../lib/queries';
 import {
 	Post as PostType,
@@ -30,6 +31,8 @@ const Post = ({post, siteSettings, preview}: Props) => {
 		return <ErrorPage statusCode={404} />;
 	}
 
+	const avatarImage = urlFor(post?.author?.image?.asset?._id).width(200).auto('format').url() ?? undefined;
+	const name = post?.author?.name ?? undefined;
 	const keywords = post.keywords?.map((x) => <Badge key={uuidv4()}>{x}</Badge>);
 
 	return (
@@ -37,7 +40,7 @@ const Post = ({post, siteSettings, preview}: Props) => {
 			<Flex direction='column' width='100%'>
 				<Heading>{post?.title}</Heading>
 				<Stack isInline align='center' spacing={4} paddingY={2}>
-					{post.author?.image?.asset && <Image avatar source={post.author.image.asset} />}
+					{post.author?.image?.asset && <Avatar name={name} src={avatarImage} />}
 					<Stack isInline direction='column' paddingLeft={3}>
 						{post.author?.name && <Text fontSize='sm'>Written by {post.author.name}</Text>}
 						<Text fontSize='sm'>{post.publishedAt && format(new Date(post.publishedAt), 'MMMM dd, yyyy')}</Text>

@@ -15,7 +15,7 @@ Static site template built with [Next.js](https://github.com/zeit/next.js) and [
 
 ### Initial Setup Next JS
 1. Add the variables from `env.example` for each environment in vercel dashboard
-3. Run `vercel env pull <filename>` to create a local enviroment file or manually create files for `.env.development.local` & `.env.production.local` with correct values
+2. Run `vercel env pull <filename>` to create a local enviroment file or manually create files for `.env.development.local` & `.env.production.local` with correct values
 
 ### Initial Setup Sanity
 1. Rename `.env.production.example` & `.env.development.example` to `.env.production` & `.env.development`
