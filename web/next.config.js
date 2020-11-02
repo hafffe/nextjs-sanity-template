@@ -8,5 +8,12 @@ module.exports = {
 		PROJECT_DATASET: process.env.PROJECT_DATASET
 	},
 	poweredByHeader: false,
-	reactStrictMode: true
+	reactStrictMode: true,
+	images: {
+		deviceSizes: [320, 420, 768, 1024, 1200],
+		iconSizes: [],
+		domains: ['cdn.sanity.io'],
+		path: '/_next/image',
+		loader: 'default',
+	}
 };
