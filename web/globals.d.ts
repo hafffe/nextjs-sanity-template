@@ -1,6 +1,3 @@
-type SanityDateTime = string;
-type SanityJSON = any;
-
 declare module '@sanity/block-content-to-react' {
 	import {ImageUrlBuilderOptionsWithAliases} from '@sanity/image-url/lib/types/types';
 	import {ElementType, ReactElement} from 'react';
