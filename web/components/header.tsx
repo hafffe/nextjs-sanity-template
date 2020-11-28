@@ -64,7 +64,7 @@ const Header = ({navigation, colorMode}: Props) => {
 					marginLeft='auto'
 					size='lg'
 					aria-label='Open Menu'
-					icon={RiMenuLine}
+					icon={<RiMenuLine />}
 					onClick={onOpen}
 				/>
 			)}

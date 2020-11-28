@@ -1,5 +1,5 @@
 import React from 'react';
-import {ThemeProvider, ColorModeProvider} from '@chakra-ui/react';
+import {ChakraProvider} from '@chakra-ui/react';
 import {render, cleanup} from '@testing-library/react';
 import {Header, TextBlock} from '../components';
 import theme from '../constants/theme';
@@ -9,11 +9,9 @@ afterEach(cleanup);
 describe('Render Logo', () => {
 	test('Find Logo', async () => {
 		const {findByText} = render(
-			<ThemeProvider theme={theme}>
-				<ColorModeProvider value='dark'>
-					<Header colorMode='dark' />
-				</ColorModeProvider>
-			</ThemeProvider>
+			<ChakraProvider theme={theme}>
+				<Header colorMode='dark' />
+			</ChakraProvider>
 		);
 
 		const testSentence = await findByText('🐶');
@@ -44,11 +42,9 @@ describe('Render textBlock', () => {
 		};
 
 		const {getByText} = render(
-			<ThemeProvider theme={theme}>
-				<ColorModeProvider value='dark'>
-					<TextBlock data={data} />
-				</ColorModeProvider>
-			</ThemeProvider>
+			<ChakraProvider theme={theme}>
+				<TextBlock data={data} />
+			</ChakraProvider>
 		);
 
 		const testSentence = getByText('This is a textBlock');
@@ -84,11 +80,9 @@ describe('Render textBlock', () => {
 		};
 
 		const {getByText} = render(
-			<ThemeProvider theme={theme}>
-				<ColorModeProvider value='dark'>
-					<TextBlock data={data} />
-				</ColorModeProvider>
-			</ThemeProvider>
+			<ChakraProvider theme={theme}>
+				<TextBlock data={data} />
+			</ChakraProvider>
 		);
 
 		const testSentence = getByText('Test link');

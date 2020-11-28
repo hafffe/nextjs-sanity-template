@@ -10,6 +10,7 @@
 		"test": "jest",
 		"lint": "xo",
 		"test:watch": "jest --watch",
+		"typecheck": "tsc",
 		"generate": "gql-gen --config codegen.yml"
 	},
 	"dependencies": {
