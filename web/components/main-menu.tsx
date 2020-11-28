@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import {Flex, Link as Li} from '@chakra-ui/react';
 import {v4 as uuidv4} from 'uuid';

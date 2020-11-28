@@ -1,4 +1,3 @@
-import React from 'react';
 import {useColorMode, IconButton} from '@chakra-ui/react';
 import {RiSunLine, RiMoonLine} from 'react-icons/ri';
 

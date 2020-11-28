@@ -1,4 +1,4 @@
-import React from 'react';
+import {ReactNode} from 'react';
 import Head from 'next/head';
 import {Flex, useColorMode} from '@chakra-ui/react';
 import {SiteSettings} from '../types/types';
@@ -6,7 +6,7 @@ import {Footer, Header, PreviewAlert} from '.';
 
 type Props = {
 	siteSettings: SiteSettings;
-	children?: React.ReactNode;
+	children?: ReactNode;
 	preview: boolean;
 };
 

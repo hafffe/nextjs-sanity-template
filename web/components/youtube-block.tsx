@@ -1,4 +1,3 @@
-import React from 'react';
 import getYouTubeId from 'get-youtube-id';
 import YouTube from 'react-youtube';
 import {YoutubeBlock as YoutubeBlockProps} from '../types/types';

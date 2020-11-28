@@ -1,4 +1,3 @@
-import React from 'react';
 import {Box, Flex, Heading, Link, Text, useColorMode} from '@chakra-ui/react';
 import BlockContent from '@sanity/block-content-to-react';
 import {IoIosQuote} from 'react-icons/io';

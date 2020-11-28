@@ -1,4 +1,3 @@
-import React from 'react';
 import {Grid, ImageBlock, TextBlock, YouTubeBlock} from '.';
 import {GridBlockOrImageBlockOrTextBlockOrYoutubeBlock} from '../types/types';
 
