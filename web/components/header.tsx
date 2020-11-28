@@ -10,7 +10,7 @@ import {
 	Heading,
 	IconButton,
 	useDisclosure
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import {RiMenuLine} from 'react-icons/ri';
 import MainMenu from './main-menu';
 import useViewport from './utils/viewport';

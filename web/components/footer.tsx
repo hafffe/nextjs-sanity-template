@@ -1,6 +1,6 @@
 import React from 'react';
 import {RiFacebookBoxLine, RiInstagramLine, RiTwitterLine} from 'react-icons/ri';
-import {Flex, Link, Stack, Text} from '@chakra-ui/core';
+import {Flex, Link, Stack, Text} from '@chakra-ui/react';
 import {Maybe, SocialFields} from '../types/types';
 
 type Props = {

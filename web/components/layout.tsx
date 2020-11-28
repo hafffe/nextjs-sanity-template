@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import {Flex, useColorMode} from '@chakra-ui/core';
+import {Flex, useColorMode} from '@chakra-ui/react';
 import {SiteSettings} from '../types/types';
 import {Footer, Header, PreviewAlert} from '.';
 

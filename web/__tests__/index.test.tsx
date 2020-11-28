@@ -1,5 +1,5 @@
 import React from 'react';
-import {ThemeProvider, ColorModeProvider} from '@chakra-ui/core';
+import {ThemeProvider, ColorModeProvider} from '@chakra-ui/react';
 import {render, cleanup} from '@testing-library/react';
 import {Header, TextBlock} from '../components';
 import theme from '../constants/theme';

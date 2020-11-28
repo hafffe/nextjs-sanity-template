@@ -1,6 +1,6 @@
 import React from 'react';
 import {GetStaticProps} from 'next';
-import {Box, Flex, Heading, Divider, Link, Stack} from '@chakra-ui/core';
+import {Flex, Heading, Divider, Link, Icon} from '@chakra-ui/react';
 import {RiArrowRightLine} from 'react-icons/ri';
 import {apiClient} from '../lib/api';
 import {SITE_SETTINGS, GET_PAGE, GET_POSTS} from '../lib/queries';
@@ -25,14 +25,14 @@ const Index = ({page, allPost, pageSettings, preview}: Props) => {
 			<Flex direction='column' justifyContent='center' width='100%'>
 				{page?.content && renderBlocks(page.content)}
 				<Divider />
-				<Stack isInline direction='row' alignItems='center' paddingBottom={6}>
+				<Flex direction='row' alignItems='center' paddingBottom={6}>
 					<Heading as='h2' size='xl' paddingBottom={2}>
 						Recent articles
 					</Heading>
 					<Link href='/posts' marginLeft='auto' whiteSpace='nowrap'>
-						All Articles <Box as={RiArrowRightLine} display='inline-block' />
+						All Articles <Icon as={RiArrowRightLine} />
 					</Link>
-				</Stack>
+				</Flex>
 				<PostList allPost={allPost} layout='minimal' />
 			</Flex>
 		</Layout>

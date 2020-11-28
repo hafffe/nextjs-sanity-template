@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import {format} from 'date-fns';
 import {v4 as uuidv4} from 'uuid';
-import {Badge, Box, Flex, Heading, Link as Li, Stack, Text} from '@chakra-ui/core';
+import {Badge, Box, Flex, Heading, Link as Li, Stack, Text} from '@chakra-ui/react';
 import {Post as PostType} from '../types/types';
 import {TextBlock} from '.';
 
