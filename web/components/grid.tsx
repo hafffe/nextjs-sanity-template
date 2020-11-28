@@ -1,5 +1,5 @@
 import React from 'react';
-import {SimpleGrid} from '@chakra-ui/core';
+import {SimpleGrid} from '@chakra-ui/react';
 import {GridBlock} from '../types/types';
 import {renderBlocks} from './utils/render-blocks';
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import {AppProps} from 'next/app';
-import {CSSReset, ThemeProvider, ColorModeProvider} from '@chakra-ui/core';
-import {Global} from '@emotion/core';
+import {CSSReset, ChakraProvider} from '@chakra-ui/react';
+import {Global} from '@emotion/react';
 import theme from '../constants/theme';
 
 const MyApp = ({Component, pageProps}: AppProps) => (
-	<ThemeProvider theme={theme}>
+	<ChakraProvider theme={theme}>
 		<CSSReset />
 		<Global
 			styles={{
@@ -27,10 +27,8 @@ const MyApp = ({Component, pageProps}: AppProps) => (
 				}
 			}}
 		/>
-		<ColorModeProvider value='dark'>
-			<Component {...pageProps} />
-		</ColorModeProvider>
-	</ThemeProvider>
+		<Component {...pageProps} />
+	</ChakraProvider>
 );
 
 export default MyApp;

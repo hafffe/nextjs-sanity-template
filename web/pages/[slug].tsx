@@ -2,7 +2,7 @@ import React from 'react';
 import {GetStaticProps, GetStaticPaths} from 'next';
 import {useRouter} from 'next/router';
 import ErrorPage from 'next/error';
-import {Flex} from '@chakra-ui/core';
+import {Flex} from '@chakra-ui/react';
 import {apiClient} from '../lib/api';
 import {SITE_SETTINGS, GET_PAGE, GET_PAGES_WITH_SLUG} from '../lib/queries';
 import {Page as PageType, PageQuery, SiteSettings, GetAllPagesWithSlugQuery} from '../types/types';

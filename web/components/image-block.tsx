@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Image} from '@chakra-ui/core';
+import {Box, Image} from '@chakra-ui/react';
 import {ImageBlock as ImageBlockProps} from '../types/types';
 import {urlFor} from '../lib/utils';
 

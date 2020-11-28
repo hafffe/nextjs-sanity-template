@@ -1,6 +1,6 @@
 import React from 'react';
 import {GetStaticProps} from 'next';
-import {Flex} from '@chakra-ui/core';
+import {Flex} from '@chakra-ui/react';
 import {apiClient} from '../../lib/api';
 import {renderBlocks} from '../../components/utils/render-blocks';
 import {SITE_SETTINGS, GET_POSTS, GET_PAGE} from '../../lib/queries';

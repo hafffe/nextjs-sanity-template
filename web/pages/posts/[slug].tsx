@@ -2,7 +2,7 @@ import React from 'react';
 import {useRouter} from 'next/router';
 import ErrorPage from 'next/error';
 import {GetStaticProps, GetStaticPaths} from 'next';
-import {Avatar, Badge, Flex, Heading, Stack, Text} from '@chakra-ui/core';
+import {Avatar, Badge, Flex, Heading, Stack, Text} from '@chakra-ui/react';
 import {format} from 'date-fns';
 import {v4 as uuidv4} from 'uuid';
 import {renderBlocks} from '../../components/utils/render-blocks';
