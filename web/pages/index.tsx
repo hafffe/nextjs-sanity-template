@@ -1,4 +1,3 @@
-import React from 'react';
 import {GetStaticProps} from 'next';
 import {Flex, Heading, Divider, Link, Icon} from '@chakra-ui/react';
 import {RiArrowRightLine} from 'react-icons/ri';

@@ -1,4 +1,4 @@
-import React from 'react';
+import {Fragment} from 'react';
 import {v4 as uuidv4} from 'uuid';
 import {GridBlockOrImageBlockOrTextBlockOrYoutubeBlock, Maybe} from '../../types/types';
 import {Blocks} from '..';
@@ -18,9 +18,9 @@ export const renderBlocks = (content: Props) => {
 		const key = block._key ?? uuidv4();
 
 		return (
-			<React.Fragment key={key}>
+			<Fragment key={key}>
 				<Blocks block={block} />
-			</React.Fragment>
+			</Fragment>
 		);
 	});
 };

@@ -1,4 +1,3 @@
-import React from 'react';
 import {AppProps} from 'next/app';
 import {CSSReset, ChakraProvider} from '@chakra-ui/react';
 import {Global} from '@emotion/react';

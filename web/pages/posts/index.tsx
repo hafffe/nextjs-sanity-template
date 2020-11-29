@@ -1,4 +1,3 @@
-import React from 'react';
 import {GetStaticProps} from 'next';
 import {Flex} from '@chakra-ui/react';
 import {apiClient} from '../../lib/api';

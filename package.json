@@ -81,6 +81,7 @@
 			"@typescript-eslint/restrict-template-expressions": "warn",
 			"react/prop-types": "off",
 			"react/no-danger": "warn",
+			"react/react-in-jsx-scope": "off",
 			"react/jsx-tag-spacing": [
 				"error",
 				{
