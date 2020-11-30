@@ -3,24 +3,22 @@ import {Flex, Heading, Divider, Link, Icon} from '@chakra-ui/react';
 import {RiArrowRightLine} from 'react-icons/ri';
 import {apiClient} from '../lib/api';
 import {SITE_SETTINGS, GET_PAGE, GET_POSTS} from '../lib/queries';
-import {Page as PageType, PageQuery, PostListQuery, Post as PostType, SiteSettings} from '../types/types';
+import {Page, PageQuery, PostListQuery, Post, SiteSettings, SiteSettingsQuery} from '../types/types';
 import {renderBlocks} from '../components/utils/render-blocks';
 import {Layout, PostList} from '../components';
 
 type Props = {
 	preview: boolean;
-	page: PageType;
-	allPost: PostType[];
-	pageSettings: {
-		SiteSettings: SiteSettings;
-	};
+	page: Page;
+	allPost: Post[];
+	siteSettings: SiteSettings;
 };
 
-const Index = ({page, allPost, pageSettings, preview}: Props) => {
-	const {SiteSettings} = pageSettings;
+const Index = ({page, allPost, siteSettings, preview}: Props) => {
+	const meta = page?.meta ?? undefined;
 
 	return (
-		<Layout siteSettings={SiteSettings} preview={preview}>
+		<Layout siteSettings={siteSettings} meta={meta} preview={preview}>
 			<Flex direction='column' justifyContent='center' width='100%'>
 				{page?.content && renderBlocks(page.content)}
 				<Divider />
@@ -39,7 +37,7 @@ const Index = ({page, allPost, pageSettings, preview}: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({preview = false}) => {
-	const pageSettings = await apiClient<SiteSettings>(SITE_SETTINGS);
+	const {SiteSettings} = await apiClient<SiteSettingsQuery>(SITE_SETTINGS);
 	const {allPage} = await apiClient<PageQuery>(GET_PAGE, {
 		id: 'frontpage'
 	});
@@ -50,7 +48,7 @@ export const getStaticProps: GetStaticProps = async ({preview = false}) => {
 		limit: 5
 	});
 
-	return {props: {page, allPost, pageSettings, preview}, revalidate: 1};
+	return {props: {page, allPost, siteSettings: SiteSettings, preview}, revalidate: 1};
 };
 
 export default Index;

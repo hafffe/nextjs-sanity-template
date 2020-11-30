@@ -30,12 +30,15 @@ const Post = ({post, siteSettings, preview}: Props) => {
 		return <ErrorPage statusCode={404} />;
 	}
 
-	const avatarImage = urlFor(post?.author?.image?.asset?._id).width(200).auto('format').url() ?? undefined;
+	const avatarImage =
+		(post?.author?.image?.asset?._id && urlFor(post.author.image.asset._id).width(200).auto('format').url()) ??
+		undefined;
 	const name = post?.author?.name ?? undefined;
 	const keywords = post.keywords?.map((x) => <Badge key={uuidv4()}>{x}</Badge>);
+	const meta = post?.meta ?? undefined;
 
 	return (
-		<Layout preview={preview} siteSettings={siteSettings}>
+		<Layout preview={preview} meta={meta} siteSettings={siteSettings}>
 			<Flex direction='column' width='100%'>
 				<Heading>{post?.title}</Heading>
 				<Stack isInline align='center' spacing={4} paddingY={2}>

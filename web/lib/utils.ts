@@ -8,4 +8,4 @@ const config = {
 
 const builder = imageUrlBuilder(config);
 
-export const urlFor = (source: any) => builder.image(source);
+export const urlFor = (source: string) => builder.image(source);

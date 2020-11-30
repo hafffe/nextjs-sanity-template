@@ -9,8 +9,16 @@ export default {
 	icon: RiArticleLine,
 	fieldsets: [
 		{
-			name: 'meta',
+			name: 'general',
 			title: 'General',
+			options: {
+				collapsible: true,
+				collapsed: true
+			}
+		},
+		{
+			name: 'meta',
+			title: 'Meta infomation',
 			options: {
 				collapsible: true,
 				collapsed: true
@@ -39,7 +47,7 @@ export default {
 			title: 'Title',
 			type: 'string',
 			description: 'Title of the page',
-			fieldset: 'meta',
+			fieldset: 'general',
 			validation: (Rule: any) => Rule.required()
 		},
 		{
@@ -51,8 +59,13 @@ export default {
 				source: 'title',
 				slugify: (input: string) => slug(input, {lower: true})
 			},
-			fieldset: 'meta',
+			fieldset: 'general',
 			validation: (Rule: any) => Rule.required()
+		},
+		{
+			type: 'metaFields',
+			name: 'meta',
+			fieldset: 'meta'
 		},
 		{
 			name: 'author',

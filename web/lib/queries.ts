@@ -98,6 +98,19 @@ export const GET_PAGE = gql`
 			slug {
 				current
 			}
+			meta {
+				metaTitle
+				metaDescription
+				openGraphImage {
+					asset {
+						_id
+						_type
+						assetId
+					}
+				}
+				openGraphTitle
+				openGraphDescription
+			}
 			content {
 				__typename
 				...GridBlock
@@ -122,6 +135,19 @@ export const GET_PAGE_PREVIEW = gql`
 			title
 			slug {
 				current
+			}
+			meta {
+				metaTitle
+				metaDescription
+				openGraphImage {
+					asset {
+						_id
+						_type
+						assetId
+					}
+				}
+				openGraphTitle
+				openGraphDescription
 			}
 			content {
 				__typename
@@ -184,6 +210,19 @@ export const GET_POST = gql`
 			slug {
 				current
 			}
+			meta {
+				metaTitle
+				metaDescription
+				openGraphImage {
+					asset {
+						_id
+						_type
+						assetId
+					}
+				}
+				openGraphTitle
+				openGraphDescription
+			}
 			author {
 				name
 				image {
@@ -225,6 +264,19 @@ export const GET_POST_PREVIEW = gql`
 			}
 			slug {
 				current
+			}
+			meta {
+				metaTitle
+				metaDescription
+				openGraphImage {
+					asset {
+						_id
+						_type
+						assetId
+					}
+				}
+				openGraphTitle
+				openGraphDescription
 			}
 			author {
 				name

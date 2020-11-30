@@ -9,6 +9,7 @@ module.exports = {
 	},
 	poweredByHeader: false,
 	reactStrictMode: true,
+	trailingSlash: true,
 	images: {
 		deviceSizes: [320, 420, 768, 1024, 1200],
 		iconSizes: [],

@@ -11,6 +11,7 @@ import externalLink from './objects/external-link';
 import internalLink from './objects/internal-link';
 import link from './objects/link';
 import cell from './objects/cell';
+import metaFields from './objects/meta';
 
 import gridBlock from './modules/grid-block';
 import imageBlock from './modules/image-block';
@@ -26,6 +27,7 @@ export default createSchema({
 		page,
 		post,
 		siteSettings,
+		metaFields,
 		columns,
 		externalLink,
 		internalLink,
