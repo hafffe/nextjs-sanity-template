@@ -282,6 +282,7 @@ type Page implements Document {
   """Title of the page"""
   title: String
   slug: Slug
+  meta: MetaFields
   content: [GridBlockOrImageBlockOrTextBlockOrYoutubeBlock]
 }
 
@@ -291,6 +292,16 @@ type Slug {
   current: String
 }
 
+type MetaFields {
+  _key: String
+  _type: String
+  metaTitle: String
+  metaDescription: String
+  openGraphImage: Image
+  openGraphTitle: String
+  openGraphDescription: String
+}
+
 union GridBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | ImageBlock | TextBlock | YoutubeBlock
 
 type GridBlock {
@@ -298,7 +309,6 @@ type GridBlock {
   _type: String
   title: String
   columns: Columns
-  spacing: String
   items: [ImageBlockOrTextBlockOrYoutubeBlock]
 }
 
@@ -369,6 +379,7 @@ type Post implements Document {
   """Title of the page"""
   title: String
   slug: Slug
+  meta: MetaFields
 
   """Select author for post"""
   author: Person
@@ -729,12 +740,23 @@ input PageFilter {
   _key: StringFilter
   title: StringFilter
   slug: SlugFilter
+  meta: MetaFieldsFilter
 }
 
 input SlugFilter {
   _key: StringFilter
   _type: StringFilter
   current: StringFilter
+}
+
+input MetaFieldsFilter {
+  _key: StringFilter
+  _type: StringFilter
+  metaTitle: StringFilter
+  metaDescription: StringFilter
+  openGraphImage: ImageFilter
+  openGraphTitle: StringFilter
+  openGraphDescription: StringFilter
 }
 
 input PageSorting {
@@ -746,12 +768,23 @@ input PageSorting {
   _key: SortOrder
   title: SortOrder
   slug: SlugSorting
+  meta: MetaFieldsSorting
 }
 
 input SlugSorting {
   _key: SortOrder
   _type: SortOrder
   current: SortOrder
+}
+
+input MetaFieldsSorting {
+  _key: SortOrder
+  _type: SortOrder
+  metaTitle: SortOrder
+  metaDescription: SortOrder
+  openGraphImage: ImageSorting
+  openGraphTitle: SortOrder
+  openGraphDescription: SortOrder
 }
 
 input PostFilter {
@@ -765,6 +798,7 @@ input PostFilter {
   _key: StringFilter
   title: StringFilter
   slug: SlugFilter
+  meta: MetaFieldsFilter
   author: PersonFilter
   publishedAt: DatetimeFilter
   excerpt: SimpleTextBlockFilter
@@ -784,6 +818,7 @@ input PostSorting {
   _key: SortOrder
   title: SortOrder
   slug: SlugSorting
+  meta: MetaFieldsSorting
   publishedAt: SortOrder
   excerpt: SimpleTextBlockSorting
 }
@@ -1093,7 +1128,6 @@ input GridBlockFilter {
   _type: StringFilter
   title: StringFilter
   columns: ColumnsFilter
-  spacing: StringFilter
 }
 
 input ImageBlockFilter {
@@ -1165,7 +1199,6 @@ input GridBlockSorting {
   _type: SortOrder
   title: SortOrder
   columns: ColumnsSorting
-  spacing: SortOrder
 }
 
 input ImageBlockSorting {

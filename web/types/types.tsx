@@ -1,5 +1,7 @@
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export interface Scalars {
   ID: string;
@@ -288,6 +290,7 @@ export interface Page extends Document {
   /** Title of the page */
   title: Maybe<Scalars['String']>;
   slug: Maybe<Slug>;
+  meta: Maybe<MetaFields>;
   content: Maybe<Array<Maybe<GridBlockOrImageBlockOrTextBlockOrYoutubeBlock>>>;
 }
 
@@ -298,6 +301,17 @@ export interface Slug {
   current: Maybe<Scalars['String']>;
 }
 
+export interface MetaFields {
+  __typename: 'MetaFields';
+  _key: Maybe<Scalars['String']>;
+  _type: Maybe<Scalars['String']>;
+  metaTitle: Maybe<Scalars['String']>;
+  metaDescription: Maybe<Scalars['String']>;
+  openGraphImage: Maybe<Image>;
+  openGraphTitle: Maybe<Scalars['String']>;
+  openGraphDescription: Maybe<Scalars['String']>;
+}
+
 export type GridBlockOrImageBlockOrTextBlockOrYoutubeBlock = GridBlock | ImageBlock | TextBlock | YoutubeBlock;
 
 export interface GridBlock {
@@ -306,7 +320,6 @@ export interface GridBlock {
   _type: Maybe<Scalars['String']>;
   title: Maybe<Scalars['String']>;
   columns: Maybe<Columns>;
-  spacing: Maybe<Scalars['String']>;
   items: Maybe<Array<Maybe<ImageBlockOrTextBlockOrYoutubeBlock>>>;
 }
 
@@ -369,6 +382,7 @@ export interface Post extends Document {
   /** Title of the page */
   title: Maybe<Scalars['String']>;
   slug: Maybe<Slug>;
+  meta: Maybe<MetaFields>;
   /** Select author for post */
   author: Maybe<Person>;
   /** You can use this field to schedule post where you show them */
@@ -706,12 +720,23 @@ export interface PageFilter {
   _key: Maybe<StringFilter>;
   title: Maybe<StringFilter>;
   slug: Maybe<SlugFilter>;
+  meta: Maybe<MetaFieldsFilter>;
 }
 
 export interface SlugFilter {
   _key: Maybe<StringFilter>;
   _type: Maybe<StringFilter>;
   current: Maybe<StringFilter>;
+}
+
+export interface MetaFieldsFilter {
+  _key: Maybe<StringFilter>;
+  _type: Maybe<StringFilter>;
+  metaTitle: Maybe<StringFilter>;
+  metaDescription: Maybe<StringFilter>;
+  openGraphImage: Maybe<ImageFilter>;
+  openGraphTitle: Maybe<StringFilter>;
+  openGraphDescription: Maybe<StringFilter>;
 }
 
 export interface PageSorting {
@@ -723,12 +748,23 @@ export interface PageSorting {
   _key: Maybe<SortOrder>;
   title: Maybe<SortOrder>;
   slug: Maybe<SlugSorting>;
+  meta: Maybe<MetaFieldsSorting>;
 }
 
 export interface SlugSorting {
   _key: Maybe<SortOrder>;
   _type: Maybe<SortOrder>;
   current: Maybe<SortOrder>;
+}
+
+export interface MetaFieldsSorting {
+  _key: Maybe<SortOrder>;
+  _type: Maybe<SortOrder>;
+  metaTitle: Maybe<SortOrder>;
+  metaDescription: Maybe<SortOrder>;
+  openGraphImage: Maybe<ImageSorting>;
+  openGraphTitle: Maybe<SortOrder>;
+  openGraphDescription: Maybe<SortOrder>;
 }
 
 export interface PostFilter {
@@ -742,6 +778,7 @@ export interface PostFilter {
   _key: Maybe<StringFilter>;
   title: Maybe<StringFilter>;
   slug: Maybe<SlugFilter>;
+  meta: Maybe<MetaFieldsFilter>;
   author: Maybe<PersonFilter>;
   publishedAt: Maybe<DatetimeFilter>;
   excerpt: Maybe<SimpleTextBlockFilter>;
@@ -761,6 +798,7 @@ export interface PostSorting {
   _key: Maybe<SortOrder>;
   title: Maybe<SortOrder>;
   slug: Maybe<SlugSorting>;
+  meta: Maybe<MetaFieldsSorting>;
   publishedAt: Maybe<SortOrder>;
   excerpt: Maybe<SimpleTextBlockSorting>;
 }
@@ -1060,7 +1098,6 @@ export interface GridBlockFilter {
   _type: Maybe<StringFilter>;
   title: Maybe<StringFilter>;
   columns: Maybe<ColumnsFilter>;
-  spacing: Maybe<StringFilter>;
 }
 
 export interface ImageBlockFilter {
@@ -1132,7 +1169,6 @@ export interface GridBlockSorting {
   _type: Maybe<SortOrder>;
   title: Maybe<SortOrder>;
   columns: Maybe<ColumnsSorting>;
-  spacing: Maybe<SortOrder>;
 }
 
 export interface ImageBlockSorting {
@@ -1197,6 +1233,16 @@ export type PageQuery = (
     & { slug: Maybe<(
       { __typename: 'Slug' }
       & Pick<Slug, 'current'>
+    )>, meta: Maybe<(
+      { __typename: 'MetaFields' }
+      & Pick<MetaFields, 'metaTitle' | 'metaDescription' | 'openGraphTitle' | 'openGraphDescription'>
+      & { openGraphImage: Maybe<(
+        { __typename: 'Image' }
+        & { asset: Maybe<(
+          { __typename: 'SanityImageAsset' }
+          & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+        )> }
+      )> }
     )>, content: Maybe<Array<Maybe<(
       { __typename: 'GridBlock' }
       & Pick<GridBlock, '_key' | '_type'>
@@ -1261,6 +1307,16 @@ export type GetPagePreviewQuery = (
     & { slug: Maybe<(
       { __typename: 'Slug' }
       & Pick<Slug, 'current'>
+    )>, meta: Maybe<(
+      { __typename: 'MetaFields' }
+      & Pick<MetaFields, 'metaTitle' | 'metaDescription' | 'openGraphTitle' | 'openGraphDescription'>
+      & { openGraphImage: Maybe<(
+        { __typename: 'Image' }
+        & { asset: Maybe<(
+          { __typename: 'SanityImageAsset' }
+          & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+        )> }
+      )> }
     )>, content: Maybe<Array<Maybe<(
       { __typename: 'GridBlock' }
       & Pick<GridBlock, '_key' | '_type'>
@@ -1395,6 +1451,16 @@ export type GetPostQuery = (
     & { slug: Maybe<(
       { __typename: 'Slug' }
       & Pick<Slug, 'current'>
+    )>, meta: Maybe<(
+      { __typename: 'MetaFields' }
+      & Pick<MetaFields, 'metaTitle' | 'metaDescription' | 'openGraphTitle' | 'openGraphDescription'>
+      & { openGraphImage: Maybe<(
+        { __typename: 'Image' }
+        & { asset: Maybe<(
+          { __typename: 'SanityImageAsset' }
+          & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+        )> }
+      )> }
     )>, author: Maybe<(
       { __typename: 'Person' }
       & Pick<Person, 'name'>
@@ -1472,6 +1538,16 @@ export type GetPostPreviewQuery = (
     )>, slug: Maybe<(
       { __typename: 'Slug' }
       & Pick<Slug, 'current'>
+    )>, meta: Maybe<(
+      { __typename: 'MetaFields' }
+      & Pick<MetaFields, 'metaTitle' | 'metaDescription' | 'openGraphTitle' | 'openGraphDescription'>
+      & { openGraphImage: Maybe<(
+        { __typename: 'Image' }
+        & { asset: Maybe<(
+          { __typename: 'SanityImageAsset' }
+          & Pick<SanityImageAsset, '_id' | '_type' | 'assetId'>
+        )> }
+      )> }
     )>, author: Maybe<(
       { __typename: 'Person' }
       & Pick<Person, 'name'>
