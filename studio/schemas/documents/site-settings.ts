@@ -51,18 +51,6 @@ export default {
 			validation: (Rule: any) => Rule.required()
 		},
 		{
-			name: 'keywords',
-			title: 'Keywords',
-			description: 'Keywords for search engines',
-			fieldset: 'meta',
-			type: 'array',
-			of: [{type: 'string'}],
-			options: {
-				layout: 'tags'
-			},
-			validation: (Rule: any) => Rule.required()
-		},
-		{
 			title: 'Navigation',
 			name: 'navigation',
 			description: 'Select pages or link for main navigation',

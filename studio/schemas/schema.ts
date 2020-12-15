@@ -10,7 +10,6 @@ import columns from './objects/columns';
 import externalLink from './objects/external-link';
 import internalLink from './objects/internal-link';
 import link from './objects/link';
-import cell from './objects/cell';
 import metaFields from './objects/meta';
 import socialFields from './objects/social-fields';
 import simpleBlockContent from './objects/simple-block-content';
@@ -34,7 +33,6 @@ export default createSchema({
 		internalLink,
 		link,
 		simpleBlockContent,
-		cell,
 		grid,
 		mainImage,
 		socialFields,

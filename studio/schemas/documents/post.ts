@@ -81,7 +81,8 @@ export default {
 			title: 'Published at',
 			description: 'You can use this field to schedule post where you show them',
 			type: 'datetime',
-			fieldset: 'meta'
+			fieldset: 'meta',
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'keywords',
@@ -100,7 +101,8 @@ export default {
 			type: 'simpleBlockContent',
 			title: 'Excerpt',
 			description: 'This ends up on summary pages, when people share your post in social media.',
-			fieldset: 'excerpt'
+			fieldset: 'excerpt',
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'content',
