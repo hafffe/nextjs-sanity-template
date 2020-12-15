@@ -27,7 +27,7 @@ export default {
 		},
 		{
 			name: 'text',
-			type: 'block'
+			type: 'blockContent'
 		}
 	],
 	preview: {

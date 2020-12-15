@@ -19,19 +19,6 @@ export default {
 			options: {
 				isHighlighted: true
 			}
-		},
-		{
-			name: 'layout',
-			title: 'Layout',
-			type: 'string',
-			options: {
-				isHighlighted: true,
-				list: [
-					{title: 'Full width', value: 'full'},
-					{title: 'Orignal width', value: 'original'}
-				],
-				layout: 'dropdown'
-			}
 		}
 	],
 	preview: {
