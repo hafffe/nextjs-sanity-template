@@ -1,7 +1,7 @@
 import {RiYoutubeLine} from 'react-icons/ri';
 
 export default {
-	name: 'youtubeBlock',
+	name: 'youtube',
 	type: 'object',
 	title: 'YouTube Embed',
 	icon: RiYoutubeLine,

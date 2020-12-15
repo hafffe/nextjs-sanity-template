@@ -64,7 +64,7 @@ export default {
 			title: 'Page sections',
 			description: 'Add, edit, and reorder sections',
 			fieldset: 'content',
-			of: [{type: 'gridBlock'}, {type: 'imageBlock'}, {type: 'textBlock'}, {type: 'youtubeBlock'}]
+			of: [{type: 'grid'}, {type: 'mainImage'}, {type: 'blockContent'}, {type: 'spacer'}, {type: 'youtube'}]
 		}
 	],
 	preview: {

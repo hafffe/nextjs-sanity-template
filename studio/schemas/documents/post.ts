@@ -97,9 +97,9 @@ export default {
 		},
 		{
 			name: 'excerpt',
-			type: 'simpleTextBlock',
+			type: 'simpleBlockContent',
 			title: 'Excerpt',
-			description: 'This ends up on summary pages, on Google, when people share your 	post in social media.',
+			description: 'This ends up on summary pages, when people share your post in social media.',
 			fieldset: 'excerpt'
 		},
 		{
@@ -108,7 +108,7 @@ export default {
 			title: 'Content',
 			description: 'Add, edit, and reorder sections with content',
 			fieldset: 'content',
-			of: [{type: 'gridBlock'}, {type: 'imageBlock'}, {type: 'textBlock'}, {type: 'youtubeBlock'}]
+			of: [{type: 'grid'}, {type: 'mainImage'}, {type: 'blockContent'}, {type: 'youtube'}]
 		}
 	],
 	initialValue: () => ({

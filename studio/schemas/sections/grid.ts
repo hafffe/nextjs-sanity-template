@@ -1,7 +1,7 @@
 import {RiLayoutGridLine} from 'react-icons/ri';
 
 export default {
-	name: 'gridBlock',
+	name: 'grid',
 	type: 'object',
 	title: 'Grid',
 	hidden: true,
@@ -45,7 +45,7 @@ export default {
 			options: {
 				layout: 'grid'
 			},
-			of: [{type: 'imageBlock'}, {type: 'textBlock'}, {type: 'youtubeBlock'}]
+			of: [{type: 'mainImage'}, {type: 'blockContent'}, {type: 'youtube'}]
 		}
 	],
 	preview: {

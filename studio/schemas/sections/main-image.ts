@@ -1,9 +1,9 @@
 import {RiImageLine} from 'react-icons/ri';
 
 export default {
-	name: 'imageBlock',
+	name: 'mainImage',
 	title: 'Image',
-	description: 'Image Block',
+	description: 'Image',
 	type: 'image',
 	icon: RiImageLine,
 	options: {

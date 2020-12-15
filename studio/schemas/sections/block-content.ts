@@ -1,8 +1,9 @@
 import {RiFileTextLine} from 'react-icons/ri';
 
 export default {
-	title: 'Text Section',
-	name: 'textBlock',
+	title: 'Block Content',
+	name: 'blockContent',
+	description: 'Text Block',
 	type: 'object',
 	hidden: false,
 	icon: RiFileTextLine,

@@ -12,13 +12,14 @@ import internalLink from './objects/internal-link';
 import link from './objects/link';
 import cell from './objects/cell';
 import metaFields from './objects/meta';
-
-import gridBlock from './modules/grid-block';
-import imageBlock from './modules/image-block';
-import simpleTextBlock from './objects/simple-text-block';
 import socialFields from './objects/social-fields';
-import textBlock from './modules/text-block';
-import youtubeBlock from './modules/youtube-block';
+import simpleBlockContent from './objects/simple-block-content';
+
+import blockContent from './sections/block-content';
+import grid from './sections/grid';
+import mainImage from './sections/main-image';
+import spacer from './sections/spacer';
+import youtube from './sections/youtube';
 
 export default createSchema({
 	name: 'default',
@@ -32,12 +33,13 @@ export default createSchema({
 		externalLink,
 		internalLink,
 		link,
+		simpleBlockContent,
 		cell,
-		gridBlock,
-		imageBlock,
-		simpleTextBlock,
+		grid,
+		mainImage,
 		socialFields,
-		textBlock,
-		youtubeBlock
+		blockContent,
+		spacer,
+		youtube
 	])
 });
