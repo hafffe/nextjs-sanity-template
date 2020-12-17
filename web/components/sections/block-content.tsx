@@ -1,10 +1,11 @@
 import {Box, Flex, Heading, Link, Text, useColorMode} from '@chakra-ui/react';
 import BlockContent from '@sanity/block-content-to-react';
 import {IoIosQuote} from 'react-icons/io';
-import {TextBlock as TextBlockProps, SimpleTextBlock} from '../types/types';
+import {BlockContent as BlockContentType} from '@/models/sections/block-content';
+import {SimpleBlockContent} from '@/models/objects/simple-block-content';
 
 type Props = {
-	data: TextBlockProps | SimpleTextBlock;
+	data: BlockContentType | SimpleBlockContent;
 };
 
 const serializers = (colorMode: any) => ({
@@ -69,8 +70,8 @@ const serializers = (colorMode: any) => ({
 
 const TextBlock = ({data}: Props) => {
 	const {colorMode} = useColorMode();
-
-	return <BlockContent blocks={data.textRaw} serializers={serializers(colorMode)} />;
+	console.log('data', data);
+	return <BlockContent blocks={data.text} serializers={serializers(colorMode)} />;
 };
 
 export default TextBlock;

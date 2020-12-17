@@ -3,7 +3,7 @@ import {useRouter} from 'next/router';
 import ErrorPage from 'next/error';
 import {Flex} from '@chakra-ui/react';
 import {apiClient} from '../lib/api';
-import {SITE_SETTINGS, GET_PAGE, GET_PAGES_WITH_SLUG} from '../lib/queries';
+import {SITE_SETTINGS, GET_PAGE, GET_PAGES_WITH_SLUG} from '../lib/graphql/queries';
 import {Page, PageQuery, SiteSettings, SiteSettingsQuery, GetAllPagesWithSlugQuery} from '../types/types';
 import {renderBlocks} from '../components/utils/render-blocks';
 import {Layout} from '../components';

@@ -1,13 +1,13 @@
 import {Box, Image} from '@chakra-ui/react';
-import {ImageBlock as ImageBlockProps} from '../types/types';
-import {urlFor} from '../lib/utils';
+import {Image as MainImage} from '@/models/sections/image';
+import {urlFor} from '../../lib/utils';
 
 type Props = {
-	data: ImageBlockProps;
+	data: MainImage;
 };
 
 const ImageBlock = ({data}: Props) => {
-	const url = data?.asset?._id && urlFor(data.asset._id).width(1200).auto('format').url();
+	const url = data.asset && urlFor(data.asset).width(1200).auto('format').url();
 
 	if (!url) {
 		return null;

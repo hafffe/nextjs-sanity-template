@@ -1,13 +1,14 @@
 import Blocks from './blocks';
 import Footer from './footer';
-import Grid from './grid';
 import Header from './header';
-import ImageBlock from './image-block';
 import Layout from './layout';
 import PostList from './post-list';
 import PreviewAlert from './preview-alert';
 import Seo from './seo';
-import TextBlock from './text-block';
-import YouTubeBlock from './youtube-block';
+import BlockContent from './sections/block-content';
+import Grid from './sections/grid';
+import MainImage from './sections/main-image';
+import Spacer from './sections/spacer';
+import YouTube from './sections/youtube';
 
-export {Blocks, Footer, Grid, Header, ImageBlock, Layout, PostList, PreviewAlert, Seo, TextBlock, YouTubeBlock};
+export {Blocks, Footer, Grid, Header, MainImage, Layout, PostList, PreviewAlert, Seo, Spacer, BlockContent, YouTube};

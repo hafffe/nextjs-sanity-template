@@ -1,4 +1,7 @@
 import {SanityImageAsset} from '@sanity/asset-utils';
+import {MainImage} from './image';
+import {BlockContent} from './block-content';
+import {Youtube} from './youtube';
 
 export interface Grid {
 	_type: 'grid';
@@ -10,5 +13,5 @@ export interface Grid {
 		medium: string;
 		large: string;
 	};
-	items: any;
+	items?: Array<MainImage | BlockContent | Youtube>;
 }

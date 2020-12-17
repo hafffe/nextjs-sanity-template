@@ -1,20 +1,22 @@
-import {Grid, ImageBlock, TextBlock, YouTubeBlock} from '.';
-import {GridBlockOrImageBlockOrTextBlockOrYoutubeBlock} from '../types/types';
+import {BlockContent, Grid, MainImage, Spacer, YouTube} from '.';
+import {PageSections} from '@/models/sections';
 
-const blocks = ({block}: {block: GridBlockOrImageBlockOrTextBlockOrYoutubeBlock}) => {
-	switch (block.__typename) {
-		case 'TextBlock':
-			return <TextBlock data={block} />;
-		case 'GridBlock':
+const SectionBlocks = ({block}: {block: PageSections}) => {
+	switch (block._type) {
+		case 'blockContent':
+			return <BlockContent data={block} />;
+		case 'grid':
 			return <Grid data={block} />;
-		case 'ImageBlock':
-			return <ImageBlock data={block} />;
-		case 'YoutubeBlock':
-			return <YouTubeBlock data={block} />;
+		case 'mainImage':
+			return <MainImage data={block} />;
+		case 'youtube':
+			return <YouTube data={block} />;
+		case 'spacer':
+			return <Spacer data={block} />;
 		default:
 			console.log('Block is undefined and not rendered');
 			return null;
 	}
 };
 
-export default blocks;
+export default SectionBlocks;

@@ -1,17 +1,18 @@
 import {SanityDocument, Slug} from '@sanity/types';
 import {MetaFields} from './meta-fields';
-import {Spacer} from './sections/spacer';
+import {PostSections} from './sections';
 import {SimpleBlockContent} from './objects/simple-block-content';
 import {Person} from './person';
+import {SanityReference} from './utils';
 
 export interface Post extends SanityDocument {
 	_type: 'post';
 	publishedAt: string;
 	slug: Slug;
-	author: Person;
+	author: SanityReference<Person>;
 	title: string;
 	excerpt: SimpleBlockContent;
 	keywords: string[];
 	metaFields?: MetaFields;
-	content?: Spacer;
+	content?: PostSections[];
 }

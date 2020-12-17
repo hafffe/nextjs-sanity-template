@@ -1,6 +1,6 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import {apiClient} from '../../lib/api';
-import {GET_POST_PREVIEW, GET_PAGE_PREVIEW} from '../../lib/queries';
+import {GET_POST_PREVIEW, GET_PAGE_PREVIEW} from '../../lib/graphql/queries';
 import {GetPostPreviewQuery, GetPagePreviewQuery} from '../../types/types';
 
 const api = async (request: NextApiRequest, response: NextApiResponse) => {

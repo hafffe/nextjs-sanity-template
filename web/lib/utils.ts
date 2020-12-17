@@ -1,4 +1,6 @@
-import imageUrlBuilder from '@sanity/image-url';
+import sanityClient from '@sanity/client';
+import {createImageUrlBuilder} from 'next-sanity';
+import {SanityImageAsset} from '@sanity/asset-utils';
 
 const config = {
 	projectId: `${process.env.PROJECT_ID}`,
@@ -6,6 +8,6 @@ const config = {
 	useCdn: true
 };
 
-const builder = imageUrlBuilder(config);
+export const client = sanityClient(config);
 
-export const urlFor = (source: string) => builder.image(source);
+export const urlFor = (source: SanityImageAsset) => createImageUrlBuilder(config).image(source);

@@ -1,25 +1,44 @@
-import axios, {AxiosRequestConfig} from 'axios';
-import {print, DocumentNode} from 'graphql';
+import {client} from './utils';
+import {SiteSettings} from '../models/site-settings';
+import {Page} from '../models/page';
+import {Post} from '../models/post';
+import {pageById, pageBySlug, post, posts, siteSettings} from './queries';
 
-export const apiClient = async <T>(query: DocumentNode, variables: Record<string, unknown> = {}): Promise<T> => {
-	const options: AxiosRequestConfig = {
-		method: 'post',
-		url: `${process.env.GRAPHQL_URL}`,
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${process.env.GRAPHQL_TOKEN}`
-		}
-	};
+export const fetchSiteSettings = async () => {
+	const data = await client.fetch<SiteSettings>(siteSettings);
+	return data;
+};
 
-	const response = await axios({
-		...options,
-		data: {
-			query: print(query),
-			variables
-		}
+export const fetchPageById = async (id: string, preview?: boolean) => {
+	const data = await client.fetch<Page>(pageById, {
+		id
 	});
 
-	const {data} = response.data;
+	return data;
+};
 
-	return data as Promise<T>;
+export const fetchPageBySlug = async (slug: string, preview?: boolean) => {
+	console.log('preview', preview);
+
+	const data = await client.fetch<Page>(pageBySlug, {
+		slug
+	});
+
+	return data;
+};
+
+export const fetchPost = async (id: string, preview?: boolean) => {
+	const data = await client.fetch<Post>(post, {
+		slug: id
+	});
+
+	return data;
+};
+
+export const fetchPosts = async (limit: number, preview?: boolean) => {
+	const data = await client.fetch<Post[]>(posts, {
+		limit
+	});
+
+	return data;
 };

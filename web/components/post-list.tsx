@@ -2,17 +2,17 @@ import Link from 'next/link';
 import {format} from 'date-fns';
 import {v4 as uuidv4} from 'uuid';
 import {Badge, Box, Flex, Heading, Link as Li, Stack, Text} from '@chakra-ui/react';
-import {Post as PostType} from '../types/types';
-import {TextBlock} from '.';
+import {Post} from '@/models/post';
+import {BlockContent} from '.';
 
 type Props = {
-	allPost: PostType[];
+	posts: Post[];
 	layout: 'minimal' | 'original';
 };
 
-const PostList = ({allPost, layout}: Props) => (
+const PostList = ({posts, layout}: Props) => (
 	<Flex direction='column' width='100%'>
-		{allPost.map((post) => {
+		{posts.map((post) => {
 			if (!post.slug?.current) {
 				return null;
 			}
@@ -53,7 +53,7 @@ const PostList = ({allPost, layout}: Props) => (
 					<Stack isInline spacing={4}>
 						{keywords}
 					</Stack>
-					<Box paddingY={2}>{post?.excerpt && <TextBlock data={post.excerpt} />}</Box>
+					<Box paddingY={2}>{post?.excerpt && <BlockContent data={post.excerpt} />}</Box>
 				</Flex>
 			);
 		})}

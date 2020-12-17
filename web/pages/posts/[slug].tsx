@@ -8,7 +8,7 @@ import {renderBlocks} from '../../components/utils/render-blocks';
 import {Layout} from '../../components';
 import {apiClient} from '../../lib/api';
 import {urlFor} from '../../lib/utils';
-import {SITE_SETTINGS, GET_POST, GET_POSTS_WITH_SLUG} from '../../lib/queries';
+import {SITE_SETTINGS, GET_POST, GET_POSTS_WITH_SLUG} from '../../lib/graphql/queries';
 import {
 	Post as PostType,
 	GetPostQuery,

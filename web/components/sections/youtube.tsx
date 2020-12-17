@@ -1,9 +1,9 @@
 import getYouTubeId from 'get-youtube-id';
 import YouTube from 'react-youtube';
-import {YoutubeBlock as YoutubeBlockProps} from '../types/types';
+import {Youtube as YoutubeType} from '@/models/sections/youtube';
 
 type Props = {
-	data: YoutubeBlockProps;
+	data: YoutubeType;
 };
 
 const YoutubeBlock = ({data}: Props) => {

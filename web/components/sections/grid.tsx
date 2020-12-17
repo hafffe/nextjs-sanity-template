@@ -1,9 +1,9 @@
 import {SimpleGrid} from '@chakra-ui/react';
-import {GridBlock} from '../types/types';
-import {renderBlocks} from './utils/render-blocks';
+import {Grid as GridType} from '@/models/sections/grid';
+import {renderBlocks} from '../utils/render-blocks';
 
 type Props = {
-	data: GridBlock;
+	data: GridType;
 };
 
 const Grid = ({data}: Props) => {

@@ -1,9 +1,9 @@
 import {Fragment} from 'react';
 import {v4 as uuidv4} from 'uuid';
-import {GridBlockOrImageBlockOrTextBlockOrYoutubeBlock, Maybe} from '../../types/types';
+import {Sections} from '@/models/sections';
 import {Blocks} from '..';
 
-type Props = Array<Maybe<GridBlockOrImageBlockOrTextBlockOrYoutubeBlock>> | null;
+type Props = Sections[] | null;
 
 export const renderBlocks = (content: Props) => {
 	if (!content) {
@@ -11,10 +11,6 @@ export const renderBlocks = (content: Props) => {
 	}
 
 	return content.map((block) => {
-		if (!block?.__typename) {
-			return null;
-		}
-
 		const key = block._key ?? uuidv4();
 
 		return (
