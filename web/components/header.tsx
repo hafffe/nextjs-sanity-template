@@ -13,11 +13,12 @@ import {
 import {RiMenuLine} from 'react-icons/ri';
 import MainMenu from './main-menu';
 import useViewport from './utils/viewport';
-import {ExternalLinkOrInternalLink, Maybe} from '../types/types';
+import {InternalLink} from '@/models/objects/internal-link';
+import {ExternalLink} from '@/models/objects/external-link';
 import {DarkModeSwitch} from './dark-mode-switch';
 
 type Props = {
-	navigation?: Maybe<Array<Maybe<ExternalLinkOrInternalLink>>>;
+	navigation?: Array<InternalLink | ExternalLink>;
 	colorMode: string;
 };
 

@@ -2,7 +2,7 @@ import {client} from './utils';
 import {SiteSettings} from '../models/site-settings';
 import {Page} from '../models/page';
 import {Post} from '../models/post';
-import {pageById, pageBySlug, post, posts, siteSettings} from './queries';
+import {allPagesSlug, allPostSlug, pageById, pageBySlug, post, posts, siteSettings} from './queries';
 
 export const fetchSiteSettings = async () => {
 	const data = await client.fetch<SiteSettings>(siteSettings);
@@ -17,8 +17,10 @@ export const fetchPageById = async (id: string, preview?: boolean) => {
 	return data;
 };
 
-export const fetchPageBySlug = async (slug: string, preview?: boolean) => {
-	console.log('preview', preview);
+export const fetchPageBySlug = async (slug?: string, preview?: boolean) => {
+	if (typeof slug === 'undefined') {
+		return null;
+	}
 
 	const data = await client.fetch<Page>(pageBySlug, {
 		slug
@@ -27,10 +29,26 @@ export const fetchPageBySlug = async (slug: string, preview?: boolean) => {
 	return data;
 };
 
-export const fetchPost = async (id: string, preview?: boolean) => {
+export const fetchAllPagesSlug = async () => {
+	const data = await client.fetch<string[]>(allPagesSlug);
+
+	return data;
+};
+
+export const fetchPost = async (slug?: string, preview?: boolean) => {
+	if (typeof slug === 'undefined') {
+		return null;
+	}
+
 	const data = await client.fetch<Post>(post, {
-		slug: id
+		slug
 	});
+
+	return data;
+};
+
+export const fetchAllPostSlug = async () => {
+	const data = await client.fetch<string[]>(allPostSlug);
 
 	return data;
 };

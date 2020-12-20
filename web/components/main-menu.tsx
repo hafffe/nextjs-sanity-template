@@ -1,25 +1,29 @@
-import Link from 'next/link';
-import {Flex, Link as Li} from '@chakra-ui/react';
-import {v4 as uuidv4} from 'uuid';
-import {ExternalLinkOrInternalLink, Maybe} from '../types/types';
+import NextLink from 'next/link';
+import {Flex, Link} from '@chakra-ui/react';
+import {InternalLink} from '@/models/objects/internal-link';
+import {ExternalLink} from '@/models/objects/external-link';
 
 type Props = {
-	navigation?: Maybe<Array<Maybe<ExternalLinkOrInternalLink>>>;
+	navigation?: Array<InternalLink | ExternalLink>;
 	direction?: 'row' | 'column';
 };
 
-const resolveLink = (x: ExternalLinkOrInternalLink) => {
-	if (x.__typename === 'ExternalLink' && x.slug?.current) {
+const resolveLink = (item: InternalLink | ExternalLink) => {
+	if (item._type === 'externalLink' && item.slug?.current) {
 		return {
-			isExternal: true,
-			url: x.slug.current
+			type: item._type,
+			key: item._key,
+			title: item.title,
+			url: item.slug.current
 		};
 	}
 
-	if (x.__typename === 'InternalLink' && x.link?.slug?.current) {
+	if (item._type === 'internalLink' && item.link?.slug?.current) {
 		return {
-			isExternal: false,
-			url: x.link.slug.current === 'frontpage' ? '/' : `/${x.link.slug.current}`
+			type: item._type,
+			key: item._key,
+			title: item.title,
+			url: item.link.slug.current === 'frontpage' ? '/' : `/${item.link.slug.current}/`
 		};
 	}
 
@@ -33,24 +37,24 @@ const MainMenu = ({navigation, direction = 'row'}: Props) => {
 
 	return (
 		<Flex direction={direction}>
-			{navigation.map((x) => {
-				const link = resolveLink(x as ExternalLinkOrInternalLink);
+			{navigation.map((item) => {
+				const link = resolveLink(item);
 
-				if (!link || !x?.title) {
+				if (!link || !link.url || !link.title) {
 					return null;
 				}
 
-				if (link.isExternal) {
+				if (link.type === 'internalLink') {
 					return (
-						<Li key={x._key ?? uuidv4()} isExternal href={link.url} padding={3}>
-							{x.title}
-						</Li>
+						<NextLink key={link.key} passHref href={link.url}>
+							<Link padding={3}>{link.title}</Link>
+						</NextLink>
 					);
 				}
 
 				return (
-					<Link key={x._key ?? uuidv4()} passHref as={link.url} href={link.url}>
-						<Li padding={3}>{x.title}</Li>
+					<Link key={link.key} href={link.url} padding={3}>
+						{link.title}
 					</Link>
 				);
 			})}

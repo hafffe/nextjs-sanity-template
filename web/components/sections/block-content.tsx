@@ -70,7 +70,7 @@ const serializers = (colorMode: any) => ({
 
 const TextBlock = ({data}: Props) => {
 	const {colorMode} = useColorMode();
-	console.log('data', data);
+
 	return <BlockContent blocks={data.text} serializers={serializers(colorMode)} />;
 };
 

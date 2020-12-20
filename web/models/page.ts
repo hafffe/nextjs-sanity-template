@@ -5,6 +5,6 @@ import {PageSections} from './sections';
 export interface Page extends SanityDocument {
 	slug: Slug;
 	title: string;
-	metaFields?: MetaFields;
+	meta?: MetaFields;
 	content?: PageSections[];
 }

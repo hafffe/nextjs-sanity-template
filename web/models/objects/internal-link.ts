@@ -1,8 +1,12 @@
 import {Page} from '../page';
+import {SanityReference} from '../utils';
+import {Slug} from '@sanity/types';
 
 export interface InternalLink {
 	_type: 'internalLink';
 	_key: string;
 	title: string;
-	slug: Page;
+	link?: {
+		slug: Slug;
+	};
 }

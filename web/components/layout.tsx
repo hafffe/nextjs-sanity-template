@@ -1,17 +1,25 @@
 import {ReactNode} from 'react';
 import Head from 'next/head';
 import {Flex, useColorMode} from '@chakra-ui/react';
-import {SiteSettings} from '../models/site-settings';
-import {Footer, Header, PreviewAlert} from '.';
+import {SiteSettings} from '@/models/site-settings';
+import {MetaFields} from '@/models/meta-fields';
+import {Footer, Header, PreviewAlert, Seo} from '.';
 
 type Props = {
 	siteSettings: SiteSettings;
 	children?: ReactNode;
 	preview: boolean;
+	meta?: MetaFields;
 };
 
-const Layout = ({siteSettings, preview, children}: Props) => {
+const Layout = ({siteSettings, meta, preview, children}: Props) => {
 	const {colorMode} = useColorMode();
+
+	const fallbackMeta = {
+		title: siteSettings?.title ?? undefined,
+		description: siteSettings?.description ?? undefined,
+		keywords: siteSettings?.keywords ?? undefined
+	};
 
 	return (
 		<>
@@ -21,6 +29,7 @@ const Layout = ({siteSettings, preview, children}: Props) => {
 				<meta content='width=device-width, initial-scale=1' name='viewport' />
 				<meta content='follow, index' name='robots' />
 			</Head>
+			<Seo meta={meta} fallbackMeta={fallbackMeta} />
 			<Flex
 				flexDirection='column'
 				minHeight='100vh'
@@ -28,7 +37,7 @@ const Layout = ({siteSettings, preview, children}: Props) => {
 				color={colorMode === 'dark' ? 'lightGrayBase' : 'darkGrayBase'}
 			>
 				<PreviewAlert preview={preview} />
-				<Header navigation={siteSettings?.navigation} colorMode={colorMode} />
+				<Header navigation={siteSettings.navigation} colorMode={colorMode} />
 				<Flex
 					as='main'
 					maxWidth='1200px'

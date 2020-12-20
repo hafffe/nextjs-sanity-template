@@ -7,3 +7,7 @@ export const pageById = groq`
 export const pageBySlug = groq`
 	*[_type == 'page' && slug.current == $slug][0]
 `;
+
+export const allPagesSlug = groq`
+	*[_type == 'page' && defined(slug.current) && slug.current != 'frontpage' && slug.current != 'posts'][].slug.current
+`;

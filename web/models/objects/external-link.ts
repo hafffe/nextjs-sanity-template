@@ -4,5 +4,5 @@ export interface ExternalLink {
 	_type: 'externalLink';
 	_key: string;
 	title: string;
-	slug: Slug;
+	slug?: Slug;
 }

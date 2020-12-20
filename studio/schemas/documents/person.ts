@@ -9,22 +9,26 @@ export default {
 		{
 			name: 'name',
 			title: 'Name',
-			type: 'string'
+			type: 'string',
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'title',
 			title: 'Job title',
-			type: 'string'
+			type: 'string',
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'phone',
 			title: 'Phone',
-			type: 'string'
+			type: 'string',
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'email',
 			title: 'email',
-			type: 'email'
+			type: 'email',
+			validation: (Rule: any) => Rule.required()
 		},
 		{
 			name: 'image',
@@ -32,7 +36,8 @@ export default {
 			type: 'image',
 			options: {
 				hotspot: true
-			}
+			},
+			validation: (Rule: any) => Rule.required()
 		}
 	],
 	preview: {

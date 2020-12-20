@@ -2,9 +2,9 @@ import {GetStaticProps, GetStaticPaths} from 'next';
 import {useRouter} from 'next/router';
 import ErrorPage from 'next/error';
 import {Flex} from '@chakra-ui/react';
-import {apiClient} from '../lib/api';
-import {SITE_SETTINGS, GET_PAGE, GET_PAGES_WITH_SLUG} from '../lib/graphql/queries';
-import {Page, PageQuery, SiteSettings, SiteSettingsQuery, GetAllPagesWithSlugQuery} from '../types/types';
+import {SiteSettings} from '../models/site-settings';
+import {Page} from '../models/page';
+import {fetchAllPagesSlug, fetchPageBySlug, fetchSiteSettings} from '../lib/api';
 import {renderBlocks} from '../components/utils/render-blocks';
 import {Layout} from '../components';
 
@@ -21,7 +21,7 @@ const Index = ({page, siteSettings, preview}: Props) => {
 		return <ErrorPage statusCode={404} />;
 	}
 
-	const meta = page?.meta ?? undefined;
+	const meta = page.meta ?? undefined;
 
 	return (
 		<Layout siteSettings={siteSettings} meta={meta} preview={preview}>
@@ -33,30 +33,20 @@ const Index = ({page, siteSettings, preview}: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({params, preview = false}) => {
-	const {SiteSettings} = await apiClient<SiteSettingsQuery>(SITE_SETTINGS);
-	const {allPage} = await apiClient<PageQuery>(GET_PAGE, {
-		id: params?.slug?.toString()
-	});
+	const slug = params?.slug?.toString();
+	const siteSettings = await fetchSiteSettings();
+	const page = await fetchPageBySlug(slug);
 
-	const page = preview ? allPage.find((page) => page?._id?.includes('draft')) ?? allPage[0] : allPage[0];
-
-	return {props: {page, siteSettings: SiteSettings, preview}, revalidate: 1};
+	return {props: {siteSettings, page, preview}, revalidate: 1};
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const data = await apiClient<GetAllPagesWithSlugQuery>(GET_PAGES_WITH_SLUG);
-	const pages = data.allPage
-		.filter((page) => page?.slug?.current)
-		.filter((page) => page?.slug?.current !== '/')
-		.filter((page) => page?.slug?.current !== 'posts');
-
-	const paths = pages.map((page) => ({
-		params: {slug: page?.slug?.current?.toString()}
-	}));
+	const data = await fetchAllPagesSlug();
+	const paths = data.map((slug) => ({params: {slug}}));
 
 	return {
 		paths,
-		fallback: false
+		fallback: true
 	};
 };
 

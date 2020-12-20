@@ -9,10 +9,10 @@ export interface Post extends SanityDocument {
 	_type: 'post';
 	publishedAt: string;
 	slug: Slug;
-	author: SanityReference<Person>;
+	author: Person;
 	title: string;
 	excerpt: SimpleBlockContent;
 	keywords: string[];
-	metaFields?: MetaFields;
+	meta?: MetaFields;
 	content?: PostSections[];
 }
