@@ -1,5 +1,5 @@
 import {BlockContent, Grid, MainImage, Spacer, YouTube} from '.';
-import {PageSections} from '@/models/sections';
+import {PageSections} from '@models/sections';
 
 const SectionBlocks = ({block}: {block: PageSections}) => {
 	switch (block._type) {

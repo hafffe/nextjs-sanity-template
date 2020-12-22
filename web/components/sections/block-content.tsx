@@ -1,8 +1,8 @@
 import {Box, Flex, Heading, Link, Text, useColorMode} from '@chakra-ui/react';
 import BlockContent from '@sanity/block-content-to-react';
 import {IoIosQuote} from 'react-icons/io';
-import {BlockContent as BlockContentType} from '@/models/sections/block-content';
-import {SimpleBlockContent} from '@/models/objects/simple-block-content';
+import {BlockContent as BlockContentType} from '@models/sections/block-content';
+import {SimpleBlockContent} from '@models/objects/simple-block-content';
 
 type Props = {
 	data: BlockContentType | SimpleBlockContent;

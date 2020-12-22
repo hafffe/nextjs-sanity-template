@@ -1,7 +1,7 @@
 import NextLink from 'next/link';
 import {Flex, Link} from '@chakra-ui/react';
-import {InternalLink} from '@/models/objects/internal-link';
-import {ExternalLink} from '@/models/objects/external-link';
+import {InternalLink} from '@models/objects/internal-link';
+import {ExternalLink} from '@models/objects/external-link';
 
 type Props = {
 	navigation?: Array<InternalLink | ExternalLink>;

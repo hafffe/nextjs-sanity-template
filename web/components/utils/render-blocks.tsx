@@ -1,11 +1,11 @@
 import {Fragment} from 'react';
 import {v4 as uuidv4} from 'uuid';
-import {Sections} from '@/models/sections';
+import {Sections} from '@models/sections';
 import {Blocks} from '..';
 
 type Props = Sections[] | null;
 
-export const renderBlocks = (content: Props) => {
+const renderBlocks = (content: Props) => {
 	if (!content) {
 		return null;
 	}
@@ -20,3 +20,5 @@ export const renderBlocks = (content: Props) => {
 		);
 	});
 };
+
+export default renderBlocks;

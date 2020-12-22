@@ -2,12 +2,11 @@ import {GetStaticProps} from 'next';
 import Link from 'next/link';
 import {Flex, Divider, Heading, Icon, Link as ChakraLink} from '@chakra-ui/react';
 import {RiArrowRightLine} from 'react-icons/ri';
-import {fetchPageBySlug, fetchPosts, fetchSiteSettings} from '@/lib/api';
-import {SiteSettings} from '@/models/site-settings';
-import {Page} from '@/models/page';
-import {Post} from '@/models/post';
-import {renderBlocks} from '@/components/utils/render-blocks';
-import {Layout, PostList} from '../components';
+import {fetchPageBySlug, fetchPosts, fetchSiteSettings} from '@lib/api';
+import {SiteSettings} from '@models/site-settings';
+import {Page} from '@models/page';
+import {Post} from '@models/post';
+import {Layout, PostList, renderBlocks} from '@components/index';
 
 type Props = {
 	preview: boolean;

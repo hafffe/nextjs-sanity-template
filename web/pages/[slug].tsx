@@ -2,11 +2,10 @@ import {GetStaticProps, GetStaticPaths} from 'next';
 import {useRouter} from 'next/router';
 import ErrorPage from 'next/error';
 import {Flex} from '@chakra-ui/react';
-import {SiteSettings} from '@/models/site-settings';
-import {Page} from '@/models/page';
-import {fetchAllPagesSlug, fetchPageBySlug, fetchSiteSettings} from '@/lib/api';
-import {renderBlocks} from '@/components/utils/render-blocks';
-import {Layout} from '../components';
+import {SiteSettings} from '@models/site-settings';
+import {Page} from '@models/page';
+import {fetchAllPagesSlug, fetchPageBySlug, fetchSiteSettings} from '@lib/api';
+import {Layout, renderBlocks} from '@components/index';
 
 type Props = {
 	preview: boolean;

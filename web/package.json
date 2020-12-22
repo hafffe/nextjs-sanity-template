@@ -73,9 +73,9 @@
 			"/node_modules/"
 		],
 		"moduleNameMapper": {
-			"@/components/(.*)": "<rootDir>/components/$1",
-			"@/lib/(.*)": "<rootDir>/lib/$1",
-			"@/models/(.*)": "<rootDir>/models/$1"
+			"@components/(.*)": "<rootDir>/components/$1",
+			"@lib/(.*)": "<rootDir>/lib/$1",
+			"@models/(.*)": "<rootDir>/models/$1"
 		}
 	}
 }

@@ -1,6 +1,6 @@
 import {RiFacebookBoxLine, RiInstagramLine, RiTwitterLine} from 'react-icons/ri';
 import {Flex, Link, Stack, Text} from '@chakra-ui/react';
-import {SocialFields} from '@/models/objects/social-fields';
+import {SocialFields} from '@models/objects/social-fields';
 
 type Props = {
 	socialFields?: SocialFields;

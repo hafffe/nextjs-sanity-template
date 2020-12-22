@@ -10,5 +10,20 @@ import Grid from './sections/grid';
 import MainImage from './sections/main-image';
 import Spacer from './sections/spacer';
 import YouTube from './sections/youtube';
+import renderBlocks from './utils/render-blocks';
 
-export {Blocks, Footer, Grid, Header, MainImage, Layout, PostList, PreviewAlert, Seo, Spacer, BlockContent, YouTube};
+export {
+	Blocks,
+	Footer,
+	Grid,
+	Header,
+	MainImage,
+	Layout,
+	PostList,
+	PreviewAlert,
+	Seo,
+	Spacer,
+	BlockContent,
+	YouTube,
+	renderBlocks
+};

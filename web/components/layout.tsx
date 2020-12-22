@@ -1,8 +1,8 @@
 import {ReactNode} from 'react';
 import Head from 'next/head';
 import {Flex, useColorMode} from '@chakra-ui/react';
-import {SiteSettings} from '@/models/site-settings';
-import {MetaFields} from '@/models/meta-fields';
+import {SiteSettings} from '@models/site-settings';
+import {MetaFields} from '@models/meta-fields';
 import {Footer, Header, PreviewAlert, Seo} from '.';
 
 type Props = {

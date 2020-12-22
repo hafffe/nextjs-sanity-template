@@ -21,9 +21,9 @@
 		"target": "esnext",
 		"baseUrl": ".",
 		"paths": {
-			"@/components/*": ["components/*"],
-			"@/models/*": ["models/*"],
-			"@/lib/*": ["lib/*"]
+			"@components/*": ["components/*"],
+			"@models/*": ["models/*"],
+			"@lib/*": ["lib/*"]
 		}
 	},
 	"exclude": ["node_modules", "types/globalTypes.ts"],

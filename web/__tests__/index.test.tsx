@@ -1,7 +1,7 @@
 import React from 'react';
 import {ChakraProvider} from '@chakra-ui/react';
 import {render, cleanup} from '@testing-library/react';
-import {Header, BlockContent} from '../components';
+import {Header, BlockContent} from '@components/index';
 import theme from '../constants/theme';
 
 afterEach(cleanup);

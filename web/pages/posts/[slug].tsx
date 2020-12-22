@@ -4,12 +4,11 @@ import {GetStaticProps, GetStaticPaths} from 'next';
 import {Avatar, Badge, Flex, Heading, Stack, Text} from '@chakra-ui/react';
 import {format} from 'date-fns';
 import {v4 as uuidv4} from 'uuid';
-import {SiteSettings} from '@/models/site-settings';
-import {Post as PostProps} from '@/models/post';
-import {renderBlocks} from '@/components/utils/render-blocks';
-import {Layout} from '../../components';
-import {fetchAllPostSlug, fetchPost, fetchSiteSettings} from '@/lib/api';
-import {urlFor} from '@/lib/utils';
+import {SiteSettings} from '@models/site-settings';
+import {Post as PostProps} from '@models/post';
+import {Layout, renderBlocks} from '@components/index';
+import {fetchAllPostSlug, fetchPost, fetchSiteSettings} from '@lib/api';
+import {urlFor} from '@lib/utils';
 
 type Props = {
 	preview: boolean;

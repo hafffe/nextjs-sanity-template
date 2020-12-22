@@ -1,6 +1,6 @@
 import {Box, Image} from '@chakra-ui/react';
-import {Image as MainImage} from '@/models/sections/image';
-import {urlFor} from '@/lib/utils';
+import {Image as MainImage} from '@models/sections/image';
+import {urlFor} from '@lib/utils';
 
 type Props = {
 	data: MainImage;

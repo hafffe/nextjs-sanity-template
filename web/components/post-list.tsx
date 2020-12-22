@@ -2,7 +2,7 @@ import Link from 'next/link';
 import {format} from 'date-fns';
 import {v4 as uuidv4} from 'uuid';
 import {Badge, Box, Flex, Heading, Link as Li, Stack, Text} from '@chakra-ui/react';
-import {Post} from '@/models/post';
+import {Post} from '@models/post';
 import {BlockContent} from '.';
 
 type Props = {

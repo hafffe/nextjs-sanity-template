@@ -1,5 +1,5 @@
 import {Box} from '@chakra-ui/react';
-import {Spacer as SpacerType} from '@/models/sections/spacer';
+import {Spacer as SpacerType} from '@models/sections/spacer';
 
 type Props = {
 	data: SpacerType;

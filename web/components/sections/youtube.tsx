@@ -1,6 +1,6 @@
 import getYouTubeId from 'get-youtube-id';
 import YouTube from 'react-youtube';
-import {Youtube as YoutubeType} from '@/models/sections/youtube';
+import {Youtube as YoutubeType} from '@models/sections/youtube';
 
 type Props = {
 	data: YoutubeType;
