@@ -8,8 +8,6 @@
 		"build:web": "lerna bootstrap && (cd web && npm run build)",
 		"build:studio": "lerna bootstrap && (cd studio && npm run build)",
 		"deploy:studio": "lerna run deploy",
-		"deploy:graphql": "lerna run graphql-deploy:production",
-		"deploy:graphql-stage": "lerna run graphql-deploy:staging",
 		"dev": "lerna run dev --parallel",
 		"postinstall": "lerna bootstrap",
 		"test": "xo && lerna run test --parallel",
@@ -32,7 +30,6 @@
 		"eslint-plugin-react": "^7.21.5",
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"lerna": "^3.22.1",
-		"sanity-codegen": "^0.3.1",
 		"typescript": "^4.1.2",
 		"xo": "^0.34.2"
 	},

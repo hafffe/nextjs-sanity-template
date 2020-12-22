@@ -10,8 +10,7 @@
 		"test": "jest",
 		"lint": "xo",
 		"test:watch": "jest --watch",
-		"typecheck": "tsc",
-		"generate": "gql-gen --config codegen.yml"
+		"typecheck": "tsc"
 	},
 	"dependencies": {
 		"@chakra-ui/react": "^1.0.1",
@@ -22,7 +21,6 @@
 		"@sanity/block-content-to-react": "^2.0.7",
 		"@sanity/client": "^1.149.13",
 		"@sanity/image-url": "^0.140.19",
-		"axios": "^0.21.0",
 		"date-fns": "^2.16.1",
 		"framer-motion": "^2.9.4",
 		"get-youtube-id": "^1.0.1",
