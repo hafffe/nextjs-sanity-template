@@ -33,7 +33,7 @@ describe('Render textBlock', () => {
 							_key: 'e1c46425ef59',
 							_type: 'span',
 							marks: [],
-							text: 'BlockContent'
+							text: 'This is BlockContent'
 						}
 					],
 					markDefs: [],
@@ -48,7 +48,7 @@ describe('Render textBlock', () => {
 			</ChakraProvider>
 		);
 
-		const testSentence = getByText('This is a textBlock');
+		const testSentence = getByText('This is BlockContent');
 		expect(testSentence).toBeInTheDocument();
 	});
 
@@ -86,7 +86,7 @@ describe('Render textBlock', () => {
 			</ChakraProvider>
 		);
 
-		const testSentence = getByText('Test link');
-		expect(testSentence).toHaveAttribute('href', 'https://www.test.com/');
+		const testSentence = getByText('link');
+		expect(testSentence).toHaveAttribute('href', 'https://google.com');
 	});
 });

@@ -20,9 +20,11 @@ const Seo = ({meta, fallbackMeta}: Props) => {
 	const openGraphTitle = meta?.openGraphTitle ?? fallbackMeta?.title ?? SEO.title;
 	const openGraphDescription = meta?.openGraphDescription ?? fallbackMeta?.description ?? SEO.description;
 	const imageUrl =
-		(meta?.openGraphImage?.asset && urlFor(meta.openGraphImage.asset).auto('format').url()) ??
+		(meta?.openGraphImage?.asset && urlFor(meta.openGraphImage.asset).auto('format').width(600).height(600).url()) ??
 		SEO.openGraph.images[0].url;
 
+	console.log('title', title);
+	console.log('imageUrl', imageUrl);
 	return (
 		<NextSeo
 			title={title}
