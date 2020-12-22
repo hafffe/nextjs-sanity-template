@@ -37,7 +37,7 @@ const Layout = ({siteSettings, meta, preview, children}: Props) => {
 				color={colorMode === 'dark' ? 'lightGrayBase' : 'darkGrayBase'}
 			>
 				<PreviewAlert preview={preview} />
-				<Header navigation={siteSettings.navigation} colorMode={colorMode} />
+				<Header navigation={siteSettings?.navigation} colorMode={colorMode} />
 				<Flex
 					as='main'
 					maxWidth='1200px'

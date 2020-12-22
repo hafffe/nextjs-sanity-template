@@ -21,7 +21,7 @@ const Index = ({page, siteSettings, preview}: Props) => {
 		return <ErrorPage statusCode={404} />;
 	}
 
-	const meta = page.meta ?? undefined;
+	const meta = page?.meta ?? undefined;
 
 	return (
 		<Layout siteSettings={siteSettings} meta={meta} preview={preview}>
@@ -37,7 +37,14 @@ export const getStaticProps: GetStaticProps = async ({params, preview = false}) 
 	const siteSettings = await fetchSiteSettings({preview});
 	const page = await fetchPageBySlug({slug, preview});
 
-	return {props: {siteSettings, page, preview}, revalidate: 1};
+	return {
+		props: {
+			preview,
+			page,
+			siteSettings
+		},
+		revalidate: 1
+	};
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

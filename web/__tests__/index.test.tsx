@@ -1,7 +1,7 @@
 import React from 'react';
 import {ChakraProvider} from '@chakra-ui/react';
 import {render, cleanup} from '@testing-library/react';
-import {Header, TextBlock} from '../components';
+import {Header, BlockContent} from '../components';
 import theme from '../constants/theme';
 
 afterEach(cleanup);
@@ -22,28 +22,29 @@ describe('Render Logo', () => {
 describe('Render textBlock', () => {
 	test('Renders a text ', async () => {
 		const data = {
-			__typename: 'TextBlock' as const,
-			_key: '1988643bca8a',
-			_type: 'textBlock',
-			textRaw: [
+			_key: '5df1bc457b45',
+			_type: 'blockContent' as const,
+			text: [
 				{
-					_key: '3f9d7e51cb9b',
-					_type: 'block',
+					_key: 'ab9801d55f96',
+					_type: 'block' as const,
 					children: [
 						{
-							_key: '3f9d7e51cb9b0',
+							_key: 'e1c46425ef59',
 							_type: 'span',
 							marks: [],
-							text: 'This is a textBlock'
+							text: 'BlockContent'
 						}
-					]
+					],
+					markDefs: [],
+					style: 'h3'
 				}
 			]
 		};
 
 		const {getByText} = render(
 			<ChakraProvider theme={theme}>
-				<TextBlock data={data} />
+				<BlockContent data={data} />
 			</ChakraProvider>
 		);
 
@@ -53,35 +54,35 @@ describe('Render textBlock', () => {
 
 	test('Renders a link', async () => {
 		const data = {
-			__typename: 'TextBlock' as const,
-			_key: '1988643bca8a',
-			_type: 'textBlock',
-			textRaw: [
+			_key: '6b7e1f02ca47',
+			_type: 'blockContent' as const,
+			text: [
 				{
-					_key: '3f9d7e51cb9b',
-					_type: 'block',
+					_key: 'af76f863b70c',
+					_type: 'block' as const,
 					children: [
 						{
-							_key: '3f9d7e51cb9b1',
+							_key: '64974fb8906c',
 							_type: 'span',
-							marks: ['36b5cc448779'],
-							text: 'Test link'
+							marks: ['051267172cd2'],
+							text: 'link'
 						}
 					],
 					markDefs: [
 						{
-							_key: '36b5cc448779',
+							_key: '051267172cd2',
 							_type: 'link',
-							href: 'https://www.test.com/'
+							href: 'https://google.com'
 						}
-					]
+					],
+					style: 'normal'
 				}
 			]
 		};
 
 		const {getByText} = render(
 			<ChakraProvider theme={theme}>
-				<TextBlock data={data} />
+				<BlockContent data={data} />
 			</ChakraProvider>
 		);
 

@@ -1,9 +1,9 @@
 import {RiFacebookBoxLine, RiInstagramLine, RiTwitterLine} from 'react-icons/ri';
 import {Flex, Link, Stack, Text} from '@chakra-ui/react';
-import {Maybe, SocialFields} from '../types/types';
+import {SocialFields} from '@/models/objects/social-fields';
 
 type Props = {
-	socialFields: Maybe<SocialFields>;
+	socialFields?: SocialFields;
 };
 
 const Footer = ({socialFields}: Props) => (

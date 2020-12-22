@@ -1,5 +1,5 @@
 import {SanityImageSource} from '@sanity/asset-utils';
-import {createClient, createImageUrlBuilder, createPreviewSubscriptionHook, createCurrentUserHook} from 'next-sanity';
+import {createClient, createImageUrlBuilder, createPreviewSubscriptionHook} from 'next-sanity';
 
 const config = {
 	projectId: `${process.env.PROJECT_ID}`,

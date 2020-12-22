@@ -6,12 +6,13 @@ import {allPagesSlug, allPostSlug, page, pageDraft, post, postDraft, posts, site
 
 export const fetchSiteSettings = async ({preview = false}: {preview: boolean}) => {
 	const data = await getClient(preview).fetch<SiteSettings>(siteSettings);
+
 	return data;
 };
 
 export const fetchPageBySlug = async ({slug, preview = false}: {slug?: string; preview: boolean}) => {
 	if (typeof slug === 'undefined') {
-		return null;
+		return {};
 	}
 
 	const query = preview ? page : pageDraft;
@@ -30,7 +31,7 @@ export const fetchAllPagesSlug = async ({preview = false}: {preview: boolean}) =
 
 export const fetchPost = async ({slug, preview = false}: {slug?: string; preview: boolean}) => {
 	if (typeof slug === 'undefined') {
-		return null;
+		return {};
 	}
 
 	const query = preview ? postDraft : post;

@@ -3,7 +3,7 @@ export interface SanityBlock {
 	_type: 'block';
 }
 
-export type SanityReference<T> = {
+export type SanityReference<_T> = {
 	_type: 'reference';
 	_key?: string;
 	_ref: string;

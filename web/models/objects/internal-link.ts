@@ -1,5 +1,3 @@
-import {Page} from '../page';
-import {SanityReference} from '../utils';
 import {Slug} from '@sanity/types';
 
 export interface InternalLink {
