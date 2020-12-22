@@ -7,6 +7,13 @@ export const post = groq`
 	}
 `;
 
+export const postDraft = groq`
+	*[_type == 'post' && slug.current == $slug && _id in path("drafts.**")][0] {
+		...,
+		author->
+	}
+`;
+
 export const posts = groq`
 	*[_type == 'post' && defined(slug.current)][0...$limit] | order(_createdAt desc)
 `;

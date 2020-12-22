@@ -1,7 +1,7 @@
 import {GetStaticProps} from 'next';
 import {Flex} from '@chakra-ui/react';
-import {fetchPageById, fetchPosts, fetchSiteSettings} from '../../lib/api';
-import {renderBlocks} from '../../components/utils/render-blocks';
+import {fetchPageBySlug, fetchPosts, fetchSiteSettings} from '@/lib/api';
+import {renderBlocks} from '@/components/utils/render-blocks';
 import {SiteSettings} from '@/models/site-settings';
 import {Page} from '@/models/page';
 import {Post} from '@/models/post';
@@ -28,9 +28,9 @@ const Posts = ({posts, page, siteSettings, preview}: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({preview = false}) => {
-	const siteSettings = await fetchSiteSettings();
-	const page = await fetchPageById('posts');
-	const posts = await fetchPosts(10);
+	const siteSettings = await fetchSiteSettings({preview});
+	const page = await fetchPageBySlug({slug: 'posts', preview});
+	const posts = await fetchPosts({limit: 10, preview});
 
 	return {props: {siteSettings, page, posts, preview}, revalidate: 1};
 };

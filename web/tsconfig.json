@@ -22,7 +22,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/components/*": ["components/*"],
-			"@/models/*": ["models/*"]
+			"@/models/*": ["models/*"],
+			"@/lib/*": ["lib/*"]
 		}
 	},
 	"exclude": ["node_modules", "types/globalTypes.ts"],

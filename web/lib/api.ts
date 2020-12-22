@@ -1,60 +1,54 @@
-import {client} from './utils';
+import {getClient} from './utils';
 import {SiteSettings} from '../models/site-settings';
 import {Page} from '../models/page';
 import {Post} from '../models/post';
-import {allPagesSlug, allPostSlug, pageById, pageBySlug, post, posts, siteSettings} from './queries';
+import {allPagesSlug, allPostSlug, page, pageDraft, post, postDraft, posts, siteSettings} from './queries';
 
-export const fetchSiteSettings = async () => {
-	const data = await client.fetch<SiteSettings>(siteSettings);
+export const fetchSiteSettings = async ({preview = false}: {preview: boolean}) => {
+	const data = await getClient(preview).fetch<SiteSettings>(siteSettings);
 	return data;
 };
 
-export const fetchPageById = async (id: string, preview?: boolean) => {
-	const data = await client.fetch<Page>(pageById, {
-		id
-	});
-
-	return data;
-};
-
-export const fetchPageBySlug = async (slug?: string, preview?: boolean) => {
+export const fetchPageBySlug = async ({slug, preview = false}: {slug?: string; preview: boolean}) => {
 	if (typeof slug === 'undefined') {
 		return null;
 	}
 
-	const data = await client.fetch<Page>(pageBySlug, {
+	const query = preview ? page : pageDraft;
+	const data = await getClient(preview).fetch<Page>(query, {
 		slug
 	});
 
 	return data;
 };
 
-export const fetchAllPagesSlug = async () => {
-	const data = await client.fetch<string[]>(allPagesSlug);
+export const fetchAllPagesSlug = async ({preview = false}: {preview: boolean}) => {
+	const data = await getClient(preview).fetch<string[]>(allPagesSlug);
 
 	return data;
 };
 
-export const fetchPost = async (slug?: string, preview?: boolean) => {
+export const fetchPost = async ({slug, preview = false}: {slug?: string; preview: boolean}) => {
 	if (typeof slug === 'undefined') {
 		return null;
 	}
 
-	const data = await client.fetch<Post>(post, {
+	const query = preview ? postDraft : post;
+	const data = await getClient(preview).fetch<Post>(query, {
 		slug
 	});
 
 	return data;
 };
 
-export const fetchAllPostSlug = async () => {
-	const data = await client.fetch<string[]>(allPostSlug);
+export const fetchAllPostSlug = async ({preview = false}: {preview: boolean}) => {
+	const data = await getClient(preview).fetch<string[]>(allPostSlug);
 
 	return data;
 };
 
-export const fetchPosts = async (limit: number, preview?: boolean) => {
-	const data = await client.fetch<Post[]>(posts, {
+export const fetchPosts = async ({limit = 10, preview = false}: {limit: number; preview: boolean}) => {
+	const data = await getClient(preview).fetch<Post[]>(posts, {
 		limit
 	});
 

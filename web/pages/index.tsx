@@ -2,11 +2,11 @@ import {GetStaticProps} from 'next';
 import Link from 'next/link';
 import {Flex, Divider, Heading, Icon, Link as ChakraLink} from '@chakra-ui/react';
 import {RiArrowRightLine} from 'react-icons/ri';
-import {fetchPageById, fetchPosts, fetchSiteSettings} from '../lib/api';
+import {fetchPageBySlug, fetchPosts, fetchSiteSettings} from '@/lib/api';
 import {SiteSettings} from '@/models/site-settings';
 import {Page} from '@/models/page';
 import {Post} from '@/models/post';
-import {renderBlocks} from '../components/utils/render-blocks';
+import {renderBlocks} from '@/components/utils/render-blocks';
 import {Layout, PostList} from '../components';
 
 type Props = {
@@ -41,9 +41,9 @@ const Index = ({page, posts, siteSettings, preview}: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({preview = false}) => {
-	const siteSettings = await fetchSiteSettings();
-	const page = await fetchPageById('frontpage');
-	const posts = await fetchPosts(5);
+	const siteSettings = await fetchSiteSettings({preview});
+	const page = await fetchPageBySlug({slug: 'frontpage', preview});
+	const posts = await fetchPosts({limit: 5, preview});
 
 	return {props: {siteSettings, page, posts, preview}, revalidate: 1};
 };

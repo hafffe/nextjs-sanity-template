@@ -2,10 +2,10 @@ import {GetStaticProps, GetStaticPaths} from 'next';
 import {useRouter} from 'next/router';
 import ErrorPage from 'next/error';
 import {Flex} from '@chakra-ui/react';
-import {SiteSettings} from '../models/site-settings';
-import {Page} from '../models/page';
-import {fetchAllPagesSlug, fetchPageBySlug, fetchSiteSettings} from '../lib/api';
-import {renderBlocks} from '../components/utils/render-blocks';
+import {SiteSettings} from '@/models/site-settings';
+import {Page} from '@/models/page';
+import {fetchAllPagesSlug, fetchPageBySlug, fetchSiteSettings} from '@/lib/api';
+import {renderBlocks} from '@/components/utils/render-blocks';
 import {Layout} from '../components';
 
 type Props = {
@@ -34,14 +34,14 @@ const Index = ({page, siteSettings, preview}: Props) => {
 
 export const getStaticProps: GetStaticProps = async ({params, preview = false}) => {
 	const slug = params?.slug?.toString();
-	const siteSettings = await fetchSiteSettings();
-	const page = await fetchPageBySlug(slug);
+	const siteSettings = await fetchSiteSettings({preview});
+	const page = await fetchPageBySlug({slug, preview});
 
 	return {props: {siteSettings, page, preview}, revalidate: 1};
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const data = await fetchAllPagesSlug();
+	const data = await fetchAllPagesSlug({preview: false});
 	const paths = data.map((slug) => ({params: {slug}}));
 
 	return {

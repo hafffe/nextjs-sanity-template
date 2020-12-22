@@ -1,7 +1,7 @@
 import {NextSeo} from 'next-seo';
 import {useRouter} from 'next/router';
-import {MetaFields} from '../types/types';
-import {urlFor} from '../lib/utils';
+import {MetaFields} from '@/models/meta-fields';
+import {urlFor} from '@/lib/utils';
 import SEO from '../next-seo.config';
 
 type Props = {
@@ -20,7 +20,7 @@ const Seo = ({meta, fallbackMeta}: Props) => {
 	const openGraphTitle = meta?.openGraphTitle ?? fallbackMeta?.title ?? SEO.title;
 	const openGraphDescription = meta?.openGraphDescription ?? fallbackMeta?.description ?? SEO.description;
 	const imageUrl =
-		(meta?.openGraphImage?.asset?._id && urlFor(meta.openGraphImage.asset._id).auto('format').url()) ??
+		(meta?.openGraphImage?.asset && urlFor(meta.openGraphImage.asset).auto('format').url()) ??
 		SEO.openGraph.images[0].url;
 
 	return (

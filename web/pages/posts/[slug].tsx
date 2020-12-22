@@ -6,10 +6,10 @@ import {format} from 'date-fns';
 import {v4 as uuidv4} from 'uuid';
 import {SiteSettings} from '@/models/site-settings';
 import {Post as PostProps} from '@/models/post';
-import {renderBlocks} from '../../components/utils/render-blocks';
+import {renderBlocks} from '@/components/utils/render-blocks';
 import {Layout} from '../../components';
-import {fetchAllPostSlug, fetchPost, fetchSiteSettings} from '../../lib/api';
-import {urlFor} from '../../lib/utils';
+import {fetchAllPostSlug, fetchPost, fetchSiteSettings} from '@/lib/api';
+import {urlFor} from '@/lib/utils';
 
 type Props = {
 	preview: boolean;
@@ -26,7 +26,7 @@ const Post = ({post, siteSettings, preview}: Props) => {
 
 	const meta = post?.meta ?? undefined;
 	const avatar =
-		(post.author.image.asset && urlFor(post.author.image.asset).width(400).auto('format').url()) || undefined;
+		(post.author.image.asset && urlFor(post.author.image.asset).width(200).auto('format').url()) || undefined;
 	const keywords = post.keywords?.map((x) => <Badge key={uuidv4()}>{x}</Badge>);
 
 	return (
@@ -50,8 +50,11 @@ const Post = ({post, siteSettings, preview}: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({params, preview = false}) => {
-	const siteSettings = await fetchSiteSettings();
-	const post = await fetchPost(params?.slug?.toString());
+	const siteSettings = await fetchSiteSettings({preview});
+	const post = await fetchPost({
+		slug: params?.slug?.toString(),
+		preview
+	});
 
 	return {
 		props: {
@@ -64,7 +67,7 @@ export const getStaticProps: GetStaticProps = async ({params, preview = false}) 
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const data = await fetchAllPostSlug();
+	const data = await fetchAllPostSlug({preview: false});
 	const paths = data.map((slug) => ({params: {slug}}));
 
 	return {
