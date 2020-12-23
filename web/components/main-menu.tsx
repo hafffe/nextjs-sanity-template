@@ -53,7 +53,7 @@ const MainMenu = ({navigation, direction = 'row'}: Props) => {
 				}
 
 				return (
-					<Link key={link.key} href={link.url} padding={3}>
+					<Link key={link.key} isExternal href={link.url} padding={3}>
 						{link.title}
 					</Link>
 				);
