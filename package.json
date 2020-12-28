@@ -4,15 +4,10 @@
 	"description": "Next.js & Sanity template",
 	"private": true,
 	"scripts": {
-		"build": "lerna run build --parallel",
-		"build:web": "lerna bootstrap && (cd web && npm run build)",
-		"build:studio": "lerna bootstrap && (cd studio && npm run build)",
-		"deploy:studio": "lerna run deploy",
-		"dev": "lerna run dev --parallel",
-		"postinstall": "lerna bootstrap",
-		"test": "xo && lerna run test --parallel",
-		"lint": "xo",
-		"version": "lerna version"
+		"dev": "concurrently \"next\" \"cd studio && sanity start\"",
+		"start": "vercel dev",
+		"build": "echo 'Building Sanity to public/studio…' && cd studio && sanity build ../public/studio -y && cd .. && next build",
+		"test": "xo && jest"
 	},
 	"keywords": [
 		"JAMstack",
@@ -21,17 +16,80 @@
 	],
 	"author": "Aron Hafner",
 	"license": "MIT",
+	"dependencies": {
+		"@chakra-ui/react": "^1.0.4",
+		"@chakra-ui/theme-tools": "^1.0.2",
+		"@emotion/react": "^11.1.4",
+		"@emotion/styled": "^11.0.0",
+		"@sanity/asset-utils": "^1.1.2",
+		"@sanity/block-content-to-react": "^2.0.7",
+		"@sanity/client": "^2.1.0",
+		"@sanity/image-url": "^0.140.19",
+		"date-fns": "^2.16.1",
+		"framer-motion": "^3.1.1",
+		"get-youtube-id": "^1.0.1",
+		"next": "^10.0.4",
+		"next-sanity": "^0.1.8",
+		"next-seo": "^4.17.0",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-icons": "^4.1.0",
+		"react-youtube": "^7.13.0",
+		"uuid": "^8.3.2"
+	},
 	"devDependencies": {
 		"@sanity/cli": "^2.0.9",
+		"@sanity/types": "^2.1.0",
+		"@testing-library/jest-dom": "^5.11.6",
+		"@testing-library/react": "^11.2.2",
+		"@types/jest": "^26.0.19",
+		"@types/node": "^14.14.14",
+		"@types/react": "^17.0.0",
+		"@types/react-dom": "^17.0.0",
+		"@types/uuid": "^8.3.0",
 		"@typescript-eslint/eslint-plugin": "^4.8.2",
 		"@typescript-eslint/parser": "^4.8.2",
+		"babel-jest": "^26.6.3",
+		"concurrently": "^5.3.0",
 		"eslint-config-xo-react": "^0.23.0",
 		"eslint-config-xo-typescript": "^0.36.0",
 		"eslint-plugin-react": "^7.21.5",
 		"eslint-plugin-react-hooks": "^4.2.0",
-		"lerna": "^3.22.1",
+		"jest": "^26.6.3",
 		"typescript": "^4.1.2",
+		"vercel": "^21.0.1",
 		"xo": "^0.34.2"
+	},
+	"babel": {
+		"plugins": [],
+		"presets": [
+			"next/babel"
+		]
+	},
+	"jest": {
+		"collectCoverageFrom": [
+			"**/*.{js,jsx,ts,tsx}",
+			"!**/*.d.ts",
+			"!**/node_modules/**"
+		],
+		"setupFilesAfterEnv": [
+			"@testing-library/jest-dom/extend-expect"
+		],
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			"/.next/"
+		],
+		"transform": {
+			"^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
+		},
+		"transformIgnorePatterns": [
+			"/node_modules/"
+		],
+		"moduleNameMapper": {
+			"@components/(.*)": "<rootDir>/components/$1",
+			"@lib/(.*)": "<rootDir>/lib/$1",
+			"@models/(.*)": "<rootDir>/models/$1"
+		}
 	},
 	"prettier": {
 		"printWidth": 120,
@@ -54,9 +112,9 @@
 			"js"
 		],
 		"ignore": [
-			"*/**/next.config.js",
-			"*/**/next-env.d.ts",
-			"*/**/types.tsx",
+			"next.config.js",
+			"next-env.d.ts",
+			"public/studio/static",
 			"*/**/plugins",
 			"*/**/config"
 		],

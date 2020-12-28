@@ -1,5 +1,10 @@
 node_modules
 .env
 .env.development
-
 .vercel
+.next
+node_modules
+yarn.lock
+.now
+.env
+.env*.local
