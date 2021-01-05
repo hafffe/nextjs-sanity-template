@@ -1,0 +1,11 @@
+node_modules
+build
+dist
+.DS_Store
+.env
+.env.*
+yarn.lock
+public/studio
+.vercel
+.next
+yarn.lock

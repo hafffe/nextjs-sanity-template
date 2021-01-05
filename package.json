@@ -1,0 +1,148 @@
+{
+	"name": "sanity-next-template",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Sanity & Next.js template",
+	"scripts": {
+		"dev": "concurrently \"next\" \"cd studio && sanity start\"",
+		"build": "echo 'Building Sanity to public/studio…' && cd studio && sanity build ../public/studio -y && cd .. && next build",
+		"start": "vercel dev",
+		"postinstall": "cd studio && npm ci",
+		"test": "xo && jest",
+		"tsc": "tsc"
+	},
+	"engines": {
+		"node": "12.x"
+	},
+	"author": "Aron Hafner",
+	"license": "MIT",
+	"dependencies": {
+		"@chakra-ui/react": "^1.1.0",
+		"@chakra-ui/theme-tools": "^1.0.2",
+		"@emotion/react": "^11.1.4",
+		"@emotion/styled": "^11.0.0",
+		"@sanity/asset-utils": "^1.1.2",
+		"@sanity/block-content-to-react": "^2.0.7",
+		"@sanity/types": "^2.1.0",
+		"date-fns": "^2.16.1",
+		"framer-motion": "^3.1.1",
+		"get-youtube-id": "^1.0.1",
+		"next": "^10.0.4",
+		"next-sanity": "^0.1.8",
+		"next-seo": "^4.17.0",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-icons": "^4.1.0",
+		"react-youtube": "^7.13.0"
+	},
+	"devDependencies": {
+		"@sanity/cli": "^2.1.0",
+		"@testing-library/jest-dom": "^5.11.8",
+		"@testing-library/react": "^11.2.2",
+		"@types/jest": "^26.0.19",
+		"@types/node": "^14.14.16",
+		"@types/react": "^17.0.0",
+		"@types/react-dom": "^17.0.0",
+		"babel-jest": "^26.6.3",
+		"concurrently": "^5.3.0",
+		"eslint-config-xo-react": "^0.23.0",
+		"eslint-plugin-react": "^7.21.5",
+		"eslint-plugin-react-hooks": "^4.2.0",
+		"jest": "^26.6.3",
+		"typescript": "^4.1.3",
+		"vercel": "^21.0.1",
+		"xo": "^0.36.1"
+	},
+	"babel": {
+		"plugins": [],
+		"presets": [
+			"next/babel"
+		]
+	},
+	"jest": {
+		"collectCoverageFrom": [
+			"**/*.{js,jsx,ts,tsx}",
+			"!**/*.d.ts",
+			"!**/node_modules/**"
+		],
+		"setupFilesAfterEnv": [
+			"@testing-library/jest-dom/extend-expect"
+		],
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			"/.next/"
+		],
+		"transform": {
+			"^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
+		},
+		"transformIgnorePatterns": [
+			"/node_modules/"
+		],
+		"moduleNameMapper": {
+			"@/components/(.*)": "<rootDir>/components/$1",
+			"@/lib/(.*)": "<rootDir>/lib/$1",
+			"@/models/(.*)": "<rootDir>/models/$1"
+		}
+	},
+	"prettier": {
+		"printWidth": 120,
+		"singleQuote": true,
+		"jsxSingleQuote": true
+	},
+	"xo": {
+		"envs": [
+			"browser",
+			"node",
+			"jest"
+		],
+		"extends": [
+			"xo-react"
+		],
+		"ignores": [
+			"next.config.js",
+			"*.d.ts",
+			"public/studio/static",
+			"*/**/plugins",
+			"*/**/config"
+		],
+		"prettier": true,
+		"rules": {
+			"import/no-anonymous-default-export": [
+				"error",
+				{
+					"allowObject": true
+				}
+			],
+			"arrow-body-style": [
+				"error",
+				"as-needed"
+			],
+			"@typescript-eslint/no-unsafe-member-access": "warn",
+			"@typescript-eslint/no-base-to-string": "warn",
+			"@typescript-eslint/no-unsafe-call": "warn",
+			"@typescript-eslint/restrict-template-expressions": "warn",
+			"@typescript-eslint/prefer-readonly-parameter-types": "off",
+			"react/prop-types": "off",
+			"react/no-danger": "warn",
+			"react/react-in-jsx-scope": "off",
+			"react/jsx-tag-spacing": [
+				"error",
+				{
+					"closingSlash": "never",
+					"beforeSelfClosing": "always",
+					"afterOpening": "never",
+					"beforeClosing": "never"
+				}
+			]
+		},
+		"overrides": [
+			{
+				"files": "studio/*/**",
+				"rules": {
+					"@typescript-eslint/no-unsafe-member-access": "off",
+					"@typescript-eslint/no-unsafe-call": "off"
+				}
+			}
+		]
+	}
+}
