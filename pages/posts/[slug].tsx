@@ -51,9 +51,13 @@ const Post = ({postData, siteSettings}: Props) => {
 				<Stack isInline spacing={6} marginBottom={6}>
 					{keywords}
 				</Stack>
-				{post?.content?.map((section) => (
-					<RenderSection key={section._key} section={section} />
-				))}
+				{post?.content?.map((section) => {
+					if (!section || Object.keys(section).length === 0) {
+						return null;
+					}
+
+					return <RenderSection key={section._key} section={section} />;
+				})}
 			</Stack>
 		</Layout>
 	);
@@ -71,7 +75,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
 			postData,
 			siteSettings
 		},
-		revalidate: 1
+		revalidate: 60
 	};
 };
 

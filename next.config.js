@@ -8,5 +8,9 @@ const STUDIO_REWRITE = {
 module.exports = {
 	poweredByHeader: false,
 	reactStrictMode: true,
-	rewrites: () => [STUDIO_REWRITE],
+	async rewrites() {
+		return [
+			STUDIO_REWRITE
+		];
+	}
 };

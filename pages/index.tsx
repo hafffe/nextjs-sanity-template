@@ -35,23 +35,25 @@ const Index = ({pageData, posts, siteSettings}: Props) => {
 
 	return (
 		<Layout meta={meta} siteSettings={siteSettings}>
-			<Flex direction='column' justifyContent='center' width='100%'>
-				{page?.content?.map((section) => (
-					<RenderSection key={section._key} section={section} />
-				))}
-				<Divider />
-				<Flex direction='row' paddingY={8}>
-					<Heading as='h2' size='xl' paddingBottom={2}>
-						Recent articles
-					</Heading>
-					<Link passHref href='/posts/'>
-						<ChakraLink marginLeft='auto' whiteSpace='nowrap'>
-							All Articles <Icon as={RiArrowRightLine} />
-						</ChakraLink>
-					</Link>
-				</Flex>
-				<PostList layout='minimal' posts={posts} />
+			{page?.content?.map((section) => {
+				if (!section || Object.keys(section).length === 0) {
+					return null;
+				}
+
+				return <RenderSection key={section._key} section={section} />;
+			})}
+			<Divider />
+			<Flex direction='row' paddingY={8}>
+				<Heading as='h2' size='xl' paddingBottom={2}>
+					Recent articles
+				</Heading>
+				<Link passHref href='/posts/'>
+					<ChakraLink marginLeft='auto' whiteSpace='nowrap'>
+						All Articles <Icon as={RiArrowRightLine} />
+					</ChakraLink>
+				</Link>
 			</Flex>
+			<PostList layout='minimal' posts={posts} />
 		</Layout>
 	);
 };
@@ -72,7 +74,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		};
 	}
 
-	return {props: {siteSettings, pageData, posts}, revalidate: 1};
+	return {props: {siteSettings, pageData, posts}, revalidate: 60};
 };
 
 export default Index;

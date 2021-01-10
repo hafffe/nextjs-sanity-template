@@ -27,6 +27,13 @@ export default {
 						{title: 'H5', value: 'h5'},
 						{title: 'H6', value: 'h6'},
 						{
+							title: 'Normal Center',
+							value: 'normal+center',
+							blockEditor: {
+								render: CenterText
+							}
+						},
+						{
 							title: 'H1 Center',
 							value: 'h1+center',
 							blockEditor: {

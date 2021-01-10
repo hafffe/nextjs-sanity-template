@@ -1,7 +1,6 @@
 import {GetStaticProps} from 'next';
 import Error from 'next/error';
 import {useRouter} from 'next/router';
-import {Flex} from '@chakra-ui/react';
 import {pageQuery, postsQuery, siteSettingsQuery} from '@/lib/queries';
 import {sanityClient, usePreviewSubscription} from '@/lib/sanity';
 import {Page as PageProps} from '@/models/page';
@@ -33,12 +32,14 @@ const Posts = ({pageData, posts, siteSettings}: Props) => {
 
 	return (
 		<Layout meta={meta} siteSettings={siteSettings}>
-			<Flex direction='column' justifyContent='center' width='100%'>
-				{page?.content?.map((section) => (
-					<RenderSection key={section._key} section={section} />
-				))}
-				<PostList posts={posts} layout='original' />
-			</Flex>
+			{page?.content?.map((section) => {
+				if (!section || Object.keys(section).length === 0) {
+					return null;
+				}
+
+				return <RenderSection key={section._key} section={section} />;
+			})}
+			<PostList posts={posts} layout='original' />
 		</Layout>
 	);
 };
@@ -59,7 +60,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			posts,
 			siteSettings
 		},
-		revalidate: 1
+		revalidate: 60
 	};
 };
 

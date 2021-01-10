@@ -48,6 +48,11 @@ and you will find sanity studio at localhost:3000/studio
 
 If you care for automatic reloads for the studio use localhost:3000 instead
 
+Add http://localhost:3000 in sanity settings -> api - CORS Origins
+
+### Things to know
+Frontend startpage is fetched with slug `frontpage`
+
 
 ## Resources
 - [Next.js](https://nextjs.org/)
