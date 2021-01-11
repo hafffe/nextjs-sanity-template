@@ -1,5 +1,4 @@
 import {ReactNode} from 'react';
-import Head from 'next/head';
 import {Flex} from '@chakra-ui/react';
 import {SiteSettings} from '@/models/site-settings';
 import {MetaFields} from '@/models/meta-fields';
@@ -20,12 +19,6 @@ const Layout = ({siteSettings, meta, children}: Props) => {
 
 	return (
 		<>
-			<Head>
-				<meta charSet='utf-8' />
-				<meta content='IE=edge' httpEquiv='X-UA-Compatible' />
-				<meta content='width=device-width, initial-scale=1' name='viewport' />
-				<meta content='follow, index' name='robots' />
-			</Head>
 			<Seo meta={meta} fallbackMeta={fallbackMeta} />
 			<Flex flexDirection='column' minHeight='100vh'>
 				<Header navigation={siteSettings?.navigation} />

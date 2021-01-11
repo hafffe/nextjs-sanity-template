@@ -1,13 +1,12 @@
 import {AppProps} from 'next/app';
 import {CSSReset, ChakraProvider} from '@chakra-ui/react';
 import {Global} from '@emotion/react';
-import {DefaultSeo} from 'next-seo';
+import {Head} from '@/components/common';
 import theme from '../constants/theme';
-import SEO from '../next-seo.config';
 
 const MyApp = ({Component, pageProps}: AppProps) => (
 	<ChakraProvider theme={theme}>
-		<DefaultSeo {...SEO} />
+		<Head />
 		<CSSReset />
 		<Global
 			styles={{
