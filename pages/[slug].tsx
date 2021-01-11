@@ -1,7 +1,6 @@
 import {GetStaticProps} from 'next';
 import Error from 'next/error';
 import {useRouter} from 'next/router';
-import {Flex} from '@chakra-ui/react';
 import {pageQuery, siteSettingsQuery, allPagesSlug} from '@/lib/queries';
 import {sanityClient, usePreviewSubscription} from '@/lib/sanity';
 import {Page as PageProps} from '@/models/page';
@@ -31,11 +30,13 @@ const Page = ({pageData, siteSettings}: Props) => {
 
 	return (
 		<Layout meta={meta} siteSettings={siteSettings}>
-			<Flex direction='column' justifyContent='center' width='100%'>
-				{page?.content?.map((section) => (
-					<RenderSection key={section._key} section={section} />
-				))}
-			</Flex>
+			{page?.content?.map((section) => {
+				if (!section || Object.keys(section).length === 0) {
+					return null;
+				}
+
+				return <RenderSection key={section._key} section={section} />;
+			})}
 		</Layout>
 	);
 };
@@ -52,7 +53,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
 			pageData,
 			siteSettings
 		},
-		revalidate: 1
+		revalidate: 60
 	};
 };
 

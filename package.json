@@ -8,7 +8,7 @@
 		"build": "echo 'Building Sanity to public/studio…' && cd studio && sanity build ../public/studio -y && cd .. && next build",
 		"start": "vercel dev",
 		"postinstall": "cd studio && npm ci",
-		"test": "xo && jest",
+		"test": "tsc && xo && jest",
 		"tsc": "tsc"
 	},
 	"engines": {

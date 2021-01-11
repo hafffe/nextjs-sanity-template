@@ -37,6 +37,7 @@ const Layout = ({siteSettings, meta, children}: Props) => {
 					alignSelf='center'
 					justifyContent='center'
 					flex='1 0 auto'
+					direction='column'
 				>
 					{children}
 				</Flex>
