@@ -11,7 +11,3 @@ export interface SiteSettings extends SanityDocument {
 	navigation?: Array<InternalLink | ExternalLink>;
 	socialFields?: SocialFields;
 }
-
-export type SiteSettingsQuery = {
-	SiteSettings: SiteSettings;
-};
