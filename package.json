@@ -38,7 +38,7 @@
 	},
 	"devDependencies": {
 		"@sanity/cli": "^2.1.4",
-		"@testing-library/jest-dom": "^5.11.8",
+		"@testing-library/jest-dom": "^5.11.9",
 		"@testing-library/react": "^11.2.3",
 		"@types/jest": "^26.0.20",
 		"@types/node": "^14.14.22",
