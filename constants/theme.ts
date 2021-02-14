@@ -8,13 +8,9 @@ const breakpoints = createBreakpoints({
 	xl: '80em'
 });
 
-const config = {
-	useSystemColorMode: false,
-	initialColorMode: 'dark'
-};
-
 const overrides = {
-	config,
+	useSystemColorMode: false,
+	initialColorMode: 'dark',
 	breakpoints,
 	fonts: {
 		body: 'Titillium Web, sans-serif',
