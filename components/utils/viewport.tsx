@@ -1,10 +1,12 @@
 import {useEffect, useState} from 'react';
 
 const useViewport = (initalState?: number) => {
-	const [width, setWidth] = useState(initalState ? initalState : Infinity);
+	const [width, setWidth] = useState(initalState ? initalState : Number.POSITIVE_INFINITY);
 
 	useEffect(() => {
-		const handleWindowResize = () => setWidth(window.innerWidth);
+		const handleWindowResize = () => {
+			setWidth(window.innerWidth);
+		};
 
 		setWidth(window.innerWidth);
 
