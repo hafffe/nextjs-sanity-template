@@ -28,7 +28,7 @@
 		"framer-motion": "^3.6.2",
 		"get-youtube-id": "^1.0.1",
 		"next": "^10.0.7",
-		"next-google-fonts": "^1.2.1",
+		"next-google-fonts": "^2.0.0",
 		"next-sanity": "^0.1.10",
 		"next-seo": "^4.20.0",
 		"react": "^17.0.1",
