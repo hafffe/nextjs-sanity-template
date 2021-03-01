@@ -1,6 +1,6 @@
 import NextHead from 'next/head';
 import {DefaultSeo} from 'next-seo';
-import GoogleFonts from 'next-google-fonts';
+import {GoogleFonts} from 'next-google-fonts';
 import SEO from '../../next-seo.config';
 
 const Head = () => (
