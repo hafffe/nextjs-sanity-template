@@ -30,7 +30,7 @@
 		"next": "^10.0.9",
 		"next-google-fonts": "^2.0.0",
 		"next-sanity": "^0.1.10",
-		"next-seo": "^4.20.0",
+		"next-seo": "^4.22.0",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
 		"react-icons": "^4.2.0",
