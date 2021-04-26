@@ -21,7 +21,7 @@
 		"@chakra-ui/theme-tools": "^1.0.4",
 		"@emotion/react": "^11.1.5",
 		"@emotion/styled": "^11.3.0",
-		"@sanity/asset-utils": "^1.1.2",
+		"@sanity/asset-utils": "^1.1.4",
 		"@sanity/block-content-to-react": "^2.0.7",
 		"@sanity/types": "^2.7.4",
 		"date-fns": "^2.20.1",
