@@ -13,16 +13,16 @@ const overrides = {
 	initialColorMode: 'dark',
 	breakpoints,
 	fonts: {
-		body: 'Titillium Web, sans-serif',
-		heading: 'Titillium Web, sans-serif',
+		body: 'Work Sans, sans-serif',
+		heading: 'Work Sans, sans-serif',
 		mono: 'Menlo, monospace'
 	},
 	fontWeights: {
 		thin: 200,
 		light: 300,
 		normal: 400,
-		medium: 600,
-		bold: 700
+		medium: 500,
+		bold: 600
 	}
 };
 
