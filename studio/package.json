@@ -1,35 +1,35 @@
 {
-	"name": "haf-studio",
-	"private": true,
-	"version": "0.0.0",
-	"description": "",
-	"main": "package.json",
-	"author": "Aron Hafner",
-	"license": "MIT",
-	"scripts": {
-		"build": "sanity build",
-		"start": "sanity start"
-	},
-	"keywords": [
-		"sanity"
-	],
-	"dependencies": {
-		"@sanity/base": "^2.3.6",
-		"@sanity/block-content-to-react": "^2.0.7",
-		"@sanity/components": "^2.2.6",
-		"@sanity/core": "^2.3.3",
-		"@sanity/dashboard": "^2.2.6",
-		"@sanity/default-layout": "^2.3.6",
-		"@sanity/default-login": "^2.2.6",
-		"@sanity/desk-tool": "^2.3.6",
-		"@sanity/structure": "^2.2.6",
-		"@sanity/vision": "^2.2.6",
-		"date-fns": "^2.16.1",
-		"prop-types": "^15.7",
-		"react": "^17.0",
-		"react-dom": "^17.0",
-		"react-icons": "^4.1.0",
-		"sanity-plugin-dashboard-widget-document-list": "^0.0.11",
-		"slugify": "^1.4.6"
-	}
+  "name": "sanity-next-template-studio",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Aron Hafner",
+  "license": "MIT",
+  "scripts": {
+    "build": "sanity build",
+    "start": "sanity start"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^2.10.2",
+    "@sanity/block-content-to-react": "^2.0.7",
+    "@sanity/components": "^2.2.6",
+    "@sanity/core": "^2.10.2",
+    "@sanity/dashboard": "^2.7.0",
+    "@sanity/default-layout": "^2.10.2",
+    "@sanity/default-login": "^2.8.0",
+    "@sanity/desk-tool": "^2.10.2",
+    "@sanity/structure": "^2.10.0",
+    "@sanity/vision": "^2.10.0",
+    "date-fns": "^2.16.1",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "react-icons": "^4.1.0",
+    "sanity-plugin-dashboard-widget-document-list": "^0.0.11",
+    "slugify": "^1.4.6"
+  }
 }

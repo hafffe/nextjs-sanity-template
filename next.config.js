@@ -8,6 +8,9 @@ const STUDIO_REWRITE = {
 module.exports = {
 	poweredByHeader: false,
 	reactStrictMode: true,
+	future: {
+		webpack5: true,
+	},
 	async rewrites() {
 		return [
 			STUDIO_REWRITE
