@@ -92,7 +92,8 @@ export default {
 						],
 						annotations: [{type: 'link'}]
 					}
-				}
+				},
+				{name: 'image', type: 'mainImage'}
 			]
 		}
 	],

@@ -4,6 +4,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import {IoIosQuote} from 'react-icons/io';
 import {BlockContent as BlockContentType} from '@/models/sections/block-content';
 import {SimpleBlockContent} from '@/models/objects/simple-block-content';
+import {MainImage} from '@/components/sections';
 
 type Props = {
 	data: BlockContentType | SimpleBlockContent;
@@ -59,7 +60,8 @@ const serializers = {
 			}
 
 			return <Text textAlign={center ? 'center' : 'left'}>{props.children}</Text>;
-		}
+		},
+		image: (props: any) => <MainImage data={props.node} width={960} height={600} />
 	},
 	marks: {
 		link: (props: any) => (

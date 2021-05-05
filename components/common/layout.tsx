@@ -8,9 +8,10 @@ type Props = {
 	siteSettings: SiteSettings;
 	children?: ReactNode;
 	meta?: MetaFields;
+	width?: number;
 };
 
-const Layout = ({siteSettings, meta, children}: Props) => {
+const Layout = ({siteSettings, meta, children, width = 1200}: Props) => {
 	const fallbackMeta = {
 		title: siteSettings?.title ?? undefined,
 		description: siteSettings?.description ?? undefined,
@@ -24,7 +25,7 @@ const Layout = ({siteSettings, meta, children}: Props) => {
 				<Header navigation={siteSettings?.navigation} />
 				<Flex
 					as='main'
-					maxWidth='1200px'
+					maxWidth={width}
 					width='100%'
 					padding={6}
 					alignSelf='center'

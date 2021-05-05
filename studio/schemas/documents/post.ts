@@ -105,6 +105,13 @@ export default {
 			validation: (Rule: any) => Rule.required()
 		},
 		{
+			name: 'featuredImage',
+			title: 'Featured Image',
+			description: 'Image that is displayed in posts lists',
+			fieldset: 'excerpt',
+			type: 'mainImage'
+		},
+		{
 			name: 'content',
 			type: 'array',
 			title: 'Content',

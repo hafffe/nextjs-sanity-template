@@ -2,9 +2,9 @@ import {GetStaticProps} from 'next';
 import Error from 'next/error';
 import {useRouter} from 'next/router';
 import {format} from 'date-fns';
-import {Avatar, Heading, Stack, Tag, Text} from '@chakra-ui/react';
+import {Box, Heading, HStack, Stack, Tag, Text} from '@chakra-ui/react';
 import {postQuery, siteSettingsQuery, allPostSlug} from '@/lib/queries';
-import {sanityClient, usePreviewSubscription, urlFor} from '@/lib/sanity';
+import {sanityClient, usePreviewSubscription} from '@/lib/sanity';
 import {Post as PostProps} from '@/models/post';
 import {SiteSettings} from '@/models/site-settings';
 import {Layout} from '@/components/common';
@@ -28,29 +28,25 @@ const Post = ({postData, siteSettings}: Props) => {
 		return <Error statusCode={404} />;
 	}
 
-	const meta = post?.meta ?? undefined;
-	const avatar =
-		(post.author.image.asset && urlFor(post.author.image.asset).width(200).auto('format').url()) || undefined;
 	const keywords = post.keywords?.map((x) => (
-		<Tag key={x} size='sm' borderRadius='none'>
+		<Tag key={x} variant='outline' colorScheme='gray' size='sm'>
 			{x}
 		</Tag>
 	));
 
 	return (
-		<Layout meta={meta} siteSettings={siteSettings}>
+		<Layout meta={post?.meta} siteSettings={siteSettings} width={960}>
 			<Stack>
-				<Heading as='h2' size='2xl' marginBottom={6}>
+				<Heading as='h2' size='2xl'>
 					{post.title}
 				</Heading>
-				<Stack isInline spacing={3} align='center'>
-					<Avatar size='sm' name={post.author?.name} src={avatar} />
-					<Text fontSize='sm'>Written by {post.author?.name}</Text>
-					<Text fontSize='sm'>{post.publishedAt && format(new Date(post.publishedAt), 'MMMM dd, yyyy')}</Text>
-				</Stack>
-				<Stack isInline spacing={6} marginBottom={6}>
-					{keywords}
-				</Stack>
+				<Box>
+					<Stack paddingBottom={2} direction='row'>
+						<Text fontSize='sm'>Written by {post.author?.name}</Text>
+						<Text fontSize='sm'>{post.publishedAt && format(new Date(post.publishedAt), 'MMM dd, yyyy')}</Text>
+					</Stack>
+					<HStack>{keywords}</HStack>
+				</Box>
 				{post?.content?.map((section) => {
 					if (!section || Object.keys(section).length === 0) {
 						return null;

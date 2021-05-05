@@ -1,9 +1,7 @@
 import {GetStaticProps} from 'next';
-import {Flex, Divider, Heading, Icon, Link as ChakraLink} from '@chakra-ui/react';
+import {Heading} from '@chakra-ui/react';
 import Error from 'next/error';
-import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {RiArrowRightLine} from 'react-icons/ri';
 import {pageQuery, siteSettingsQuery, postsQuery} from '@/lib/queries';
 import {sanityClient, usePreviewSubscription} from '@/lib/sanity';
 import {SiteSettings} from '@/models/site-settings';
@@ -31,10 +29,8 @@ const Index = ({pageData, posts, siteSettings}: Props) => {
 		return <Error statusCode={404} />;
 	}
 
-	const meta = page?.meta ?? undefined;
-
 	return (
-		<Layout meta={meta} siteSettings={siteSettings}>
+		<Layout meta={page?.meta} siteSettings={siteSettings}>
 			{page?.content?.map((section) => {
 				if (!section || Object.keys(section).length === 0) {
 					return null;
@@ -42,18 +38,11 @@ const Index = ({pageData, posts, siteSettings}: Props) => {
 
 				return <RenderSection key={section._key} section={section} />;
 			})}
-			<Divider />
-			<Flex direction='row' paddingY={8}>
-				<Heading as='h2' size='xl' paddingBottom={2}>
-					Recent articles
-				</Heading>
-				<Link passHref href='/posts/'>
-					<ChakraLink marginLeft='auto' whiteSpace='nowrap'>
-						All Articles <Icon as={RiArrowRightLine} />
-					</ChakraLink>
-				</Link>
-			</Flex>
-			<PostList layout='minimal' posts={posts} />
+
+			<Heading as='h2' size='lg' paddingY={4}>
+				Recent articles
+			</Heading>
+			<PostList posts={posts} />
 		</Layout>
 	);
 };
@@ -65,7 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	});
 
 	const posts = await sanityClient.fetch<Post[]>(postsQuery, {
-		limit: 5
+		limit: 2
 	});
 
 	if (!pageData) {
