@@ -8,7 +8,7 @@ export const postQuery = groq`
 `;
 
 export const postsQuery = groq`
-	*[_type == 'post' && defined(slug.current)][0...$limit] | order(_createdAt desc)
+	*[_type == 'post' && defined(slug.current)] | order(_createdAt desc)[0...$limit]
 `;
 
 export const allPostSlug = groq`
