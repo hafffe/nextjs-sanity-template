@@ -14,10 +14,6 @@ export const pageQuery = groq`
 	}
 `;
 
-export const pageDraftQuery = groq`
-	*[_type == 'page' && slug.current == $slug] | order(_updatedAt desc)[0]
-`;
-
 export const allPagesSlug = groq`
 	*[_type == 'page' && defined(slug.current) && slug.current != 'frontpage' && slug.current != 'posts'][].slug.current
 `;
