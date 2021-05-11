@@ -28,10 +28,8 @@ const Posts = ({pageData, posts, siteSettings}: Props) => {
 		return <Error statusCode={404} />;
 	}
 
-	const meta = page?.meta ?? undefined;
-
 	return (
-		<Layout meta={meta} siteSettings={siteSettings}>
+		<Layout meta={page?.meta} siteSettings={siteSettings}>
 			{page?.content?.map((section) => {
 				if (!section || Object.keys(section).length === 0) {
 					return null;
@@ -39,7 +37,7 @@ const Posts = ({pageData, posts, siteSettings}: Props) => {
 
 				return <RenderSection key={section._key} section={section} />;
 			})}
-			<PostList posts={posts} layout='original' />
+			<PostList posts={posts} />
 		</Layout>
 	);
 };
@@ -51,7 +49,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	});
 
 	const posts = await sanityClient.fetch<PostProps[]>(postsQuery, {
-		limit: 5
+		limit: 100
 	});
 
 	return {

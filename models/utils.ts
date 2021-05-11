@@ -1,6 +1,6 @@
 export interface SanityBlock {
 	[key: string]: any;
-	_type: 'block';
+	_type: 'block' | 'image';
 }
 
 export type SanityReference<_T> = {

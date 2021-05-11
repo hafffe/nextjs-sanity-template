@@ -26,10 +26,8 @@ const Page = ({pageData, siteSettings}: Props) => {
 		return <Error statusCode={404} />;
 	}
 
-	const meta = page?.meta ?? undefined;
-
 	return (
-		<Layout meta={meta} siteSettings={siteSettings}>
+		<Layout meta={page?.meta} siteSettings={siteSettings}>
 			{page?.content?.map((section) => {
 				if (!section || Object.keys(section).length === 0) {
 					return null;
