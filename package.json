@@ -17,7 +17,7 @@
 	"author": "Aron Hafner",
 	"license": "MIT",
 	"dependencies": {
-		"@chakra-ui/react": "^1.6.0",
+		"@chakra-ui/react": "^1.6.1",
 		"@chakra-ui/theme-tools": "^1.1.7",
 		"@emotion/react": "^11.1.5",
 		"@emotion/styled": "^11.3.0",
