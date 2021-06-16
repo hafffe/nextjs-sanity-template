@@ -22,7 +22,7 @@
 		"@emotion/react": "^11.4.0",
 		"@emotion/styled": "^11.3.0",
 		"@sanity/asset-utils": "^1.1.4",
-		"@sanity/block-content-to-react": "^2.0.7",
+		"@sanity/block-content-to-react": "^3.0.0",
 		"@sanity/types": "^2.10.0",
 		"date-fns": "^2.21.3",
 		"framer-motion": "^4.1.17",
