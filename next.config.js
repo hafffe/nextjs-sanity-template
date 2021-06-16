@@ -8,9 +8,6 @@ const STUDIO_REWRITE = {
 module.exports = {
 	poweredByHeader: false,
 	reactStrictMode: true,
-	future: {
-		webpack5: true,
-	},
 	images: {
 		domains: ['cdn.sanity.io']
 	},
