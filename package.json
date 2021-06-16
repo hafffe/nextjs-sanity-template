@@ -12,23 +12,23 @@
 		"tsc": "tsc"
 	},
 	"engines": {
-		"node": "12.x"
+		"node": "14.x"
 	},
 	"author": "Aron Hafner",
 	"license": "MIT",
 	"dependencies": {
-		"@chakra-ui/react": "^1.6.0",
+		"@chakra-ui/react": "^1.6.3",
 		"@chakra-ui/theme-tools": "^1.1.7",
-		"@emotion/react": "^11.1.5",
+		"@emotion/react": "^11.4.0",
 		"@emotion/styled": "^11.3.0",
 		"@sanity/asset-utils": "^1.1.4",
 		"@sanity/block-content-to-react": "^2.0.7",
 		"@sanity/types": "^2.10.0",
 		"date-fns": "^2.21.3",
-		"framer-motion": "^4.1.13",
+		"framer-motion": "^4.1.17",
 		"get-youtube-id": "^1.0.1",
 		"next": "^10.2.0",
-		"next-sanity": "^0.1.12",
+		"next-sanity": "^0.2.0",
 		"next-seo": "^4.24.0",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
