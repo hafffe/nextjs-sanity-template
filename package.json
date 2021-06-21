@@ -49,7 +49,7 @@
 		"eslint-plugin-react": "^7.24.0",
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"jest": "^27.0.4",
-		"typescript": "^4.3.2",
+		"typescript": "^4.3.4",
 		"vercel": "^23.0.1 ",
 		"xo": "^0.38.2"
 	},
