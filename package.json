@@ -19,7 +19,7 @@
 	"dependencies": {
 		"@chakra-ui/react": "^1.6.5",
 		"@chakra-ui/theme-tools": "^1.1.8",
-		"@emotion/react": "^11.4.0",
+		"@emotion/react": "^11.4.1",
 		"@emotion/styled": "^11.3.0",
 		"@sanity/asset-utils": "^1.1.5",
 		"@sanity/block-content-to-react": "^3.0.0",
