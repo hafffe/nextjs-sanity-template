@@ -27,7 +27,7 @@
 		"date-fns": "^2.23.0",
 		"framer-motion": "^4.1.17",
 		"get-youtube-id": "^1.0.1",
-		"next": "^11.0.1",
+		"next": "^11.1.0",
 		"next-sanity": "^0.3.0",
 		"next-seo": "^4.26.0",
 		"react": "^17.0.2",
