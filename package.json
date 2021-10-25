@@ -36,7 +36,7 @@
 		"react-youtube": "^7.13.1"
 	},
 	"devDependencies": {
-		"@sanity/cli": "^2.20.0",
+		"@sanity/cli": "^2.21.6",
 		"@testing-library/jest-dom": "^5.14.1",
 		"@testing-library/react": "^12.1.2",
 		"@types/jest": "^27.0.2",
