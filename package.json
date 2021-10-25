@@ -23,7 +23,7 @@
 		"@emotion/styled": "^11.3.0",
 		"@sanity/asset-utils": "^1.1.5",
 		"@sanity/block-content-to-react": "^3.0.0",
-		"@sanity/types": "^2.19.0",
+		"@sanity/types": "^2.21.6",
 		"date-fns": "^2.23.0",
 		"framer-motion": "^4.1.17",
 		"get-youtube-id": "^1.0.1",
