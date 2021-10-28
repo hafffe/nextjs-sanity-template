@@ -1,31 +1,47 @@
 {
-	"compilerOptions": {
-		"allowJs": true,
-		"alwaysStrict": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"isolatedModules": true,
-		"jsx": "preserve",
-		"lib": ["dom", "es2019"],
-		"module": "esnext",
-		"moduleResolution": "node",
-		"noEmit": true,
-		"noFallthroughCasesInSwitch": true,
-		"allowSyntheticDefaultImports": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"sourceMap": true,
-		"strict": true,
-		"target": "esnext",
-		"baseUrl": ".",
-		"paths": {
-			"@/components/*": ["components/*"],
-			"@/models/*": ["models/*"],
-			"@/lib/*": ["lib/*"]
-		}
-	},
-	"exclude": ["node_modules", "studio"],
-	"include": ["**/*.ts", "**/*.tsx"]
+  "compilerOptions": {
+    "allowJs": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "es2019"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/models/*": [
+        "models/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ]
+    },
+    "incremental": true
+  },
+  "exclude": [
+    "node_modules",
+    "studio"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
