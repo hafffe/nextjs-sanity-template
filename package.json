@@ -6,13 +6,13 @@
 	"scripts": {
 		"dev": "concurrently \"next\" \"cd studio && sanity start\"",
 		"build": "echo 'Building Sanity to public/studio…' && cd studio && sanity build ../public/studio -y && cd .. && next build",
-		"start": "vercel dev",
 		"postinstall": "cd studio && npm ci",
-		"test": "tsc && xo && jest",
-		"tsc": "tsc"
+		"test": "tsc && next lint && jest",
+		"tsc": "tsc",
+		"lint": "next lint"
 	},
 	"engines": {
-		"node": "14.x"
+		"node": ">=14.x"
 	},
 	"author": "Aron Hafner",
 	"license": "MIT",
@@ -43,21 +43,19 @@
 		"@types/node": "^16.11.1",
 		"@types/react": "^17.0.24",
 		"@types/react-dom": "^17.0.9",
+		"@typescript-eslint/eslint-plugin": "^4.28.4",
+		"@typescript-eslint/parser": "^4.28.4",
 		"babel-jest": "^27.3.1",
 		"concurrently": "^6.2.1",
-		"eslint-config-xo-react": "^0.25.0",
+		"eslint": "^7.31.0",
+		"eslint-config-next": "^12.0.1",
+		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-react": "^7.26.1",
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"jest": "^27.3.1",
+		"prettier": "^2.4.1",
 		"typescript": "^4.4.4",
-		"vercel": "^23.1.2",
-		"xo": "^0.38.1"
-	},
-	"babel": {
-		"plugins": [],
-		"presets": [
-			"next/babel"
-		]
+		"vercel": "^23.1.2"
 	},
 	"jest": {
 		"collectCoverageFrom": [
@@ -74,7 +72,14 @@
 			"/.next/"
 		],
 		"transform": {
-			"^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
+			"^.+\\.(js|jsx|ts|tsx)$": [
+				"babel-jest",
+				{
+					"presets": [
+						"next/babel"
+					]
+				}
+			]
 		},
 		"transformIgnorePatterns": [
 			"/node_modules/"
@@ -88,63 +93,53 @@
 	"prettier": {
 		"printWidth": 120,
 		"singleQuote": true,
-		"jsxSingleQuote": true
+		"jsxSingleQuote": true,
+		"trailingComma": "none",
+		"bracketSpacing": false,
+		"useTabs": true,
+		"tabWidth": 4
 	},
-	"xo": {
-		"envs": [
-			"browser",
-			"node",
-			"jest"
+	"eslintConfig": {
+		"plugins": [
+			"@typescript-eslint"
 		],
 		"extends": [
-			"xo-react"
+			"next",
+			"next/core-web-vitals",
+			"plugin:@typescript-eslint/recommended",
+			"prettier"
 		],
-		"ignores": [
-			"next.config.js",
-			"*.d.ts",
-			"public/studio/static",
-			"*/**/plugins",
-			"*/**/config"
-		],
-		"prettier": true,
 		"rules": {
-			"import/no-anonymous-default-export": [
+			"semi": "error",
+			"comma-dangle": "off",
+			"no-multiple-empty-lines": "error",
+			"no-multi-spaces": "error",
+			"@typescript-eslint/no-unused-vars": [
 				"error",
 				{
-					"allowObject": true
+					"argsIgnorePattern": "^_"
 				}
 			],
-			"arrow-body-style": [
-				"error",
-				"as-needed"
+			"@typescript-eslint/comma-dangle": [
+				"error"
 			],
-			"@typescript-eslint/no-unsafe-member-access": "warn",
-			"@typescript-eslint/no-base-to-string": "warn",
-			"@typescript-eslint/no-unsafe-call": "warn",
-			"@typescript-eslint/restrict-template-expressions": "warn",
-			"@typescript-eslint/prefer-readonly-parameter-types": "off",
-			"@typescript-eslint/no-unsafe-return": "warn",
-			"react/prop-types": "off",
-			"react/no-danger": "warn",
-			"react/react-in-jsx-scope": "off",
-			"react/jsx-tag-spacing": [
+			"comma-spacing": "off",
+			"@typescript-eslint/comma-spacing": [
 				"error",
 				{
-					"closingSlash": "never",
-					"beforeSelfClosing": "always",
-					"afterOpening": "never",
-					"beforeClosing": "never"
+					"before": false,
+					"after": true
+				}
+			],
+			"@typescript-eslint/no-explicit-any": "warn",
+			"@typescript-eslint/explicit-module-boundary-types": "off",
+			"@typescript-eslint/consistent-type-assertions": [
+				"error",
+				{
+					"assertionStyle": "as",
+					"objectLiteralTypeAssertions": "allow-as-parameter"
 				}
 			]
-		},
-		"overrides": [
-			{
-				"files": "studio/*/**",
-				"rules": {
-					"@typescript-eslint/no-unsafe-member-access": "off",
-					"@typescript-eslint/no-unsafe-call": "off"
-				}
-			}
-		]
+		}
 	}
 }
