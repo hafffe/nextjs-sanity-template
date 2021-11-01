@@ -30,6 +30,7 @@
     "react-dom": "^17.0",
     "react-icons": "^4.3.1",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
-    "slugify": "^1.6.1"
+    "slugify": "^1.6.1",
+    "styled-components": "^5.2.0"
   }
 }
