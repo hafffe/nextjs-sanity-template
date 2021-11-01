@@ -25,7 +25,7 @@
 		"@sanity/block-content-to-react": "^3.0.0",
 		"@sanity/types": "^2.19.0",
 		"date-fns": "^2.23.0",
-		"framer-motion": "^4.1.17",
+		"framer-motion": "^5.0.0",
 		"get-youtube-id": "^1.0.1",
 		"next": "^11.1.2",
 		"next-sanity": "^0.4.0",
