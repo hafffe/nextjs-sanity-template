@@ -1,6 +1,6 @@
 import {RiUserSmileLine} from 'react-icons/ri';
 
-export default {
+const person = {
 	name: 'person',
 	type: 'document',
 	title: 'Persons',
@@ -47,3 +47,5 @@ export default {
 		}
 	}
 };
+
+export default person;

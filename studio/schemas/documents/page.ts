@@ -1,7 +1,7 @@
 import slug from 'slugify';
 import {RiPagesLine} from 'react-icons/ri';
 
-export default {
+const page = {
 	name: 'page',
 	type: 'document',
 	title: 'Pages',
@@ -78,3 +78,5 @@ export default {
 		}
 	}
 };
+
+export default page;

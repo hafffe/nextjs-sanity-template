@@ -1,6 +1,6 @@
 import {RiLinksLine} from 'react-icons/ri';
 
-export default {
+const internalLink = {
 	title: 'Internal Link',
 	name: 'internalLink',
 	type: 'object',
@@ -28,3 +28,5 @@ export default {
 		icon: RiLinksLine
 	}
 };
+
+export default internalLink;;

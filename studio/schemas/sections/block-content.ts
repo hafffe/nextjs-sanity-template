@@ -2,7 +2,7 @@ import {RiFileTextLine} from 'react-icons/ri';
 import {AiOutlineItalic} from 'react-icons/ai';
 import CenterText from '../../src/components/block-content/centered-styles';
 
-export default {
+const blockContent = {
 	title: 'Block Content',
 	name: 'blockContent',
 	description: 'Text Block',
@@ -105,3 +105,5 @@ export default {
 		}
 	}
 };
+
+export default blockContent;

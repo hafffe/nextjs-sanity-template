@@ -1,6 +1,6 @@
 import {RiImageLine} from 'react-icons/ri';
 
-export default {
+const mainImage = {
 	name: 'mainImage',
 	title: 'Image',
 	description: 'Image',
@@ -34,3 +34,5 @@ export default {
 		}
 	}
 };
+
+export default mainImage;

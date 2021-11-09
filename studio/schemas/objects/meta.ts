@@ -1,6 +1,6 @@
 import {RiShareLine} from 'react-icons/ri';
 
-export default {
+const meta = {
 	title: 'Meta Information',
 	name: 'metaFields',
 	type: 'object',
@@ -50,3 +50,5 @@ export default {
 		}
 	]
 };
+
+export default meta;

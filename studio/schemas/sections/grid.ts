@@ -1,6 +1,6 @@
 import {RiLayoutGridLine} from 'react-icons/ri';
 
-export default {
+const grid = {
 	name: 'grid',
 	type: 'object',
 	title: 'Grid',
@@ -59,3 +59,5 @@ export default {
 		}
 	}
 };
+
+export default grid;

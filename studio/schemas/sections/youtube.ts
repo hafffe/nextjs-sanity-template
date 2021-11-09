@@ -1,6 +1,6 @@
 import {RiYoutubeLine} from 'react-icons/ri';
 
-export default {
+const youtube = {
 	name: 'youtube',
 	type: 'object',
 	title: 'YouTube Embed',
@@ -26,3 +26,5 @@ export default {
 		}
 	]
 };
+
+export default youtube;
