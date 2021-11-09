@@ -1,6 +1,6 @@
 import {RiLinksLine} from 'react-icons/ri';
 
-export default {
+const link = {
 	title: 'URL',
 	name: 'link',
 	type: 'object',
@@ -21,3 +21,5 @@ export default {
 		icon: RiLinksLine
 	}
 };
+
+export default link;

@@ -1,6 +1,6 @@
 import {RiExternalLinkLine} from 'react-icons/ri';
 
-export default {
+const externalLink = {
 	title: 'External Link',
 	name: 'externalLink',
 	type: 'object',
@@ -26,3 +26,5 @@ export default {
 		icon: RiExternalLinkLine
 	}
 };
+
+export default externalLink;

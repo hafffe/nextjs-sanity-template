@@ -1,6 +1,6 @@
 import {RiShareLine} from 'react-icons/ri';
 
-export default {
+const socialFields = {
 	title: 'Social',
 	name: 'socialFields',
 	type: 'object',
@@ -23,3 +23,5 @@ export default {
 		}
 	]
 };
+
+export default socialFields;

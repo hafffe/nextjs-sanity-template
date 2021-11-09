@@ -1,6 +1,6 @@
 import {RiCheckboxIndeterminateLine} from 'react-icons/ri';
 
-export default {
+const spacer = {
 	name: 'spacer',
 	type: 'object',
 	title: 'Spacer',
@@ -34,3 +34,5 @@ export default {
 		}
 	}
 };
+
+export default spacer;

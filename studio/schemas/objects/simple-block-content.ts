@@ -1,6 +1,6 @@
 import {RiFileTextLine} from 'react-icons/ri';
 
-export default {
+const simpleBlockContent = {
 	title: 'Simple Block Content',
 	name: 'simpleBlockContent',
 	description: 'Simple text block',
@@ -29,3 +29,5 @@ export default {
 		}
 	]
 };
+
+export default simpleBlockContent;

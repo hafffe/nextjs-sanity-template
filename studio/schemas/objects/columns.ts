@@ -1,6 +1,6 @@
 import {RiLayoutColumnLine} from 'react-icons/ri';
 
-export default {
+const columns = {
 	name: 'columns',
 	title: 'Columns',
 	type: 'object',
@@ -88,3 +88,5 @@ export default {
 		}
 	]
 };
+
+export default columns;

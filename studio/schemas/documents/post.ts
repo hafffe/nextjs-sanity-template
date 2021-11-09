@@ -2,7 +2,7 @@ import slug from 'slugify';
 import {format} from 'date-fns';
 import {RiArticleLine} from 'react-icons/ri';
 
-export default {
+const post = {
 	name: 'post',
 	type: 'document',
 	title: 'Posts',
@@ -136,3 +136,5 @@ export default {
 		}
 	}
 };
+
+export default post;

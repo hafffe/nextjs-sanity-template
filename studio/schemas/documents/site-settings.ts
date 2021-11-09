@@ -1,6 +1,6 @@
 import {RiSettings5Line} from 'react-icons/ri';
 
-export default {
+const siteSettings = {
 	name: 'siteSettings',
 	type: 'document',
 	title: 'Site Settings',
@@ -83,3 +83,5 @@ export default {
 		}
 	}
 };
+
+export default siteSettings;
