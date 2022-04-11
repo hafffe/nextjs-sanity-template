@@ -46,7 +46,7 @@ npm run dev
 This will run frontend at localhost:3000
 and you will find sanity studio at localhost:3000/studio
 
-If you care for automatic reloads for the studio use localhost:3000 instead
+If you care for automatic reloads for the studio use localhost:3333/studio instead
 
 Add http://localhost:3000 in sanity settings -> api - CORS Origins
 
