@@ -1,5 +1,6 @@
 import {SanityImageSource} from '@sanity/asset-utils';
-import {createClient, createImageUrlBuilder, createPreviewSubscriptionHook} from 'next-sanity';
+import {createClient, createPreviewSubscriptionHook} from 'next-sanity';
+import createImageUrlBuilder from '@sanity/image-url';
 
 const config = {
 	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production',
