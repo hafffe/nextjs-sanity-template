@@ -48,7 +48,7 @@
 		"@typescript-eslint/parser": "^5.19.0",
 		"babel-jest": "^27.4.5",
 		"concurrently": "^7.0.0",
-		"eslint": "^7.31.0",
+		"eslint": "^8.14.0",
 		"eslint-config-next": "^12.1.4",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-react": "^7.29.4",
