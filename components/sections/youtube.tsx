@@ -20,7 +20,7 @@ const YoutubeBlock = ({data}: Props) => {
 
 	const id = getYouTubeId(data.url)?.toString();
 
-	return <YouTube videoId={id} opts={options} containerClassName='youtubeContainer' />;
+	return <YouTube videoId={id} opts={options} className='youtubeContainer' />;
 };
 
 export default YoutubeBlock;
