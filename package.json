@@ -6,13 +6,14 @@
 	"scripts": {
 		"dev": "concurrently \"next\" \"cd studio && sanity start\"",
 		"build": "echo 'Building Sanity to public/studio…' && cd studio && sanity build ../public/studio -y && cd .. && next build",
+		"start": "next",
 		"postinstall": "cd studio && npm ci",
 		"test": "tsc && next lint && jest",
 		"tsc": "tsc",
 		"lint": "next lint"
 	},
 	"engines": {
-		"node": ">=14.x"
+		"node": ">=16.x"
 	},
 	"author": "Aron Hafner",
 	"license": "MIT",
