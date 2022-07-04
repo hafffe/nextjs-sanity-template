@@ -1,8 +1,8 @@
 import NextLink from 'next/link';
-import {format, parseISO} from 'date-fns';
 import {Flex, Grid, Heading, HStack, LinkBox, LinkOverlay, Text} from '@chakra-ui/react';
 import {Post} from '@/models/post';
 import {BlockContent, MainImage} from '@/components/sections';
+import {Date} from '.';
 
 type Props = {
 	posts: Post[];
@@ -22,8 +22,6 @@ const PostList = ({posts}: Props) => (
 					</Text>
 				));
 
-				const publishedAtDate = parseISO(post.publishedAt);
-
 				return (
 					<LinkBox key={post._id} as='article'>
 						<Flex direction='column' width='100%'>
@@ -36,9 +34,7 @@ const PostList = ({posts}: Props) => (
 								</LinkOverlay>
 							</NextLink>
 							<HStack paddingBottom={2}>
-								<Text fontSize='sm' paddingY={1}>
-									{post.publishedAt && format(publishedAtDate, 'MMM dd, yyyy', {})}
-								</Text>
+								{post.publishedAt && <Date publishedAt={post.publishedAt} />}
 								<HStack>{keywords}</HStack>
 							</HStack>
 							{post?.excerpt && <BlockContent data={post.excerpt} />}
