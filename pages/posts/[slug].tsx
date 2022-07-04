@@ -1,13 +1,12 @@
 import {GetStaticProps} from 'next';
 import Error from 'next/error';
 import {useRouter} from 'next/router';
-import {format, parseISO} from 'date-fns';
 import {Box, Heading, HStack, Stack, Tag, Text} from '@chakra-ui/react';
 import {postQuery, siteSettingsQuery, allPostSlug} from '@/lib/queries';
 import {sanityClient, usePreviewSubscription} from '@/lib/sanity';
 import {Post as PostProps} from '@/models/post';
 import {SiteSettings} from '@/models/site-settings';
-import {Layout} from '@/components/common';
+import {Date, Layout} from '@/components/common';
 import {RenderSection} from '@/components/utils';
 
 type Props = {
@@ -28,7 +27,6 @@ const Post = ({postData, siteSettings}: Props) => {
 		return <Error statusCode={404} />;
 	}
 
-	const publishedAtDate = parseISO(post.publishedAt);
 	const keywords = post.keywords?.map((x) => (
 		<Tag key={x} variant='outline' colorScheme='gray' size='sm'>
 			{x}
@@ -44,7 +42,7 @@ const Post = ({postData, siteSettings}: Props) => {
 				<Box>
 					<Stack paddingBottom={2} direction='row'>
 						<Text fontSize='sm'>Written by {post.author?.name}</Text>
-						<Text fontSize='sm'>{post.publishedAt && format(publishedAtDate, 'MMM dd, yyyy')}</Text>
+						<Date publishedAt={post.publishedAt} />
 					</Stack>
 					<HStack>{keywords}</HStack>
 				</Box>

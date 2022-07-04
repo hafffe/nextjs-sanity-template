@@ -1,4 +1,5 @@
 import DarkModeSwitch from './dark-mode-switch';
+import Date from './date';
 import Footer from './footer';
 import Head from './head';
 import Header from './header';
@@ -7,4 +8,4 @@ import MainNavigation from './main-navigation';
 import PostList from './post-list';
 import Seo from './seo';
 
-export {DarkModeSwitch, Footer, Head, Header, Layout, MainNavigation, PostList, Seo};
+export {DarkModeSwitch, Date, Footer, Head, Header, Layout, MainNavigation, PostList, Seo};
