@@ -93,7 +93,8 @@ const blockContent = {
 						annotations: [{type: 'link'}]
 					}
 				},
-				{name: 'image', type: 'mainImage'}
+//		  {name: 'image', type: 'mainImage'}
+		  {name: 'customImage', type: 'mainImage'}
 			]
 		}
 	],

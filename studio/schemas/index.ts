@@ -1,6 +1,3 @@
-/* eslint-disable unicorn/prefer-spread */
-import createSchema from 'part:@sanity/base/schema-creator';
-import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 import person from './documents/person';
 import page from './documents/page';
@@ -21,9 +18,7 @@ import mainImage from './sections/main-image';
 import spacer from './sections/spacer';
 import youtube from './sections/youtube';
 
-export default createSchema({
-	name: 'default',
-	types: schemaTypes.concat([
+export const schemas = [
 		person,
 		page,
 		post,
@@ -40,5 +35,4 @@ export default createSchema({
 		blockContent,
 		spacer,
 		youtube
-	])
-});
+	]

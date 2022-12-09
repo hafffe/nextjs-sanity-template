@@ -1,4 +1,3 @@
-import {StructureBuilder as S} from '@sanity/structure';
 import {SiteSettings} from './global-settings';
 import {PageMenuItem} from './pages';
 import {PersonMenuItem} from './person';
@@ -6,9 +5,9 @@ import {PostMenuItem} from './posts';
 import PostPreview from '../components/previews/post/post-preview';
 import PagePreview from '../components/previews/page/page-preview';
 
-const structure = () => S.list().title('Content').items([SiteSettings, PageMenuItem, PostMenuItem, PersonMenuItem]);
+export const structure = (S: any) => S.list().title('Content').items([SiteSettings(S), PageMenuItem(S), PostMenuItem(S), PersonMenuItem(S)]);
 
-export const getDefaultDocumentNode = (props: any) => {
+export const defaultDocumentNode = (S: any, props: any) => {
 	const {schemaType} = props;
 
 	if (schemaType === 'post') {
