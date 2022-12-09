@@ -8,29 +8,24 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "sanity build",
+		"dev": "sanity dev",
 		"start": "sanity start"
 	},
 	"keywords": [
 		"sanity"
 	],
 	"dependencies": {
-		"@sanity/base": "^2.29.5",
+		"@portabletext/react": "^2.0.0",
 		"@sanity/block-content-to-react": "^3.0.0",
-		"@sanity/components": "^2.14.0",
-		"@sanity/core": "^2.29.5",
-		"@sanity/dashboard": "^2.29.5",
-		"@sanity/default-layout": "^2.29.5",
-		"@sanity/default-login": "^2.29.5",
-		"@sanity/desk-tool": "^2.29.5",
-		"@sanity/structure": "^2.29.5",
-		"@sanity/vision": "^2.29.5",
-		"date-fns": "^2.25.0",
-		"prop-types": "^15.7",
-		"react": "^17.0",
-		"react-dom": "^17.0",
-		"react-icons": "^4.3.1",
-		"sanity-plugin-dashboard-widget-document-list": "^0.0.13",
-		"slugify": "^1.6.1",
-		"styled-components": "^5.2.0"
+		"@sanity/dashboard": "^3.0.0",
+		"@sanity/vision": "^3.0.6",
+		"date-fns": "^2.29.3",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-icons": "^4.7.1",
+		"sanity": "^3.0.6",
+		"sanity-plugin-dashboard-widget-document-list": "^1.0.1",
+		"slugify": "^1.6.5",
+		"styled-components": "^5.3.6"
 	}
 }
