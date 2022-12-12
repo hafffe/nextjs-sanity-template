@@ -60,7 +60,7 @@
 		"jest-environment-jsdom": "^28.1.2",
 		"prettier": "^2.7.1",
 		"typescript": "^4.7.4",
-		"vercel": "^25.1.0"
+		"vercel": "^28.8.0"
 	},
 	"jest": {
 		"collectCoverageFrom": [
