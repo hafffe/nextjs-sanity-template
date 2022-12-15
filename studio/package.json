@@ -7,7 +7,7 @@
 	"author": "Aron Hafner",
 	"license": "MIT",
 	"scripts": {
-		"build": "sanity build -y ../public/studio",
+		"build": "sanity build ../public/studio -y",
 		"dev": "sanity dev",
 		"start": "sanity start"
 	},
