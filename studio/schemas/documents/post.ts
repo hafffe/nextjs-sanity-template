@@ -1,56 +1,41 @@
 import slug from 'slugify';
 import {format} from 'date-fns';
 import {RiArticleLine} from 'react-icons/ri';
+import {defineType, defineField} from 'sanity';
 
-const post = {
+const post = defineType({
 	name: 'post',
 	type: 'document',
-	title: 'Posts',
+	title: 'Post',
 	icon: RiArticleLine,
-	fieldsets: [
+	groups: [
 		{
 			name: 'general',
-			title: 'General',
-			options: {
-				collapsible: true,
-				collapsed: true
-			}
+			title: 'General'
 		},
 		{
 			name: 'meta',
-			title: 'Meta infomation',
-			options: {
-				collapsible: true,
-				collapsed: true
-			}
+			title: 'Meta infomation'
 		},
 		{
 			name: 'excerpt',
-			title: 'Excerpt',
-			options: {
-				collapsible: true,
-				collapsed: true
-			}
+			title: 'Excerpt'
 		},
 		{
 			name: 'content',
-			title: 'Content',
-			options: {
-				collapsible: true,
-				collapsed: true
-			}
+			title: 'Content'
 		}
 	],
 	fields: [
-		{
+		defineField({
 			name: 'title',
 			title: 'Title',
 			type: 'string',
 			description: 'Title of the page',
-			fieldset: 'general',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			group: 'general',
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			name: 'slug',
 			title: 'Slug',
 			description: 'Some frontends will require a slug to be set to be able to show the page',
@@ -59,66 +44,66 @@ const post = {
 				source: 'title',
 				slugify: (input: string) => slug(input, {lower: true})
 			},
-			fieldset: 'general',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			group: 'general',
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			type: 'metaFields',
 			name: 'meta',
-			fieldset: 'meta'
-		},
-		{
+			group: 'meta'
+		}),
+		defineField({
 			name: 'author',
 			title: 'Author',
 			type: 'reference',
 			description: 'Select author for post',
 			to: [{type: 'person'}],
-			fieldset: 'meta',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			group: 'meta',
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			name: 'publishedAt',
 			title: 'Published at',
 			description: 'You can use this field to schedule post where you show them',
 			type: 'datetime',
-			fieldset: 'meta',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			group: 'meta',
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			name: 'keywords',
 			type: 'array',
 			title: 'Keywords',
 			description: 'Tags for your post',
-			fieldset: 'meta',
+			group: 'meta',
 			of: [{type: 'string'}],
 			options: {
 				layout: 'tags'
 			},
-			validation: (Rule: any) => Rule.unique()
-		},
-		{
+			validation: (Rule) => Rule.unique()
+		}),
+		defineField({
 			name: 'excerpt',
 			type: 'simpleBlockContent',
 			title: 'Excerpt',
 			description: 'This ends up on summary pages, when people share your post in social media.',
-			fieldset: 'excerpt',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			group: 'excerpt',
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			name: 'featuredImage',
 			title: 'Featured Image',
 			description: 'Image that is displayed in posts lists',
-			fieldset: 'excerpt',
+			group: 'excerpt',
 			type: 'mainImage'
-		},
-		{
+		}),
+		defineField({
 			name: 'content',
 			type: 'array',
 			title: 'Content',
 			description: 'Add, edit, and reorder sections with content',
-			fieldset: 'content',
+			group: 'content',
 			of: [{type: 'grid'}, {type: 'mainImage'}, {type: 'blockContent'}, {type: 'spacer'}, {type: 'youtube'}]
-		}
+		})
 	],
 	initialValue: () => ({
 		publishedAt: new Date().toISOString()
@@ -128,13 +113,15 @@ const post = {
 			title: 'title',
 			publishedAt: 'publishedAt'
 		},
-		prepare({title, publishedAt}: {title: string; publishedAt: string}) {
+		prepare(selection) {
+			const {title, publishedAt} = selection;
+
 			return {
 				title: `${title}`,
 				subtitle: format(new Date(publishedAt), 'MMM dd yyyy HH:mm')
 			};
 		}
 	}
-};
+});
 
 export default post;

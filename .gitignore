@@ -10,3 +10,4 @@ public/studio
 .next
 yarn.lock
 tsconfig.tsbuildinfo
+.sanity

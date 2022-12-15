@@ -1,60 +1,47 @@
 import {RiSettings5Line} from 'react-icons/ri';
+import {defineType, defineField} from 'sanity';
 
-const siteSettings = {
+const siteSettings = defineType({
 	name: 'siteSettings',
 	type: 'document',
 	title: 'Site Settings',
 	icon: RiSettings5Line,
-	// eslint-disable-next-line spaced-comment
-	__experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
-	fieldsets: [
+	groups: [
 		{
 			name: 'meta',
-			title: 'General Information',
-			options: {
-				collapsible: true,
-				collapsed: true
-			}
+			title: 'General Information'
 		},
 		{
 			name: 'navigation',
-			title: 'Main Navigation',
-			options: {
-				collapsible: true,
-				collapsed: true
-			}
+			title: 'Main Navigation'
 		},
 		{
 			name: 'social',
-			title: 'Social',
-			options: {
-				collapsible: true,
-				collapsed: true
-			}
+			title: 'Social'
 		}
 	],
 	fields: [
-		{
+		defineField({
 			name: 'title',
 			title: 'Title',
 			type: 'string',
 			description: 'Title of the page',
-			fieldset: 'meta',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			group: 'meta',
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			name: 'description',
 			title: 'Description',
 			type: 'text',
 			description: 'Description for search engines and social media.',
-			fieldset: 'meta',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			group: 'meta',
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			title: 'Navigation',
 			name: 'navigation',
 			description: 'Select pages or link for main navigation',
-			fieldset: 'navigation',
+			group: 'navigation',
 			type: 'array',
 			of: [
 				{
@@ -66,13 +53,13 @@ const siteSettings = {
 					type: 'externalLink'
 				}
 			]
-		},
-		{
+		}),
+		defineField({
 			name: 'socialFields',
 			type: 'socialFields',
 			description: 'Social media',
-			fieldset: 'social'
-		}
+			group: 'social'
+		})
 	],
 	preview: {
 		select: {},
@@ -82,6 +69,6 @@ const siteSettings = {
 			};
 		}
 	}
-};
+});
 
 export default siteSettings;

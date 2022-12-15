@@ -1,8 +1,9 @@
 import {RiFileTextLine} from 'react-icons/ri';
 import {AiOutlineItalic} from 'react-icons/ai';
-import CenterText from '../../src/components/block-content/centered-styles';
+import {defineField} from 'sanity';
+// import CenterText from '../../src/components/block-content/centered-styles';
 
-const blockContent = {
+const blockContent = defineField({
 	title: 'Block Content',
 	name: 'blockContent',
 	description: 'Text Block',
@@ -28,52 +29,31 @@ const blockContent = {
 						{title: 'H6', value: 'h6'},
 						{
 							title: 'Normal Center',
-							value: 'normal+center',
-							blockEditor: {
-								render: CenterText
-							}
+							value: 'normal+center'
 						},
 						{
 							title: 'H1 Center',
-							value: 'h1+center',
-							blockEditor: {
-								render: CenterText
-							}
+							value: 'h1+center'
 						},
 						{
 							title: 'H2 Center',
-							value: 'h2+center',
-							blockEditor: {
-								render: CenterText
-							}
+							value: 'h2+center'
 						},
 						{
 							title: 'H3 Center',
-							value: 'h3+center',
-							blockEditor: {
-								render: CenterText
-							}
+							value: 'h3+center'
 						},
 						{
 							title: 'H4 Center',
-							value: 'h4+center',
-							blockEditor: {
-								render: CenterText
-							}
+							value: 'h4+center'
 						},
 						{
 							title: 'H5 Center',
-							value: 'h5+center',
-							blockEditor: {
-								render: CenterText
-							}
+							value: 'h5+center'
 						},
 						{
 							title: 'H6 Center',
-							value: 'h6+center',
-							blockEditor: {
-								render: CenterText
-							}
+							value: 'h6+center'
 						},
 						{title: 'Quote', value: 'blockquote'}
 					],
@@ -93,7 +73,7 @@ const blockContent = {
 						annotations: [{type: 'link'}]
 					}
 				},
-				{name: 'image', type: 'mainImage'}
+				{name: 'customImage', type: 'mainImage'}
 			]
 		}
 	],
@@ -104,6 +84,6 @@ const blockContent = {
 			};
 		}
 	}
-};
+});
 
 export default blockContent;

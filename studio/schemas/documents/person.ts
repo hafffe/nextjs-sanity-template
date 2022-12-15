@@ -1,44 +1,45 @@
 import {RiUserSmileLine} from 'react-icons/ri';
+import {defineType, defineField} from 'sanity';
 
-const person = {
+const person = defineType({
 	name: 'person',
 	type: 'document',
 	title: 'Persons',
 	icon: RiUserSmileLine,
 	fields: [
-		{
+		defineField({
 			name: 'name',
 			title: 'Name',
 			type: 'string',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			name: 'title',
 			title: 'Job title',
 			type: 'string',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			name: 'phone',
 			title: 'Phone',
 			type: 'string',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			name: 'email',
 			title: 'email',
 			type: 'email',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			name: 'image',
 			title: 'Image',
 			type: 'image',
 			options: {
 				hotspot: true
 			},
-			validation: (Rule: any) => Rule.required()
-		}
+			validation: (Rule) => Rule.required()
+		})
 	],
 	preview: {
 		select: {
@@ -46,6 +47,6 @@ const person = {
 			media: 'image.asset'
 		}
 	}
-};
+});
 
 export default person;

@@ -1,47 +1,36 @@
 import slug from 'slugify';
 import {RiPagesLine} from 'react-icons/ri';
+import {defineType, defineField} from 'sanity';
 
-const page = {
+const page = defineType({
 	name: 'page',
 	type: 'document',
 	title: 'Pages',
 	icon: RiPagesLine,
-	fieldsets: [
+	groups: [
 		{
 			name: 'general',
-			title: 'General',
-			options: {
-				collapsible: true,
-				collapsed: true
-			}
+			title: 'General'
 		},
 		{
 			name: 'meta',
-			title: 'Meta infomation',
-			options: {
-				collapsible: true,
-				collapsed: true
-			}
+			title: 'Meta infomation'
 		},
 		{
 			name: 'content',
-			title: 'Content',
-			options: {
-				collapsible: true,
-				collapsed: true
-			}
+			title: 'Content'
 		}
 	],
 	fields: [
-		{
+		defineField({
 			name: 'title',
 			title: 'Title',
 			type: 'string',
 			description: 'Title of the page',
-			fieldset: 'general',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			group: 'general',
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			name: 'slug',
 			title: 'Slug',
 			description: 'Some frontends will require a slug to be set to be able to show the page',
@@ -50,33 +39,36 @@ const page = {
 				source: 'title',
 				slugify: (input: string) => slug(input, {lower: true})
 			},
-			fieldset: 'general',
-			validation: (Rule: any) => Rule.required()
-		},
-		{
+			group: 'general',
+			validation: (Rule) => Rule.required()
+		}),
+		defineField({
 			type: 'metaFields',
+			title: 'Meta',
 			name: 'meta',
-			fieldset: 'meta'
-		},
-		{
+			group: 'meta'
+		}),
+		defineField({
 			name: 'content',
 			type: 'array',
 			title: 'Page sections',
 			description: 'Add, edit, and reorder sections',
-			fieldset: 'content',
+			group: 'content',
 			of: [{type: 'grid'}, {type: 'mainImage'}, {type: 'blockContent'}, {type: 'spacer'}, {type: 'youtube'}]
-		}
+		})
 	],
 	preview: {
 		select: {
 			title: 'title'
 		},
-		prepare({title}: {title: string}) {
+		prepare(selection) {
+			const {title} = selection;
+
 			return {
 				title: `${title}`
 			};
 		}
 	}
-};
+});
 
 export default page;

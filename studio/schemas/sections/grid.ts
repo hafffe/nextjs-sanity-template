@@ -1,28 +1,22 @@
 import {RiLayoutGridLine} from 'react-icons/ri';
+import {defineField} from 'sanity';
 
-const grid = {
+
+const grid = defineField({
 	name: 'grid',
 	type: 'object',
 	title: 'Grid',
 	hidden: true,
 	description: 'This is a simple grid component, all items are going to be equally wide',
 	icon: RiLayoutGridLine,
-	fieldsets: [
+	groups: [
 		{
 			name: 'columns',
-			title: 'Columns',
-			options: {
-				collapsible: true,
-				collapsed: false
-			}
+			title: 'Columns'
 		},
 		{
 			name: 'items',
-			title: 'Items',
-			options: {
-				collapsible: true,
-				collapsed: false
-			}
+			title: 'Items'
 		}
 	],
 	fields: [
@@ -35,12 +29,12 @@ const grid = {
 			name: 'columns',
 			title: 'Columns',
 			type: 'columns',
-			fieldset: 'columns'
+			group: 'columns'
 		},
 		{
 			name: 'items',
 			title: 'Items',
-			fieldset: 'items',
+			group: 'items',
 			type: 'array',
 			options: {
 				layout: 'grid'
@@ -58,6 +52,6 @@ const grid = {
 			};
 		}
 	}
-};
+});
 
 export default grid;

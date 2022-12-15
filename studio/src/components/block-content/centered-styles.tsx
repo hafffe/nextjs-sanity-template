@@ -1,8 +1,8 @@
-import React from 'react';
-import styles from './styles.css';
+import * as React from 'react';
 
 interface Props {
 	style?: string;
+	children?: React.ReactNode;
 }
 
 const getTag = (style: string) => {
@@ -19,7 +19,7 @@ const getTag = (style: string) => {
 	}
 };
 
-const BlockContent: React.FunctionComponent<Props> = (props) => {
+const BlockContent = (props: Props) => {
 	if (props.children && !props.style) {
 		return <span>{props.children}</span>;
 	}
@@ -37,7 +37,7 @@ const BlockContent: React.FunctionComponent<Props> = (props) => {
 	}
 
 	return (
-		<div className={styles.center}>
+		<div style={{textAlign: 'center'}}>
 			<Heading>{props.children}</Heading>
 		</div>
 	);

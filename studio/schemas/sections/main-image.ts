@@ -1,6 +1,7 @@
 import {RiImageLine} from 'react-icons/ri';
+import {defineField} from 'sanity';
 
-const mainImage = {
+const mainImage = defineField({
 	name: 'mainImage',
 	title: 'Image',
 	description: 'Image',
@@ -15,7 +16,7 @@ const mainImage = {
 			title: 'Alternative text',
 			type: 'string',
 			description: 'Important for SEO and accessiblity.',
-			validation: (Rule: any) => Rule.error('You have to fill out the alternative text.').required(),
+			validation: (Rule) => Rule.error('You have to fill out the alternative text.').required(),
 			options: {
 				isHighlighted: true
 			}
@@ -26,13 +27,13 @@ const mainImage = {
 			title: 'alt',
 			media: 'asset'
 		},
-		prepare({media, title}: any) {
+		prepare({media, title}) {
 			return {
 				media,
 				title
 			};
 		}
 	}
-};
+});
 
 export default mainImage;
