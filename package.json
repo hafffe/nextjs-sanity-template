@@ -5,7 +5,7 @@
 	"description": "Sanity & Next.js template",
 	"scripts": {
 		"dev": "concurrently \"next\" \"cd studio && npm run dev\"",
-		"build": "echo 'Building Sanity to public/studio…' && cd studio && npm run build ../public/studio -y && cd .. && next build",
+		"build": "echo 'Building Sanity to public/studio…' && cd studio && npm run build && cd .. && next build",
 		"start": "next",
 		"postinstall": "cd studio && npm ci",
 		"test": "tsc && next lint && jest",
