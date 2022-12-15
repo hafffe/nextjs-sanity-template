@@ -4,8 +4,8 @@
 	"private": true,
 	"description": "Sanity & Next.js template",
 	"scripts": {
-		"dev": "concurrently \"next\" \"cd studio && sanity start\"",
-		"build": "echo 'Building Sanity to public/studio…' && cd studio && sanity build ../public/studio -y && cd .. && next build",
+		"dev": "concurrently \"next\" \"cd studio && npm run dev\"",
+		"build": "echo 'Building Sanity to public/studio…' && cd studio && npm run build ../public/studio -y && cd .. && next build",
 		"start": "next",
 		"postinstall": "cd studio && npm ci",
 		"test": "tsc && next lint && jest",

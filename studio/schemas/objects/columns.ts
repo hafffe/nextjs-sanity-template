@@ -1,11 +1,12 @@
 import {RiLayoutColumnLine} from 'react-icons/ri';
+import {defineField} from 'sanity';
 
-const columns = {
+const columns = defineField({
 	name: 'columns',
 	title: 'Columns',
 	type: 'object',
 	description: 'Items per row',
-	validation: (Rule: any) => Rule.required(),
+	validation: (Rule) => Rule.required(),
 	icon: RiLayoutColumnLine,
 	fields: [
 		{
@@ -87,6 +88,6 @@ const columns = {
 			}
 		}
 	]
-};
+});
 
 export default columns;

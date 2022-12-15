@@ -1,6 +1,7 @@
 import {RiYoutubeLine} from 'react-icons/ri';
+import {defineField} from 'sanity';
 
-const youtube = {
+const youtube = defineField({
 	name: 'youtube',
 	type: 'object',
 	title: 'YouTube Embed',
@@ -10,21 +11,21 @@ const youtube = {
 			name: 'url',
 			type: 'url',
 			title: 'YouTube video URL',
-			validation: (Rule: any) => Rule.required()
+			validation: (Rule) => Rule.required().uri({scheme: ['http']})
 		},
 		{
 			name: 'autoPlay',
 			type: 'boolean',
 			title: 'Enable autoplay',
-			validation: (Rule: any) => Rule.required()
+			validation: (Rule) => Rule.required()
 		},
 		{
 			name: 'muted',
 			type: 'boolean',
 			title: 'Muted',
-			validation: (Rule: any) => Rule.required()
+			validation: (Rule) => Rule.required()
 		}
 	]
-};
+});
 
 export default youtube;

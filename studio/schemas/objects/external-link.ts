@@ -1,6 +1,7 @@
 import {RiExternalLinkLine} from 'react-icons/ri';
+import {defineField} from 'sanity';
 
-const externalLink = {
+const externalLink = defineField({
 	title: 'External Link',
 	name: 'externalLink',
 	type: 'object',
@@ -11,20 +12,16 @@ const externalLink = {
 			name: 'title',
 			title: 'Title',
 			type: 'string',
-			validation: (Rule: any) => Rule.required()
+			validation: (Rule) => Rule.required()
 		},
 		{
 			name: 'slug',
 			type: 'slug',
 			title: 'Slug',
-			description:
-				'There is no `link` validation on this so please type accurate urls with https://, mailto:, tel: etc.',
-			validation: (Rule: any) => Rule.required()
+			description: 'Add external link',
+			validation: (Rule) => Rule.required().uri({scheme: ['http', 'https', 'mailto', 'tel']})
 		}
-	],
-	blockEditor: {
-		icon: RiExternalLinkLine
-	}
-};
+	]
+});
 
 export default externalLink;

@@ -1,4 +1,3 @@
-
 import person from './documents/person';
 import page from './documents/page';
 import post from './documents/post';
@@ -18,21 +17,21 @@ import mainImage from './sections/main-image';
 import spacer from './sections/spacer';
 import youtube from './sections/youtube';
 
-export const schemas = [
-		person,
-		page,
-		post,
-		siteSettings,
-		metaFields,
-		columns,
-		externalLink,
-		internalLink,
-		link,
-		simpleBlockContent,
-		grid,
-		mainImage,
-		socialFields,
-		blockContent,
-		spacer,
-		youtube
-	]
+export const schemasTypes = [
+	person,
+	page,
+	post,
+	siteSettings,
+	metaFields,
+	columns,
+	externalLink,
+	internalLink,
+	link,
+	simpleBlockContent,
+	grid,
+	mainImage,
+	socialFields,
+	blockContent,
+	spacer,
+	youtube
+];

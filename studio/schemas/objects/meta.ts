@@ -1,18 +1,15 @@
 import {RiShareLine} from 'react-icons/ri';
+import {defineField} from 'sanity';
 
-const meta = {
+const meta = defineField({
 	title: 'Meta Information',
 	name: 'metaFields',
 	type: 'object',
 	icon: RiShareLine,
-	fieldsets: [
+	groups: [
 		{
 			name: 'opengraph',
-			title: 'Open Graph Protocol',
-			options: {
-				collapsible: true,
-				collapsed: true
-			}
+			title: 'Open Graph Protocol'
 		}
 	],
 	fields: [
@@ -34,21 +31,21 @@ const meta = {
 			options: {
 				hotspot: true
 			},
-			fieldset: 'opengraph'
+			group: 'opengraph'
 		},
 		{
 			name: 'openGraphTitle',
 			title: 'Open Graph Title',
 			type: 'string',
-			fieldset: 'opengraph'
+			group: 'opengraph'
 		},
 		{
 			name: 'openGraphDescription',
 			title: 'Open Graph Description',
 			type: 'text',
-			fieldset: 'opengraph'
+			group: 'opengraph'
 		}
 	]
-};
+});
 
 export default meta;

@@ -1,6 +1,6 @@
-import {RiLinksLine} from 'react-icons/ri';
+import {defineField} from 'sanity';
 
-const link = {
+const link = defineField({
 	title: 'URL',
 	name: 'link',
 	type: 'object',
@@ -10,16 +10,13 @@ const link = {
 			title: 'URL',
 			name: 'href',
 			type: 'url',
-			validation: (Rule: any) =>
+			validation: (Rule) =>
 				Rule.uri({
 					allowRelative: true,
 					scheme: ['https', 'http', 'mailto', 'tel']
 				})
 		}
-	],
-	blockEditor: {
-		icon: RiLinksLine
-	}
-};
+	]
+});
 
 export default link;

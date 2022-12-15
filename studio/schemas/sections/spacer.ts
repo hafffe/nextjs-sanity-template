@@ -1,6 +1,7 @@
 import {RiCheckboxIndeterminateLine} from 'react-icons/ri';
+import {defineField} from 'sanity';
 
-const spacer = {
+const spacer = defineField({
 	name: 'spacer',
 	type: 'object',
 	title: 'Spacer',
@@ -33,6 +34,6 @@ const spacer = {
 			};
 		}
 	}
-};
+});
 
 export default spacer;
