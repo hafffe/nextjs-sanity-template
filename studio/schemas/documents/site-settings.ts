@@ -38,6 +38,12 @@ const siteSettings = defineType({
 			validation: (Rule) => Rule.required()
 		}),
 		defineField({
+			type: 'metaFields',
+			title: 'Meta',
+			name: 'meta',
+			group: 'meta'
+		}),
+		defineField({
 			title: 'Navigation',
 			name: 'navigation',
 			description: 'Select pages or link for main navigation',

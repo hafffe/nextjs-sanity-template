@@ -1,7 +1,6 @@
-import BlockContent from './block-content';
-import Grid from './grid';
-import MainImage from './main-image';
-import Spacer from './spacer';
-import Youtube from './youtube';
-
-export {BlockContent, Grid, MainImage, Spacer, Youtube};
+export {default as BlockContent} from './block-content';
+export {default as Grid} from './grid';
+export {default as MainImage} from './main-image';
+export {default as Spacer} from './spacer';
+export {default as Youtube} from './youtube';
+export {default as RenderSection} from './render-sections';
