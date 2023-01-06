@@ -1,6 +1,6 @@
 import type {ReactNode} from 'react';
 
-type Tag = 'main' | 'div' | 'article';
+type Tag = 'main' | 'div' | 'article' | 'footer' | 'header';
 
 const MaxWidthWrapper = ({className, type, children}: {className?: string; type?: Tag; children: ReactNode}) => {
 	const ElementType = type || 'div';
