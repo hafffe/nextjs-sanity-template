@@ -7,8 +7,8 @@ import {schemasTypes} from './studio/schemas';
 import {structure} from './studio/structure';
 
 export default defineConfig({
-	projectId: 'mzxfialk',
-	dataset: 'production',
+	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string,
+	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET as string,
 	name: 'Studio',
 	basePath: '/studio',
 	schema: {
