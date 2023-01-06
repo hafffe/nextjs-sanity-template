@@ -37,7 +37,7 @@
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.4.0",
 		"react-is": "^18.2.0",
-		"react-youtube": "^9.0.2",
+		"react-youtube": "^10.1.0",
 		"sanity": "^3.0.6",
 		"slugify": "^1.6.5",
 		"styled-components": "^5.3.6",
