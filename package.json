@@ -32,7 +32,6 @@
 		"next": "^13.1.1",
 		"next-sanity": "^3.1.9",
 		"next-sanity-image": "^5.0.0",
-		"next-seo": "^5.8.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.4.0",
@@ -45,7 +44,6 @@
 	},
 	"devDependencies": {
 		"@sanity/cli": "^3.1.4",
-		"@testing-library/react": "^13.3.0",
 		"@types/node": "^18.0.0",
 		"@types/react": "^18.0.26",
 		"@types/react-dom": "^18.0.5",
