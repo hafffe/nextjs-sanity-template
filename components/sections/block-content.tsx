@@ -1,20 +1,11 @@
-import NextLink from 'next/link';
-import {Box, Flex, Heading, Link, Text} from '@chakra-ui/react';
 import {PortableText} from '@portabletext/react';
+import Link from 'next/link';
 import {IoIosQuote} from 'react-icons/io';
-import {BlockContent as BlockContentType} from '@/models/sections/block-content';
-import {SimpleBlockContent} from '@/models/objects/simple-block-content';
-import {MainImage} from '@/components/sections';
+import type {BlockContent as BlockContentType} from '~/models/sections/block-content';
+import {Image} from '../shared';
+import {Heading} from '../ui';
 
-type Props = {
-	data: BlockContentType | SimpleBlockContent;
-};
-
-const TextBlock = ({data}: Props) => {
-	if (!data.text) {
-		return null;
-	}
-
+const BlockContent = ({data}: {data: BlockContentType}) => {
 	const blocks = data.text;
 
 	return (
@@ -22,93 +13,63 @@ const TextBlock = ({data}: Props) => {
 			value={blocks}
 			components={{
 				types: {
-					image: ({value}) => <MainImage data={value} width={960} height={600} />
+					image: ({value}) => <Image data={value} width={960} height={600} />
 				},
 				marks: {
-					link: ({children, value}) => (
-						<NextLink passHref href={`${value.href}`}>
-							<Link>{children}</Link>
-						</NextLink>
-					),
-					italic: ({children}) => <Text as='i'>{children}</Text>
+					link: ({children, value}) => <Link href={`${value.href}`}>{children}</Link>,
+					italic: ({children}) => <i>{children}</i>
 				},
 				block: {
-					h1: ({children}) => (
-						<Heading as='h1' size='2xl'>
-							{children}
-						</Heading>
-					),
-					h2: ({children}) => (
-						<Heading as='h2' size='xl'>
-							{children}
-						</Heading>
-					),
-					h3: ({children}) => (
-						<Heading as='h3' size='lg'>
-							{children}
-						</Heading>
-					),
-					h4: ({children}) => (
-						<Heading as='h2' size='xl'>
-							{children}
-						</Heading>
-					),
-					h5: ({children}) => (
-						<Heading as='h2' size='xl'>
-							{children}
-						</Heading>
-					),
-					h6: ({children}) => (
-						<Heading as='h2' size='xl'>
-							{children}
-						</Heading>
-					),
+					h1: ({children}) => <Heading level='h1'>{children}</Heading>,
+					h2: ({children}) => <Heading level='h2'>{children}</Heading>,
+					h3: ({children}) => <Heading level='h3'>{children}</Heading>,
+					h4: ({children}) => <Heading level='h4'>{children}</Heading>,
+					h5: ({children}) => <Heading level='h5'>{children}</Heading>,
+					h6: ({children}) => <Heading level='h6'>{children}</Heading>,
 					'h1+center': ({children}) => (
-						<Heading as='h1' size='2xl' textAlign='center'>
+						<Heading level='h1' className='text-center'>
 							{children}
 						</Heading>
 					),
 					'h2+center': ({children}) => (
-						<Heading as='h2' size='xl' textAlign='center'>
+						<Heading level='h2' className='text-center'>
 							{children}
 						</Heading>
 					),
 					'h3+center': ({children}) => (
-						<Heading as='h3' size='lg' textAlign='center'>
+						<Heading level='h3' className='text-center'>
 							{children}
 						</Heading>
 					),
 					'h4+center': ({children}) => (
-						<Heading as='h2' size='md' textAlign='center'>
+						<Heading level='h4' className='text-center'>
 							{children}
 						</Heading>
 					),
 					'h5+center': ({children}) => (
-						<Heading as='h2' size='sm' textAlign='center'>
+						<Heading level='h5' className='text-center'>
 							{children}
 						</Heading>
 					),
 					'h6+center': ({children}) => (
-						<Heading as='h2' size='sm' textAlign='center'>
+						<Heading level='h6' className='text-center'>
 							{children}
 						</Heading>
 					),
 					blockquote: ({children}) => (
-						<Flex paddingY={1}>
-							<Box as='blockquote' display='flex'>
-								<Box as={IoIosQuote} />
-								<Text paddingLeft={2} fontSize='lg' fontWeight='semibold'>
-									{children}
-								</Text>
-							</Box>
-						</Flex>
+						<div className='py-1'>
+							<blockquote className='flex'>
+								<IoIosQuote />
+								<p className='pl-1 text-lg font-semibold'>{children}</p>
+							</blockquote>
+						</div>
 					),
-					normal: ({children}) => <Text>{children}</Text>,
-					'normal+center': ({children}) => <Text textAlign='center'>{children}</Text>
+					normal: ({children}) => <p className='mt-1'>{children}</p>,
+					'normal+center': ({children}) => <p className='text-center'>{children}</p>
 				}
 			}}
 		/>
 	);
 };
 
-export default TextBlock;
+export default BlockContent;
