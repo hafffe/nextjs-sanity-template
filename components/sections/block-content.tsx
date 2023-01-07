@@ -13,7 +13,7 @@ const BlockContent = ({data}: {data: BlockContentType}) => {
 			value={blocks}
 			components={{
 				types: {
-					image: ({value}) => <Image data={value} width={960} height={600} />
+					customImage: ({value}) => <Image data={value} width={960} height={600} />
 				},
 				marks: {
 					link: ({children, value}) => <Link href={`${value.href}`}>{children}</Link>,

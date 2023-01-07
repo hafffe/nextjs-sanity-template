@@ -1,7 +1,5 @@
 import {RiFileTextLine} from 'react-icons/ri';
-import {AiOutlineItalic} from 'react-icons/ai';
 import {defineField} from 'sanity';
-// import CenterText from '../../src/components/block-content/centered-styles';
 
 const blockContent = defineField({
 	title: 'Block Content',
@@ -61,11 +59,8 @@ const blockContent = defineField({
 						decorators: [
 							{value: 'strong', title: 'Strong'},
 							{
-								value: 'italic',
-								title: 'Italic',
-								blockEditor: {
-									icon: AiOutlineItalic
-								}
+								value: 'em',
+								title: 'Italic'
 							},
 							{value: 'underline', title: 'Underline'},
 							{value: 'code', title: 'Code'}
