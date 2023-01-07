@@ -20,7 +20,7 @@ const simpleBlockContent = defineField({
 					marks: {
 						decorators: [
 							{value: 'strong', title: 'Strong'},
-							{value: 'italic', title: 'Italic'},
+							{value: 'em', title: 'Italic'},
 							{value: 'underline', title: 'Underline'}
 						],
 						annotations: [{type: 'link'}]
