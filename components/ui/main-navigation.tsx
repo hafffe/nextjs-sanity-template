@@ -2,7 +2,7 @@
 
 import type {InternalLink} from '~/models/objects/internal-link';
 import type {ExternalLink} from '~/models/objects/external-link';
-import {useLockedBody} from 'usehooks-ts';
+import {useLockedBody, useEventListener} from 'usehooks-ts';
 import Link from 'next/link';
 import {useState} from 'react';
 import {HiBars3} from 'react-icons/hi2';
@@ -42,6 +42,16 @@ const MainNavigation = ({navigation}: Props) => {
 		setIsOpen(!isOpen);
 		setLocked(!isOpen);
 	};
+
+	const handleResize = () => {
+		if (isOpen && window.innerWidth > 768) {
+			setIsOpen(false);
+			setLocked(false);
+		}
+	};
+
+	useEventListener('resize', handleResize);
+
 
 	if (!navigation) {
 		return null;
