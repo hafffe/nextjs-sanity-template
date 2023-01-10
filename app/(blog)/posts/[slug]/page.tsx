@@ -6,10 +6,16 @@ import {PreviewSuspense, PostPreview} from '~/components/previews';
 import type {Post} from '~/models/post';
 
 const PostRoute = async ({params}: {params: {slug: string}}) => {
+	console.log('params.slug', params.slug);
 	const post = await sanityClient.fetch<Post>(postQuery, {
 		slug: params.slug
 	});
 
+	if (!post) {
+		console.log('no post', post);
+	}
+
+	console.log('post', post.title);
 	if (previewData()) {
 		return (
 			<PreviewSuspense fallback={<PostPageLayout post={post} />}>
