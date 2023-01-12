@@ -10,20 +10,17 @@ const socialFields = defineField({
 		{
 			name: 'twitter',
 			type: 'url',
-			title: 'Twitter URL',
-			validation: (Rule) => Rule.uri({scheme: ['https']})
+			title: 'Twitter URL'
 		},
 		{
 			name: 'instagram',
 			type: 'url',
-			title: 'Instagram URL',
-			validation: (Rule) => Rule.uri({scheme: ['https']})
+			title: 'Instagram URL'
 		},
 		{
 			name: 'facebook',
 			type: 'url',
-			title: 'Facebook URL',
-			validation: (Rule) => Rule.uri({scheme: ['https']})
+			title: 'Facebook URL'
 		}
 	]
 });

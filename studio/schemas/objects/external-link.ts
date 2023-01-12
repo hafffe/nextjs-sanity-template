@@ -18,8 +18,7 @@ const externalLink = defineField({
 			name: 'slug',
 			type: 'slug',
 			title: 'Slug',
-			description: 'Add external link',
-			validation: (Rule) => Rule.required().uri({scheme: ['http', 'https', 'mailto', 'tel']})
+			description: 'Add external link'
 		}
 	]
 });
