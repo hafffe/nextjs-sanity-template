@@ -10,7 +10,7 @@ type Props = {
 
 const PostList = ({posts}: Props) => (
 	<div className='flex-col'>
-		<div className='grid gap-4 grid-cols-2 grid-rows-1'>
+		<div className='grid gap-4 grid-cols-1 md:grid-cols-2 grid-rows-1'>
 			{posts.map((post) => {
 				if (!post.slug?.current) {
 					return null;
