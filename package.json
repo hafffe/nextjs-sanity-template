@@ -23,7 +23,7 @@
 		"@sanity/image-url": "^1.0.2",
 		"@sanity/types": "^3.4.0",
 		"@sanity/ui": "^1.2.4",
-		"@sanity/vision": "^3.4.0",
+		"@sanity/vision": "^3.5.1",
 		"clsx": "^1.2.1",
 		"date-fns": "^2.29.3",
 		"date-fns-tz": "^2.0.0",
