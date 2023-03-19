@@ -3,6 +3,10 @@ import type {BlockContent as BlockContentType} from '~/models/sections/block-con
 import type {SimpleBlockContent} from '~/models/objects/simple-block-content';
 
 const PostBody = ({content}: {content: BlockContentType | SimpleBlockContent}) => {
+	if (!content?.text) {
+		return null;
+	}
+
 	return (
 		<div className={`max-w-2xl`}>
 			<PortableText value={content.text} />

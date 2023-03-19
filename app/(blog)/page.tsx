@@ -1,6 +1,7 @@
+import type {Metadata} from 'next';
 import {previewData} from 'next/headers';
 import {pageWithPostsQuery} from '~/lib/queries';
-import {sanityClient} from '~/lib/sanity/client';
+import {sanityClient, urlForImage} from '~/lib/sanity/client';
 import {IndexPageLayout} from '~/components/layout';
 import {IndexPagePreview, PreviewSuspense} from '~/components/previews';
 import type {Page} from '~/models/page';
@@ -9,6 +10,36 @@ import type {Post} from '~/models/post';
 type PageWithPosts = {
 	page: Page;
 	posts: Post[];
+};
+
+export const generateMetadata = async (): Promise<Metadata> => {
+	const page = await sanityClient.fetch<Page>(pageWithPostsQuery, {
+		slug: 'posts',
+		limit: 2
+	});
+
+	const ogImage =
+		(page.meta?.openGraphImage && urlForImage(page.meta.openGraphImage).width(800).height(600).fit('crop').url()) ??
+		'';
+
+	return {
+		title: page.meta?.metaTitle ?? page.title,
+		icons: {
+			icon: '/favicon/favicon.svg'
+		},
+		description: page.meta?.metaDescription,
+		openGraph: {
+			title: page.meta?.openGraphTitle,
+			description: page.meta?.openGraphDescription,
+			images: [
+				{
+					url: ogImage,
+					width: 800,
+					height: 600
+				}
+			]
+		}
+	};
 };
 
 const IndexRoute = async () => {

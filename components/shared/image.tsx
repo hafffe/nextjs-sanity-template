@@ -10,7 +10,7 @@ interface ImageProps {
 }
 
 const ImageComponent = (props: ImageProps) => {
-	const {data: source, priority, height, width} = props;
+	const {data: source, priority, height = 1000, width = 1200} = props;
 
 	const image = source?.asset?._ref ? (
 		<div
@@ -18,7 +18,7 @@ const ImageComponent = (props: ImageProps) => {
 		>
 			<Image
 				className='h-auto w-full rounded-md'
-				width={2000}
+				width={1200}
 				height={1000}
 				alt={`Image for ${source.alt}`}
 				src={urlForImage(source.asset).height(height).width(width).url()}

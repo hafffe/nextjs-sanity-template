@@ -8,6 +8,10 @@ import {Heading} from '../ui';
 const BlockContent = ({data}: {data: BlockContentType}) => {
 	const blocks = data.text;
 
+	if (!blocks) {
+		return null;
+	}
+
 	return (
 		<PortableText
 			value={blocks}
