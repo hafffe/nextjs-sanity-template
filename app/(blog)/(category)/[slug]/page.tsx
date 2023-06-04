@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import {previewData} from 'next/headers';
+import {draftMode} from 'next/headers';
 import {pageQuery, allPagesSlug} from '~/lib/queries';
 import {sanityClient, urlForImage} from '~/lib/sanity/client';
 import {PageLayout} from '~/components/layout';
@@ -15,7 +15,6 @@ export const generateStaticParams = async () => {
 };
 
 export const generateMetadata = async ({params}: {params: {slug: string}}): Promise<Metadata> => {
-	console.log('params.slug', params.slug);
 	const page = await sanityClient.fetch<Page>(pageQuery, {
 		slug: params.slug
 	});
@@ -45,11 +44,12 @@ export const generateMetadata = async ({params}: {params: {slug: string}}): Prom
 };
 
 const SlugRoute = async ({params}: {params: {slug: string}}) => {
+	const {isEnabled} = draftMode();
 	const page = await sanityClient.fetch<Page>(pageQuery, {
 		slug: params.slug
 	});
 
-	if (previewData()) {
+	if (isEnabled) {
 		return (
 			<PreviewSuspense fallback={<PageLayout page={page} />}>
 				<PagePreview query={pageQuery} variables={{slug: params.slug}} />

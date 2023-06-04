@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import {previewData} from 'next/headers';
+import {draftMode} from 'next/headers';
 import {postQuery, postsQuery} from '~/lib/queries';
 import {sanityClient, urlForImage} from '~/lib/sanity/client';
 import {PostPageLayout} from '~/components/layout';
@@ -47,11 +47,12 @@ export const generateMetadata = async ({params}: {params: {slug: string}}): Prom
 };
 
 const PostRoute = async ({params}: {params: {slug: string}}) => {
+	const {isEnabled} = draftMode();
 	const post = await sanityClient.fetch<Post>(postQuery, {
 		slug: params.slug
 	});
 
-	if (previewData()) {
+	if (isEnabled) {
 		return (
 			<PreviewSuspense fallback={<PostPageLayout post={post} />}>
 				<PostPreview query={postQuery} variables={{slug: params.slug}} />
