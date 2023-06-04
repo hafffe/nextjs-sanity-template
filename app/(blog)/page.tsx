@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import {previewData} from 'next/headers';
+import {draftMode} from 'next/headers';
 import {pageWithPostsQuery} from '~/lib/queries';
 import {sanityClient, urlForImage} from '~/lib/sanity/client';
 import {IndexPageLayout} from '~/components/layout';
@@ -43,12 +43,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
 };
 
 const IndexRoute = async () => {
+	const {isEnabled} = draftMode();
 	const {page, posts} = await sanityClient.fetch<PageWithPosts>(pageWithPostsQuery, {
 		slug: 'frontpage',
 		limit: 2
 	});
 
-	if (previewData()) {
+	if (isEnabled) {
 		return (
 			<PreviewSuspense fallback={<IndexPageLayout page={page} posts={posts} />}>
 				<IndexPagePreview query={pageWithPostsQuery} variables={{slug: 'frontpage', limit: 2}} />
