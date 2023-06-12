@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import {draftMode} from 'next/headers';
-import {pageWithPostsQuery} from '~/lib/queries';
+import {pageWithPostsQuery, pageQuery} from '~/lib/queries';
 import {sanityClient, urlForImage} from '~/lib/sanity/client';
 import {IndexPageLayout} from '~/components/layout';
 import {IndexPagePreview, PreviewSuspense} from '~/components/previews';
@@ -13,9 +13,8 @@ type PageWithPosts = {
 };
 
 export const generateMetadata = async (): Promise<Metadata> => {
-	const page = await sanityClient.fetch<Page>(pageWithPostsQuery, {
-		slug: 'posts',
-		limit: 2
+	const page = await sanityClient.fetch<Page>(pageQuery, {
+		slug: 'frontpage'
 	});
 
 	const ogImage =
