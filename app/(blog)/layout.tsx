@@ -1,4 +1,5 @@
 import '~/styles/globals.css';
+import {Analytics} from '@vercel/analytics/react';
 import {Work_Sans} from '@next/font/google';
 import {Footer, Header, MaxWidthWrapper} from '~/components/ui';
 import {siteSettingsQuery} from '~/lib/queries';
@@ -21,7 +22,8 @@ const RootLayout = async ({children}: {children: React.ReactNode}) => {
 				<MaxWidthWrapper className='flex flex-col pt-4 pb-8' type='main'>
 					{children}
 				</MaxWidthWrapper>
-				<Footer socialFields={siteSettings.socialFields}/>
+				<Footer socialFields={siteSettings.socialFields} />
+				<Analytics />
 			</body>
 		</html>
 	);
