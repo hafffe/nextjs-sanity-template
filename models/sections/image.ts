@@ -1,8 +1,6 @@
-import {SanityAsset} from '../utils';
+import type {Image as SanityImage} from "sanity";
 
-export interface Image {
-	_type: 'mainImage';
-	_key: string;
-	alt: string;
-	asset: SanityAsset;
-}
+export type Image = SanityImage & {
+  _key: string;
+  _type: "mainImage";
+};

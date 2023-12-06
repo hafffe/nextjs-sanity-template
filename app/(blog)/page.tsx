@@ -1,62 +1,47 @@
-import type {Metadata} from 'next';
-import {draftMode} from 'next/headers';
-import {pageWithPostsQuery, pageQuery} from '~/lib/queries';
-import {sanityClient, urlForImage} from '~/lib/sanity/client';
-import {IndexPageLayout} from '~/components/layout';
-import {IndexPagePreview, PreviewSuspense} from '~/components/previews';
-import type {Page} from '~/models/page';
-import type {Post} from '~/models/post';
+import type {Metadata} from "next";
+import dynamic from "next/dynamic";
+import HomePage from "~/components/pages/home";
+import {draftModeEnabled} from "~/lib/draft-mode";
+import {loadPageWithPosts} from "~/lib/sanity/query/load-query";
+import {urlForOpenGraphImage} from "~/lib/sanity/utils";
 
-type PageWithPosts = {
-	page: Page;
-	posts: Post[];
-};
+const HomePagePreview = dynamic(() => import("~/components/pages/home/preview"));
 
 export const generateMetadata = async (): Promise<Metadata> => {
-	const page = await sanityClient.fetch<Page>(pageQuery, {
-		slug: 'frontpage'
-	});
+  const {data} = await loadPageWithPosts({slug: "frontpage", limit: 2});
+  const {page} = data;
+  const ogImage = urlForOpenGraphImage(page.meta?.openGraphImage);
 
-	const ogImage =
-		(page.meta?.openGraphImage && urlForImage(page.meta.openGraphImage).width(800).height(600).fit('crop').url()) ??
-		'';
-
-	return {
-		title: page.meta?.metaTitle ?? page.title,
-		icons: {
-			icon: '/favicon/favicon.svg'
-		},
-		description: page.meta?.metaDescription,
-		openGraph: {
-			title: page.meta?.openGraphTitle,
-			description: page.meta?.openGraphDescription,
-			images: [
-				{
-					url: ogImage,
-					width: 800,
-					height: 600
-				}
-			]
-		}
-	};
+  return {
+    title: page.meta?.metaTitle ?? page.title,
+    icons: {
+      icon: "/favicon/favicon.svg",
+    },
+    description: page.meta?.metaDescription,
+    openGraph: {
+      title: page.meta?.openGraphTitle,
+      description: page.meta?.openGraphDescription,
+      images: [
+        {
+          url: ogImage ?? "",
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+  };
 };
 
 const IndexRoute = async () => {
-	const {isEnabled} = draftMode();
-	const {page, posts} = await sanityClient.fetch<PageWithPosts>(pageWithPostsQuery, {
-		slug: 'frontpage',
-		limit: 2
-	});
+  const isEnabled = draftModeEnabled();
+  const initalData = await loadPageWithPosts({slug: "frontpage", limit: 2});
+  const params = {slug: "frontpage", limit: 2};
 
-	if (isEnabled) {
-		return (
-			<PreviewSuspense fallback={<IndexPageLayout page={page} posts={posts} />}>
-				<IndexPagePreview query={pageWithPostsQuery} variables={{slug: 'frontpage', limit: 2}} />
-			</PreviewSuspense>
-		);
-	}
+  if (isEnabled) {
+    return <HomePagePreview initial={initalData} params={params} />;
+  }
 
-	return <IndexPageLayout page={page} posts={posts} />;
+  return <HomePage data={initalData.data} />;
 };
 
 export default IndexRoute;

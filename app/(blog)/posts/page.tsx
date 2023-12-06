@@ -1,63 +1,56 @@
-import type {Metadata} from 'next';
-import {pageQuery, postsQuery} from '~/lib/queries';
-import {sanityClient, urlForImage} from '~/lib/sanity/client';
-import {PostList} from '~/components/shared';
-import {RenderSection} from '~/components/sections';
-import type {Page} from '~/models/page';
-import type {Post} from '~/models/post';
+import type {Metadata} from "next";
+import dynamic from "next/dynamic";
+import {loadPageWithPosts} from "~/lib/sanity/query/load-query";
+import PageLayout from "~/components/pages/posts";
+import {urlForOpenGraphImage} from "~/lib/sanity/utils";
+import {draftModeEnabled} from "~/lib/draft-mode";
+
+const PagePreview = dynamic(() => import("~/components/pages/posts/preview"));
 
 export const generateMetadata = async (): Promise<Metadata> => {
-	const page = await sanityClient.fetch<Page>(pageQuery, {
-		slug: 'posts'
-	});
+  const {data} = await loadPageWithPosts({slug: "posts", limit: 20});
+  const {page} = data;
+  const ogImage = page && urlForOpenGraphImage(page.meta?.openGraphImage);
 
-	const ogImage =
-		(page.meta?.openGraphImage && urlForImage(page.meta.openGraphImage).width(800).height(600).fit('crop').url()) ??
-		'';
+  if (!page) {
+    return {
+      title: "Posts",
+      icons: {
+        icon: "/favicon/favicon.svg",
+      },
+    };
+  }
 
-	return {
-		title: page.meta?.metaTitle ?? page.title,
-		description: page.meta?.metaDescription,
-		icons: {
-			icon: '/favicon/favicon.svg'
-		},
-		openGraph: {
-			title: page.meta?.openGraphTitle,
-			description: page.meta?.openGraphDescription,
-			images: [
-				{
-					url: ogImage,
-					width: 800,
-					height: 600
-				}
-			]
-		}
-	};
+  return {
+    title: page.meta?.metaTitle ?? page.title,
+    description: page.meta?.metaDescription,
+    icons: {
+      icon: "/favicon/favicon.svg",
+    },
+    openGraph: {
+      title: page.meta?.openGraphTitle,
+      description: page.meta?.openGraphDescription,
+      images: [
+        {
+          url: ogImage ?? "",
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+  };
 };
 
-const IndexPage = async () => {
-	const pageData = await sanityClient.fetch<Page>(pageQuery, {
-		slug: 'posts'
-	});
+const Page = async () => {
+  const isEnabled = draftModeEnabled();
+  const initialData = await loadPageWithPosts({slug: "posts", limit: 20});
+  const params = {slug: "posts", limit: 20};
 
-	const postsData = await sanityClient.fetch<Post[]>(postsQuery, {
-		limit: 10
-	});
+  if (isEnabled) {
+    return <PagePreview initial={initialData} params={params} />;
+  }
 
-	const [page, posts] = await Promise.all([pageData, postsData]);
-
-	return (
-		<>
-			{page?.content?.map((section) => {
-				if (!section || Object.keys(section).length === 0) {
-					return null;
-				}
-
-				return <RenderSection key={section._key} section={section} />;
-			})}
-			<PostList posts={posts} />
-		</>
-	);
+  return <PageLayout data={initialData.data} />;
 };
 
-export default IndexPage;
+export default Page;

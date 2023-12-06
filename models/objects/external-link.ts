@@ -1,8 +1,8 @@
-import {Slug} from '@sanity/types';
+import {Slug} from "@sanity/types";
 
 export interface ExternalLink {
-	_type: 'externalLink';
-	_key: string;
-	title: string;
-	slug?: Slug;
+  _type: "externalLink";
+  _key: string;
+  title: string;
+  slug?: Slug;
 }
