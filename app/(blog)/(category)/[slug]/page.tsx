@@ -1,63 +1,50 @@
-import type {Metadata} from 'next';
-import {draftMode} from 'next/headers';
-import {pageQuery, allPagesSlug} from '~/lib/queries';
-import {sanityClient, urlForImage} from '~/lib/sanity/client';
-import {PageLayout} from '~/components/layout';
-import {PagePreview, PreviewSuspense} from '~/components/previews';
-import type {Page} from '~/models/page';
+import type {Metadata} from "next";
+import dynamic from "next/dynamic";
+import {draftModeEnabled} from "~/lib/draft-mode";
+import {loadPageQuery} from "~/lib/sanity/query/load-query";
+import PageLayout from "~/components/pages/category";
+import {generateCategorySlugs} from "~/lib/sanity/query/generate-slugs";
+import {urlForOpenGraphImage} from "~/lib/sanity/utils";
+
+const PagePreview = dynamic(() => import("~/components/pages/category/preview"));
 
 export const generateStaticParams = async () => {
-	const pageData = await sanityClient.fetch<Page[]>(allPagesSlug);
-
-	return pageData.map((page) => ({
-		slug: page
-	}));
+  return await generateCategorySlugs();
 };
 
 export const generateMetadata = async ({params}: {params: {slug: string}}): Promise<Metadata> => {
-	const page = await sanityClient.fetch<Page>(pageQuery, {
-		slug: params.slug
-	});
+  const {data: page} = await loadPageQuery({slug: params.slug});
+  const ogImage = urlForOpenGraphImage(page.meta?.openGraphImage);
 
-	const ogImage =
-		(page.meta?.openGraphImage && urlForImage(page.meta.openGraphImage).width(800).height(600).fit('crop').url()) ??
-		'';
-
-	return {
-		title: page.meta?.metaTitle ?? page.title,
-		description: page.meta?.metaDescription,
-		icons: {
-			icon: '/favicon/favicon.svg'
-		},
-		openGraph: {
-			title: page.meta?.openGraphTitle,
-			description: page.meta?.openGraphDescription,
-			images: [
-				{
-					url: ogImage,
-					width: 800,
-					height: 600
-				}
-			]
-		}
-	};
+  return {
+    title: page.meta?.metaTitle ?? page.title,
+    description: page.meta?.metaDescription,
+    icons: {
+      icon: "/favicon/favicon.svg",
+    },
+    openGraph: {
+      title: page.meta?.openGraphTitle,
+      description: page.meta?.openGraphDescription,
+      images: [
+        {
+          url: ogImage ?? "",
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+  };
 };
 
-const SlugRoute = async ({params}: {params: {slug: string}}) => {
-	const {isEnabled} = draftMode();
-	const page = await sanityClient.fetch<Page>(pageQuery, {
-		slug: params.slug
-	});
+const Page = async ({params}: {params: {slug: string}}) => {
+  const isEnabled = draftModeEnabled();
+  const initialData = await loadPageQuery({slug: params.slug});
 
-	if (isEnabled) {
-		return (
-			<PreviewSuspense fallback={<PageLayout page={page} />}>
-				<PagePreview query={pageQuery} variables={{slug: params.slug}} />
-			</PreviewSuspense>
-		);
-	}
+  if (isEnabled) {
+    return <PagePreview initial={initialData} />;
+  }
 
-	return <PageLayout page={page} />;
+  return <PageLayout data={initialData.data} />;
 };
 
-export default SlugRoute;
+export default Page;
