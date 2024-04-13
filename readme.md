@@ -39,7 +39,8 @@ Add http://localhost:3000 in sanity settings -> api - CORS Origins
 
 ### Things to know
 
-Frontend startpage is fetched with slug `frontpage`
+* Frontend startpage is fetched with slug `frontpage`
+* Posts list is fetched with the slug `posts`
 
 ### Tech Stack
 

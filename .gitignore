@@ -11,3 +11,4 @@ public/studio
 yarn.lock
 tsconfig.tsbuildinfo
 .sanity
+.idea
