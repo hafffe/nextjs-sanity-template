@@ -22,6 +22,11 @@ const socialFields = defineField({
       type: "url",
       title: "Facebook URL",
     },
+    {
+      name: "youtube",
+      type: "url",
+      title: "YouTube URL",
+    },
   ],
 });
 

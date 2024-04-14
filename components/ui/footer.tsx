@@ -1,4 +1,4 @@
-import {RiFacebookBoxLine, RiInstagramLine, RiTwitterLine} from "react-icons/ri";
+import {RiFacebookBoxLine, RiInstagramLine, RiTwitterLine, RiYoutubeLine} from "react-icons/ri";
 import MaxWidthWrapper from "./max-width-wrapper";
 import type {SocialFields} from "~/models/objects/social-fields";
 
@@ -40,6 +40,15 @@ const Footer = ({socialFields}: Props) => {
             </a>
           </div>
         )}
+
+          {socialFields?.youtube && (
+            <div className="p-0.5">
+              <a href={socialFields?.youtube} target="_blank" rel="noreferrer">
+                <RiYoutubeLine color="white" size="28"/>
+              </a>
+            </div>
+          )}
+
       </div>
     </MaxWidthWrapper>
   );
