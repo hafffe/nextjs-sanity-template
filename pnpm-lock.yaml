@@ -38,6 +38,12 @@ dependencies:
   '@vercel/analytics':
     specifier: ^1.1.1
     version: 1.1.1
+  '@vercel/stega':
+    specifier: ^0.1.0
+    version: 0.1.0
+  '@vvo/tzdb':
+    specifier: ^6.131.0
+    version: 6.131.0
   clsx:
     specifier: ^2.0.0
     version: 2.0.0
@@ -2400,6 +2406,10 @@ packages:
       vite: 4.5.0(@types/node@20.10.5)
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@vvo/tzdb@6.131.0:
+    resolution: {integrity: sha512-yJ9K6iulmCQBRglKqCoV2OUkROA96twwnC+1VpjN0Ri/jP2u5bEP1TlKdn2Oi3QtBYkFyuwJi5TzDiZOKtD4fg==}
     dev: false
 
   /abbrev@1.1.1:

@@ -34,3 +34,9 @@ export const youtube = `
     ...
   }
 `;
+
+export const googleCalendar = `
+  _type == 'googleCalendar' => {
+    ...
+  }
+`;

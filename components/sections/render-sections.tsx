@@ -1,5 +1,5 @@
 import {Sections} from "~/models/sections";
-import {BlockContent, Grid, MainImage, Spacer, Youtube} from "~/components/sections";
+import {BlockContent, Grid, MainImage, Spacer, Youtube, GoogleCalendar} from "~/components/sections";
 
 const RenderSection = ({section}: {section: Sections}) => {
   switch (section._type) {
@@ -13,6 +13,8 @@ const RenderSection = ({section}: {section: Sections}) => {
       return <Spacer data={section} />;
     case "youtube":
       return <Youtube data={section} />;
+    case "googleCalendar":
+      return <GoogleCalendar data={section} />;
     default:
       console.warn(`Section couldn't be rendered`);
 

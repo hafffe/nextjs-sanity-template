@@ -102,7 +102,7 @@ const post = defineType({
       title: "Content",
       description: "Add, edit, and reorder sections with content",
       group: "content",
-      of: [{type: "grid"}, {type: "mainImage"}, {type: "blockContent"}, {type: "spacer"}, {type: "youtube"}],
+      of: [{type: "grid"}, {type: "mainImage"}, {type: "blockContent"}, {type: "spacer"}, {type: "youtube"}, {type: "googleCalendar"}],
     }),
   ],
   initialValue: () => ({

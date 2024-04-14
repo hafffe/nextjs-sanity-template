@@ -29,6 +29,8 @@
     "@sanity/ui": "^1.9.3",
     "@sanity/vision": "^3.23.1",
     "@vercel/analytics": "^1.1.1",
+    "@vercel/stega": "^0.1.0",
+    "@vvo/tzdb": "^6.131.0",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",

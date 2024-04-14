@@ -1,5 +1,5 @@
 import {groq} from "next-sanity";
-import {blockContent, grid, mainImage, spacer, youtube} from "./fragments";
+import {blockContent, grid, mainImage, spacer, youtube, googleCalendar} from "./fragments";
 
 export const pageQuery = groq`
   *[_type == 'page' && slug.current == $slug][0] {
@@ -9,7 +9,8 @@ export const pageQuery = groq`
       ${grid},
       ${mainImage},
       ${spacer},
-      ${youtube}
+      ${youtube},
+      ${googleCalendar}
     }
   }
 `;
@@ -23,7 +24,8 @@ export const pageWithPostsQuery = groq`
         ${grid},
         ${mainImage},
         ${spacer},
-        ${youtube}
+        ${youtube},
+      ${googleCalendar}
       }
     },
     "posts": *[_type == 'post' && defined(slug.current)] | order(_createdAt desc)[0...$limit]
