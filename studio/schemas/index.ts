@@ -16,6 +16,7 @@ import grid from "./sections/grid";
 import mainImage from "./sections/main-image";
 import spacer from "./sections/spacer";
 import youtube from "./sections/youtube";
+import googleCalendar from "./sections/google-calendar";
 
 export const schemasTypes = [
   person,
@@ -34,4 +35,5 @@ export const schemasTypes = [
   blockContent,
   spacer,
   youtube,
+  googleCalendar,
 ];
