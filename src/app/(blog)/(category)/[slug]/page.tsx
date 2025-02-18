@@ -5,7 +5,11 @@ import {urlForOpenGraphImage} from "~/lib/sanity/utils";
 import {RenderSection} from "~/components/sections";
 
 export const generateStaticParams = async () => {
-  return await sanityFetch({query: allPagesSlug, perspective: "published", stega: false});
+  const {data} = await sanityFetch({query: allPagesSlug, perspective: "published", stega: false});
+
+  return data.map((page) => ({
+    slug: page,
+  }));
 };
 
 export const generateMetadata = async ({params}: {params: Promise<{slug: string}>}): Promise<Metadata> => {
