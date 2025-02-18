@@ -13,8 +13,6 @@ const ImageComponent = (props: ImageProps) => {
   const {data: source, priority, height = 1000, width = 1200} = props;
   const imageUrl = source && urlForImage(source)?.height(height).width(width).fit("crop").url();
 
-  console.log("props", props);
-
   const image = imageUrl ? (
     <div className="shadow-small transition-shadow duration-200 hover:shadow-medium">
       <Image

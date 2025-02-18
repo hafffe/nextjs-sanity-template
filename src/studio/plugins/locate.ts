@@ -1,5 +1,5 @@
 import type {DocumentLocationResolver} from "sanity/presentation";
-import {map, Observable} from "rxjs";
+import {map} from "rxjs";
 
 export const locate: DocumentLocationResolver = (params, context) => {
   if (params.type === "post") {

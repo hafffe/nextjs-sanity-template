@@ -17,6 +17,7 @@ const BlockContent = ({data}: {data: BlockContentType}) => {
       value={blocks}
       components={{
         types: {
+          // eslint-disable-next-line jsx-a11y/alt-text
           customImage: ({value}) => <Image data={value} width={960} height={600} />,
         },
         marks: {

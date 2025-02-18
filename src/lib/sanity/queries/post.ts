@@ -12,5 +12,5 @@ export const postsQuery = defineQuery(`
 `);
 
 export const allPostSlugQuery = defineQuery(`
-  *[_type == 'post' && defined(slug.current)][]
+   *[_type == "post" && defined(slug.current)]{"slug": slug.current}
 `);

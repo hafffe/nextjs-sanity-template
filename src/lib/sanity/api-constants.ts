@@ -6,8 +6,6 @@ const assertValue = <T>(v: T | undefined, errorMessage: string): T => {
   return v;
 };
 
-export const revalidateSecret = process.env.SANITY_REVALIDATE_SECRET;
-
 export const dataset = assertValue(
   process.env.NEXT_PUBLIC_SANITY_DATASET,
   "Missing environment variable: NEXT_PUBLIC_SANITY_DATASET",
