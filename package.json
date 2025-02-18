@@ -10,7 +10,8 @@
     "test": "tsc && next lint",
     "tsc": "tsc",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "typegen": "sanity schema extract && sanity typegen generate"
   },
   "engines": {
     "node": ">=18.17.1"
