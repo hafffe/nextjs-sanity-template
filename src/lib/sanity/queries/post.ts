@@ -11,6 +11,6 @@ export const postsQuery = defineQuery(`
   *[_type == 'post' && defined(slug.current)] | order(_createdAt desc)[0...$limit]
 `);
 
-export const allPostSlug = defineQuery(`
+export const allPostSlugQuery = defineQuery(`
   *[_type == 'post' && defined(slug.current)][]
 `);

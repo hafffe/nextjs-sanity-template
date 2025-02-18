@@ -1,14 +1,26 @@
-import type {
-  Youtube as YoutubeType,
-  Grid as GridType,
-  MainImage as MainImageType,
-  Spacer as SpacerType,
-  BlockContent as BlockContentType,
-} from "~/lib/sanity/types";
-
 import {BlockContent, Grid, MainImage, Spacer, Youtube} from "~/components/sections";
 
-type Sections = YoutubeType | GridType | MainImageType | SpacerType | BlockContentType;
+type Sections =
+  | {
+      _key: string;
+      _type: "grid";
+    }
+  | {
+      _key: string;
+      _type: "blockContent";
+    }
+  | {
+      _key: string;
+      _type: "mainImage";
+    }
+  | {
+      _key: string;
+      _type: "spacer";
+    }
+  | {
+      _key: string;
+      _type: "youtube";
+    };
 
 const RenderSection = ({section}: {section: Sections}) => {
   switch (section._type) {

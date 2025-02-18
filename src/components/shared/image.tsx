@@ -1,9 +1,9 @@
 import {urlForImage} from "~/lib/sanity/utils";
 import Image from "next/image";
-import type {SanityImageAsset} from "~/lib/sanity/types";
+import type {MainImage} from "~/lib/sanity/types";
 
 interface ImageProps {
-  data: SanityImageAsset;
+  data: MainImage;
   width?: number;
   height?: number;
   priority?: boolean;
@@ -12,6 +12,8 @@ interface ImageProps {
 const ImageComponent = (props: ImageProps) => {
   const {data: source, priority, height = 1000, width = 1200} = props;
   const imageUrl = source && urlForImage(source)?.height(height).width(width).fit("crop").url();
+
+  console.log("props", props);
 
   const image = imageUrl ? (
     <div className="shadow-small transition-shadow duration-200 hover:shadow-medium">

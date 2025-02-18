@@ -9,7 +9,8 @@ export const generateStaticParams = async () => {
 };
 
 export const generateMetadata = async ({params}: {params: Promise<{slug: string}>}): Promise<Metadata> => {
-  const {data: page} = await sanityFetch({query: pageQuery});
+  const slug = (await params).slug;
+  const {data: page} = await sanityFetch({query: pageQuery, params: {slug}});
   const ogImage = urlForOpenGraphImage(page?.meta?.openGraphImage);
 
   return {

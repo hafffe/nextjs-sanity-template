@@ -11,6 +11,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   const {data} = await sanityFetch({query: pageWithPostsQuery, params: {slug: "frontpage", limit: 2}});
 
   const {page} = data;
+  // @ts-expect-error - @TODO update @sanity/image-url types so it's compatible
   const ogImage = urlForOpenGraphImage(page.meta?.openGraphImage);
 
   return {

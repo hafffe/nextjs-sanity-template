@@ -6,6 +6,7 @@ import {Suspense} from "react";
 import {Footer, Header, MaxWidthWrapper} from "~/components/ui";
 import {sanityFetch} from "~/lib/sanity/live";
 import {siteSettingsQuery} from "~/lib/sanity/queries";
+import DraftModeToast from "~/components/draft-mode-toast";
 
 const RootLayout = async ({children}: {children: React.ReactNode}) => {
   const {data: siteSettings} = await sanityFetch({query: siteSettingsQuery});
@@ -23,7 +24,12 @@ const RootLayout = async ({children}: {children: React.ReactNode}) => {
         <Footer socialFields={siteSettings?.socialFields} />
       </Suspense>
       <Analytics />
-      {isEnabled && <VisualEditing />}
+      {isEnabled && (
+        <>
+          <DraftModeToast />
+          <VisualEditing />
+        </>
+      )}
     </>
   );
 };

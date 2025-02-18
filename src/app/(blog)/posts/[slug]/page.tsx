@@ -1,13 +1,14 @@
 import type {Metadata} from "next";
 import {urlForOpenGraphImage} from "~/lib/sanity/utils";
 import {sanityFetch} from "~/lib/sanity/live";
-import {allPostSlug, postQuery} from "~/lib/sanity/queries";
+import {allPostSlugQuery, postQuery} from "~/lib/sanity/queries";
 import {Date, Heading, Tag} from "~/components/ui";
 import {RenderSection} from "~/components/sections";
 
-export const generateStaticParams = async () => {
-  return await sanityFetch({query: allPostSlug, perspective: "published", stega: false});
-};
+// export const generateStaticParams = async () => {
+//const {data} = await sanityFetch({query: allPostSlugQuery, perspective: "published", stega: false});
+// return data;
+// };
 
 export const generateMetadata = async ({params}: {params: Promise<{slug: string}>}): Promise<Metadata> => {
   const slug = (await params).slug;
