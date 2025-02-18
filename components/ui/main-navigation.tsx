@@ -2,7 +2,7 @@
 
 import type {InternalLink} from "~/models/objects/internal-link";
 import type {ExternalLink} from "~/models/objects/external-link";
-import {useLockedBody, useEventListener} from "usehooks-ts";
+import {useScrollLock, useEventListener} from "usehooks-ts";
 import Link from "next/link";
 import {useState} from "react";
 import {HiBars3} from "react-icons/hi2";
@@ -36,17 +36,23 @@ const resolveLink = (item: InternalLink | ExternalLink) => {
 
 const MainNavigation = ({navigation}: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [, setLocked] = useLockedBody(false);
+  const {lock, unlock} = useScrollLock({
+    autoLock: false,
+  });
 
   const toggleOpenState = () => {
     setIsOpen(!isOpen);
-    setLocked(!isOpen);
+    if (isOpen) {
+      unlock();
+    } else {
+      lock();
+    }
   };
 
   const handleResize = () => {
     if (isOpen && window.innerWidth > 768) {
       setIsOpen(false);
-      setLocked(false);
+      unlock();
     }
   };
 
@@ -58,11 +64,11 @@ const MainNavigation = ({navigation}: Props) => {
 
   return (
     <div className="flex flex-wrap items-center justify-between py-4 md:py-0 px-4 text-lg bg-white ml-auto">
-      <button className="block ml-auto md:hidden" onClick={toggleOpenState}>
+      <button type="button" className="block ml-auto md:hidden" onClick={toggleOpenState}>
         <HiBars3 />
       </button>
       <div className={cn("w-full md:flex md:items-center md:w-auto", isOpen ? "block fixed inset-0 top-16" : "hidden")}>
-        <nav className="relative bg-white drop-shadow-md md:drop-shadow-none rounded-sm flex-col md:flex md:flex-row w-full px-4 py-4">
+        <nav className="relative bg-white drop-shadow-md md:drop-shadow-none rounded-xs flex-col md:flex md:flex-row w-full px-4 py-4">
           {navigation.map((item) => {
             const link = resolveLink(item);
 

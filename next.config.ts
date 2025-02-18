@@ -1,9 +1,8 @@
-/** @type {import('next').NextConfig} */
+import type {NextConfig} from "next";
 
-const config = {
+const config: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     remotePatterns: [{hostname: "cdn.sanity.io"}],
   },

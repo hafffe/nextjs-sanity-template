@@ -1,16 +1,17 @@
 import "~/styles/globals.css";
 import {Analytics} from "@vercel/analytics/react";
 import dynamic from "next/dynamic";
+import {draftMode} from "next/headers";
 import {Suspense} from "react";
 import {Footer, Header, MaxWidthWrapper} from "~/components/ui";
-import {loadSiteSettings} from "~/lib/sanity/query/load-query";
-import {draftModeEnabled} from "~/lib/draft-mode";
+import {sanityFetch} from "~/lib/sanity/live";
+import {siteSettingsQuery} from "~/lib/queries";
 
 const VisualEditing = dynamic(() => import("~/components/visual-editing"));
 
 const RootLayout = async ({children}: {children: React.ReactNode}) => {
-  const {data: siteSettings} = await loadSiteSettings();
-  const isEnabled = draftModeEnabled();
+  const {data: siteSettings} = await sanityFetch({query: siteSettingsQuery, params: {slug: "frontpage"}});
+  const {isEnabled} = await draftMode();
 
   return (
     <>

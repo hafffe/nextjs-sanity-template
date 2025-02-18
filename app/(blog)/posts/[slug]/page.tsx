@@ -1,15 +1,12 @@
 import type {Metadata} from "next";
-import dynamic from "next/dynamic";
 import {loadPostQuery} from "~/lib/sanity/query/load-query";
 import PageLayout from "~/components/pages/post";
-import {generatePostsSlugs} from "~/lib/sanity/query/generate-slugs";
 import {urlForOpenGraphImage} from "~/lib/sanity/utils";
-import {draftModeEnabled} from "~/lib/draft-mode";
-
-const PagePreview = dynamic(() => import("~/components/pages/post/preview"));
+import {sanityFetch} from "~/lib/sanity/live";
+import {allPostSlug, postQuery} from "~/lib/queries";
 
 export const generateStaticParams = async () => {
-  return await generatePostsSlugs();
+  return await sanityFetch({query: allPostSlug, perspective: "published", stega: false});
 };
 
 export const generateMetadata = async ({params}: {params: {slug: string}}): Promise<Metadata> => {
@@ -36,15 +33,11 @@ export const generateMetadata = async ({params}: {params: {slug: string}}): Prom
   };
 };
 
-const Page = async ({params}: {params: {slug: string}}) => {
-  const isEnabled = draftModeEnabled();
-  const initialData = await loadPostQuery({slug: params.slug});
+const Page = async ({params}: {params: Promise<{slug: string}>}) => {
+  const slug = (await params).slug;
+  const data = await sanityFetch({query: postQuery});
 
-  if (isEnabled) {
-    return <PagePreview initial={initialData} />;
-  }
-
-  return <PageLayout data={initialData.data} />;
+  return <PageLayout data={data} />;
 };
 
 export default Page;

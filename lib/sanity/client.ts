@@ -1,13 +1,22 @@
-import {createClient} from "@sanity/client/stega";
+import {createClient} from "next-sanity";
 import {apiVersion, dataset, projectId, revalidateSecret, studioUrl} from "./api-constants";
 
 export const client = createClient({
-  dataset,
   projectId,
-  useCdn: revalidateSecret ? false : true,
-  perspective: "published",
+  dataset,
   apiVersion,
+  useCdn: true,
+  perspective: "published",
   stega: {
     studioUrl,
+    // Set logger to 'console' for more verbose logging
+    // logger: console,
+    filter: (props) => {
+      if (props.sourcePath.at(-1) === "title") {
+        return true;
+      }
+
+      return props.filterDefault(props);
+    },
   },
 });

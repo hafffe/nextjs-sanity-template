@@ -15,7 +15,8 @@ const handler = async (request: Request) => {
     return new Response("Invalid secret", {status: 401});
   }
 
-  draftMode().enable();
+  const {enable} = await draftMode();
+  enable();
   redirect(redirectTo);
 };
 

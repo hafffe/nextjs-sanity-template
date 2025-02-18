@@ -1,15 +1,14 @@
 import type {Metadata} from "next";
-import dynamic from "next/dynamic";
 import HomePage from "~/components/pages/home";
-import {draftModeEnabled} from "~/lib/draft-mode";
-import {loadPageWithPosts} from "~/lib/sanity/query/load-query";
+import {pageWithPostsQuery} from "~/lib/queries";
+import {sanityFetch} from "~/lib/sanity/live";
+
 import {urlForOpenGraphImage} from "~/lib/sanity/utils";
 
-const HomePagePreview = dynamic(() => import("~/components/pages/home/preview"));
-
 export const generateMetadata = async (): Promise<Metadata> => {
-  const {data} = await loadPageWithPosts({slug: "frontpage", limit: 2});
-  const {page} = data;
+  const data = await sanityFetch({query: pageWithPostsQuery, params: {slug: "frontpage", limit: 2}});
+
+  const page = data;
   const ogImage = urlForOpenGraphImage(page.meta?.openGraphImage);
 
   return {
@@ -33,15 +32,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
 };
 
 const IndexRoute = async () => {
-  const isEnabled = draftModeEnabled();
-  const initalData = await loadPageWithPosts({slug: "frontpage", limit: 2});
+  const data = await sanityFetch({query: pageWithPostsQuery, params: {slug: "frontpage", limit: 2}});
   const params = {slug: "frontpage", limit: 2};
 
-  if (isEnabled) {
-    return <HomePagePreview initial={initalData} params={params} />;
-  }
-
-  return <HomePage data={initalData.data} />;
+  return <HomePage data={data} />;
 };
 
 export default IndexRoute;
