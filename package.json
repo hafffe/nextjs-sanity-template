@@ -43,7 +43,7 @@
     "react-icons": "^5.4.0",
     "react-is": "^19.0.0",
     "react-youtube": "^10.1.0",
-    "rxjs": "^7.8.1",
+    "rxjs": "^7.8.2",
     "sanity": "^3.75.1",
     "slugify": "^1.6.6",
     "sonner": "^1.7.4",
