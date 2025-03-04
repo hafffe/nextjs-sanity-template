@@ -1,25 +1,24 @@
 import {RiExternalLinkLine} from "react-icons/ri";
-import {defineField} from "sanity";
+import {defineField, defineType} from "sanity";
 
-const externalLink = defineField({
+const externalLink = defineType({
   title: "External Link",
   name: "externalLink",
   type: "object",
-  hidden: true,
   icon: RiExternalLinkLine,
   fields: [
-    {
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "slug",
       type: "slug",
       title: "Slug",
       description: "Add external link",
-    },
+    }),
   ],
 });
 

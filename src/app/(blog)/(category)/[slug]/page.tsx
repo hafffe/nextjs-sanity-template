@@ -2,7 +2,7 @@ import type {Metadata} from "next";
 import {allPagesSlug, pageQuery} from "~/lib/sanity/queries";
 import {sanityFetch} from "~/lib/sanity/live";
 import {urlForOpenGraphImage} from "~/lib/sanity/utils";
-import {RenderSection} from "~/components/sections";
+import {RenderSection, Sections} from "~/components/sections";
 
 export const generateStaticParams = async () => {
   const {data} = await sanityFetch({query: allPagesSlug, perspective: "published", stega: false});
@@ -43,13 +43,14 @@ const Page = async ({params}: {params: Promise<{slug: string}>}) => {
 
   return (
     <>
-      {data?.content?.map((section) => {
-        if (!section || Object.keys(section).length === 0) {
-          return null;
-        }
-
-        return <RenderSection key={section._key} section={section} />;
-      })}
+      {data?.content
+        ?.filter(
+          (section): section is Sections =>
+            section !== null && typeof section === "object" && "_key" in section && Object.keys(section).length > 0,
+        )
+        .map((section) => {
+          return <RenderSection key={section._key} section={section} />;
+        })}
     </>
   );
 };

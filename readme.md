@@ -13,6 +13,7 @@ Setup following environment variables (as plain text variables)
 
 `NEXT_PUBLIC_SANITY_PROJECT_ID` with value for your prefered dataset
 `NEXT_PUBLIC_SANITY_DATASET` with your sanity project id
+`SANITY_API_READ_TOKEN` with a read token
 
 ### Setup for local development
 
@@ -22,6 +23,7 @@ Create `.env` file in root path with the environment variables
 # For Next Locally
 NEXT_PUBLIC_SANITY_PROJECT_ID = "abcd1245"
 NEXT_PUBLIC_SANITY_DATASET = "production"
+SANITY_API_READ_TOKEN = "abc12345"
 ```
 
 ### Development
@@ -39,8 +41,8 @@ Add http://localhost:3000 in sanity settings -> api - CORS Origins
 
 ### Things to know
 
-* Frontend startpage is fetched with slug `frontpage`
-* Posts list is fetched with the slug `posts`
+- Frontend startpage is fetched with slug `frontpage`
+- Posts list is fetched with the slug `posts`
 
 ### Tech Stack
 

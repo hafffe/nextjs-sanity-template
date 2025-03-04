@@ -1,7 +1,7 @@
 import {RiShareLine} from "react-icons/ri";
-import {defineField} from "sanity";
+import {defineField, defineType} from "sanity";
 
-const meta = defineField({
+const meta = defineType({
   title: "Meta Information",
   name: "metaFields",
   type: "object",
@@ -13,17 +13,17 @@ const meta = defineField({
     },
   ],
   fields: [
-    {
+    defineField({
       name: "metaTitle",
       title: "Meta Title (Overrides to default title)",
       type: "string",
-    },
-    {
+    }),
+    defineField({
       name: "metaDescription",
       title: "Meta Description",
       type: "string",
-    },
-    {
+    }),
+    defineField({
       name: "openGraphImage",
       title: "Open Graph Image",
       type: "image",
@@ -32,19 +32,19 @@ const meta = defineField({
         hotspot: true,
       },
       group: "opengraph",
-    },
-    {
+    }),
+    defineField({
       name: "openGraphTitle",
       title: "Open Graph Title",
       type: "string",
       group: "opengraph",
-    },
-    {
+    }),
+    defineField({
       name: "openGraphDescription",
       title: "Open Graph Description",
       type: "text",
       group: "opengraph",
-    },
+    }),
   ],
 });
 

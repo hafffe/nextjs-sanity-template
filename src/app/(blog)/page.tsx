@@ -1,9 +1,9 @@
 import type {Metadata} from "next";
-import {pageWithPostsQuery} from "~/lib/sanity/queries";
+import {pageQuery, pageWithPostsQuery, postsQuery} from "~/lib/sanity/queries";
 import {sanityFetch} from "~/lib/sanity/live";
 import {Heading} from "~/components/ui";
 import {PostList} from "~/components/shared";
-import {RenderSection} from "~/components/sections";
+import {RenderSection, type Sections} from "~/components/sections";
 
 import {urlForOpenGraphImage} from "~/lib/sanity/utils";
 
@@ -36,19 +36,22 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const IndexRoute = async () => {
   const params = {slug: "frontpage", limit: 2};
-  const {data} = await sanityFetch({query: pageWithPostsQuery, params: params});
-
-  const {page, posts} = data ?? {};
+  const [{data: page}, {data: posts}] = await await Promise.all([
+    sanityFetch({query: pageQuery, params: params}),
+    sanityFetch({query: postsQuery, params}),
+  ]);
 
   return (
     <>
-      {page?.content?.map((section) => {
-        if (!section || Object.keys(section).length === 0) {
-          return null;
-        }
+      {page?.content
+        ?.filter(
+          (section): section is Sections =>
+            section !== null && typeof section === "object" && "_key" in section && Object.keys(section).length > 0,
+        )
+        .map((section) => {
+          return <RenderSection key={section._key} section={section} />;
+        })}
 
-        return <RenderSection key={section._key} section={section} />;
-      })}
       <Heading level="h2" weight="semibold" className="py-8">
         Recent articles
       </Heading>

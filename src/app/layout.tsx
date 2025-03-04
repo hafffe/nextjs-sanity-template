@@ -5,7 +5,7 @@ const workSans = Work_Sans({
   subsets: ["latin"],
 });
 
-const Layout = ({children}) => {
+const Layout = ({children}: {children: React.ReactNode}) => {
   return (
     <html lang="en" className={workSans.className}>
       <body className="bg-white text-gray-800 min-h-screen">{children}</body>
