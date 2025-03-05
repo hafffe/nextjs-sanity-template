@@ -10,11 +10,10 @@ import link from "./objects/link";
 import metaFields from "./objects/meta";
 import socialFields from "./objects/social-fields";
 import simpleBlockContent from "./objects/simple-block-content";
-
-import blockContent from "./sections/block-content";
-import grid from "./sections/grid";
-import mainImage from "./sections/main-image";
-import youtube from "./sections/youtube";
+import blockContent from "./objects/block-content";
+import grid from "./objects/grid";
+import mainImage from "./objects/main-image";
+import youtube from "./objects/youtube";
 
 export const schemasTypes = [
   person,
