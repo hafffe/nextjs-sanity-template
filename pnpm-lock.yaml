@@ -69,8 +69,8 @@ importers:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
       react-icons:
-        specifier: ^5.4.0
-        version: 5.4.0(react@19.0.0)
+        specifier: ^5.5.0
+        version: 5.5.0(react@19.0.0)
       react-is:
         specifier: ^19.0.0
         version: 19.0.0
@@ -839,8 +839,8 @@ packages:
   '@codemirror/theme-one-dark@6.1.1':
     resolution: {integrity: sha512-+CfzmScfJuD6uDF5bHJkAjWTQ2QAAHxODCPxUEgcImDYcJLT+4l5vLnBHmDVv46kCC5uUJGMrBJct2Z6JbvqyQ==}
 
-  '@codemirror/view@6.36.3':
-    resolution: {integrity: sha512-N2bilM47QWC8Hnx0rMdDxO2x2ImJ1FvZWXubwKgjeoOrWwEiFrtpA7SFHcuZ+o2Ze2VzbkgbzWVj4+V18LVkeg==}
+  '@codemirror/view@6.36.4':
+    resolution: {integrity: sha512-ZQ0V5ovw/miKEXTvjgzRyjnrk9TwriUB1k4R5p7uNnHR9Hus+D1SXHGdJshijEzPFjU25xea/7nhIeSqYFKdbA==}
 
   '@codemirror/view@6.9.2':
     resolution: {integrity: sha512-ci0r/v6aKOSlzOs7/STMTYP3jX/+YMq2dAfAJcLIB6uom4ThtrUlzeuS7GTRGNqJJ+qAJR1vGWfXgu4CO/0myQ==}
@@ -5644,8 +5644,8 @@ packages:
       react-native:
         optional: true
 
-  react-icons@5.4.0:
-    resolution: {integrity: sha512-7eltJxgVt7X64oHh6wSWNwwbKTCtMfK35hcjvJS0yxEAhPM8oUKdS3+kqaW1vicIltw+kR2unHaa12S9pPALoQ==}
+  react-icons@5.5.0:
+    resolution: {integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==}
     peerDependencies:
       react: '*'
 
@@ -7789,7 +7789,7 @@ snapshots:
     dependencies:
       '@codemirror/language': 6.10.8
       '@codemirror/state': 6.5.2
-      '@codemirror/view': 6.36.3
+      '@codemirror/view': 6.36.4
       '@lezer/common': 1.2.3
 
   '@codemirror/autocomplete@6.4.2(@codemirror/language@6.6.0)(@codemirror/state@6.2.0)(@codemirror/view@6.9.2)(@lezer/common@1.0.2)':
@@ -7810,7 +7810,7 @@ snapshots:
     dependencies:
       '@codemirror/language': 6.10.8
       '@codemirror/state': 6.5.2
-      '@codemirror/view': 6.36.3
+      '@codemirror/view': 6.36.4
       '@lezer/common': 1.2.3
 
   '@codemirror/lang-javascript@6.1.4':
@@ -7826,7 +7826,7 @@ snapshots:
   '@codemirror/language@6.10.8':
     dependencies:
       '@codemirror/state': 6.5.2
-      '@codemirror/view': 6.36.3
+      '@codemirror/view': 6.36.4
       '@lezer/common': 1.2.3
       '@lezer/highlight': 1.2.1
       '@lezer/lr': 1.4.2
@@ -7856,7 +7856,7 @@ snapshots:
   '@codemirror/search@6.5.10':
     dependencies:
       '@codemirror/state': 6.5.2
-      '@codemirror/view': 6.36.3
+      '@codemirror/view': 6.36.4
       crelt: 1.0.6
 
   '@codemirror/state@6.2.0': {}
@@ -7869,10 +7869,10 @@ snapshots:
     dependencies:
       '@codemirror/language': 6.10.8
       '@codemirror/state': 6.5.2
-      '@codemirror/view': 6.36.3
+      '@codemirror/view': 6.36.4
       '@lezer/highlight': 1.2.1
 
-  '@codemirror/view@6.36.3':
+  '@codemirror/view@6.36.4':
     dependencies:
       '@codemirror/state': 6.5.2
       style-mod: 4.1.2
@@ -10452,7 +10452,7 @@ snapshots:
       '@codemirror/lint': 6.2.0
       '@codemirror/search': 6.5.10
       '@codemirror/state': 6.5.2
-      '@codemirror/view': 6.36.3
+      '@codemirror/view': 6.36.4
 
   color-convert@1.9.3:
     dependencies:
@@ -13280,7 +13280,7 @@ snapshots:
     optionalDependencies:
       react-dom: 19.0.0(react@19.0.0)
 
-  react-icons@5.4.0(react@19.0.0):
+  react-icons@5.5.0(react@19.0.0):
     dependencies:
       react: 19.0.0
 
