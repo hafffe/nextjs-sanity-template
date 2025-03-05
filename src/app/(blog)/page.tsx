@@ -36,7 +36,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const IndexRoute = async () => {
   const params = {slug: "frontpage", limit: 2};
-  const [{data: page}, {data: posts}] = await await Promise.all([
+  const [{data: page}, {data: posts}] = await Promise.all([
     sanityFetch({query: pageQuery, params: params}),
     sanityFetch({query: postsQuery, params}),
   ]);
