@@ -1,12 +1,11 @@
-import {defineField} from "sanity";
+import {defineField, defineType} from "sanity";
 
-const link = defineField({
+const link = defineType({
   title: "URL",
   name: "link",
   type: "object",
-  hidden: true,
   fields: [
-    {
+    defineField({
       title: "URL",
       name: "href",
       type: "url",
@@ -15,7 +14,7 @@ const link = defineField({
           allowRelative: true,
           scheme: ["https", "http", "mailto", "tel"],
         }),
-    },
+    }),
   ],
 });
 

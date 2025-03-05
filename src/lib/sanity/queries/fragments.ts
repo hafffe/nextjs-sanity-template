@@ -11,12 +11,6 @@ export const grid = `
   }
 `;
 
-export const spacer = `
-  _type == 'spacer' => {
-    ...
-  }
-`;
-
 export const blockContent = `
   _type == 'blockContent' => {
     ...

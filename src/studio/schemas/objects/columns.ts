@@ -1,7 +1,7 @@
 import {RiLayoutColumnLine} from "react-icons/ri";
-import {defineField} from "sanity";
+import {defineType, defineField} from "sanity";
 
-const columns = defineField({
+const columns = defineType({
   name: "columns",
   title: "Columns",
   type: "object",
@@ -9,7 +9,7 @@ const columns = defineField({
   validation: (Rule) => Rule.required(),
   icon: RiLayoutColumnLine,
   fields: [
-    {
+    defineField({
       title: "Small screens",
       name: "small",
       type: "string",
@@ -34,8 +34,8 @@ const columns = defineField({
           },
         ],
       },
-    },
-    {
+    }),
+    defineField({
       title: "Medium screens",
       name: "medium",
       type: "string",
@@ -60,8 +60,8 @@ const columns = defineField({
           },
         ],
       },
-    },
-    {
+    }),
+    defineField({
       title: "Large screens",
       name: "large",
       type: "string",
@@ -86,7 +86,7 @@ const columns = defineField({
           },
         ],
       },
-    },
+    }),
   ],
 });
 

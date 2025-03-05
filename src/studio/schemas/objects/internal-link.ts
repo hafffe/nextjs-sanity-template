@@ -1,20 +1,19 @@
 import {RiLinksLine} from "react-icons/ri";
-import {defineField} from "sanity";
+import {defineField, defineType} from "sanity";
 
-const internalLink = defineField({
+const internalLink = defineType({
   title: "Internal Link",
   name: "internalLink",
   type: "object",
-  hidden: true,
   icon: RiLinksLine,
   fields: [
-    {
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "link",
       title: "Link",
       type: "reference",
@@ -23,7 +22,7 @@ const internalLink = defineField({
           type: "page",
         },
       ],
-    },
+    }),
   ],
 });
 

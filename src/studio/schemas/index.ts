@@ -14,7 +14,6 @@ import simpleBlockContent from "./objects/simple-block-content";
 import blockContent from "./sections/block-content";
 import grid from "./sections/grid";
 import mainImage from "./sections/main-image";
-import spacer from "./sections/spacer";
 import youtube from "./sections/youtube";
 
 export const schemasTypes = [
@@ -32,6 +31,5 @@ export const schemasTypes = [
   mainImage,
   socialFields,
   blockContent,
-  spacer,
   youtube,
 ];

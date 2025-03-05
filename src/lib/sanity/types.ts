@@ -474,7 +474,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: src/lib/sanity/queries/page.ts
 // Variable: pageQuery
-// Query: *[_type == 'page' && slug.current == $slug][0] {    ...,    content[] {        _type == 'blockContent' => {    ...  },        _type == 'grid' => {    ...,    items[] {      ...,      ctas[] {        ...,        link->{link, slug}      }    }  },        _type == 'mainImage' => {    ...  },        _type == 'spacer' => {    ...  },        _type == 'youtube' => {    ...  }    }  }
+// Query: *[_type == 'page' && slug.current == $slug][0] {    ...,    content[] {        _type == 'blockContent' => {    ...  },        _type == 'grid' => {    ...,    items[] {      ...,      ctas[] {        ...,        link->{link, slug}      }    }  },        _type == 'mainImage' => {    ...  },        _type == 'youtube' => {    ...  }    }  }
 export type PageQueryResult = {
   _id: string;
   _type: "page";
@@ -635,20 +635,16 @@ export type PageQueryResult = {
       }
     | {
         _key: string;
-        _type: "spacer";
-        size?: "large" | "medium" | "small" | "xlarge";
-      }
-    | {
-        _key: string;
         _type: "youtube";
         url?: string;
         autoPlay?: boolean;
         muted?: boolean;
       }
+    | {}
   > | null;
 } | null;
 // Variable: pageWithPostsQuery
-// Query: {    "page": *[_type == 'page' && slug.current == $slug][0] {      ...,      content[] {          _type == 'blockContent' => {    ...  },          _type == 'grid' => {    ...,    items[] {      ...,      ctas[] {        ...,        link->{link, slug}      }    }  },          _type == 'mainImage' => {    ...  },          _type == 'spacer' => {    ...  },          _type == 'youtube' => {    ...  }      }    },    "posts": *[_type == 'post' && defined(slug.current)] | order(_createdAt desc)[0...$limit]  }
+// Query: {    "page": *[_type == 'page' && slug.current == $slug][0] {      ...,      content[] {          _type == 'blockContent' => {    ...  },          _type == 'grid' => {    ...,    items[] {      ...,      ctas[] {        ...,        link->{link, slug}      }    }  },          _type == 'mainImage' => {    ...  },          _type == 'youtube' => {    ...  }      }    },    "posts": *[_type == 'post' && defined(slug.current)] | order(_createdAt desc)[0...$limit]  }
 export type PageWithPostsQueryResult = {
   page: {
     _id: string;
@@ -810,16 +806,12 @@ export type PageWithPostsQueryResult = {
         }
       | {
           _key: string;
-          _type: "spacer";
-          size?: "large" | "medium" | "small" | "xlarge";
-        }
-      | {
-          _key: string;
           _type: "youtube";
           url?: string;
           autoPlay?: boolean;
           muted?: boolean;
         }
+      | {}
     > | null;
   } | null;
   posts: Array<{
@@ -1017,65 +1009,10 @@ export type PostsQueryResult = Array<{
       }
   >;
 }>;
-// Variable: allPostSlug
-// Query: *[_type == 'post' && defined(slug.current)][]
-export type AllPostSlugResult = Array<{
-  _id: string;
-  _type: "post";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  meta?: MetaFields;
-  author?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "person";
-  };
-  publishedAt?: string;
-  keywords?: Array<string>;
-  excerpt?: SimpleBlockContent;
-  featuredImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "mainImage";
-  };
-  content?: Array<
-    | ({
-        _key: string;
-      } & BlockContent)
-    | ({
-        _key: string;
-      } & Grid)
-    | ({
-        _key: string;
-      } & Spacer)
-    | ({
-        _key: string;
-      } & Youtube)
-    | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "mainImage";
-        _key: string;
-      }
-  >;
+// Variable: allPostSlugQuery
+// Query: *[_type == "post" && defined(slug.current)]{"slug": slug.current}
+export type AllPostSlugQueryResult = Array<{
+  slug: string | null;
 }>;
 
 // Source: src/lib/sanity/queries/site-settings.ts
@@ -1115,12 +1052,12 @@ export type SiteSettingsQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n  *[_type == 'page' && slug.current == $slug][0] {\n    ...,\n    content[] {\n      \n  _type == 'blockContent' => {\n    ...\n  }\n,\n      \n  _type == 'grid' => {\n    ...,\n    items[] {\n      ...,\n      ctas[] {\n        ...,\n        link->{link, slug}\n      }\n    }\n  }\n,\n      \n  _type == 'mainImage' => {\n    ...\n  }\n,\n      \n  _type == 'spacer' => {\n    ...\n  }\n,\n      \n  _type == 'youtube' => {\n    ...\n  }\n\n    }\n  }\n": PageQueryResult;
-    "\n  {\n    \"page\": *[_type == 'page' && slug.current == $slug][0] {\n      ...,\n      content[] {\n        \n  _type == 'blockContent' => {\n    ...\n  }\n,\n        \n  _type == 'grid' => {\n    ...,\n    items[] {\n      ...,\n      ctas[] {\n        ...,\n        link->{link, slug}\n      }\n    }\n  }\n,\n        \n  _type == 'mainImage' => {\n    ...\n  }\n,\n        \n  _type == 'spacer' => {\n    ...\n  }\n,\n        \n  _type == 'youtube' => {\n    ...\n  }\n\n      }\n    },\n    \"posts\": *[_type == 'post' && defined(slug.current)] | order(_createdAt desc)[0...$limit]\n  }\n": PageWithPostsQueryResult;
+    "\n  *[_type == 'page' && slug.current == $slug][0] {\n    ...,\n    content[] {\n      \n  _type == 'blockContent' => {\n    ...\n  }\n,\n      \n  _type == 'grid' => {\n    ...,\n    items[] {\n      ...,\n      ctas[] {\n        ...,\n        link->{link, slug}\n      }\n    }\n  }\n,\n      \n  _type == 'mainImage' => {\n    ...\n  }\n,\n      \n  _type == 'youtube' => {\n    ...\n  }\n\n    }\n  }\n": PageQueryResult;
+    "\n  {\n    \"page\": *[_type == 'page' && slug.current == $slug][0] {\n      ...,\n      content[] {\n        \n  _type == 'blockContent' => {\n    ...\n  }\n,\n        \n  _type == 'grid' => {\n    ...,\n    items[] {\n      ...,\n      ctas[] {\n        ...,\n        link->{link, slug}\n      }\n    }\n  }\n,\n        \n  _type == 'mainImage' => {\n    ...\n  }\n,\n        \n  _type == 'youtube' => {\n    ...\n  }\n\n      }\n    },\n    \"posts\": *[_type == 'post' && defined(slug.current)] | order(_createdAt desc)[0...$limit]\n  }\n": PageWithPostsQueryResult;
     "\n  *[_type == 'page' && defined(slug.current) && slug.current != 'frontpage' && slug.current != 'posts'][].slug.current\n": AllPagesSlugResult;
     "\n  *[_type == 'post' && slug.current == $slug][0] {\n    ...,\n    author-> {name, title, phone, email, image}\n  }\n": PostQueryResult;
     "\n  *[_type == 'post' && defined(slug.current)] | order(_createdAt desc)[0...$limit]\n": PostsQueryResult;
-    "\n  *[_type == 'post' && defined(slug.current)][]\n": AllPostSlugResult;
+    '\n   *[_type == "post" && defined(slug.current)]{"slug": slug.current}\n': AllPostSlugQueryResult;
     '\n  *[_type == "siteSettings"][0]{\n    ...,\n    navigation[]{\n      ...,\n      link->{_type, slug}\n    }\n  }\n': SiteSettingsQueryResult;
   }
 }

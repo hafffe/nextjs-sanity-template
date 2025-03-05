@@ -1,6 +1,6 @@
-import {BlockContent, Grid, MainImage, Spacer, Youtube} from "~/components/sections";
+import {BlockContent, Grid, MainImage, Youtube} from "~/components/sections";
 
-type Sections =
+export type Sections =
   | {
       _key: string;
       _type: "grid";
@@ -15,10 +15,6 @@ type Sections =
     }
   | {
       _key: string;
-      _type: "spacer";
-    }
-  | {
-      _key: string;
       _type: "youtube";
     };
 
@@ -30,8 +26,6 @@ const RenderSection = ({section}: {section: Sections}) => {
       return <Grid data={section} />;
     case "mainImage":
       return <MainImage data={section} />;
-    case "spacer":
-      return <Spacer data={section} />;
     case "youtube":
       return <Youtube data={section} />;
     default:
