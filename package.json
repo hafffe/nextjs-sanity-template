@@ -26,7 +26,7 @@
     "@sanity/preview-url-secret": "^2.1.5",
     "@sanity/react-loader": "1.10.47",
     "@sanity/types": "^3.78.0",
-    "@sanity/ui": "^2.15.2",
+    "@sanity/ui": "^2.15.8",
     "@sanity/vision": "^3.78.0",
     "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
