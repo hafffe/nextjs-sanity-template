@@ -51,7 +51,7 @@
   "devDependencies": {
     "@sanity/cli": "^3.78.0",
     "@tailwindcss/postcss": "^4.0.10",
-    "@types/node": "^22.13.9",
+    "@types/node": "^22.14.1",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
