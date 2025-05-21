@@ -11,7 +11,7 @@ const Grid = ({data}: Props) => {
   }
 
   return (
-    <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 items-center`}>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 items-center">
       {data?.items?.map((section) => <RenderSection key={section._key} section={section} />)}
     </div>
   );
