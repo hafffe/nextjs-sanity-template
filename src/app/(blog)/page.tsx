@@ -1,14 +1,17 @@
 import type {Metadata} from "next";
-import {pageQuery, pageWithPostsQuery, postsQuery} from "~/lib/sanity/queries";
-import {sanityFetch} from "~/lib/sanity/live";
-import {Heading} from "~/components/ui";
-import {PostList} from "~/components/shared";
 import {RenderSection, type Sections} from "~/components/sections";
+import {PostList} from "~/components/shared";
+import {Heading} from "~/components/ui";
+import {sanityFetch} from "~/lib/sanity/live";
+import {pageQuery, pageWithPostsQuery, postsQuery} from "~/lib/sanity/queries";
 
 import {urlForOpenGraphImage} from "~/lib/sanity/utils";
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const {data} = await sanityFetch({query: pageWithPostsQuery, params: {slug: "frontpage", limit: 2}});
+  const {data} = await sanityFetch({
+    query: pageWithPostsQuery,
+    params: {slug: "frontpage", limit: 2},
+  });
 
   const {page} = data;
   // @ts-expect-error - @TODO update @sanity/image-url types so it's compatible
