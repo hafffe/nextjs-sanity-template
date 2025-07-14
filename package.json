@@ -14,7 +14,7 @@
     "typegen": "sanity schema extract && sanity typegen generate"
   },
   "engines": {
-    "node": ">=18.17.1"
+    "node": ">=22.14.0"
   },
   "author": "Aron Hafner",
   "license": "MIT",
