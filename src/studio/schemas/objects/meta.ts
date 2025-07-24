@@ -1,7 +1,7 @@
 import {RiShareLine} from "react-icons/ri";
 import {defineField, defineType} from "sanity";
 
-const meta = defineType({
+export const meta = defineType({
   title: "Meta Information",
   name: "metaFields",
   type: "object",
@@ -47,5 +47,3 @@ const meta = defineType({
     }),
   ],
 });
-
-export default meta;

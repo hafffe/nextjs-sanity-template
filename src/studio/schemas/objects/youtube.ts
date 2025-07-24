@@ -1,11 +1,11 @@
-import {RiYoutubeLine} from "react-icons/ri";
+import {SquarePlay} from "lucide-react";
 import {defineField, defineType} from "sanity";
 
-const youtube = defineType({
+export const youtube = defineType({
   name: "youtube",
   type: "object",
   title: "YouTube Embed",
-  icon: RiYoutubeLine,
+  icon: SquarePlay,
   fields: [
     defineField({
       name: "url",
@@ -27,5 +27,3 @@ const youtube = defineType({
     }),
   ],
 });
-
-export default youtube;

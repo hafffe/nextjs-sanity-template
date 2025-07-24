@@ -1,5 +1,5 @@
 import {RiSettings5Line} from "react-icons/ri";
-import {defineType, defineField} from "sanity";
+import {defineField, defineType} from "sanity";
 
 const siteSettings = defineType({
   name: "siteSettings",
@@ -51,12 +51,8 @@ const siteSettings = defineType({
       type: "array",
       of: [
         {
-          title: "Internal Link",
-          type: "internalLink",
-        },
-        {
-          title: "External Link",
-          type: "externalLink",
+          title: "Link",
+          type: "customUrl",
         },
       ],
     }),

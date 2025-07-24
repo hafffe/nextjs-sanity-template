@@ -1,12 +1,12 @@
-import {RiImageLine} from "react-icons/ri";
+import {ImageIcon} from "lucide-react";
 import {defineField, defineType} from "sanity";
 
-const mainImage = defineType({
-  name: "mainImage",
+export const image = defineType({
+  name: "Image",
   title: "Image",
   description: "Image",
   type: "image",
-  icon: RiImageLine,
+  icon: ImageIcon,
   options: {
     hotspot: true,
   },
@@ -32,5 +32,3 @@ const mainImage = defineType({
     },
   },
 });
-
-export default mainImage;

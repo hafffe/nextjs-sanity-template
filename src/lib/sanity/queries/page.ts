@@ -1,15 +1,10 @@
 import {defineQuery} from "next-sanity";
-import {blockContent, grid, mainImage, youtube} from "./fragments";
+import {pageBuilder} from "./fragments";
 
 export const pageQuery = defineQuery(`
   *[_type == 'page' && slug.current == $slug][0] {
     ...,
-    content[] {
-      ${blockContent},
-      ${grid},
-      ${mainImage},
-      ${youtube}
-    }
+    ${pageBuilder}
   }
 `);
 
@@ -17,12 +12,7 @@ export const pageWithPostsQuery = defineQuery(`
   {
     "page": *[_type == 'page' && slug.current == $slug][0] {
       ...,
-      content[] {
-        ${blockContent},
-        ${grid},
-        ${mainImage},
-        ${youtube}
-      }
+      ${pageBuilder}
     },
     "posts": *[_type == 'post' && defined(slug.current)] | order(_createdAt desc)[0...$limit]
   }

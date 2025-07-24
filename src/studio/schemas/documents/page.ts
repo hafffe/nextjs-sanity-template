@@ -1,6 +1,6 @@
-import slug from "slugify";
 import {RiPagesLine} from "react-icons/ri";
-import {defineType, defineField} from "sanity";
+import {defineField, defineType} from "sanity";
+import slug from "slugify";
 
 const page = defineType({
   name: "page",
@@ -48,14 +48,10 @@ const page = defineType({
       name: "meta",
       group: "meta",
     }),
-
     defineField({
-      name: "content",
-      type: "array",
-      title: "Page sections",
-      description: "Add, edit, and reorder sections",
-      group: "content",
-      of: [{type: "grid"}, {type: "mainImage"}, {type: "blockContent"}, {type: "youtube"}],
+      name: "pageBuilder",
+      title: "Page Builder",
+      type: "pageBuilder",
     }),
   ],
   preview: {

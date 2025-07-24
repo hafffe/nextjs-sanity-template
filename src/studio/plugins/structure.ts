@@ -1,6 +1,6 @@
-import {structureTool} from "sanity/structure";
+import {RiArticleLine, RiPagesLine, RiSettings5Line, RiUserSmileLine} from "react-icons/ri";
 import type {ListItemBuilder, StructureBuilder} from "sanity/structure";
-import {RiPagesLine, RiUserSmileLine, RiArticleLine, RiSettings5Line} from "react-icons/ri";
+import {structureTool} from "sanity/structure";
 
 const singleton = (S: StructureBuilder, id: string, title: string): ListItemBuilder =>
   S.listItem().id(id).title(title).child(S.editor().id(id).schemaType(id).documentId(id));

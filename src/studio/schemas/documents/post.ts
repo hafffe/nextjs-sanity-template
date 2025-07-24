@@ -1,7 +1,7 @@
-import slug from "slugify";
 import {format} from "date-fns";
 import {RiArticleLine} from "react-icons/ri";
-import {defineType, defineField} from "sanity";
+import {defineField, defineType} from "sanity";
+import slug from "slugify";
 
 const post = defineType({
   name: "post",
@@ -83,7 +83,7 @@ const post = defineType({
     }),
     defineField({
       name: "excerpt",
-      type: "simpleBlockContent",
+      type: "text",
       title: "Excerpt",
       description: "This ends up on summary pages, when people share your post in social media.",
       group: "excerpt",
@@ -94,15 +94,15 @@ const post = defineType({
       title: "Featured Image",
       description: "Image that is displayed in posts lists",
       group: "excerpt",
-      type: "mainImage",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
-      name: "content",
-      type: "array",
-      title: "Content",
-      description: "Add, edit, and reorder sections with content",
-      group: "content",
-      of: [{type: "grid"}, {type: "mainImage"}, {type: "blockContent"}, {type: "youtube"}],
+      name: "pageBuilder",
+      title: "Page Builder",
+      type: "pageBuilder",
     }),
   ],
   initialValue: () => ({

@@ -1,16 +1,16 @@
 import {RiShareLine} from "react-icons/ri";
 import {defineField, defineType} from "sanity";
 
-const socialFields = defineType({
+export const socialFields = defineType({
   title: "Social",
   name: "socialFields",
   type: "object",
   icon: RiShareLine,
   fields: [
     defineField({
-      name: "twitter",
+      name: "x",
       type: "url",
-      title: "Twitter URL",
+      title: "X URL",
     }),
     defineField({
       name: "instagram",
@@ -29,5 +29,3 @@ const socialFields = defineType({
     }),
   ],
 });
-
-export default socialFields;

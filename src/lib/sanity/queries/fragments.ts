@@ -1,4 +1,4 @@
-export const grid = `
+const grid = /* groq */ `
   _type == 'grid' => {
     ...,
     items[] {
@@ -11,20 +11,30 @@ export const grid = `
   }
 `;
 
-export const blockContent = `
+const blockContent = /* groq */ `
   _type == 'blockContent' => {
     ...
   }
 `;
 
-export const mainImage = `
+const mainImage = /* groq */ `
   _type == 'mainImage' => {
     ...
   }
 `;
 
-export const youtube = `
+const youtube = /* groq */ `
   _type == 'youtube' => {
     ...
+  }
+`;
+
+export const pageBuilder = /* groq */ `
+  pageBuilder[] {
+    ...,
+    ${blockContent},
+    ${mainImage}
+    ${grid}
+    ${youtube}
   }
 `;

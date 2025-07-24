@@ -1,21 +1,9 @@
-import {defineDocuments, defineLocations, type DocumentLocation, presentationTool} from "sanity/presentation";
+import {type DocumentLocation, defineDocuments, defineLocations, presentationTool} from "sanity/presentation";
 
 const homeLocation = {
   title: "Home",
   href: "/",
 } satisfies DocumentLocation;
-
-const resolveHref = (documentType?: string, slug?: string): string | undefined => {
-  switch (documentType) {
-    case "post":
-      return slug ? `/posts/${slug}` : undefined;
-    case "page":
-      return slug ? `/${slug}` : undefined;
-    default:
-      console.warn("Invalid document type:", documentType);
-      return undefined;
-  }
-};
 
 export const presentation = presentationTool({
   name: "editor",
@@ -47,32 +35,51 @@ export const presentation = presentationTool({
           title: "title",
           slug: "slug.current",
         },
-        resolve: (doc) => ({
-          locations: [
-            {
-              title: doc?.title || "Untitled",
-              href: resolveHref("page", doc?.slug)!,
-            },
-          ],
-        }),
+        resolve: (document) => {
+          if (!(document?.title && document?.slug)) {
+            return;
+          }
+
+          if (document.slug === "/") {
+            return {
+              locations: [
+                {
+                  title: document.title,
+                  href: "/",
+                },
+              ],
+            };
+          }
+
+          return {
+            locations: [
+              {
+                title: document.title,
+                href: `/${document.slug}`,
+              },
+            ],
+          };
+        },
       }),
       post: defineLocations({
         select: {
           title: "title",
           slug: "slug.current",
         },
-        resolve: (doc) => ({
-          locations: [
-            {
-              title: doc?.title || "Untitled",
-              href: resolveHref("post", doc?.slug)!,
-            },
-            {
-              title: "Home",
-              href: "/",
-            } satisfies DocumentLocation,
-          ].filter(Boolean) as DocumentLocation[],
-        }),
+        resolve: (document) => {
+          if (!(document?.title && document?.slug)) {
+            return;
+          }
+
+          return {
+            locations: [
+              {
+                title: document.title,
+                href: `/post/${document.slug}`,
+              },
+            ],
+          };
+        },
       }),
     },
   },

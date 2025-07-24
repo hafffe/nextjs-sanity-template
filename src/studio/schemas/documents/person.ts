@@ -1,5 +1,5 @@
 import {RiUserSmileLine} from "react-icons/ri";
-import {defineType, defineField} from "sanity";
+import {defineField, defineType} from "sanity";
 
 const person = defineType({
   name: "person",
